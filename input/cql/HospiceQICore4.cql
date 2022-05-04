@@ -14,7 +14,7 @@ Updated FHIR version to 4.0.1
 @@
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 

@@ -14,7 +14,7 @@ Updated FHIR version to 4.0.1
 @@
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
@@ -38,4 +38,4 @@ define "Qualifying Encounters":
   		union [Encounter: "Home Healthcare Services"]
   ) ValidEncounter
 		where ValidEncounter.period during "Measurement Period"
-  		and ValidEncounter.status  = 'finished'
+  		  and ValidEncounter.status  = 'finished'

@@ -7,7 +7,7 @@ Updated FHIR version to 4.0.1
 @@
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
@@ -19,8 +19,7 @@ valueset "Payer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3
 context Patient
 
 define "SDE Ethnicity":
-  { Patient.ethnicity.ombCategory }
-    union Patient.ethnicity.detailed
+  Patient.ethnicity.detailed
 
 define "SDE Payer":
     [Coverage: type in "Payer"] Payer
@@ -30,8 +29,7 @@ define "SDE Payer":
       }
 
 define "SDE Race":
-  Patient.race.ombCategory
-    union Patient.race.detailed
+  Patient.race.detailed
 
 define "SDE Sex":
   case

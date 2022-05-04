@@ -4,7 +4,7 @@ library EXM165v8QICore4 version '8.5.000'
 Controlling High Blood Pressure (CBP)
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
@@ -13,24 +13,26 @@ include AdultOutpatientEncountersQICore4 version '2.0.000' called AdultOutpatien
 include SupplementalDataElementsQICore4 version '2.0.0' called SDE
 include AdvancedIllnessandFrailtyExclusionQICore4 version '5.0.000' called FrailtyLTI
 include HospiceQICore4 version '2.0.000' called Hospice
+//include NCQACommon_FHIR version '3.10.000' called Common
+//include Participation_FHIR version '1.0.0'
 
-codesystem "LOINC": 'http://loinc.org'
+codesystem "LOINC": 'urn:oid:2.16.840.1.113883.6.1'
 
-valueset "Chronic Kidney Disease, Stage 5": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1002'
-valueset "Dialysis Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1013'
-valueset "ED": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1085'
-valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
-valueset "End Stage Renal Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.353'
-valueset "ESRD Monthly Outpatient Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1014'
-valueset "Essential Hypertension": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.104.12.1011'
-valueset "Ethnicity": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837'
-valueset "Kidney Transplant": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1012'
-valueset "Kidney Transplant Recipient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1029'
-valueset "ONC Administrative Sex": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1'
-valueset "Payer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591'
-valueset "Pregnancy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.378'
-valueset "Race": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836'
-valueset "Vascular Access for Dialysis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1011'
+valueset "Chronic Kidney Disease, Stage 5": 'urn:oid:2.16.840.1.113883.3.526.3.1002'
+valueset "Dialysis Services": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1013'
+valueset "ED": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1085'
+valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307'
+valueset "End Stage Renal Disease": 'urn:oid:2.16.840.1.113883.3.526.3.353'
+valueset "ESRD Monthly Outpatient Services": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1014'
+valueset "Essential Hypertension": 'urn:oid:2.16.840.1.113883.3.464.1003.104.12.1011'
+valueset "Ethnicity": 'urn:oid:2.16.840.1.114222.4.11.837'
+valueset "Kidney Transplant": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1012'
+valueset "Kidney Transplant Recipient": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1029'
+valueset "ONC Administrative Sex": 'urn:oid:2.16.840.1.113762.1.4.1'
+valueset "Payer": 'urn:oid:2.16.840.1.114222.4.11.3591'
+valueset "Pregnancy": 'urn:oid:2.16.840.1.113883.3.526.3.378'
+valueset "Race": 'urn:oid:2.16.840.1.114222.4.11.836'
+valueset "Vascular Access for Dialysis": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1011'
 
 code "Birth date": '21112-8' from "LOINC" display 'Birth date'
 code "Blood pressure": '85354-9' from "LOINC" display 'blood pressure'
@@ -114,6 +116,8 @@ define "Qualifying Systolic Blood Pressure Reading":
       // TODO: Turn this into a value set
 	    and not (GetEncounter(BloodPressure.encounter).class.code in { 'EMER', 'IMP', 'ACUTE', 'NONAC', 'PRENC', 'SS'})
 
+//Note: Once we can specify that the FHIR BP Profile must be used, then status, code, and unit will not be required
+
 define "Numerator":
 	"Has Diastolic Blood Pressure Less Than 90"
 		and "Has Systolic Blood Pressure Less Than 140"
@@ -128,7 +132,7 @@ define "Pregnancy Or Renal Diagnosis Exclusions":
 		union ["Condition": "End Stage Renal Disease"]
 		union ["Condition": "Kidney Transplant Recipient"]
 		union ["Condition": "Chronic Kidney Disease, Stage 5"] ) PregnancyESRDDiagnosis
-      where PregnancyESRDDiagnosis.verificationStatus ~ Common."confirmed"
+      where PregnancyESRDDiagnosis.verificationStatus = Common."confirmed"
         and PregnancyESRDDiagnosis.recordedDate before end of "Measurement Period"
 
 define "Denominator":
@@ -148,7 +152,7 @@ define "End Stage Renal Disease Procedures":
 
 define "Essential Hypertension Diagnosis":
 	["Condition": "Essential Hypertension"] Hypertension
-    where Hypertension.verificationStatus ~ Common."confirmed"
+    where Hypertension.verificationStatus = ToConcept(Common."confirmed")
      and (Hypertension.recordedDate 6 months or less on or after start of "Measurement Period"
       or Hypertension.recordedDate before end of "Measurement Period"
     )
