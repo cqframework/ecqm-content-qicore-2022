@@ -9,7 +9,7 @@ Removed Normalize Onset in favor of more general Normalize Interval
 @@
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 

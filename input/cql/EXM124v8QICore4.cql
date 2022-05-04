@@ -1,4 +1,4 @@
-library EXM124v7QICore4 version '7.0.000'
+library EXM124v8QICore4 version '8.2.000'
 
 /*
 Based on CMS124v7 - Cervical Cancer Screening
@@ -11,7 +11,7 @@ of finding conventions and usage patterns that meet the needs of the various sta
 in the measure development community.
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
@@ -67,9 +67,11 @@ define "Denominator Exclusion":
   		or exists "Surgical Absence of Cervix"
   		or exists "Absence of Cervix"
 
+
 define "Absence of Cervix":
 	[Condition : "Congenital absence of cervix (disorder)"] NoCervixBirth
   		where Global."Normalize Interval"(NoCervixBirth.onset) starts before end of "Measurement Period"
+        and NoCervixBirth.clinicalStatus ~ ToConcept(Global."active")
 
 define "Surgical Absence of Cervix":
 	[Procedure: "Hysterectomy with No Residual Cervix"] NoCervixHysterectomy
