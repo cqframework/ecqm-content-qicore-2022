@@ -1,4 +1,4 @@
-library EXM124v7QICore4 version '7.0.000'
+library EXM124_QICore4 version '8.2.000'
 
 /*
 Based on CMS124v7 - Cervical Cancer Screening
@@ -11,14 +11,14 @@ of finding conventions and usage patterns that meet the needs of the various sta
 in the measure development community.
 */
 
-using QICore version '4.1.0'
+using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include HospiceQICore4 version '2.0.000' called Hospice
-include AdultOutpatientEncountersQICore4 version '2.0.000' called AdultOutpatientEncounters
-include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Global
-include SupplementalDataElementsQICore4 version '2.0.0' called SDE
+include Hospice_QICore4 version '2.0.000' called Hospice
+include AdultOutpatientEncounters_QICore4 version '2.0.000' called AdultOutpatientEncounters
+include MATGlobalCommonFunctions_QICore4 version '5.0.000' called Global
+include SupplementalDataElements_QICore4 version '2.0.0' called SDE
 
 codesystem "SNOMEDCT:2017-09": 'http://snomed.info/sct/731000124108' version 'http://snomed.info/sct/731000124108/version/201709'
 
@@ -67,9 +67,11 @@ define "Denominator Exclusion":
   		or exists "Surgical Absence of Cervix"
   		or exists "Absence of Cervix"
 
+
 define "Absence of Cervix":
 	[Condition : "Congenital absence of cervix (disorder)"] NoCervixBirth
   		where Global."Normalize Interval"(NoCervixBirth.onset) starts before end of "Measurement Period"
+        and NoCervixBirth.clinicalStatus ~ ToConcept(Global."active")
 
 define "Surgical Absence of Cervix":
 	[Procedure: "Hysterectomy with No Residual Cervix"] NoCervixHysterectomy
