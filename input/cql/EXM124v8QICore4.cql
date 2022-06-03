@@ -1,8 +1,4 @@
-<<<<<<< HEAD:input/cql/EXM124v8QICore.cql
-library EXM124_QICore4 version '8.2.000'
-=======
 library EXM124v8QICore4 version '8.2.000'
->>>>>>> e83de91e978d5b77d4d7b605d9f5cacdcf4242e9:input/cql/EXM124v8QICore4.cql
 
 /*
 Based on CMS124v7 - Cervical Cancer Screening
@@ -19,10 +15,10 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include Hospice_QICore4 version '2.0.000' called Hospice
-include AdultOutpatientEncounters_QICore4 version '2.0.000' called AdultOutpatientEncounters
-include MATGlobalCommonFunctions_QICore4 version '5.0.000' called Global
-include SupplementalDataElements_QICore4 version '2.0.0' called SDE
+include HospiceQICore4 version '2.0.000' called Hospice
+include AdultOutpatientEncountersQICore4 version '2.0.000' called AdultOutpatientEncounters
+include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Global
+include SupplementalDataElementsQICore4 version '2.0.0' called SDE
 
 codesystem "SNOMEDCT:2017-09": 'http://snomed.info/sct/731000124108' version 'http://snomed.info/sct/731000124108/version/201709'
 

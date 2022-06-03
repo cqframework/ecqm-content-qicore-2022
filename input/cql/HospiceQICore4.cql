@@ -1,4 +1,4 @@
-library Hospice_QICore4 version '2.0.000'
+library HospiceQICore4 version '2.0.000'
 
 /*
 This example is a work in progress and should not be considered a final specification
@@ -18,7 +18,7 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include MATGlobalCommonFunctions_QICore4 version '5.0.000' called Global
+include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Global
 
 codesystem "SNOMEDCT:2017-09": 'http://snomed.info/sct/731000124108' version 'http://snomed.info/sct/731000124108/version/201709'
 

@@ -1,4 +1,4 @@
-library AdultOutpatientEncounters_QICore4 version '2.0.000'
+library AdultOutpatientEncountersQICore4 version '2.0.000'
 
 /*
 This example is a work in progress and should not be considered a final specification

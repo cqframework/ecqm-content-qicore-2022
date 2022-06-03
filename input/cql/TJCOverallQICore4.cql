@@ -1,4 +1,4 @@
-library TJCOverall_QICore4 version '5.0.000'
+library TJCOverallQICore4 version '5.0.000'
 
 /*
 @update: @@BTR 2020-03-31 ->
@@ -11,8 +11,8 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include MATGlobalCommonFunctions_QICore4 version '5.0.000' called Global
-include SupplementalDataElements_QICore4 version '2.0.0' called SDE
+include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Global
+include SupplementalDataElementsQICore4 version '2.0.0' called SDE
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct/731000124108'
 codesystem "LOINC": 'http://loinc.org'

@@ -1,4 +1,4 @@
-library SupplementalDataElements_QICore4 version '2.0.0'
+library SupplementalDataElementsQICore4 version '2.0.0'
 
 /*
 @update: @@BTR 2020-03-31 ->
