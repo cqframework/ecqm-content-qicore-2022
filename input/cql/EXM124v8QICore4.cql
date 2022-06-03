@@ -1,4 +1,8 @@
+<<<<<<< HEAD:input/cql/EXM124v8QICore.cql
 library EXM124_QICore4 version '8.2.000'
+=======
+library EXM124v8QICore4 version '8.2.000'
+>>>>>>> e83de91e978d5b77d4d7b605d9f5cacdcf4242e9:input/cql/EXM124v8QICore4.cql
 
 /*
 Based on CMS124v7 - Cervical Cancer Screening

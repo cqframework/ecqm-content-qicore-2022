@@ -1,4 +1,4 @@
-library EXM165_FHIR4 version '8.5.000'
+library EXM165v8QICore4 version '8.5.000'
 
 /*
 Controlling High Blood Pressure (CBP)
@@ -8,11 +8,11 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include MATGlobalCommonFunctions_QICore4 version '5.0.000' called Common
-include AdultOutpatientEncounters_QICore4 version '2.0.000' called AdultOutpatientEncounters
-include SupplementalDataElements_QICore4 version '2.0.0' called SDE
-include AdvancedIllnessandFrailtyExclusion_QICore4 version '5.0.000' called FrailtyLTI
-include Hospice_QICore4 version '2.0.000' called Hospice
+include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Common
+include AdultOutpatientEncountersQICore4 version '2.0.000' called AdultOutpatientEncounters
+include SupplementalDataElementsQICore4 version '2.0.0' called SDE
+include AdvancedIllnessandFrailtyExclusionQICore4 version '5.0.000' called FrailtyLTI
+include HospiceQICore4 version '2.0.000' called Hospice
 //include NCQACommon_FHIR version '3.10.000' called Common
 //include Participation_FHIR version '1.0.0'
 
