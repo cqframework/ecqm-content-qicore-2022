@@ -1,4 +1,4 @@
-library MATGlobalCommonFunctions_QICore4 version '5.0.000'
+library MATGlobalCommonFunctionsQICore4 version '5.0.000'
 
 /*
 @update: @@BTR 2020-03-31 ->

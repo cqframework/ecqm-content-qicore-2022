@@ -1,4 +1,4 @@
-library AdvancedIllnessandFrailtyExclusion_QICore4 version '5.0.000'
+library AdvancedIllnessandFrailtyExclusionQICore4 version '5.0.000'
 
 /*
 @update: @@BTR 2020-03-31 ->
@@ -11,7 +11,7 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include MATGlobalCommonFunctions_QICore4 version '5.0.000' called Global
+include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Global
 
 codesystem "LOINC": 'http://loinc.org'
 
