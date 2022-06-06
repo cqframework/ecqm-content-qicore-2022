@@ -13,38 +13,58 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:47-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1547561",
-      "display": "Isotretinoin 25 MG Oral Capsule"
+      "display": "isotretinoin 25 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1547565",
-      "display": "Isotretinoin 35 MG Oral Capsule"
+      "display": "isotretinoin 35 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197843",
-      "display": "Isotretinoin 10 MG Oral Capsule"
+      "display": "isotretinoin 10 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197844",
-      "display": "Isotretinoin 20 MG Oral Capsule"
+      "display": "isotretinoin 20 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197845",
-      "display": "Isotretinoin 40 MG Oral Capsule"
+      "display": "isotretinoin 40 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
+      "code": "2262711",
+      "display": "Micronized isotretinoin 16 MG Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2262717",
+      "display": "Micronized isotretinoin 24 MG Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2262725",
+      "display": "Micronized isotretinoin 32 MG Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2262729",
+      "display": "Micronized isotretinoin 8 MG Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
       "code": "403930",
-      "display": "Isotretinoin 30 MG Oral Capsule"
+      "display": "isotretinoin 30 MG Oral Capsule"
     } ]
   }
 }

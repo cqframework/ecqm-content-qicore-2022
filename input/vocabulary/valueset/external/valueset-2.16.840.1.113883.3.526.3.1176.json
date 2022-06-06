@@ -13,46 +13,46 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "68999-2",
       "display": "Heart rate --supine"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "69000-8",
       "display": "Heart rate --sitting"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "69001-6",
       "display": "Heart rate --standing"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "8867-4",
       "display": "Heart rate"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "68999-2",
       "display": "Heart rate --supine"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "69000-8",
       "display": "Heart rate --sitting"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "69001-6",
       "display": "Heart rate --standing"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "8867-4",
       "display": "Heart rate"
     } ]

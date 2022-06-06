@@ -13,53 +13,53 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://www.cms.gov/Medicare/Coding/ICD10",
-      "version": "2020",
+      "version": "2022",
       "code": "0HTT0ZZ",
       "display": "Resection of Right Breast, Open Approach"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "12275171000119105",
-      "display": "Postmastectomy lymphedema syndrome of right upper limb (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "137681000119108",
-      "display": "History of prophylactic mastectomy of right breast (situation)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "429242008",
-      "display": "History of right mastectomy (situation)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "429400009",
       "display": "Mastectomy of right breast (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "451201000124106",
       "display": "Prophylactic mastectomy of right breast (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "726430006",
       "display": "Radical mastectomy of right breast (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "726434002",
       "display": "Subcutaneous mastectomy of right breast (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "726436000",
       "display": "Modified radical mastectomy of right breast (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "741010006",
+      "display": "Simple mastectomy of right breast (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "741019007",
+      "display": "Subcutaneous mastectomy of right breast with prosthetic implant (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "836435007",
+      "display": "Simple mastectomy of right breast using robotic assistance (procedure)"
     } ]
   }
 }

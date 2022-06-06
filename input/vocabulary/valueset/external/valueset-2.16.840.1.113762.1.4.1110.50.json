@@ -6,85 +6,75 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113762.1.4.1110.50"
   } ],
-  "version": "20200305",
-  "name": "RivaroxabanandBetrixabanforVTEProphylaxis",
-  "title": "Rivaroxaban and Betrixaban for VTE Prophylaxis",
+  "version": "20220219",
+  "name": "RivaroxabanforVTEProphylaxis",
+  "title": "Rivaroxaban for VTE Prophylaxis",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:34:59-04:00",
     "contains": [ {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1114198",
       "display": "rivaroxaban 10 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1232082",
       "display": "rivaroxaban 15 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1232086",
       "display": "rivaroxaban 20 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1549682",
       "display": "{42 (rivaroxaban 15 MG Oral Tablet) / 9 (rivaroxaban 20 MG Oral Tablet) } Pack"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "1927856",
-      "display": "betrixaban 40 MG Oral Capsule"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "1927864",
-      "display": "betrixaban 80 MG Oral Capsule"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2059015",
       "display": "rivaroxaban 2.5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
+      "code": "2588062",
+      "display": "rivaroxaban 155 MG Granules for Oral Suspension"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
       "code": "1114198",
       "display": "rivaroxaban 10 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1232082",
       "display": "rivaroxaban 15 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1232086",
       "display": "rivaroxaban 20 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1549682",
       "display": "{42 (rivaroxaban 15 MG Oral Tablet) / 9 (rivaroxaban 20 MG Oral Tablet) } Pack"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "1927856",
-      "display": "betrixaban 40 MG Oral Capsule"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "1927864",
-      "display": "betrixaban 80 MG Oral Capsule"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2059015",
       "display": "rivaroxaban 2.5 MG Oral Tablet"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2588062",
+      "display": "rivaroxaban 155 MG Granules for Oral Suspension"
     } ]
   }
 }

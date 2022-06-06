@@ -6,80 +6,85 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113883.3.526.3.1572"
   } ],
-  "version": "20200307",
+  "version": "20210220",
   "name": "HighIntensityStatinTherapy",
   "title": "High Intensity Statin Therapy",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
     "contains": [ {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2167565",
       "display": "rosuvastatin 20 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2167569",
       "display": "rosuvastatin 40 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
+      "code": "2535745",
+      "display": "ezetimibe 10 MG / rosuvastatin 20 MG Oral Tablet"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2535749",
+      "display": "ezetimibe 10 MG / rosuvastatin 40 MG Oral Tablet"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
       "code": "259255",
       "display": "atorvastatin 80 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "404011",
-      "display": "Amlodipine 5 MG / atorvastatin 80 MG Oral Tablet"
+      "display": "amlodipine 5 MG / atorvastatin 80 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "404013",
-      "display": "Amlodipine 10 MG / atorvastatin 80 MG Oral Tablet"
+      "display": "amlodipine 10 MG / atorvastatin 80 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "476351",
-      "display": "ezetimibe 10 MG / Simvastatin 80 MG Oral Tablet"
+      "display": "ezetimibe 10 MG / simvastatin 80 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "597984",
-      "display": "Amlodipine 5 MG / atorvastatin 40 MG Oral Tablet"
+      "display": "amlodipine 5 MG / atorvastatin 40 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "597990",
-      "display": "Amlodipine 10 MG / atorvastatin 40 MG Oral Tablet"
+      "display": "amlodipine 10 MG / atorvastatin 40 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "597993",
-      "display": "Amlodipine 2.5 MG / atorvastatin 40 MG Oral Tablet"
+      "display": "amlodipine 2.5 MG / atorvastatin 40 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "617311",
       "display": "atorvastatin 40 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "757705",
-      "display": "Simvastatin 80 MG Disintegrating Oral Tablet"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "859419",
-      "display": "Rosuvastatin calcium 40 MG Oral Tablet"
+      "display": "rosuvastatin calcium 40 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "859751",
-      "display": "Rosuvastatin calcium 20 MG Oral Tablet"
+      "display": "rosuvastatin calcium 20 MG Oral Tablet"
     } ]
   }
 }

@@ -13,36 +13,36 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "R33.0",
       "display": "Drug induced retention of urine"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "R33.8",
       "display": "Other retention of urine"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "R33.9",
       "display": "Retention of urine, unspecified"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "12245681000119103",
       "display": "Postprocedural retention of urine (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "236648008",
       "display": "Acute retention of urine (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "267064002",
       "display": "Retention of urine (disorder)"
     } ]

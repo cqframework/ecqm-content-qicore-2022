@@ -6,465 +6,480 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113762.1.4.1125.1"
   } ],
-  "version": "20200310",
+  "version": "20220222",
   "name": "ScheduleIVBenzodiazepines",
   "title": "Schedule IV Benzodiazepines",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
     "contains": [ {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1298088",
-      "display": "Flurazepam Hydrochloride 15 MG Oral Capsule"
+      "display": "flurazepam hydrochloride 15 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1298091",
-      "display": "Flurazepam Hydrochloride 30 MG Oral Capsule"
+      "display": "flurazepam hydrochloride 30 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1366192",
       "display": "clobazam 2.5 MG/ML Oral Suspension"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1551393",
-      "display": "2 ML Midazolam 5 MG/ML Prefilled Syringe"
+      "display": "2 ML midazolam 5 MG/ML Prefilled Syringe"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1551395",
-      "display": "1 ML Midazolam 5 MG/ML Prefilled Syringe"
+      "display": "1 ML midazolam 5 MG/ML Prefilled Syringe"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1665188",
-      "display": "1 ML Lorazepam 2 MG/ML Injection"
+      "display": "1 ML lorazepam 2 MG/ML Injection"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1665326",
-      "display": "1 ML Lorazepam 4 MG/ML Injection"
+      "display": "1 ML lorazepam 4 MG/ML Injection"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1666777",
-      "display": "2 ML Midazolam 1 MG/ML Cartridge"
+      "display": "2 ML midazolam 1 MG/ML Cartridge"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1666798",
-      "display": "2 ML Midazolam 1 MG/ML Injection"
+      "display": "2 ML midazolam 1 MG/ML Injection"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1666800",
-      "display": "5 ML Midazolam 1 MG/ML Injection"
+      "display": "5 ML midazolam 1 MG/ML Injection"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1666814",
-      "display": "1 ML Midazolam 5 MG/ML Injection"
+      "display": "1 ML midazolam 5 MG/ML Injection"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1666821",
-      "display": "1 ML Midazolam 5 MG/ML Cartridge"
+      "display": "1 ML midazolam 5 MG/ML Cartridge"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1666823",
-      "display": "2 ML Midazolam 5 MG/ML Injection"
+      "display": "2 ML midazolam 5 MG/ML Injection"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1807452",
-      "display": "2 ML Diazepam 5 MG/ML Auto-Injector"
+      "display": "2 ML diazepam 5 MG/ML Auto-Injector"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "1807459",
-      "display": "2 ML Diazepam 5 MG/ML Cartridge"
+      "display": "2 ML diazepam 5 MG/ML Cartridge"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197321",
-      "display": "Alprazolam 1 MG Oral Tablet"
+      "display": "alprazolam 1 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197322",
-      "display": "Alprazolam 2 MG Oral Tablet"
+      "display": "alprazolam 2 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197464",
-      "display": "Clorazepate Dipotassium 15 MG Oral Tablet"
+      "display": "clorazepate dipotassium 15 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197465",
-      "display": "Clorazepate Dipotassium 3.75 MG Oral Tablet"
+      "display": "clorazepate dipotassium 3.75 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197466",
-      "display": "Clorazepate Dipotassium 7.5 MG Oral Tablet"
+      "display": "clorazepate dipotassium 7.5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197527",
-      "display": "Clonazepam 0.5 MG Oral Tablet"
+      "display": "clonazepam 0.5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197528",
-      "display": "Clonazepam 1 MG Oral Tablet"
+      "display": "clonazepam 1 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197529",
-      "display": "Clonazepam 2 MG Oral Tablet"
+      "display": "clonazepam 2 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197589",
-      "display": "Diazepam 10 MG Oral Tablet"
+      "display": "diazepam 10 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197590",
-      "display": "Diazepam 2 MG Oral Tablet"
+      "display": "diazepam 2 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197591",
-      "display": "Diazepam 5 MG Oral Tablet"
+      "display": "diazepam 5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197653",
-      "display": "Estazolam 1 MG Oral Tablet"
+      "display": "estazolam 1 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197654",
-      "display": "Estazolam 2 MG Oral Tablet"
+      "display": "estazolam 2 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197900",
-      "display": "Lorazepam 0.5 MG Oral Tablet"
+      "display": "lorazepam 0.5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197901",
-      "display": "Lorazepam 1 MG Oral Tablet"
+      "display": "lorazepam 1 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "197902",
-      "display": "Lorazepam 2 MG Oral Tablet"
+      "display": "lorazepam 2 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198057",
-      "display": "Oxazepam 10 MG Oral Capsule"
+      "display": "oxazepam 10 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198059",
-      "display": "Oxazepam 30 MG Oral Capsule"
+      "display": "oxazepam 30 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198183",
       "display": "quazepam 15 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198241",
-      "display": "Temazepam 15 MG Oral Capsule"
+      "display": "temazepam 15 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198242",
-      "display": "Temazepam 30 MG Oral Capsule"
+      "display": "temazepam 30 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198243",
-      "display": "Temazepam 7.5 MG Oral Capsule"
+      "display": "temazepam 7.5 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198317",
-      "display": "Triazolam 0.125 MG Oral Tablet"
+      "display": "triazolam 0.125 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "198318",
-      "display": "Triazolam 0.25 MG Oral Tablet"
+      "display": "triazolam 0.25 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "199275",
-      "display": "Lorazepam 2.5 MG Oral Tablet"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "199450",
       "display": "clobazam 10 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "199975",
-      "display": "Temazepam 10 MG Oral Tablet"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "204892",
-      "display": "Clonazepam 0.25 MG Oral Tablet"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2058253",
-      "display": "clobazam 10 MG Oral Strip"
+      "display": "clobazam 10 MG Oral Film"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2058254",
-      "display": "clobazam 20 MG Oral Strip"
+      "display": "clobazam 20 MG Oral Film"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2058255",
-      "display": "clobazam 5 MG Oral Strip"
+      "display": "clobazam 5 MG Oral Film"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2120550",
-      "display": "2 ML Diazepam 5 MG/ML Prefilled Syringe"
+      "display": "2 ML diazepam 5 MG/ML Prefilled Syringe"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "2173494",
-      "display": "Midazolam 50 MG/ML Nasal Spray"
+      "display": "midazolam 50 MG/ML Nasal Spray"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
+      "code": "2272613",
+      "display": "diazepam 100 MG/ML Nasal Spray"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2272626",
+      "display": "diazepam 50 MG/ML Nasal Spray"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2272632",
+      "display": "diazepam 75 MG/ML Nasal Spray"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
       "code": "238100",
-      "display": "Lorazepam 2 MG/ML Injectable Solution"
+      "display": "lorazepam 2 MG/ML Injectable Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "238101",
-      "display": "Lorazepam 4 MG/ML Injectable Solution"
+      "display": "lorazepam 4 MG/ML Injectable Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "246172",
       "display": "clobazam 20 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
+      "code": "2541170",
+      "display": "50 ML midazolam 1 MG/ML Injection"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2541171",
+      "display": "100 ML midazolam 1 MG/ML Injection"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2569564",
+      "display": "24 HR lorazepam 1 MG Extended Release Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2569573",
+      "display": "24 HR lorazepam 2 MG Extended Release Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
+      "code": "2569577",
+      "display": "24 HR lorazepam 3 MG Extended Release Oral Capsule"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "2022-01",
       "code": "308047",
-      "display": "Alprazolam 0.25 MG Oral Tablet"
+      "display": "alprazolam 0.25 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "308048",
-      "display": "Alprazolam 0.5 MG Oral Tablet"
+      "display": "alprazolam 0.5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "308050",
-      "display": "Alprazolam 1 MG/ML Oral Solution"
+      "display": "alprazolam 1 MG/ML Oral Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "309843",
-      "display": "Diazepam 1 MG/ML Oral Solution"
+      "display": "diazepam 1 MG/ML Oral Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "309844",
-      "display": "Diazepam 5 MG/ML Oral Solution"
+      "display": "diazepam 5 MG/ML Oral Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "309845",
-      "display": "Diazepam 5 MG/ML Injectable Solution"
+      "display": "diazepam 5 MG/ML Injectable Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "311376",
-      "display": "Lorazepam 2 MG/ML Oral Solution"
+      "display": "lorazepam 2 MG/ML Oral Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "311700",
-      "display": "Midazolam 1 MG/ML Injectable Solution"
+      "display": "midazolam 1 MG/ML Injectable Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "311702",
-      "display": "Midazolam 5 MG/ML Injectable Solution"
+      "display": "midazolam 5 MG/ML Injectable Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "312133",
-      "display": "Oxazepam 10 MG Oral Tablet"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "312134",
-      "display": "Oxazepam 15 MG Oral Capsule"
+      "display": "oxazepam 15 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
-      "code": "312135",
-      "display": "Oxazepam 30 MG Oral Tablet"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "349194",
-      "display": "Clonazepam 0.125 MG Disintegrating Oral Tablet"
+      "display": "clonazepam 0.125 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "349195",
-      "display": "Clonazepam 0.25 MG Disintegrating Oral Tablet"
+      "display": "clonazepam 0.25 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "349196",
-      "display": "Clonazepam 1 MG Disintegrating Oral Tablet"
+      "display": "clonazepam 1 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "349197",
-      "display": "Clonazepam 2 MG Disintegrating Oral Tablet"
+      "display": "clonazepam 2 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "349198",
-      "display": "Clonazepam 0.5 MG Disintegrating Oral Tablet"
+      "display": "clonazepam 0.5 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "422410",
-      "display": "Midazolam 2 MG/ML Oral Solution"
+      "display": "midazolam 2 MG/ML Oral Solution"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "433798",
-      "display": "24 HR Alprazolam 0.5 MG Extended Release Oral Tablet"
+      "display": "24 HR alprazolam 0.5 MG Extended Release Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "433799",
-      "display": "24 HR Alprazolam 2 MG Extended Release Oral Tablet"
+      "display": "24 HR alprazolam 2 MG Extended Release Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "433800",
-      "display": "24 HR Alprazolam 1 MG Extended Release Oral Tablet"
+      "display": "24 HR alprazolam 1 MG Extended Release Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "433801",
-      "display": "24 HR Alprazolam 3 MG Extended Release Oral Tablet"
+      "display": "24 HR alprazolam 3 MG Extended Release Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "485413",
-      "display": "Alprazolam 0.25 MG Disintegrating Oral Tablet"
+      "display": "alprazolam 0.25 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "485414",
-      "display": "Alprazolam 1 MG Disintegrating Oral Tablet"
+      "display": "alprazolam 1 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "485415",
-      "display": "Alprazolam 0.5 MG Disintegrating Oral Tablet"
+      "display": "alprazolam 0.5 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "485416",
-      "display": "Alprazolam 2 MG Disintegrating Oral Tablet"
+      "display": "alprazolam 2 MG Disintegrating Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "485489",
-      "display": "Temazepam 22.5 MG Oral Capsule"
+      "display": "temazepam 22.5 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "763028",
-      "display": "1 ML Lorazepam 2 MG/ML Cartridge"
+      "display": "1 ML lorazepam 2 MG/ML Cartridge"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "763029",
-      "display": "1 ML Lorazepam 4 MG/ML Cartridge"
+      "display": "1 ML lorazepam 4 MG/ML Cartridge"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "801957",
-      "display": "0.5 ML Diazepam 5 MG/ML Rectal Gel"
+      "display": "0.5 ML diazepam 5 MG/ML Rectal Gel"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "801961",
-      "display": "2 ML Diazepam 5 MG/ML Rectal Gel"
+      "display": "2 ML diazepam 5 MG/ML Rectal Gel"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "801966",
-      "display": "4 ML Diazepam 5 MG/ML Rectal Gel"
+      "display": "4 ML diazepam 5 MG/ML Rectal Gel"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "856769",
-      "display": "Amitriptyline Hydrochloride 12.5 MG / Chlordiazepoxide 5 MG Oral Tablet"
+      "display": "amitriptyline hydrochloride 12.5 MG / chlordiazepoxide 5 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "856792",
-      "display": "Amitriptyline Hydrochloride 25 MG / Chlordiazepoxide 10 MG Oral Tablet"
+      "display": "amitriptyline hydrochloride 25 MG / chlordiazepoxide 10 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "889614",
-      "display": "Chlordiazepoxide Hydrochloride 5 MG / Clidinium bromide 2.5 MG Oral Capsule"
+      "display": "chlordiazepoxide hydrochloride 5 MG / clidinium bromide 2.5 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "905369",
-      "display": "Chlordiazepoxide Hydrochloride 10 MG Oral Capsule"
+      "display": "chlordiazepoxide hydrochloride 10 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "905495",
-      "display": "Chlordiazepoxide Hydrochloride 25 MG Oral Capsule"
+      "display": "chlordiazepoxide hydrochloride 25 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "905516",
-      "display": "Chlordiazepoxide Hydrochloride 5 MG Oral Capsule"
+      "display": "chlordiazepoxide hydrochloride 5 MG Oral Capsule"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "2020-01",
+      "version": "2022-01",
       "code": "998211",
-      "display": "2 ML Midazolam 1 MG/ML Prefilled Syringe"
+      "display": "2 ML midazolam 1 MG/ML Prefilled Syringe"
     } ]
   }
 }

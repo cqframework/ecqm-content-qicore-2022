@@ -13,26 +13,26 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "52552-7",
-      "display": "Falls in the past year [CMS Assessment]"
+      "display": "Falls in the past year"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "57254-5",
       "display": "Standardized fall risk assessment was conducted [CMS Assessment]"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "59454-9",
       "display": "History of falling; immediate or within 3 months [Morse Fall Scale]"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "73830-2",
       "display": "Fall risk assessment"
     } ]

@@ -13,81 +13,91 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "135",
       "display": "influenza, high dose seasonal, preservative-free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "140",
       "display": "Influenza, seasonal, injectable, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "141",
       "display": "Influenza, seasonal, injectable"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "144",
       "display": "seasonal influenza, intradermal, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
+      "code": "149",
+      "display": "influenza, live, intranasal, quadrivalent"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
       "code": "150",
       "display": "Influenza, injectable, quadrivalent, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "155",
       "display": "Seasonal, trivalent, recombinant, injectable influenza vaccine, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "158",
       "display": "influenza, injectable, quadrivalent, contains preservative"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "161",
       "display": "Influenza, injectable,quadrivalent, preservative free, pediatric"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "166",
       "display": "influenza, intradermal, quadrivalent, preservative free, injectable"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "168",
       "display": "Seasonal trivalent influenza vaccine, adjuvanted, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "171",
       "display": "Influenza, injectable, Madin Darby Canine Kidney, preservative free, quadrivalent"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "185",
       "display": "Seasonal, quadrivalent, recombinant, injectable influenza vaccine, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "186",
       "display": "Influenza, injectable, Madin Darby Canine Kidney,  quadrivalent with preservative"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
       "code": "197",
-      "display": "influenza, high-dose seasonal, quadrivalent, preservative free"
+      "display": "influenza, high-dose seasonal, quadrivalent, .7mL dose, preservative free"
     }, {
       "system": "http://hl7.org/fhir/sid/cvx",
-      "version": "2020-01",
+      "version": "2021-11-09",
+      "code": "205",
+      "display": "influenza, seasonal vaccine, quadrivalent, adjuvanted, .5mL dose, preservative free"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
       "code": "88",
       "display": "influenza virus vaccine, unspecified formulation"
     } ]

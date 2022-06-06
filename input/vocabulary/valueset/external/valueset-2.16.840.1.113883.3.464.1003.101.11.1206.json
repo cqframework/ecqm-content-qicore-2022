@@ -13,26 +13,26 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:47-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:02-04:00",
     "contains": [ {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "92002",
       "display": "Ophthalmological services: medical examination and evaluation with initiation of diagnostic and treatment program; intermediate, new patient"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "92004",
       "display": "Ophthalmological services: medical examination and evaluation with initiation of diagnostic and treatment program; comprehensive, new patient, 1 or more visits"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "92012",
       "display": "Ophthalmological services: medical examination and evaluation, with initiation or continuation of diagnostic and treatment program; intermediate, established patient"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "92014",
       "display": "Ophthalmological services: medical examination and evaluation, with initiation or continuation of diagnostic and treatment program; comprehensive, established patient, 1 or more visits"
     } ]

@@ -6,33 +6,33 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113762.1.4.1029.194"
   } ],
-  "version": "20200304",
+  "version": "20210611",
   "name": "BirthWeight",
   "title": "Birth Weight",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:34:58-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "56056-5",
       "display": "Birth weight - Reported"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "56092-0",
       "display": "Birth weight GNWCH"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "56093-8",
       "display": "Birth weight NVSS"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "8339-4",
       "display": "Birth weight Measured"
     } ]

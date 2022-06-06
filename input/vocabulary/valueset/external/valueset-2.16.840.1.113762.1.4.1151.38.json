@@ -13,16 +13,16 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "38265-5",
       "display": "DXA Radius and Ulna [T-score] Bone density"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "38268-9",
       "display": "DXA Skeletal system Views for bone density"
     } ]

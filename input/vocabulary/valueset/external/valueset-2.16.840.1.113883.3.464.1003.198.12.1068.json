@@ -13,21 +13,21 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "Z90.13",
       "display": "Acquired absence of bilateral breasts and nipples"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "136071000119101",
       "display": "History of bilateral prophylactic mastectomy (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "428529004",
       "display": "History of bilateral mastectomy (situation)"
     } ]

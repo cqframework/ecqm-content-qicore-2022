@@ -6,38 +6,88 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113762.1.4.1045.129"
   } ],
-  "version": "20200307",
+  "version": "20210213",
   "name": "Whitebloodcellscountlabtest",
   "title": "White blood cells count lab test",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "26464-8",
       "display": "Leukocytes [#/volume] in Blood"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "33256-9",
       "display": "Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "49498-9",
       "display": "Leukocytes [#/volume] in Blood by Estimate"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "6690-2",
       "display": "Leukocytes [#/volume] in Blood by Automated count"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
+      "code": "804-5",
+      "display": "Leukocytes [#/volume] in Blood by Manual count"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "26464-8",
+      "display": "Leukocytes [#/volume] in Blood"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "33256-9",
+      "display": "Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "49498-9",
+      "display": "Leukocytes [#/volume] in Blood by Estimate"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "6690-2",
+      "display": "Leukocytes [#/volume] in Blood by Automated count"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "804-5",
+      "display": "Leukocytes [#/volume] in Blood by Manual count"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "26464-8",
+      "display": "Leukocytes [#/volume] in Blood"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "33256-9",
+      "display": "Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "49498-9",
+      "display": "Leukocytes [#/volume] in Blood by Estimate"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "6690-2",
+      "display": "Leukocytes [#/volume] in Blood by Automated count"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
       "code": "804-5",
       "display": "Leukocytes [#/volume] in Blood by Manual count"
     } ]

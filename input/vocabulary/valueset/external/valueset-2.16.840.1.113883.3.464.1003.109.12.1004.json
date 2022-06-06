@@ -13,81 +13,81 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E08.21",
       "display": "Diabetes mellitus due to underlying condition with diabetic nephropathy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E08.22",
       "display": "Diabetes mellitus due to underlying condition with diabetic chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E08.29",
       "display": "Diabetes mellitus due to underlying condition with other diabetic kidney complication"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E09.21",
       "display": "Drug or chemical induced diabetes mellitus with diabetic nephropathy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E09.22",
       "display": "Drug or chemical induced diabetes mellitus with diabetic chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E09.29",
       "display": "Drug or chemical induced diabetes mellitus with other diabetic kidney complication"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E10.21",
       "display": "Type 1 diabetes mellitus with diabetic nephropathy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E10.22",
       "display": "Type 1 diabetes mellitus with diabetic chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E10.29",
       "display": "Type 1 diabetes mellitus with other diabetic kidney complication"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E11.21",
       "display": "Type 2 diabetes mellitus with diabetic nephropathy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E11.22",
       "display": "Type 2 diabetes mellitus with diabetic chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E11.29",
       "display": "Type 2 diabetes mellitus with other diabetic kidney complication"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E13.21",
       "display": "Other specified diabetes mellitus with diabetic nephropathy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E13.22",
       "display": "Other specified diabetes mellitus with diabetic chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E13.29",
       "display": "Other specified diabetes mellitus with other diabetic kidney complication"
     }, {
@@ -113,53 +113,78 @@
     }, {
       "system": "http://snomed.info/sct",
       "version": "2019-09",
-      "code": "127013003",
-      "display": "Disorder of kidney co-occurrent and due to diabetes mellitus (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "236499007",
-      "display": "Microalbuminuric nephropathy due to diabetes mellitus (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "236500003",
-      "display": "Proteinuric nephropathy due to diabetes mellitus (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "38046004",
-      "display": "Diffuse type diabetic glomerulosclerosis (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
       "code": "401110002",
       "display": "Type 1 diabetes mellitus with persistent microalbuminuria (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "420514000",
-      "display": "Persistent proteinuria associated with type I diabetes mellitus (disorder)"
+      "version": "2021-09",
+      "code": "127013003",
+      "display": "Disorder of kidney due to diabetes mellitus (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "38046004",
+      "display": "Diffuse glomerulosclerosis of kidney due to diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "420715001",
-      "display": "Persistent microalbuminuria associated with type II diabetes mellitus (disorder)"
+      "display": "Persistent microalbuminuria due to type 2 diabetes mellitus (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "421305000",
-      "display": "Persistent microalbuminuria associated with type I diabetes mellitus (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "421986006",
-      "display": "Persistent proteinuria associated with type II diabetes mellitus (disorder)"
+      "display": "Persistent proteinuria due to type 2 diabetes mellitus (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "445170001",
-      "display": "Macroalbuminuric diabetic nephropathy (disorder)"
+      "display": "Macroalbuminuric nephropathy due to diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "71701000119105",
+      "display": "Hypertension in chronic kidney disease due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "792926007",
+      "display": "Armanni-Ebstein kidney due to diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "90721000119101",
+      "display": "Chronic kidney disease stage 1 due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "90731000119103",
+      "display": "Chronic kidney disease stage 2 due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "90741000119107",
+      "display": "Chronic kidney disease stage 3 due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "90751000119109",
+      "display": "Chronic kidney disease stage 4 due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "90761000119106",
+      "display": "Chronic kidney disease stage 5 due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "90771000119100",
+      "display": "End stage renal disease on dialysis due to type 1 diabetes mellitus (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "96441000119101",
+      "display": "Chronic kidney disease due to type 1 diabetes mellitus (disorder)"
     } ]
   }
 }

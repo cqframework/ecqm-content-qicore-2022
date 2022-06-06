@@ -7,192 +7,192 @@
     "value": "2.16.840.1.113883.3.526.3.1492"
   } ],
   "version": "20190315",
-  "name": "PsychVisit-DiagnosticEvaluation",
-  "title": "Psych Visit - Diagnostic Evaluation",
+  "name": "PsychVisitDiagnosticEvaluation",
+  "title": "Psych Visit Diagnostic Evaluation",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90791",
       "display": "Psychiatric diagnostic evaluation"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90792",
       "display": "Psychiatric diagnostic evaluation with medical services"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "10197000",
       "display": "Psychiatric interview and evaluation (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "165172002",
       "display": "Diagnostic psychiatric interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "68338001",
       "display": "Interactive medical psychiatric diagnostic interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "79094001",
       "display": "Initial psychiatric interview with mental status and evaluation (procedure)"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90791",
       "display": "Psychiatric diagnostic evaluation"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90792",
       "display": "Psychiatric diagnostic evaluation with medical services"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "10197000",
       "display": "Psychiatric interview and evaluation (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "165172002",
       "display": "Diagnostic psychiatric interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "68338001",
       "display": "Interactive medical psychiatric diagnostic interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "79094001",
       "display": "Initial psychiatric interview with mental status and evaluation (procedure)"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90791",
       "display": "Psychiatric diagnostic evaluation"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90792",
       "display": "Psychiatric diagnostic evaluation with medical services"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "10197000",
       "display": "Psychiatric interview and evaluation (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "165172002",
       "display": "Diagnostic psychiatric interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "68338001",
       "display": "Interactive medical psychiatric diagnostic interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "79094001",
       "display": "Initial psychiatric interview with mental status and evaluation (procedure)"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90791",
       "display": "Psychiatric diagnostic evaluation"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90792",
       "display": "Psychiatric diagnostic evaluation with medical services"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "10197000",
       "display": "Psychiatric interview and evaluation (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "165172002",
       "display": "Diagnostic psychiatric interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "68338001",
       "display": "Interactive medical psychiatric diagnostic interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "79094001",
       "display": "Initial psychiatric interview with mental status and evaluation (procedure)"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90791",
       "display": "Psychiatric diagnostic evaluation"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90792",
       "display": "Psychiatric diagnostic evaluation with medical services"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "10197000",
       "display": "Psychiatric interview and evaluation (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "165172002",
       "display": "Diagnostic psychiatric interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "68338001",
       "display": "Interactive medical psychiatric diagnostic interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "79094001",
       "display": "Initial psychiatric interview with mental status and evaluation (procedure)"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90791",
       "display": "Psychiatric diagnostic evaluation"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "90792",
       "display": "Psychiatric diagnostic evaluation with medical services"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "10197000",
       "display": "Psychiatric interview and evaluation (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "165172002",
       "display": "Diagnostic psychiatric interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "68338001",
       "display": "Interactive medical psychiatric diagnostic interview (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "79094001",
       "display": "Initial psychiatric interview with mental status and evaluation (procedure)"
     } ]

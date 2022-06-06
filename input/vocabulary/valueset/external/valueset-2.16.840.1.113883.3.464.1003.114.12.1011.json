@@ -13,26 +13,26 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "G47.411",
       "display": "Narcolepsy with cataplexy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "G47.419",
       "display": "Narcolepsy without cataplexy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "G47.421",
       "display": "Narcolepsy in conditions classified elsewhere with cataplexy"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "G47.429",
       "display": "Narcolepsy in conditions classified elsewhere without cataplexy"
     }, {
@@ -57,42 +57,42 @@
       "display": "Narcolepsy in conditions classified elsewhere, with cataplexy"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "193042000",
       "display": "Cataplexy and narcolepsy (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "427426006",
       "display": "Sleep attack (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "434241000124107",
       "display": "Secondary narcolepsy (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "434251000124109",
       "display": "Secondary narcolepsy without cataplexy (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "434261000124106",
       "display": "Secondary narcolepsy with cataplexy (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "60380001",
       "display": "Narcolepsy (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "735676003",
       "display": "Narcolepsy type 1 (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "91521000119104",
       "display": "Narcolepsy without cataplexy (disorder)"
     } ]

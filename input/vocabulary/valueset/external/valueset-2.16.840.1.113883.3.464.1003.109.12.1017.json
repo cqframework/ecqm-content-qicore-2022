@@ -13,46 +13,46 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I12.0",
       "display": "Hypertensive chronic kidney disease with stage 5 chronic kidney disease or end stage renal disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I12.9",
       "display": "Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I13.0",
       "display": "Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I13.10",
       "display": "Hypertensive heart and chronic kidney disease without heart failure, with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I13.11",
       "display": "Hypertensive heart and chronic kidney disease without heart failure, with stage 5 chronic kidney disease, or end stage renal disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I13.2",
       "display": "Hypertensive heart and chronic kidney disease with heart failure and with stage 5 chronic kidney disease, or end stage renal disease"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I15.0",
       "display": "Renovascular hypertension"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I15.1",
       "display": "Hypertension secondary to other renal disorders"
     }, {
@@ -147,152 +147,167 @@
       "display": "Hypertensive renal disease with renal failure (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "111438007",
       "display": "Hypertension secondary to renal disease in obstetric context (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "123799005",
       "display": "Renovascular hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "123800009",
       "display": "Goldblatt hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "14973001",
       "display": "Renal sclerosis with hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "193003",
       "display": "Benign hypertensive renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "194783001",
       "display": "Secondary malignant renovascular hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "19769006",
       "display": "High-renin essential hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "23130000",
       "display": "Paroxysmal hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "28119000",
       "display": "Renal hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "285831000119108",
       "display": "Malignant hypertensive chronic kidney disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "285841000119104",
       "display": "Malignant hypertensive end stage renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "286371000119107",
       "display": "Malignant hypertensive end stage renal disease on dialysis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "302910002",
+      "display": "Atherosclerotic renal artery stenosis (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "32916005",
       "display": "Nephrosclerosis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "38481006",
       "display": "Hypertensive renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "39018007",
       "display": "Renal arterial hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "397748008",
       "display": "Hypertension with albuminuria (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "427889009",
       "display": "Hypertension associated with transplantation (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "428575007",
       "display": "Hypertension secondary to kidney transplant (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "431431000124100",
+      "display": "Arteriosclerosis of renal artery (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "45281005",
+      "display": "Atherosclerosis of renal artery (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "473392002",
       "display": "Hypertensive nephrosclerosis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "49220004",
       "display": "Hypertensive renal failure (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "57684003",
       "display": "Parenchymal renal hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "62240004",
       "display": "Benign arteriolar nephrosclerosis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "65443008",
       "display": "Malignant hypertensive renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "66052004",
       "display": "Benign hypertensive heart AND renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "66610008",
       "display": "Malignant hypertensive heart AND renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "73410007",
       "display": "Benign secondary renovascular hypertension (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "78544004",
       "display": "Chronic hypertensive uremia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "81363003",
       "display": "Malignant arteriolar nephrosclerosis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "86234004",
       "display": "Hypertensive heart AND renal disease (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "90493000",
       "display": "Arteriolar nephrosclerosis (disorder)"
     } ]

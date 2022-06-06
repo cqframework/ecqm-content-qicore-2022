@@ -13,96 +13,116 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I49.5",
       "display": "Sick sinus syndrome"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I49.8",
       "display": "Other specified cardiac arrhythmias"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "R00.1",
       "display": "Bradycardia, unspecified"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "1142110005",
+      "display": "Sinus bradycardia caused by drug (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "1142111009",
+      "display": "Sinus bradycardia due to metabolic disease (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "251162005",
       "display": "Atrio-ventricular-junctional (nodal) bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "29894000",
       "display": "Vagal autonomic bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "397841007",
       "display": "Drug-induced bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "44602002",
       "display": "Persistent sinus bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "49044005",
       "display": "Severe sinus bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "49710005",
       "display": "Sinus bradycardia (disorder)"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I49.5",
       "display": "Sick sinus syndrome"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "I49.8",
       "display": "Other specified cardiac arrhythmias"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "R00.1",
       "display": "Bradycardia, unspecified"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "1142110005",
+      "display": "Sinus bradycardia caused by drug (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "1142111009",
+      "display": "Sinus bradycardia due to metabolic disease (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "251162005",
       "display": "Atrio-ventricular-junctional (nodal) bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "29894000",
       "display": "Vagal autonomic bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "397841007",
       "display": "Drug-induced bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "44602002",
       "display": "Persistent sinus bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "49044005",
       "display": "Severe sinus bradycardia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "49710005",
       "display": "Sinus bradycardia (disorder)"
     } ]

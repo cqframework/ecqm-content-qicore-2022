@@ -13,26 +13,26 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:47-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E21.0",
       "display": "Primary hyperparathyroidism"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E21.1",
       "display": "Secondary hyperparathyroidism, not elsewhere classified"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E21.2",
       "display": "Other hyperparathyroidism"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "E21.3",
       "display": "Hyperparathyroidism, unspecified"
     }, {
@@ -57,57 +57,62 @@
       "display": "Other hyperparathyroidism"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "190045361000119101",
+      "display": "Normocalcemic primary hyperparathyroidism (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "19034001",
       "display": "Hyperparathyroidism due to renal insufficiency (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "237653008",
       "display": "Familial primary hyperparathyroidism (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "361128007",
       "display": "Hyperparathyroidism caused by lithium therapy (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "36348003",
       "display": "Primary hyperparathyroidism (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "363627009",
       "display": "Parathyromatosis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "47445009",
       "display": "Hyperparathyroidism due to vitamin D deficiency (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "66999008",
       "display": "Hyperparathyroidism (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "78200003",
       "display": "Tertiary hyperparathyroidism (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "78625002",
       "display": "Hyperparathyroidism due to intestinal malabsorption (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "9092004",
       "display": "Parathyroid hyperplasia (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "91478007",
       "display": "Secondary hyperparathyroidism (disorder)"
     } ]

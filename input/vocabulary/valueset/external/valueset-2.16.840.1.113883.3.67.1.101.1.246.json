@@ -6,48 +6,48 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113883.3.67.1.101.1.246"
   } ],
-  "version": "20180313",
+  "version": "20220219",
   "name": "PersonalityDisorderEmotionallyLabile",
   "title": "Personality Disorder Emotionally Labile",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:47-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:02-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F34.0",
       "display": "Cyclothymic disorder"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F60.3",
       "display": "Borderline personality disorder"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F60.4",
       "display": "Histrionic personality disorder"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F68.10",
       "display": "Factitious disorder imposed on self, unspecified"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F68.11",
       "display": "Factitious disorder imposed on self, with predominantly psychological signs and symptoms"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F68.12",
       "display": "Factitious disorder imposed on self, with predominantly physical signs and symptoms"
     }, {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "F68.13",
       "display": "Factitious disorder imposed on self, with combined psychological and physical signs and symptoms"
     }, {
@@ -72,47 +72,47 @@
       "display": "Borderline personality disorder"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "191765005",
       "display": "Emotionally unstable personality disorder (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "20010003",
       "display": "Borderline personality disorder (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "21586000",
       "display": "Munchausen's syndrome (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "24315006",
       "display": "Factitious disorder with combined physical AND psychological symptoms (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "33693007",
       "display": "Compensation neurosis (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "430744005",
       "display": "Factitious disorder with predominantly physical signs and symptoms (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "430751001",
       "display": "Factitious disorder with predominantly psychological signs and symptoms (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "55341008",
       "display": "Histrionic personality disorder (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "76105009",
       "display": "Cyclothymia (disorder)"
     } ]

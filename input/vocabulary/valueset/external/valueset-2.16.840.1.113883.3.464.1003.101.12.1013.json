@@ -7,42 +7,52 @@
     "value": "2.16.840.1.113883.3.464.1003.101.12.1013"
   } ],
   "version": "20170504",
-  "name": "DischargeServices-NursingFacility",
-  "title": "Discharge Services - Nursing Facility",
+  "name": "DischargeServicesNursingFacility",
+  "title": "Discharge Services Nursing Facility",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "99315",
       "display": "Nursing facility discharge day management; 30 minutes or less"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "99316",
       "display": "Nursing facility discharge day management; more than 30 minutes"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "99315",
       "display": "Nursing facility discharge day management; 30 minutes or less"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "99316",
       "display": "Nursing facility discharge day management; more than 30 minutes"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
       "code": "99315",
       "display": "Nursing facility discharge day management; 30 minutes or less"
     }, {
       "system": "http://www.ama-assn.org/go/cpt",
-      "version": "2020",
+      "version": "2021",
+      "code": "99316",
+      "display": "Nursing facility discharge day management; more than 30 minutes"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2021",
+      "code": "99315",
+      "display": "Nursing facility discharge day management; 30 minutes or less"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2021",
       "code": "99316",
       "display": "Nursing facility discharge day management; more than 30 minutes"
     } ]

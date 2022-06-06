@@ -13,16 +13,16 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "77353-1",
       "display": "Noninvasive colorectal cancer DNA and occult blood screening [Interpretation] in Stool Narrative"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "77354-9",
       "display": "Noninvasive colorectal cancer DNA and occult blood screening [Presence] in Stool"
     } ]

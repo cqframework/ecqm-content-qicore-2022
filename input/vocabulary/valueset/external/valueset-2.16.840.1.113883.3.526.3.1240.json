@@ -13,266 +13,286 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0438",
       "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
     }, {
-      "system": "urn:oid:2.16.840.1.113883.6.285",
-      "version": "2020",
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
       "code": "G0439",
       "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "444971000124105",
       "display": "Annual wellness visit (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "456201000124103",
+      "display": "Medicare Annual Wellness Visit (procedure)"
+    }, {
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
+      "code": "G0438",
+      "display": "Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit"
+    }, {
+      "system": "https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+      "version": "2022",
+      "code": "G0439",
+      "display": "Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "444971000124105",
+      "display": "Annual wellness visit (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "456201000124103",
       "display": "Medicare Annual Wellness Visit (procedure)"
     } ]

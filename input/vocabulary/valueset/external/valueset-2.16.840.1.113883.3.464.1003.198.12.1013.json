@@ -13,21 +13,21 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "17856-6",
       "display": "Hemoglobin A1c/Hemoglobin.total in Blood by HPLC"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "4548-4",
       "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "4549-2",
       "display": "Hemoglobin A1c/Hemoglobin.total in Blood by Electrophoresis"
     } ]

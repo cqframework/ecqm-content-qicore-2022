@@ -6,18 +6,18 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113762.1.4.1110.21"
   } ],
-  "version": "20190228",
+  "version": "20210220",
   "name": "IntravenousorIntraarterialThrombolytic(tPA)TherapyPriortoArrival",
   "title": "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:48-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:34:59-04:00",
     "contains": [ {
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
-      "version": "2020",
+      "version": "2022",
       "code": "Z92.82",
       "display": "Status post administration of tPA (rtPA) in a different facility within the last 24 hours prior to admission to current facility"
     } ]

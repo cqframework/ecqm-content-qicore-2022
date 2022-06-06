@@ -13,26 +13,16 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:34:59-04:00",
     "contains": [ {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "219084006",
-      "display": "Adverse reaction caused by tetanus vaccine (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "293108006",
-      "display": "Diphtheria and tetanus vaccine adverse reaction (disorder)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "428281000124107",
       "display": "Anaphylaxis due to diphtheria and tetanus vaccine (disorder)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "428291000124105",
       "display": "Anaphylaxis due to tetanus, diphtheria and acellular pertussis vaccine (disorder)"
     } ]

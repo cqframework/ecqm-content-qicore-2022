@@ -6,25 +6,25 @@
     "system": "urn:ietf:rfc:3986",
     "value": "2.16.840.1.113883.3.526.3.1334"
   } ],
-  "version": "20170504",
+  "version": "20210209",
   "name": "OpticDiscExamforStructuralAbnormalities",
   "title": "Optic Disc Exam for Structural Abnormalities",
   "status": "active",
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:01-04:00",
     "contains": [ {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "71486-5",
-      "display": "Optic disc or retinal nerve fiber layer structural abnormalities Left eye by Ophthalmoscopy"
+      "display": "Left eye Optic disc or retinal nerve fiber layer structural abnormalities by Ophthalmoscopy"
     }, {
       "system": "http://loinc.org",
-      "version": "2.67",
+      "version": "2.71",
       "code": "71487-3",
-      "display": "Optic disc or retinal nerve fiber layer structural abnormalities Right eye by Ophthalmoscopy"
+      "display": "Right eye Optic disc or retinal nerve fiber layer structural abnormalities by Ophthalmoscopy"
     } ]
   }
 }

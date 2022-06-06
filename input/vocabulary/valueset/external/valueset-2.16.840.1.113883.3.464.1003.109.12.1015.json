@@ -13,76 +13,76 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:46-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
     "contains": [ {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
-      "code": "233591003",
-      "display": "Hemoperfusion (procedure)"
-    }, {
-      "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2020-09",
       "code": "251000124108",
       "display": "Dialysis care plan (regime/therapy)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2020-09",
       "code": "311000124103",
       "display": "Peritoneal dialysis care plan (regime/therapy)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "233591003",
+      "display": "Hemoperfusion (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "3257008",
       "display": "Empty and measure peritoneal dialysis fluid (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "385970002",
       "display": "Dialysis care assessment (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "385971003",
       "display": "Dialysis care (regime/therapy)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "385973000",
       "display": "Dialysis care management (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "406168002",
       "display": "Dialysis access maintenance (regime/therapy)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "717738008",
       "display": "Peritoneal dialysis care assessment (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "718019005",
       "display": "Hemodialysis care management (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "718308002",
       "display": "Peritoneal dialysis care (regime/therapy)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "718330001",
       "display": "Hemodialysis care (regime/therapy)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "718331002",
       "display": "Hemodialysis care assessment (procedure)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "73257006",
       "display": "Peritoneal dialysis catheter maintenance (procedure)"
     } ]

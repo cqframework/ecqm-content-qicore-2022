@@ -13,96 +13,126 @@
   "experimental": false,
   "publisher": "NLM",
   "expansion": {
-    "identifier": "20200507",
-    "timestamp": "2021-01-14T20:59:47-07:00",
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:34:58-04:00",
     "contains": [ {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "105480006",
       "display": "Refusal of treatment by patient (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "183944003",
       "display": "Procedure refused (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "183945002",
       "display": "Procedure refused for religious reason (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413310006",
       "display": "Patient non-compliant - refused access to services (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413311005",
       "display": "Patient non-compliant - refused intervention / support (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413312003",
       "display": "Patient non-compliant - refused service (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "105480006",
       "display": "Refusal of treatment by patient (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "183944003",
       "display": "Procedure refused (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "183945002",
       "display": "Procedure refused for religious reason (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413310006",
       "display": "Patient non-compliant - refused access to services (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413311005",
       "display": "Patient non-compliant - refused intervention / support (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413312003",
       "display": "Patient non-compliant - refused service (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "105480006",
       "display": "Refusal of treatment by patient (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "183944003",
       "display": "Procedure refused (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "183945002",
       "display": "Procedure refused for religious reason (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413310006",
       "display": "Patient non-compliant - refused access to services (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
       "code": "413311005",
       "display": "Patient non-compliant - refused intervention / support (situation)"
     }, {
       "system": "http://snomed.info/sct",
-      "version": "2019-09",
+      "version": "2021-09",
+      "code": "413312003",
+      "display": "Patient non-compliant - refused service (situation)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "105480006",
+      "display": "Refusal of treatment by patient (situation)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "183944003",
+      "display": "Procedure refused (situation)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "183945002",
+      "display": "Procedure refused for religious reason (situation)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "413310006",
+      "display": "Patient non-compliant - refused access to services (situation)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "413311005",
+      "display": "Patient non-compliant - refused intervention / support (situation)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
       "code": "413312003",
       "display": "Patient non-compliant - refused service (situation)"
     } ]
