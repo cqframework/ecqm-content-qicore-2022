@@ -1,7 +1,5 @@
 # ecqm-content-qicore-2020
-eCQM Measure Content (Using QICore 4.1.0, based on FHIR R4 v4.0.1)
-
-TODO: Update this repository to use 4.1.1 once that model info is available in the translator
+eCQM Measure Content (Using QICore 4.1.1, based on FHIR R4 v4.0.1)
 
 These draft FHIR-based measures and shared libraries are translated from the QDM-based versions of eCQMs to be published in May 2022 for the 2023 reporting year, and have specific versions, especially for the shared libraries, appropriate to the content for that publication update.
 
@@ -13,6 +11,7 @@ https://build.fhir.org/ig/cqframework/ecqm-content-qicore-2022
 
 To author content in this implementation guide, you can use either the Atom CQL Plugin, or the VS Code CQL Plugin. Both plugins will enable you to author, validate, and execute FHIR-based eCQM content.
 
+NOTE: The Atom Editor is being sunsetted, as such we recommend use of the VS Code Plugin
 For instructions on setting up your environment to use the Atom CQL Plugin, see the [Atom CQL Support Readme](https://github.com/cqframework/atom_cql_support/blob/master/README.md).
 
 For instructions on setting up your environment to use the VS Code Plugin, see the [VS Code CQL Support Readme](https://github.com/cqframework/vscode-cql/blob/master/README.md)
@@ -23,25 +22,25 @@ The following table provides an index to the currently available library content
 
 ### Shared Libraries
 
-// TODO: Update these with content from the 2022 AU publication packages:
-
-|Library|Version|Status|
-|----|----|----|
-|[AdultOutpatientEncountersQICore4](input/cql/AdultOutpatientEncountersQICore4.cql)|2.0.000|Active|
-|[AdvancedIllnessandFrailtyExclusionQiCore4](input/cql/AdvancedIllnessandFrailtyExclusionQICore4.cql)|5.0.000|Active|
-|[FHIRHelpers](input/cql/FHIRHelpers.cql)|4.0.1|Active|
-|[HospiceQICore4](input/cql/HospiceQICore4.cql)|2.0.000|Active|
-|[MATGlobalCommonFunctionsQICore4](input/cql/MATGlobalCommonFunctionsQICore4.cql)|5.0.000|Active|
-|[SupplementalDataElementsQICore4](input/cql/SupplementalDataElementsQICore4.cql)|2.0.000|Active|
+|Library|Version|Status|Development Status|
+|----|----|----|----|
+|[AdultOutpatientEncountersQICore4](input/cql/AdultOutpatientEncountersQICore4.cql)|2.0.000|Active|TODO|
+|[AdvancedIllnessandFrailtyExclusionQiCore4](input/cql/AdvancedIllnessandFrailtyExclusionQICore4.cql)|5.0.000|Active|TODO|
+|[CumulativeMedicationDurationQICore4](input/cql/CumulativeMedicationDurationQICore4.cql)|2.0.000|Active|Converted|
+|[FHIRCommon](input/cql/FHIRCommon.cql)|4.0.012|Active|Converted|
+|[FHIRHelpers](input/cql/FHIRHelpers.cql)|4.0.012|Active|Converted|
+|[HospiceQICore4](input/cql/HospiceQICore4.cql)|2.0.000|Active|TODO|
+|[MATGlobalCommonFunctionsQICore4](input/cql/MATGlobalCommonFunctionsQICore4.cql)|7.0.000|Active|Converted|
+|[SupplementalDataElementsQICore4](input/cql/SupplementalDataElementsQICore4.cql)|3.0.000|Active|Converted|
 
 ### Measure Libraries
 
 // TODO: Update these with content from the 2022 AU publication packages
 
-|Library|Version|Status|
-|----|----|----|
-|[EXM124v7QICore4](input/cql/EXM124v7QICore4.cql)|7.0.000|Draft|
-|[EXM165v8QICore4](input/cql/EXM165v8QICore4.cql)|8.5.000|Draft|
+|Library|Version|Status|Development Status|
+|----|----|----|----|
+|[EXM124v7QICore4](input/cql/EXM124v7QICore4.cql)|7.0.000|Draft|TODO|
+|[EXM165v8QICore4](input/cql/EXM165v8QICore4.cql)|8.5.000|Draft|TODO|
 
 ## Repository Structure
 
