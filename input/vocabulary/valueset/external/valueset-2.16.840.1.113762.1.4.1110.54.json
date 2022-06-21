@@ -1,0 +1,25 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1110.54",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.54",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1110.54"
+  } ],
+  "version": "20210220",
+  "name": "TotalParenteralNutrition",
+  "title": "Total Parenteral Nutrition",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:34:58-04:00",
+    "contains": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "789708003",
+      "display": "Total parenteral nutrition agent (substance)"
+    } ]
+  }
+}

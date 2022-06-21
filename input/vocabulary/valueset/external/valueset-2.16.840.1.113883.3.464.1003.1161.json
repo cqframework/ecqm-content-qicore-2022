@@ -1,0 +1,50 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.464.1003.1161",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1161",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113883.3.464.1003.1161"
+  } ],
+  "version": "20220202",
+  "name": "AdultPneumococcalVaccine",
+  "title": "Adult Pneumococcal Vaccine",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:00-04:00",
+    "contains": [ {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
+      "code": "109",
+      "display": "pneumococcal vaccine, unspecified formulation"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
+      "code": "133",
+      "display": "pneumococcal conjugate vaccine, 13 valent"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
+      "code": "152",
+      "display": "Pneumococcal Conjugate, unspecified formulation"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
+      "code": "215",
+      "display": "Pneumococcal conjugate vaccine 15-valent (PCV15), polysaccharide CRM197 conjugate, adjuvant, preservative free"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
+      "code": "216",
+      "display": "Pneumococcal conjugate vaccine 20-valent (PCV20), polysaccharide CRM197 conjugate, adjuvant, preservative free"
+    }, {
+      "system": "http://hl7.org/fhir/sid/cvx",
+      "version": "2021-11-09",
+      "code": "33",
+      "display": "pneumococcal polysaccharide vaccine, 23 valent"
+    } ]
+  }
+}

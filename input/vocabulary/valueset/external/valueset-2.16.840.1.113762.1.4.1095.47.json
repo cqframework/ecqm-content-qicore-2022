@@ -1,0 +1,35 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1095.47",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1095.47",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1095.47"
+  } ],
+  "version": "20220216",
+  "name": "NutritionalStatusModeratelyMalnourished",
+  "title": "Nutritional Status Moderately Malnourished",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
+    "contains": [ {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2022",
+      "code": "E44.0",
+      "display": "Moderate protein-calorie malnutrition"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "190602008",
+      "display": "Moderate protein-calorie malnutrition (weight for age 60-74 percent of standard) (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "77091003",
+      "display": "Malnutrition of moderate degree (Gomez: 60 percent to less than 75 percent of standard weight) (disorder)"
+    } ]
+  }
+}

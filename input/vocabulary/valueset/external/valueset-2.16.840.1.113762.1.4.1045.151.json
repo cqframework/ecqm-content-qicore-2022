@@ -1,0 +1,40 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1045.151",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.151",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1045.151"
+  } ],
+  "version": "20220218",
+  "name": "OxygenSaturationbyPulseOximetry",
+  "title": "Oxygen Saturation by Pulse Oximetry",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
+    "contains": [ {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "59408-5",
+      "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "59410-1",
+      "display": "Oxygen saturation in Arterial blood by Pulse oximetry --on room air"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "59408-5",
+      "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "59410-1",
+      "display": "Oxygen saturation in Arterial blood by Pulse oximetry --on room air"
+    } ]
+  }
+}

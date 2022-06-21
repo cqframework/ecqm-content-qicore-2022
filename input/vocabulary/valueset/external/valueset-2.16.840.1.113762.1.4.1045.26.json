@@ -1,0 +1,40 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1045.26",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.26",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1045.26"
+  } ],
+  "version": "20210611",
+  "name": "EstimatedGestationalAgeatDelivery",
+  "title": "Estimated Gestational Age at Delivery",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:04-04:00",
+    "contains": [ {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "11884-4",
+      "display": "Gestational age Estimated"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "11885-1",
+      "display": "Gestational age Estimated from last menstrual period"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "18185-9",
+      "display": "Gestational age"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "49051-6",
+      "display": "Gestational age in weeks"
+    } ]
+  }
+}

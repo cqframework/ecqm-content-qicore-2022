@@ -1,0 +1,75 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1029.256",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.256",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1029.256"
+  } ],
+  "version": "20220127",
+  "name": "SevereMaternalMorbidityProcedures",
+  "title": "Severe Maternal Morbidity Procedures",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:04-04:00",
+    "contains": [ {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "0B110F4",
+      "display": "Bypass Trachea to Cutaneous with Tracheostomy Device, Open Approach"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "0B113F4",
+      "display": "Bypass Trachea to Cutaneous with Tracheostomy Device, Percutaneous Approach"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "0B114F4",
+      "display": "Bypass Trachea to Cutaneous with Tracheostomy Device, Percutaneous Endoscopic Approach"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "0UT90ZZ",
+      "display": "Resection of Uterus, Open Approach"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "0UT97ZL",
+      "display": "Resection of Uterus, Supracervical, Via Natural or Artificial Opening"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "0UT97ZZ",
+      "display": "Resection of Uterus, Via Natural or Artificial Opening"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "5A12012",
+      "display": "Performance of Cardiac Output, Single, Manual"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "5A1935Z",
+      "display": "Respiratory Ventilation, Less than 24 Consecutive Hours"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "5A1945Z",
+      "display": "Respiratory Ventilation, 24-96 Consecutive Hours"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "5A1955Z",
+      "display": "Respiratory Ventilation, Greater than 96 Consecutive Hours"
+    }, {
+      "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+      "version": "2022",
+      "code": "5A2204Z",
+      "display": "Restoration of Cardiac Rhythm, Single"
+    } ]
+  }
+}

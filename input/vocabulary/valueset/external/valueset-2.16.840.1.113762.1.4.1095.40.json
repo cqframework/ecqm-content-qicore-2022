@@ -1,0 +1,40 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1095.40",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1095.40",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1095.40"
+  } ],
+  "version": "20220216",
+  "name": "MalnutritionRiskScreening",
+  "title": "Malnutrition Risk Screening",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
+    "contains": [ {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2022",
+      "code": "Z13.21",
+      "display": "Encounter for screening for nutritional disorder"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "171184005",
+      "display": "Malnutrition screening (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "414648004",
+      "display": "Malnutrition universal screening tool (assessment scale)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "443216009",
+      "display": "Assessment using malnutrition universal screening tool (procedure)"
+    } ]
+  }
+}

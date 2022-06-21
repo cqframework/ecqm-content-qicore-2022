@@ -1,0 +1,30 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1045.130",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.130",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1045.130"
+  } ],
+  "version": "20220218",
+  "name": "RespiratoryRate",
+  "title": "Respiratory Rate",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
+    "contains": [ {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "11291-2",
+      "display": "Respiratory rate at First encounter"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.71",
+      "code": "9279-1",
+      "display": "Respiratory rate"
+    } ]
+  }
+}

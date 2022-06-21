@@ -1,0 +1,40 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1170.6",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.6",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113762.1.4.1170.6"
+  } ],
+  "version": "20211007",
+  "name": "Adversereactiontothrombolytics",
+  "title": "Adverse reaction to thrombolytics",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
+    "contains": [ {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "293571007",
+      "display": "Streptokinase adverse reaction (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "293572000",
+      "display": "Urokinase adverse reaction (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "293573005",
+      "display": "Alteplase adverse reaction (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "293574004",
+      "display": "Anistreplase adverse reaction (disorder)"
+    } ]
+  }
+}

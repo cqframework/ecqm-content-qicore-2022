@@ -1,0 +1,85 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.3157.4025",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4025",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113883.3.3157.4025"
+  } ],
+  "version": "20190216",
+  "name": "CerebralVascularLesion",
+  "title": "Cerebral Vascular Lesion",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20220505",
+    "timestamp": "2022-06-06T10:35:03-04:00",
+    "contains": [ {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2022",
+      "code": "I60.8",
+      "display": "Other nontraumatic subarachnoid hemorrhage"
+    }, {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2022",
+      "code": "Q28.0",
+      "display": "Arteriovenous malformation of precerebral vessels"
+    }, {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2022",
+      "code": "Q28.2",
+      "display": "Arteriovenous malformation of cerebral vessels"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "204493007",
+      "display": "Arteriovenous malformation of precerebral vessels (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "230718007",
+      "display": "Subarachnoid hemorrhage due to ruptured arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "234141001",
+      "display": "Congenital arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "234142008",
+      "display": "Cerebral arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "24551003",
+      "display": "Arteriovenous malformation (morphologic abnormality)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "261482004",
+      "display": "Spinal arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "277299009",
+      "display": "Ruptured cerebral arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "277301002",
+      "display": "Ruptured spinal arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "5251000119108",
+      "display": "Acquired arteriovenous malformation (disorder)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2021-09",
+      "code": "733927008",
+      "display": "Acquired arteriovenous malformation (morphologic abnormality)"
+    } ]
+  }
+}
