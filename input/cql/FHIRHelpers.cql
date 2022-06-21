@@ -5,8 +5,10 @@
  FHIRPath implementation. For more information, the FHIRHelpers wiki page:
  https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers
 @allowFluent: true
+
+@update: Refresh based on AU 2022 content; version 4.0.012 for use in the ecqm-content-qicore-2022 repository
 */
-library FHIRHelpers version '4.0.1'
+library FHIRHelpers version '4.0.012'
 
 using FHIR version '4.0.1'
 
