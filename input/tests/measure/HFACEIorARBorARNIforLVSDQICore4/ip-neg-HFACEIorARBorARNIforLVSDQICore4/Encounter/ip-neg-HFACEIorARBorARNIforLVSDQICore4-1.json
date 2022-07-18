@@ -27,7 +27,7 @@
       "reference": "Patient/ip-neg-HFACEIorARBorARNIforLVSDQICore4"
     },
     "period": {
-      "start": "2022-01-02",
-      "end": "2022-01-02"
+      "start": "2022-01-02T10:00",
+      "end": "2022-01-02T10:30"
     }
   }
