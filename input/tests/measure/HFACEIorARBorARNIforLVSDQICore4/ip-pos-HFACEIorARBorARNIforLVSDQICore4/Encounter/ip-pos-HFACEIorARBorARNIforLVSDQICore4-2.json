@@ -1,6 +1,6 @@
 {
     "resourceType": "Encounter",
-    "id": "ip-neg-HFACEIorARBorARNIforLVSDQICore4-1",
+    "id": "ip-pos-HFACEIorARBorARNIforLVSDQICore4-2",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -24,10 +24,10 @@
       }
     ],
     "subject": {
-      "reference": "Patient/ip-neg-HFACEIorARBorARNIforLVSDQICore4"
+      "reference": "Patient/ip-pos-HFACEIorARBorARNIforLVSDQICore4"
     },
     "period": {
-      "start": "2022-01-02T10:00:00.000Z",
-      "end": "2022-01-02T10:30:00.000Z"
+      "start": "2022-03-02T10:00:00.000Z",
+      "end": "2022-03-02T10:30:00.000Z"
     }
   }

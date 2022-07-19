@@ -43,7 +43,7 @@ code "Substance with angiotensin II receptor antagonist mechanism of action (sub
 code "Substance with angiotensin-converting enzyme inhibitor mechanism of action (substance)": '372733002' from "SNOMEDCT" display 'Substance with angiotensin-converting enzyme inhibitor mechanism of action (substance)'
 code "Substance with neprilysin inhibitor mechanism of action (substance)": '786886009' from "SNOMEDCT" display 'Substance with neprilysin inhibitor mechanism of action (substance)'
 
-parameter "Measurement Period" Interval<DateTime>
+parameter "Measurement Period" default Interval[@2022-01-01, @2022-12-31]
 
 context Patient
 
@@ -60,7 +60,7 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define "Initial Population":
-  AgeInYearsAt(date from start of "Measurement Period") >= 18
+  CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
     and Count("Qualifying Encounter During Measurement Period") >= 2
     and exists "Heart Failure Outpatient Encounter"
 
