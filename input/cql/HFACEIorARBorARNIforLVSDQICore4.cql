@@ -146,7 +146,6 @@ define "Heart Failure Outpatient Encounter with History of Moderate or Severe LV
         such that LVSDConditions.onset.toInterval() starts before end of HFOutpatientEncounter.period
   )
 
-
 define "Has Left Ventricular Assist Device Related Diagnosis":
   exists (
             ["Condition": "Left Ventricular Assist Device Related Diagnoses"] LVADCondition
