@@ -107,24 +107,45 @@ define "Qualifying Encounter During Measurement Period":
     where ValidEncounter.period during "Measurement Period"
       and ValidEncounter.isFinished()
 
-define "Moderate or Severe LVSD Findings":
-  ( ["Observation": "Ejection Fraction"] EjectionFraction
-      where EjectionFraction.value <= 40 '%'
+// define "Moderate or Severe LVSD Findings":
+//   ( ["Observation": "Ejection Fraction"] EjectionFraction
+//       where EjectionFraction.value <= 40 '%'
+//         and EjectionFraction.status in {'final', 'amended', 'corrected'}
+//     )
+//   union ( 
+//     ( ["Condition": "Moderate or Severe LVSD"]
+//         union ( ["Condition": "Left ventricular systolic dysfunction (disorder)"] LeftVentricular
+//                   where LeftVentricular.severity in "Moderate or Severe"
+//                 )
+//       ) LVSD
+//       where LVSD.isConfirmedActiveDiagnosis()
+//     )
+
+//Execution had issues with returning the expected data when Observation and Condition 
+//were joined with a union so made two separate definitions
+define "Moderate or Severe LVSD Observations":
+  ["Observation": "Ejection Fraction"] EjectionFraction
+    where EjectionFraction.value <= 40 '%'
       and EjectionFraction.status in {'final', 'amended', 'corrected'}
-    )
-  union ( 
-    ( ["Condition": "Moderate or Severe LVSD"]
-        union ( ["Condition": "Left ventricular systolic dysfunction (disorder)"] LeftVentricular
-                  where LeftVentricular.severity in "Moderate or Severe"
-                )
-      ) LVSD
-      where LVSD.isConfirmedActiveDiagnosis()
-    )
+
+define "Moderate or Severe LVSD Conditions":
+  ( ["Condition": "Moderate or Severe LVSD"]
+      union ( ["Condition": "Left ventricular systolic dysfunction (disorder)"] LeftVentricular
+                where LeftVentricular.severity in "Moderate or Severe"
+              )
+    ) LVSD
+    where LVSD.isConfirmedActiveDiagnosis() 
 
 define "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD":
-  "Heart Failure Outpatient Encounter" HFOutpatientEncounter
-    with "Moderate or Severe LVSD Findings" LVSDFindings
-      such that Coalesce(LVSDFindings.onset.toInterval(), LVSDFindings.effective.toInterval()) starts before end of HFOutpatientEncounter.period
+  ( "Heart Failure Outpatient Encounter" HFOutpatientEncounter
+      with "Moderate or Severe LVSD Observations" LVSDObservations
+        such that LVSDObservations.effective.toInterval() starts before end of HFOutpatientEncounter.period )
+  union (
+    "Heart Failure Outpatient Encounter" HFOutpatientEncounter
+      with "Moderate or Severe LVSD Conditions" LVSDConditions
+        such that LVSDConditions.onset.toInterval() starts before end of HFOutpatientEncounter.period
+  )
+
 
 define "Has Left Ventricular Assist Device Related Diagnosis":
   exists (
