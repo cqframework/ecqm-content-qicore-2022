@@ -1,6 +1,6 @@
 {
     "resourceType": "Condition",
-    "id": "denom-neg-HFACEIorARBorARNIforLVSDQICore4-4",
+    "id": "denom-pos-HFACEIorARBorARNIforLVSDQICore4-3",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -45,14 +45,14 @@
     "code": {
       "coding": [
         {
-          "system": "http://snomed.info/sct",
-          "code": "981000124106",
-          "display": "Moderate left ventricular systolic dysfunction (disorder)"
+          "code": "I11.0",
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "display": "Hypertensive heart disease with heart failure"
         }
       ]
     },
     "subject": {
-      "reference": "Patient/denom-neg-HFACEIorARBorARNIforLVSDQICore4"
+      "reference": "Patient/denom-pos-HFACEIorARBorARNIforLVSDQICore4"
     },
     "onsetDateTime": "2020-11-01"
   }
