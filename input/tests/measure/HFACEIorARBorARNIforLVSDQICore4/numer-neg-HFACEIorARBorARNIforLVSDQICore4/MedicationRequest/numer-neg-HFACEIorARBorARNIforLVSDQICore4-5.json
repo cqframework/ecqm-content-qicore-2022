@@ -18,14 +18,14 @@
     ]
   },
   "subject": {
-    "reference": "Patient/pat1",
-    "display": "Donald Duck"
+    "reference": "Patient/numer-neg-HFACEIorARBorARNIforLVSDQICore4",
+    "display": "Betty Dunn"
   },
   "encounter": {
     "reference": "Encounter/numer-neg-HFACEIorARBorARNIforLVSDQICore4-2",
     "display": "encounter who leads to this prescription"
   },
-  "authoredOn": "2022-03-02T10:15:00.000Z",
+  "authoredOn": "2022-03-04T10:15:00.000Z",
   "note": [
     {
       "text": "Patient told to take with food"
@@ -144,8 +144,8 @@
   ],
   "dispenseRequest": {
     "validityPeriod": {
-      "start": "2022-03-02",
-      "end": "2022-05-31"
+      "start": "2022-03-04",
+      "end": "2022-06-02"
     },
     "numberOfRepeatsAllowed": 2,
     "quantity": {

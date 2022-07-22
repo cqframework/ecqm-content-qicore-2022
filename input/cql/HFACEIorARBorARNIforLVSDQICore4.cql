@@ -88,9 +88,11 @@ define "Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient":
               union ["AllergyIntolerance": "Substance with neprilysin inhibitor mechanism of action (substance)"]
               union ["AllergyIntolerance": "sacubitril"] ) ACEIOrARBOrARNIAllergyIntolerance
             with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-              such that ACEIOrARBOrARNIAllergyIntolerance.onset.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
+              such that (ACEIOrARBOrARNIAllergyIntolerance.onset.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period
+                and (ACEIOrARBOrARNIAllergyIntolerance.resolutionAge.toInterval() ends after end of ModerateOrSevereLVSDHFOutpatientEncounter.period
+                  or ACEIOrARBOrARNIAllergyIntolerance.resolutionAge is null ) )
             where ACEIOrARBOrARNIAllergyIntolerance.clinicalStatus ~ Common."allergy-active"
-              and ACEIOrARBOrARNIAllergyIntolerance.verificationStatus ~ Common."confirmed"
+              and ACEIOrARBOrARNIAllergyIntolerance.verificationStatus ~ Common."allergy-confirmed"
           )
 
 define "Has Diagnosis of Allergy or Intolerance to ACEI or ARB":

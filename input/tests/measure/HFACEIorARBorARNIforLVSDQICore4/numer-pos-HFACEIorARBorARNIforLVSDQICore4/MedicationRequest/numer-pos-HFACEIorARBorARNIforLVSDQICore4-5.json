@@ -18,8 +18,8 @@
     ]
   },
   "subject": {
-    "reference": "Patient/pat1",
-    "display": "Donald Duck"
+    "reference": "Patient/numer-pos-HFACEIorARBorARNIforLVSDQICore4",
+    "display": "Betty Dunn"
   },
   "encounter": {
     "reference": "Encounter/numer-pos-HFACEIorARBorARNIforLVSDQICore4-2",
