@@ -5,7 +5,7 @@ using QICore version '4.1.1'
 include FHIRHelpers version '4.0.012' called FHIRHelpers
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 include QICoreCommon version '1.0.000' called Common
-include AHAOverallQICore version '1.0.000' called AHA
+include AHAOverallQICore4 version '1.0.000' called AHA
 
 codesystem "SNOMEDCT": 'http://snomed.info/sct' 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm' 

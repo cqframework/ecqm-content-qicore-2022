@@ -1,4 +1,4 @@
-library AHAOverallQICore version '1.0.000'
+library AHAOverallQICore4 version '1.0.000'
 
 using QICore version '4.1.1'
 
