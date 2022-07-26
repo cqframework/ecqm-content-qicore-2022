@@ -1265,6 +1265,30 @@
           ]
         },
         {
+          "type": "AllergyIntolerance",
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance"
+          ],
+          "mustSupport": [
+            "clinicalStatus",
+            "verificationStatus",
+            "type",
+            "category",
+            "criticality",
+            "code",
+            "patient",
+            "encounter",
+            "recordedDate",
+            "reaction"
+          ],
+          "codeFilter": [
+            {
+              "path": "code",
+              "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1489"
+            }
+          ]
+        },
+        {
           "type": "Condition",
           "profile": [
             "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
