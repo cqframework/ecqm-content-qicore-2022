@@ -1,4 +1,4 @@
-library HFBetaBlockerTherapyforLVSDFHIR version '1.0.000'
+library HFBetaBlockerTherapyforLVSDQICore4 version '1.0.000'
 
 using QICore version '4.1.1'
 
@@ -43,9 +43,9 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define "Initial Population":
-  AgeInYearsAt(date from start of "Measurement Period")>= 18
-                and Count(AHA."Qualifying Encounter During Measurement Period")>= 2
-                and exists AHA."Heart Failure Outpatient Encounter"
+  CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period")>= 18
+    and Count(AHA."Qualifying Encounter During Measurement Period")>= 2
+    and exists AHA."Heart Failure Outpatient Encounter"
 
 define "Denominator":
   "Initial Population"
