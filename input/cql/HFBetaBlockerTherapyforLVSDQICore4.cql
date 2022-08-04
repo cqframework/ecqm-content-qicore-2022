@@ -43,23 +43,24 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define "Initial Population":
+//curent problem with AgeInYearsAt required a modified approach - refer to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
   CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period")>= 18
     and Count(AHA."Qualifying Encounter During Measurement Period")>= 2
     and exists AHA."Heart Failure Outpatient Encounter"
 
 define "Denominator":
   "Initial Population"
-              and exists AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD"
+    and exists AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD"
 
 define "Denominator Exclusions":
   AHA."Has Heart Transplant"
-                    or AHA."Has Heart Transplant Related Diagnosis"
-                    or "Has Left Ventricular Assist Device Implanted"
-                    or AHA."Has Left Ventricular Assist Device Related Diagnosis"
+    or AHA."Has Heart Transplant Related Diagnosis"
+    or AHA."Has Left Ventricular Assist Device"
+    or AHA."Has Left Ventricular Assist Device Related Diagnosis"
 
 define "Numerator":
   "Has Beta Blocker Therapy for LVSD Ordered"
-                    or "Is Currently Taking Beta Blocker Therapy for LVSD"
+    or "Is Currently Taking Beta Blocker Therapy for LVSD"
 
 define "Denominator Exceptions":
   "Has Consecutive Heart Rates Less than 50"
@@ -71,14 +72,7 @@ define "Denominator Exceptions":
     or "Has Bradycardia Diagnosis"
     or "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient"
     or "Atrioventricular Block without Cardiac Pacer"
-
-define "Has Left Ventricular Assist Device Implanted":
-  exists ( 
-            [Procedure: "Left Ventricular Assist Device Placement"] LVADOutpatient
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that LVADOutpatient.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period
-            )
-            
+        
 define "Atrioventricular Block without Cardiac Pacer":
   "Has Atrioventricular Block Diagnosis"
                     and not "Has Diagnosis of Cardiac Pacer in Situ"

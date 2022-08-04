@@ -43,6 +43,7 @@ define "SDE Sex":
   SDE."SDE Sex"
 
 define "Initial Population":
+  //curent problem with AgeInYearsAt required a modified approach - refer to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
   CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
     and Count(AHA."Qualifying Encounter During Measurement Period") >= 2
     and exists AHA."Heart Failure Outpatient Encounter"
