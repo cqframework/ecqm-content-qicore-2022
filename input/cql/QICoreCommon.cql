@@ -21,7 +21,10 @@ codesystem "ConditionVerificationStatusCodes": 'http://terminology.hl7.org/CodeS
 codesystem "AllergyIntoleranceClinicalStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical'
 codesystem "AllergyIntoleranceVerificationStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification'
 codesystem "ConditionCategoryCodes": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "USCoreConditionCategory": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
 codesystem "ObservationCategoryCodes": 'http://terminology.hl7.org/CodeSystem/observation-category'
+// NOTE: Introduced in USCore 5
+codesystem "USCoreObservationCategory": 'http://hl7.org/fhir/us/core/CodeSystem/us-core-observation-category'
 
 valueset "Active Condition": 'http://fhir.org/guides/cqf/common/ValueSet/active-condition'
 valueset "Inactive Condition": 'http://fhir.org/guides/cqf/common/ValueSet/inactive-condition'
@@ -80,12 +83,108 @@ code "survey": 'survey' from "ObservationCategoryCodes" display 'Survey'
 code "exam": 'exam' from "ObservationCategoryCodes" display 'Exam'
 code "therapy": 'therapy' from "ObservationCategoryCodes" display 'Therapy'
 code "activity": 'activity' from "ObservationCategoryCodes" display 'Activity'
+// NOTE: Introduced in USCore 5
+code "clinical-test": 'clinical-test' from "USCoreObservationCategory" display 'Clinical Test'
 
 // Condition Category Codes
 code "problem-list-item": 'problem-list-item' from "ConditionCategoryCodes" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "ConditionCategoryCodes" display 'Encounter Diagnosis'
+code "health-concern": 'health-concern' from "USCoreConditionCategory" display 'Health Concern'
 
 context Patient
+
+define function HasCategory(condition Condition, category Code):
+  exists (condition.category C
+    where C ~ category
+  )
+
+define function IsProblemListItem(condition Condition):
+  exists (condition.category C
+    where C ~ "problem-list-item"
+  )
+
+define function IsEncounterDiagnosis(condition Condition):
+  exists (condition.category C
+    where C ~ "encounter-diagnosis"
+  )
+
+define function IsHealthConcern(condition Condition):
+  exists (condition.category C
+    where C ~ "health-concern"
+  )
+
+define function HasCategory(observation Observation, category Code):
+  exists (observation.category C
+    where C ~ category
+  )
+
+define function IsSocialHistory(observation Observation):
+  exists (observation.category C
+    where C ~ "social-history"
+  )
+
+define function IsVitalSign(observation Observation):
+  exists (observation.category C
+    where C ~ "vital-signs"
+  )
+
+define function IsImaging(observation Observation):
+  exists (observation.category C
+    where C ~ "imaging"
+  )
+
+define function IsLaboratory(observation Observation):
+  exists (observation.category C
+    where C ~ "laboratory"
+  )
+
+define function IsProcedure(observation Observation):
+  exists (observation.category C
+    where C ~ "procedure"
+  )
+
+define function IsSurvey(observation Observation):
+  exists (observation.category C
+    where C ~ "survey"
+  )
+
+define function IsExam(observation Observation):
+  exists (observation.category C
+    where C ~ "exam"
+  )
+
+define function IsTherapy(observation Observation):
+  exists (observation.category C
+    where C ~ "therapy"
+  )
+
+define function IsActivity(observation Observation):
+  exists (observation.category C
+    where C ~ "activity"
+  )
+
+// NOTE: Introduced in USCore 5
+define function IsClinicalTest(observation Observation):
+  exists (observation.category C
+    where C ~ "clinical-test"
+  )
+
+/*
+@description: Returns true if the given MedicationRequest has a category of Community
+*/
+define function IsCommunity(medicationRequest MedicationRequest):
+  exists (medicationRequest.category C
+    where C ~ Community
+  )
+
+/*
+@description: Returns true if the given MedicationRequest has a category of Discharge
+*/
+define function IsDischarge(medicationRequest MedicationRequest):
+  exists (medicationRequest.category C
+    where C ~ Discharge
+  )
+
 
 /*
 @description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
