@@ -130,3 +130,27 @@ define fluent function isConfirmedActiveDiagnosis(Diagnosis Condition):
 define fluent function isFinished(Visit Encounter):
   (Visit encounter
     where encounter.status = 'finished') is not null
+
+define fluent function overlapsHeartFailureOutpatientEncounter(Diagnosis Condition): 
+  exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
+            where Diagnosis.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
+              and Diagnosis.isConfirmedActiveDiagnosis()
+          )
+
+define fluent function overlapsAfterHeartFailureOutpatientEncounter(Event Choice<Condition, Procedure, AllergyIntolerance>): 
+  exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
+            where 
+              case
+                when Event is Condition then 
+                  Event.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
+                    and Event.isConfirmedActiveDiagnosis()
+                when Event is Procedure then
+                  Event.performed.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
+                    and Event.status = 'completed'
+                when Event is AllergyIntolerance then
+                  Event.onset.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
+                    and Event.clinicalStatus ~ Common."allergy-active"
+                    and Event.verificationStatus ~ Common."confirmed"
+                else false
+              end
+          )

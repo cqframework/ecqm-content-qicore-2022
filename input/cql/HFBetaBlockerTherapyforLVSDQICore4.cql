@@ -75,110 +75,99 @@ define "Denominator Exceptions":
         
 define "Atrioventricular Block without Cardiac Pacer":
   "Has Atrioventricular Block Diagnosis"
-                    and not "Has Diagnosis of Cardiac Pacer in Situ"
-                    and not "Has Cardiac Pacer Device Implanted"
+    and not "Has Diagnosis of Cardiac Pacer in Situ"
+    and not "Has Cardiac Pacer Device Implanted"
 
 define "Is Currently Taking Beta Blocker Therapy for LVSD":
-  exists ( ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                  such that exists(ActiveBetaBlocker.dosageInstruction.timing T
-              where T.repeat.bounds.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period )
-            where ActiveBetaBlocker.status in { 'active', 'completed', 'finished' }            
-              )
-
-define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy":
   exists ( 
-          ( ["Condition": "Allergy to Beta Blocker Therapy"]
-             union ["Condition": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
-            with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-              such that BetaBlockerAllergyOrIntoleranceDiagnosis.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where BetaBlockerAllergyOrIntoleranceDiagnosis.isConfirmedActiveDiagnosis()
-          )
-
-define "Has Arrhythmia Diagnosis":
-  exists ( ["Condition": "Arrhythmia"] Arrhythmia
+            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
               with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                  such that Arrhythmia.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where Arrhythmia.isConfirmedActiveDiagnosis()
-              )
-
-define "Has Asthma Diagnosis":
-  exists ( ["Condition": "Asthma"] Asthma
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter 
-                  such that Asthma.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where Asthma.isConfirmedActiveDiagnosis()
-             )
-
-define "Has Atrioventricular Block Diagnosis":
-  exists ( ["Condition": "Atrioventricular Block"] AtrioventricularBlock
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter 
-                  such that AtrioventricularBlock.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where AtrioventricularBlock.isConfirmedActiveDiagnosis()
-             )
+                such that exists(ActiveBetaBlocker.dosageInstruction.timing T
+                                  where T.repeat.bounds.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period )
+              where ActiveBetaBlocker.status in { 'active', 'completed', 'finished' }            
+          )
 
 define "Has Beta Blocker Therapy for LVSD Ordered":
   exists ( 
             ["MedicationRequest": "Beta Blocker Therapy for LVSD"] BetaBlockerOrdered
               with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                  such that BetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
+                such that BetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
               where BetaBlockerOrdered.status in {'active', 'completed'}
-                  and BetaBlockerOrdered.intent = 'order'
-             )
-
-define "Has Bradycardia Diagnosis":
-  exists ( ["Condition": "Bradycardia"] Bradycardia
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-              such that Bradycardia.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where Bradycardia.isConfirmedActiveDiagnosis()
-             )
-
-define "Has Diagnosis of Cardiac Pacer in Situ":
-  exists ( ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                  such that CardiacPacerDiagnosis.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where CardiacPacerDiagnosis.isConfirmedActiveDiagnosis()
-             )
-
-define "Has Diagnosis of Intolerance to Beta Blocker Therapy":
-  exists ( ["Condition": "Intolerance to Beta Blocker Therapy"] BetaBlockerIntoleranceDiagnosis
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                 such that BetaBlockerIntoleranceDiagnosis.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where BetaBlockerIntoleranceDiagnosis.isConfirmedActiveDiagnosis()
-             )
-
-define "Has Hypotension Diagnosis":
-  exists ( ["Condition": "Hypotension"] Hypotension
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                  such that Hypotension.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where Hypotension.isConfirmedActiveDiagnosis()
-             )
+                and BetaBlockerOrdered.intent = 'order'
+          )
 
 define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
-  exists ( ["MedicationRequest": "Beta Blocker Therapy for LVSD"] NoBetaBlockerOrdered
+  exists ( 
+            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] NoBetaBlockerOrdered
               with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                  such that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
+                such that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
               where NoBetaBlockerOrdered.status = 'completed' 
-                  and NoBetaBlockerOrdered.doNotPerform is true 
-                  and ( NoBetaBlockerOrdered.reasonCode in "Medical Reason"
-                          or NoBetaBlockerOrdered.reasonCode in "Patient Reason")
+                and NoBetaBlockerOrdered.doNotPerform is true 
+                and ( NoBetaBlockerOrdered.reasonCode in "Medical Reason"
+                      or NoBetaBlockerOrdered.reasonCode in "Patient Reason")
              )
+
+define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy":
+  exists ( 
+          ( ["Condition": "Allergy to Beta Blocker Therapy"]
+             union ["Condition": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
+            where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
+          )
+
+define "Has Arrhythmia Diagnosis":
+  exists ( 
+            ["Condition": "Arrhythmia"] Arrhythmia
+              where Arrhythmia.overlapsHeartFailureOutpatientEncounter()
+          )
+
+define "Has Asthma Diagnosis":
+  exists ( 
+            ["Condition": "Asthma"] Asthma
+              where Asthma.overlapsHeartFailureOutpatientEncounter()
+          )
+
+define "Has Atrioventricular Block Diagnosis":
+  exists ( 
+            ["Condition": "Atrioventricular Block"] AtrioventricularBlock
+              where AtrioventricularBlock.overlapsHeartFailureOutpatientEncounter()
+          )
+
+define "Has Bradycardia Diagnosis":
+  exists ( 
+            ["Condition": "Bradycardia"] Bradycardia
+              where Bradycardia.overlapsHeartFailureOutpatientEncounter()
+          )
+
+define "Has Diagnosis of Cardiac Pacer in Situ":
+  exists ( 
+            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
+              where CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
+          )
+
+define "Has Diagnosis of Intolerance to Beta Blocker Therapy":
+  exists ( 
+            ["Condition": "Intolerance to Beta Blocker Therapy"] BetaBlockerIntoleranceDiagnosis
+              where BetaBlockerIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
+          )
+
+define "Has Hypotension Diagnosis":
+  exists ( 
+            ["Condition": "Hypotension"] Hypotension
+              where Hypotension.overlapsHeartFailureOutpatientEncounter()
+          )
 
 define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient":
   exists ( 
-              ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
-                  union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
-                  with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                      such that BetaBlockerAllergyIntolerance.onset.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-                      where BetaBlockerAllergyIntolerance.clinicalStatus ~ Common."allergy-active"
-                and BetaBlockerAllergyIntolerance.verificationStatus ~ Common."confirmed"
-             )
+            ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
+                union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
+              where BetaBlockerAllergyIntolerance.overlapsAfterHeartFailureOutpatientEncounter()
+          )
 
 define "Has Cardiac Pacer Device Implanted":
-  exists ( ["Procedure": "Cardiac Pacer"] ImplantedCardiacPacer
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                      such that ImplantedCardiacPacer.performed.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where ImplantedCardiacPacer.status = 'completed'
-            )
+  exists ( 
+            ["Procedure": "Cardiac Pacer"] ImplantedCardiacPacer
+              where ImplantedCardiacPacer.overlapsAfterHeartFailureOutpatientEncounter()
+          )
 
 define "Has Consecutive Heart Rates Less than 50":
   exists ( from
@@ -188,11 +177,12 @@ define "Has Consecutive Heart Rates Less than 50":
                       Last ( ["observation-heartrate"] MostRecentPriorHeartRate
                           where MostRecentPriorHeartRate.effective.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
                               and MostRecentPriorHeartRate.status in {'final', 'amended', 'corrected'}
+                              and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
                           sort by start of effective.toInterval() 
                           )
-                  where HeartRate.effective during ModerateOrSevereLVSDHFOutpatientEncounter.period
+                  where HeartRate.effective.toInterval() during ModerateOrSevereLVSDHFOutpatientEncounter.period
                       and HeartRate.status in {'final', 'amended', 'corrected'}
                       and HeartRate.value < 50 '/min'
                       and PriorHeartRate.value < 50 '/min'
                   return HeartRate
-              )
+          )
