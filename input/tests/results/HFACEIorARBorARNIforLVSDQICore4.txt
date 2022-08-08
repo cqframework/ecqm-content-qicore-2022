@@ -1,6 +1,6 @@
 Running tests.
-Data path: r:\Public\Health Mgt_Operations\NCQA_HEDIS\ecqm-content-qicore-2022\input\tests\measure\HFACEIorARBorARNIforLVSDQICore4
-Terminology path: r:\Public\Health Mgt_Operations\NCQA_HEDIS\ecqm-content-qicore-2022\input\vocabulary\valueset
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\HFACEIorARBorARNIforLVSDQICore4
+Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
 Patient=Patient(id=denex-neg-HFACEIorARBorARNIforLVSDQICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
@@ -221,5 +221,5 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-elapsed: 0.528 seconds
+elapsed: 0.216 seconds
 

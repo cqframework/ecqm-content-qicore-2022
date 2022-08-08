@@ -131,13 +131,20 @@ define fluent function isFinished(Visit Encounter):
   (Visit encounter
     where encounter.status = 'finished') is not null
 
+define fluent function isOrderedDuringHeartFailureOutpatientEncounter(Order MedicationRequest): 
+  exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
+            where Order.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
+              and Order.status in {'active', 'completed'}
+              and Order.intent = 'order'
+          )
+
 define fluent function overlapsHeartFailureOutpatientEncounter(Diagnosis Condition): 
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
             where Diagnosis.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
               and Diagnosis.isConfirmedActiveDiagnosis()
           )
 
-define fluent function overlapsAfterHeartFailureOutpatientEncounter(Event Choice<Condition, Procedure, AllergyIntolerance>): 
+define fluent function overlapsAfterHeartFailureOutpatientEncounter(Event Choice<Condition, Procedure, AllergyIntolerance, MedicationRequest, "observation-heartrate">): 
   exists ( "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
             where 
               case
@@ -151,6 +158,13 @@ define fluent function overlapsAfterHeartFailureOutpatientEncounter(Event Choice
                   Event.onset.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
                     and Event.clinicalStatus ~ Common."allergy-active"
                     and Event.verificationStatus ~ Common."confirmed"
+                when Event is MedicationRequest then
+                  exists (Event.dosageInstruction.timing T
+                            where T.repeat.bounds.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period )
+                    and Event.status in { 'active', 'completed', 'finished' } 
+                when Event is "observation-heartrate" then
+                  Event.effective.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
+                    and Event.status in {'final', 'amended', 'corrected'}
                 else false
               end
           )

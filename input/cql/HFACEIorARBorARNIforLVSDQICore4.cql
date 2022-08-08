@@ -18,7 +18,6 @@ valueset "Medical Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.1138
 valueset "Patient Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1008' 
 valueset "Patient Reason for ACE Inhibitor or ARB Decline": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1140' 
 valueset "Pregnancy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.378' 
-valueset "System Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1009' 
 
 code "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)": '422593004' from "SNOMEDCT" display 'Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)'
 code "sacubitril": '1656328' from "RXNORM" display 'sacubitril'
@@ -71,11 +70,10 @@ define "Denominator Exceptions":
 
 define "Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI":
   exists (
-          ["MedicationRequest": "ACE Inhibitor or ARB or ARNI"] NoACEIOrARBOrARNIOrdered
+          ["MedicationNotRequested"] NoACEIOrARBOrARNIOrdered
             with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
               such that NoACEIOrARBOrARNIOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where NoACEIOrARBOrARNIOrdered.status = 'completed' 
-              and NoACEIOrARBOrARNIOrdered.doNotPerform is true 
+            where NoACEIOrARBOrARNIOrdered.medication in "ACE Inhibitor or ARB or ARNI"
               and ( NoACEIOrARBOrARNIOrdered.reasonCode in "Medical Reason"
                 or NoACEIOrARBOrARNIOrdered.reasonCode in "Patient Reason"
                 or NoACEIOrARBOrARNIOrdered.reasonCode in "Patient Reason for ACE Inhibitor or ARB Decline" )
@@ -100,41 +98,31 @@ define "Has Diagnosis of Allergy or Intolerance to ACEI or ARB":
   exists (
             ( ["Condition": "Allergy to ACE Inhibitor or ARB"]
                 union ["Condition": "Intolerance to ACE Inhibitor or ARB"] ) ACEIOrARBAllergyOrIntoleranceDiagnosis
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that ACEIOrARBAllergyOrIntoleranceDiagnosis.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where ACEIOrARBAllergyOrIntoleranceDiagnosis.isConfirmedActiveDiagnosis()
+              where ACEIOrARBAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
           )
 
 define "Has ACEI or ARB or ARNI Ordered":
   exists ( 
-            ["MedicationRequest": "ACE Inhibitor or ARB or ARNI"] ACEIOrARBOrARNIOrdered
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that ACEIOrARBOrARNIOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where ACEIOrARBOrARNIOrdered.status in {'active', 'completed'}
-                and ACEIOrARBOrARNIOrdered.intent = 'order'
-            )
+            ["MedicationRequest": "ACE Inhibitor or ARB or ARNI"] ACEIOrARBOrARNI
+              where ACEIOrARBOrARNI.isOrderedDuringHeartFailureOutpatientEncounter()
+          )
 
 define "Has Diagnosis of Pregnancy":
   exists ( 
-          ["Condition": "Pregnancy"] Pregnancy
-            with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-              such that Pregnancy.toPrevalenceInterval() starts 9 months or less before or on start ModerateOrSevereLVSDHFOutpatientEncounter.period
-            where Pregnancy.isConfirmedActiveDiagnosis()
+            ["Condition": "Pregnancy"] Pregnancy
+              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
+                such that Pregnancy.toPrevalenceInterval() starts 9 months or less before or on start ModerateOrSevereLVSDHFOutpatientEncounter.period
+              where Pregnancy.isConfirmedActiveDiagnosis()
           )
 
 define "Is Currently Taking ACEI or ARB or ARNI":
   exists ( 
-          ["MedicationRequest": "ACE Inhibitor or ARB or ARNI"] ActiveACEIOrARBOrARNI
-            with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-              such that exists ( ActiveACEIOrARBOrARNI.dosageInstruction.timing T
-                                  where T.repeat.bounds.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period )
-            where ActiveACEIOrARBOrARNI.status in { 'active', 'completed', 'finished' }            
-            )
+            ["MedicationRequest": "ACE Inhibitor or ARB or ARNI"] ActiveACEIOrARBOrARNI
+              where ActiveACEIOrARBOrARNI.overlapsAfterHeartFailureOutpatientEncounter()         
+          )
 
 define "Has Diagnosis of Renal Failure Due to ACEI":
   exists (
             ["Condition": "Acute renal failure caused by angiotensin-converting-enzyme inhibitor (disorder)"] RenalFailureDueToACEI
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that RenalFailureDueToACEI.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where RenalFailureDueToACEI.isConfirmedActiveDiagnosis()
+              where RenalFailureDueToACEI.overlapsHeartFailureOutpatientEncounter()
             )

@@ -81,19 +81,13 @@ define "Atrioventricular Block without Cardiac Pacer":
 define "Is Currently Taking Beta Blocker Therapy for LVSD":
   exists ( 
             ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that exists(ActiveBetaBlocker.dosageInstruction.timing T
-                                  where T.repeat.bounds.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period )
-              where ActiveBetaBlocker.status in { 'active', 'completed', 'finished' }            
+              where ActiveBetaBlocker.overlapsAfterHeartFailureOutpatientEncounter()
           )
 
 define "Has Beta Blocker Therapy for LVSD Ordered":
   exists ( 
             ["MedicationRequest": "Beta Blocker Therapy for LVSD"] BetaBlockerOrdered
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that BetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where BetaBlockerOrdered.status in {'active', 'completed'}
-                and BetaBlockerOrdered.intent = 'order'
+              where BetaBlockerOrdered.isOrderedDuringHeartFailureOutpatientEncounter()
           )
 
 define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
@@ -174,8 +168,7 @@ define "Has Consecutive Heart Rates Less than 50":
               AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
                   let PriorHeartRate: 
                       Last ( ["observation-heartrate"] MostRecentPriorHeartRate
-                          where MostRecentPriorHeartRate.effective.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
-                              and MostRecentPriorHeartRate.status in {'final', 'amended', 'corrected'}
+                          where MostRecentPriorHeartRate.overlapsAfterHeartFailureOutpatientEncounter()
                               and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
                           sort by start of effective.toInterval() 
                           )

@@ -117,8 +117,8 @@ Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
 Has Atrioventricular Block Diagnosis=false
 Has Diagnosis of Cardiac Pacer in Situ=false
 Has Cardiac Pacer Device Implanted=false
-Atrioventricular Block without Cardiac Pacer=false
-Denominator Exceptions=true
+Atrioventricular Block withount Cardiac Pacer=false
+Denomiator Exceptions=true
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
 Patient=Patient(id=denom-neg-HFBetaBlockerTherapyforLVSDQICore4)
@@ -301,5 +301,5 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-elapsed: 0.114 seconds
+elapsed: -0.355 seconds
 
