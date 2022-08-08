@@ -1,12 +1,12 @@
 {
     "resourceType": "Bundle",
-    "id": "tests-numer-neg-HFBetaBlockerTherapyforLVSDQICore4-bundle",
+    "id": "tests-denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-bundle",
     "type": "transaction",
     "entry": [
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4-6",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-6",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -30,7 +30,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
           },
           "period": {
             "start": "2021-03-02T10:00:00.000Z",
@@ -39,13 +39,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-6"
+          "url": "Encounter/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-6"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4-1",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-1",
           "status": "finished",
           "class": {
             "code": "AMB",
@@ -64,7 +64,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
           },
           "period": {
             "start": "2022-01-02T10:00:00.000Z",
@@ -73,13 +73,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-1"
+          "url": "Encounter/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-1"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4-2",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-2",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -103,7 +103,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
           },
           "period": {
             "start": "2022-03-02T10:00:00.000Z",
@@ -112,13 +112,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-2"
+          "url": "Encounter/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-2"
         }
       },
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4-3",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-3",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -170,19 +170,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
           },
           "onsetDateTime": "2020-11-01"
         },
         "request": {
           "method": "PUT",
-          "url": "Condition/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-3"
+          "url": "Condition/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-3"
         }
       },
       {
         "resource": {
           "resourceType": "Observation",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4-4",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
@@ -210,7 +210,7 @@
             ]
           },
           "subject": {
-            "reference": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
           },
           "effectiveDateTime": "2020-11-01T10:30:00.000Z",
           "issued": "2020-11-01T10:30:00.000Z",
@@ -235,13 +235,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Observation/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-4"
+          "url": "Observation/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-4"
         }
       },
       {
         "resource": {
           "resourceType": "MedicationRequest",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4-5",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-5",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
@@ -259,11 +259,11 @@
             ]
           },
           "subject": {
-            "reference": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4",
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4",
             "display": "Betty Dunn"
           },
           "encounter": {
-            "reference": "Encounter/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-6",
+            "reference": "Encounter/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-6",
             "display": "encounter who leads to this prescription"
           },
           "authoredOn": "2021-03-02T10:15:00.000Z",
@@ -479,13 +479,77 @@
         },
         "request": {
           "method": "PUT",
-          "url": "MedicationRequest/numer-neg-HFBetaBlockerTherapyforLVSDQICore4-5"
+          "url": "MedicationRequest/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-5"
+        }
+      },
+      {
+        "resource": {
+          "resourceType": "Condition",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-7",
+          "meta": {
+            "profile": [
+              "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+            ]
+          },
+          "clinicalStatus" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code" : "active"
+              }
+            ]
+          },
+          "verificationStatus" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code" : "confirmed"
+              }
+            ]
+          },
+          "category" : [
+            {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                  "code" : "problem-list-item",
+                  "display" : "Problem List Item"
+                }
+              ]
+            }
+          ],
+          "severity" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "6736007",
+                "display" : "Moderate (severity modifier)"
+              }
+            ]
+          },
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                "code": "I49.9",
+                "display": "Cardiac arrhythmia, unspecified"
+              }
+            ]
+          },
+          "subject": {
+            "reference": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
+          },
+          "onsetDateTime": "2021-11-01"
+        },
+        "request": {
+          "method": "PUT",
+          "url": "Condition/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4-7"
         }
       },
       {
         "resource": {
           "resourceType": "Patient",
-          "id": "numer-neg-HFBetaBlockerTherapyforLVSDQICore4",
+          "id": "denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
@@ -556,7 +620,7 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Patient/numer-neg-HFBetaBlockerTherapyforLVSDQICore4"
+          "url": "Patient/denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4"
         }
       }
     ]

@@ -98,11 +98,10 @@ define "Has Beta Blocker Therapy for LVSD Ordered":
 
 define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
   exists ( 
-            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] NoBetaBlockerOrdered
+            ["MedicationNotRequested"] NoBetaBlockerOrdered
               with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
                 such that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where NoBetaBlockerOrdered.status = 'completed' 
-                and NoBetaBlockerOrdered.doNotPerform is true 
+              where NoBetaBlockerOrdered.medication in "Beta Blocker Therapy for LVSD"
                 and ( NoBetaBlockerOrdered.reasonCode in "Medical Reason"
                       or NoBetaBlockerOrdered.reasonCode in "Patient Reason")
              )
