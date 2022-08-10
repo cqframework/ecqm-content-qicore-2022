@@ -1,12 +1,12 @@
 {
     "resourceType": "Bundle",
-    "id": "tests-denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-bundle",
+    "id": "tests-denexcep1-neg-EXM145v11QICore4-bundle",
     "type": "transaction",
     "entry": [     
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-6",
+          "id": "denexcep1-neg-EXM145v11QICore4-6",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -49,19 +49,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denexcep1-neg-EXM145v11QICore4"
           },
           "onsetDateTime": "2022-02-02"
         },
         "request":{
           "method":"PUT",
-          "url":"Condition/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-6"
+          "url":"Condition/denexcep1-neg-EXM145v11QICore4-6"
         }
       },
       {
         "resource": {
           "resourceType": "MedicationRequest",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-5",
+          "id": "denexcep1-neg-EXM145v11QICore4-5",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
@@ -79,11 +79,11 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4",
+            "reference": "Patient/denexcep1-neg-EXM145v11QICore4",
             "display": "Betty Dunn"
           },
           "encounter": {
-            "reference": "Encounter/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2",
+            "reference": "Encounter/denexcep1-neg-EXM145v11QICore4-2",
             "display": "encounter that leads to this prescription"
           },
           "authoredOn": "2022-02-01T10:15:00.000Z",
@@ -191,13 +191,13 @@
         },
         "request":{
           "method":"PUT",
-          "url":"MedicationRequest/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-5"
+          "url":"MedicationRequest/denexcep1-neg-EXM145v11QICore4-5"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-1",
+          "id": "denexcep1-neg-EXM145v11QICore4-1",
           "status": "finished",
           "class": {
             "code": "AMB",
@@ -216,7 +216,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denexcep1-neg-EXM145v11QICore4"
           },
           "period": {
             "start": "2022-01-02T10:00:00.000Z",
@@ -225,13 +225,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-1"
+          "url": "Encounter/denexcep1-neg-EXM145v11QICore4-1"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2",
+          "id": "denexcep1-neg-EXM145v11QICore4-2",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -255,7 +255,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denexcep1-neg-EXM145v11QICore4"
           },
           "period": {
             "start": "2022-03-02T10:00:00.000Z",
@@ -264,13 +264,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2"
+          "url": "Encounter/denexcep1-neg-EXM145v11QICore4-2"
         }
       },
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-3",
+          "id": "denexcep1-neg-EXM145v11QICore4-3",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -322,19 +322,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denexcep1-neg-EXM145v11QICore4"
           },
           "onsetDateTime": "2022-01-02"
         },
         "request": {
           "method": "PUT",
-          "url": "Condition/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-3"
+          "url": "Condition/denexcep1-neg-EXM145v11QICore4-3"
         }
       },
       {
         "resource": {
           "resourceType": "Patient",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4",
+          "id": "denexcep1-neg-EXM145v11QICore4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
@@ -405,13 +405,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+          "url": "Patient/denexcep1-neg-EXM145v11QICore4"
         }
       },
       {
         "resource": {
           "resourceType": "Observation",
-          "id": "denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-4",
+          "id": "denexcep1-neg-EXM145v11QICore4-4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
@@ -439,7 +439,7 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denexcep1-neg-EXM145v11QICore4"
           },
           "effectiveDateTime": "2020-11-01T10:30:00.000Z",
           "issued": "2020-11-01T10:30:00.000Z",
@@ -464,7 +464,7 @@
         },
         "request":{
           "method":"PUT",
-          "url":"Observation/denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-4"
+          "url":"Observation/denexcep1-neg-EXM145v11QICore4-4"
         }
       }
     ]

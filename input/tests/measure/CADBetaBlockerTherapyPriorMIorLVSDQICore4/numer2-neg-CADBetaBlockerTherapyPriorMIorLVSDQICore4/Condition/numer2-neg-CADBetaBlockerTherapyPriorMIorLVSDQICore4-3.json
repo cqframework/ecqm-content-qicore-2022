@@ -1,6 +1,6 @@
 {
     "resourceType": "Condition",
-    "id": "numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-3",
+    "id": "numer2-neg-EXM145v11QICore4-3",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -52,7 +52,7 @@
       ]
     },
     "subject": {
-      "reference": "Patient/numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+      "reference": "Patient/numer2-neg-EXM145v11QICore4"
     },
     "onsetDateTime": "2022-01-02"
   }

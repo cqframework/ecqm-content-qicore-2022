@@ -1,7 +1,7 @@
 Running tests.
-Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\CADBetaBlockerTherapyPriorMIorLVSDQICore4
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\EXM145v11QICore4
 Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
-Patient=Patient(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denexcep1-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -10,11 +10,11 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denexcep1-neg-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denexcep1-neg-EXM145v11QICore4-2)]
 Initial Population=true
-Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denexcep1-neg-EXM145v11QICore4-2)]
 Denominator 1=true
 Qualifying CAD Encounter and Prior MI=[]
 Denominator 2=false
@@ -51,7 +51,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denexcep1-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -60,11 +60,11 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denexcep1-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denexcep1-pos-EXM145v11QICore4-2)]
 Initial Population=true
-Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denexcep1-pos-EXM145v11QICore4-2)]
 Denominator 1=true
 Qualifying CAD Encounter and Prior MI=[]
 Denominator 2=false
@@ -101,7 +101,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denexcep2-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -110,13 +110,13 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denexcep2-neg-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denexcep2-neg-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
-Qualifying CAD Encounter and Prior MI=[Encounter(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and Prior MI=[Encounter(id=denexcep2-neg-EXM145v11QICore4-2)]
 Denominator 2=true
 Has Beta Blocker Therapy for LVSD Ordered=false
 Is Currently Taking Beta Blocker Therapy for LVSD=false
@@ -151,7 +151,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denexcep2-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -160,13 +160,13 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denexcep2-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denexcep2-pos-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
-Qualifying CAD Encounter and Prior MI=[Encounter(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and Prior MI=[Encounter(id=denexcep2-pos-EXM145v11QICore4-2)]
 Denominator 2=true
 Has Beta Blocker Therapy for LVSD Ordered=false
 Is Currently Taking Beta Blocker Therapy for LVSD=false
@@ -201,7 +201,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=true
 
-Patient=Patient(id=denom1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denom1-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -210,9 +210,9 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denom1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denom1-neg-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denom1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denom1-neg-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
@@ -251,7 +251,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denom1-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -260,11 +260,11 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denom1-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denom1-pos-EXM145v11QICore4-2)]
 Initial Population=true
-Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denom1-pos-EXM145v11QICore4-2)]
 Denominator 1=true
 Qualifying CAD Encounter and Prior MI=[]
 Denominator 2=false
@@ -301,7 +301,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denom2-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -310,11 +310,11 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denom2-neg-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denom2-neg-EXM145v11QICore4-2)]
 Initial Population=true
-Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denom2-neg-EXM145v11QICore4-2)]
 Denominator 1=true
 Qualifying CAD Encounter and Prior MI=[]
 Denominator 2=false
@@ -351,7 +351,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=denom2-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -360,13 +360,13 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=denom2-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=denom2-pos-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
-Qualifying CAD Encounter and Prior MI=[Encounter(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and Prior MI=[Encounter(id=denom2-pos-EXM145v11QICore4-2)]
 Denominator 2=true
 Has Beta Blocker Therapy for LVSD Ordered=false
 Is Currently Taking Beta Blocker Therapy for LVSD=false
@@ -401,7 +401,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=ip-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=ip-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -451,7 +451,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=ip-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=ip-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -460,9 +460,9 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=ip-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=ip-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=ip-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=ip-pos-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
@@ -501,7 +501,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=numer1-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -510,11 +510,11 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=numer1-neg-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=numer1-neg-EXM145v11QICore4-2)]
 Initial Population=true
-Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=numer1-neg-EXM145v11QICore4-2)]
 Denominator 1=true
 Qualifying CAD Encounter and Prior MI=[]
 Denominator 2=false
@@ -551,7 +551,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=numer1-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -560,11 +560,11 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=numer1-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=numer1-pos-EXM145v11QICore4-2)]
 Initial Population=true
-Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=numer1-pos-EXM145v11QICore4-2)]
 Denominator 1=true
 Qualifying CAD Encounter and Prior MI=[]
 Denominator 2=false
@@ -601,7 +601,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=numer2-neg-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -610,13 +610,13 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=numer2-neg-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=numer2-neg-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
-Qualifying CAD Encounter and Prior MI=[Encounter(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and Prior MI=[Encounter(id=numer2-neg-EXM145v11QICore4-2)]
 Denominator 2=true
 Has Beta Blocker Therapy for LVSD Ordered=false
 Is Currently Taking Beta Blocker Therapy for LVSD=false
@@ -651,7 +651,7 @@ Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=fa
 Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
 Denominator Exceptions 2=false
 
-Patient=Patient(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+Patient=Patient(id=numer2-pos-EXM145v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -660,13 +660,13 @@ SDE Race=Concept {
 	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
 }
 SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
-Coronary Artery Disease Encounter=[Encounter(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Coronary Artery Disease Encounter=[Encounter(id=numer2-pos-EXM145v11QICore4-2)]
 History of Cardiac Surgery=[]
-Qualifying CAD Encounter=[Encounter(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter=[Encounter(id=numer2-pos-EXM145v11QICore4-2)]
 Initial Population=true
 Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
 Denominator 1=false
-Qualifying CAD Encounter and Prior MI=[Encounter(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Qualifying CAD Encounter and Prior MI=[Encounter(id=numer2-pos-EXM145v11QICore4-2)]
 Denominator 2=true
 Has Beta Blocker Therapy for LVSD Ordered=false
 Is Currently Taking Beta Blocker Therapy for LVSD=false

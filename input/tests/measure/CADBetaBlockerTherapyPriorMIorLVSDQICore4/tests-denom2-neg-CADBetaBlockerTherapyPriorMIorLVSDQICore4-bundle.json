@@ -1,12 +1,12 @@
 {
     "resourceType": "Bundle",
-    "id": "tests-denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-bundle",
+    "id": "tests-denom2-pos-EXM145v11QICore4-bundle",
     "type": "transaction",
     "entry": [     
       {
         "resource":{
           "resourceType": "Observation",
-          "id": "denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-4",
+          "id": "denom2-neg-EXM145v11QICore4-4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
@@ -34,7 +34,7 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denom2-neg-EXM145v11QICore4"
           },
           "effectiveDateTime": "2020-11-01T10:30:00.000Z",
           "issued": "2020-11-01T10:30:00.000Z",
@@ -59,13 +59,13 @@
         },
         "request":{
           "method":"PUT",
-          "url":"Observation/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-4"
+          "url":"Observation/denom2-pos-EXM145v11QICore4-4"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-1",
+          "id": "denom2-pos-EXM145v11QICore4-1",
           "status": "finished",
           "class": {
             "code": "AMB",
@@ -84,7 +84,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denom2-pos-EXM145v11QICore4"
           },
           "period": {
             "start": "2022-01-02T10:00:00.000Z",
@@ -93,13 +93,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-1"
+          "url": "Encounter/denom2-pos-EXM145v11QICore4-1"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2",
+          "id": "denom2-pos-EXM145v11QICore4-2",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -123,7 +123,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denom2-pos-EXM145v11QICore4"
           },
           "period": {
             "start": "2022-03-02T10:00:00.000Z",
@@ -132,13 +132,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2"
+          "url": "Encounter/denom2-pos-EXM145v11QICore4-2"
         }
       },
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-5",
+          "id": "denom2-pos-EXM145v11QICore4-5",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -181,19 +181,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denom2-pos-EXM145v11QICore4"
           },
           "onsetDateTime": "2021-01-02"
         },
         "request": {
           "method": "PUT",
-          "url": "Condition/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-5"
+          "url": "Condition/denom2-pos-EXM145v11QICore4-5"
         }
       },
       {
         "resource":{
           "resourceType": "Condition",
-          "id": "denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-3",
+          "id": "denom2-pos-EXM145v11QICore4-3",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -245,19 +245,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+            "reference": "Patient/denom2-pos-EXM145v11QICore4"
           },
           "onsetDateTime": "2022-01-02"
         },
         "request":{
           "method":"PUT",
-          "url":"Condition/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-3"
+          "url":"Condition/denom2-pos-EXM145v11QICore4-3"
         }
       },
       {
         "resource": {
           "resourceType": "Patient",
-          "id": "denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4",
+          "id": "denom2-pos-EXM145v11QICore4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
@@ -328,7 +328,7 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Patient/denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4"
+          "url": "Patient/denom2-pos-EXM145v11QICore4"
         }
       }
     ]
