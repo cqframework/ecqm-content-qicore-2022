@@ -1,4 +1,4 @@
-library HFACEIorARBorARNIforLVSDQICore4 version '1.0.000'
+library EXM135v11QICore4 version '11.1.000'
 
 using QICore version '4.1.1'
 

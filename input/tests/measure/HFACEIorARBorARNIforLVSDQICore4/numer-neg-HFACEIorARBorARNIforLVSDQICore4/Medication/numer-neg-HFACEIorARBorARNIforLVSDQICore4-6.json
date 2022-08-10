@@ -1,6 +1,6 @@
 {
   "resourceType": "Medication",
-  "id": "numer-neg-HFACEIorARBorARNIforLVSDQICore4-6",
+  "id": "numer-neg-EXM135v11QICore4-6",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medication"

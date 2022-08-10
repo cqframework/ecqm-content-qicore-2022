@@ -1,6 +1,6 @@
 {
     "resourceType": "Encounter",
-    "id": "denom-pos-HFACEIorARBorARNIforLVSDQICore4-1",
+    "id": "denom-pos-EXM135v11QICore4-1",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -24,7 +24,7 @@
       }
     ],
     "subject": {
-      "reference": "Patient/denom-pos-HFACEIorARBorARNIforLVSDQICore4"
+      "reference": "Patient/denom-pos-EXM135v11QICore4"
     },
     "period": {
       "start": "2022-01-02T10:00:00.000Z",

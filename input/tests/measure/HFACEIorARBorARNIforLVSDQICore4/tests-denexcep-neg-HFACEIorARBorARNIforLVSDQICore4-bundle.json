@@ -1,12 +1,12 @@
 {
     "resourceType": "Bundle",
-    "id": "tests-denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-bundle",
+    "id": "tests-denexcep-neg-EXM135v11QICore4-bundle",
     "type": "transaction",
     "entry": [
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-1",
+          "id": "denexcep-neg-EXM135v11QICore4-1",
           "status": "finished",
           "class": {
             "code": "AMB",
@@ -25,7 +25,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "period": {
             "start": "2022-01-02T10:00:00.000Z",
@@ -34,13 +34,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-1"
+          "url": "Encounter/denexcep-neg-EXM135v11QICore4-1"
         }
       },
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-2",
+          "id": "denexcep-neg-EXM135v11QICore4-2",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -64,7 +64,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "period": {
             "start": "2022-03-02T10:00:00.000Z",
@@ -73,13 +73,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-2"
+          "url": "Encounter/denexcep-neg-EXM135v11QICore4-2"
         }
       },
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-3",
+          "id": "denexcep-neg-EXM135v11QICore4-3",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -131,19 +131,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "onsetDateTime": "2020-11-01"
         },
         "request": {
           "method": "PUT",
-          "url": "Condition/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-3"
+          "url": "Condition/denexcep-neg-EXM135v11QICore4-3"
         }
       },
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-5",
+          "id": "denexcep-neg-EXM135v11QICore4-5",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -186,20 +186,20 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "onsetDateTime": "2006-01-14",
           "abatementDateTime": "2006-10-20"
         },
         "request": {          
             "method": "PUT",
-            "url": "Condition/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-5"
+            "url": "Condition/denexcep-neg-EXM135v11QICore4-5"
         }
       },      
       {
         "resource": {
           "resourceType": "Observation",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-4",
+          "id": "denexcep-neg-EXM135v11QICore4-4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
@@ -227,7 +227,7 @@
             ]
           },
           "subject": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "effectiveDateTime": "2020-11-01T10:30:00.000Z",
           "issued": "2020-11-01T10:30:00.000Z",
@@ -252,13 +252,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Observation/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-4"
+          "url": "Observation/denexcep-neg-EXM135v11QICore4-4"
         }
       },
       {
         "resource": {
           "resourceType": "AllergyIntolerance",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-7",
+          "id": "denexcep-neg-EXM135v11QICore4-7",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance"
@@ -295,12 +295,12 @@
             ]
           },
           "patient": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "onsetDateTime": "2004",
           "recordedDate": "2014-10-09T14:58:00.000Z",
           "asserter": {
-            "reference": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+            "reference": "Patient/denexcep-neg-EXM135v11QICore4"
           },
           "lastOccurrence": "2012-06-02T01:45:31.000Z",
           "note": [
@@ -367,13 +367,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "AllergyIntolerance/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4-7"
+          "url": "AllergyIntolerance/denexcep-neg-EXM135v11QICore4-7"
         }
       },
       {
         "resource": {
           "resourceType": "Patient",
-          "id": "denexcep-neg-HFACEIorARBorARNIforLVSDQICore4",
+          "id": "denexcep-neg-EXM135v11QICore4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
@@ -444,7 +444,7 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Patient/denexcep-neg-HFACEIorARBorARNIforLVSDQICore4"
+          "url": "Patient/denexcep-neg-EXM135v11QICore4"
         }
       }
     ]

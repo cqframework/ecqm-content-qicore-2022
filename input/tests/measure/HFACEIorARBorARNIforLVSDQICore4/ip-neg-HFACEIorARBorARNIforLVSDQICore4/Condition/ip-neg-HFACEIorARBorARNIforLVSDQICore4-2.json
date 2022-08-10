@@ -1,6 +1,6 @@
 {
     "resourceType": "Condition",
-    "id": "ip-neg-HFACEIorARBorARNIforLVSDQICore4-2",
+    "id": "ip-neg-EXM135v11QICore4-2",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -52,7 +52,7 @@
       ]
     },
     "subject": {
-      "reference": "Patient/ip-neg-HFACEIorARBorARNIforLVSDQICore4"
+      "reference": "Patient/ip-neg-EXM135v11QICore4"
     },
     "onsetDateTime": "2020-11-01"
   }

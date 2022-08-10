@@ -1,6 +1,6 @@
 {
   "resourceType": "Library",
-  "id": "HFACEIorARBorARNIforLVSDQICore4",
+  "id": "EXM135v11QICore4",
   "extension": [
     {
       "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
@@ -11,7 +11,7 @@
   ],
   "url": "http://ecqi.healthit.gov/ecqms/Library/AHAOverallQICore4",
   "version": "1.0.000",
-  "name": "HFACEIorARBorARNIforLVSDQICore4",
+  "name": "EXM135v11QICore4",
   "relatedArtifact": [
     {
       "type": "depends-on",

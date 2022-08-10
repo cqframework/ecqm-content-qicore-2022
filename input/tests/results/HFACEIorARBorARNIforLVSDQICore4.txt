@@ -1,7 +1,7 @@
 Running tests.
-Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\HFACEIorARBorARNIforLVSDQICore4
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\EXM135v11QICore4
 Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
-Patient=Patient(id=denex-neg-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=denex-neg-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -23,7 +23,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=denex-pos-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=denex-pos-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -45,7 +45,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=denexcep-neg-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=denexcep-neg-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -67,7 +67,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=denexcep-pos-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=denexcep-pos-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -89,7 +89,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=true
 
-Patient=Patient(id=denom-neg-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=denom-neg-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -111,7 +111,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=denom-pos-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=denom-pos-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -133,7 +133,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=ip-neg-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=ip-neg-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -155,7 +155,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=ip-pos-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=ip-pos-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -177,7 +177,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=numer-neg-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=numer-neg-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -199,7 +199,7 @@ Has Diagnosis of Pregnancy=false
 Has Diagnosis of Renal Failure Due to ACEI=false
 Denominator Exceptions=false
 
-Patient=Patient(id=numer-pos-HFACEIorARBorARNIforLVSDQICore4)
+Patient=Patient(id=numer-pos-EXM135v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }

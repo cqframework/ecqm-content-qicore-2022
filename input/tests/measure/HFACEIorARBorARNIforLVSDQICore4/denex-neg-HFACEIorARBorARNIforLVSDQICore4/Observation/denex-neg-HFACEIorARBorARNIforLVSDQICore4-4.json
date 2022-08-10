@@ -1,6 +1,6 @@
 {
   "resourceType": "Observation",
-  "id": "denex-neg-HFACEIorARBorARNIforLVSDQICore4-4",
+  "id": "denex-neg-EXM135v11QICore4-4",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
@@ -28,7 +28,7 @@
     ]
   },
   "subject": {
-    "reference": "Patient/denex-neg-HFACEIorARBorARNIforLVSDQICore4"
+    "reference": "Patient/denex-neg-EXM135v11QICore4"
   },
   "effectiveDateTime": "2020-11-01T10:30:00.000Z",
   "issued": "2020-11-01T10:30:00.000Z",

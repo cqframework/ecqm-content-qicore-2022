@@ -1,6 +1,6 @@
 {
     "resourceType": "Condition",
-    "id": "numer-pos-HFACEIorARBorARNIforLVSDQICore4-3",
+    "id": "numer-pos-EXM135v11QICore4-3",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -52,7 +52,7 @@
       ]
     },
     "subject": {
-      "reference": "Patient/numer-pos-HFACEIorARBorARNIforLVSDQICore4"
+      "reference": "Patient/numer-pos-EXM135v11QICore4"
     },
     "onsetDateTime": "2020-11-01"
   }

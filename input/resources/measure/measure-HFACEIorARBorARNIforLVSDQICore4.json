@@ -1,6 +1,6 @@
 {
   "resourceType": "Measure",
-  "id": "HFACEIorARBorARNIforLVSDQICore4",
+  "id": "EXM135v11QICore4",
   "meta": {
     "versionId": "1",
     "lastUpdated": "2022-07-22T09:30:08.000-06:00",
@@ -105,7 +105,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -126,7 +126,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -147,7 +147,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -168,7 +168,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -189,7 +189,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -210,7 +210,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -231,7 +231,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -252,7 +252,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -273,7 +273,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -315,7 +315,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -357,7 +357,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -399,7 +399,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -420,7 +420,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -441,7 +441,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -462,7 +462,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -483,7 +483,7 @@
           "extension": [
             {
               "url": "libraryName",
-              "valueString": "HFACEIorARBorARNIforLVSDQICore4"
+              "valueString": "EXM135v11QICore4"
             },
             {
               "url": "name",
@@ -1734,7 +1734,7 @@
       }
     }
   ],
-  "url": "http://ecqi.healthit.gov/ecqms/Measure/HFACEIorARBorARNIforLVSDQICore4",
+  "url": "http://ecqi.healthit.gov/ecqms/Measure/EXM135v11QICore4",
   "identifier": [
     {
       "use": "official",
@@ -1781,7 +1781,7 @@
     }
   ],
   "version": "0.0.001",
-  "name": "HFACEIorARBorARNIforLVSDQICore4",
+  "name": "EXM135v11QICore4",
   "title": "Heart Failure (HF): Angiotensin-Converting Enzyme (ACE) Inhibitor or Angiotensin Receptor Blocker (ARB) or Angiotensin Receptor-Neprilysin Inhibitor (ARNI) Therapy for Left Ventricular Systolic Dysfunction (LVSD) (QICore)",
   "status": "draft",
   "experimental": false,
@@ -1867,7 +1867,7 @@
     }
   ],
   "library": [
-    "http://ecqi.healthit.gov/ecqms/Library/HFACEIorARBorARNIforLVSDQICore4"
+    "http://ecqi.healthit.gov/ecqms/Library/EXM135v11QICore4"
   ],
   "disclaimer": "The Measure is not a clinical guideline, does not establish a standard of medical care, and has not been tested for all potential applications.\n\nThe Measure, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, e.g., use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain.\n\nCommercial uses of the Measure require a license agreement between the user and the American College of Cardiology (ACC) or the American Heart Association (AHA). Neither the ACC, nor AHA, nor their members shall be responsible for any use of the Measure.\n\nACC and AHA encourage use of the Measure by other health care professionals, where appropriate.\n\nTHE MEASURE AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.\n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The ACC and AHA and their members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2021 American Medical Association. LOINC(R) is copyright 2004-2021 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2021 International Health Terminology Standards Development Organisation. ICD-10 is copyright 2021 World Health Organization. All Rights Reserved.\n\nThe American Medical Association’s and the PCPI(R) Foundation’s significant past efforts and contributions to the performance measure are gratefully acknowledged.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R].",
   "scoring": {
