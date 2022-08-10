@@ -1,6 +1,6 @@
 {
     "resourceType": "Encounter",
-    "id": "denex-pos-HFBetaBlockerTherapyforLVSDQICore4-1",
+    "id": "denex-pos-EXM144v11QICore4-1",
     "meta": {
       "profile": [
         "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -24,7 +24,7 @@
       }
     ],
     "subject": {
-      "reference": "Patient/denex-pos-HFBetaBlockerTherapyforLVSDQICore4"
+      "reference": "Patient/denex-pos-EXM144v11QICore4"
     },
     "period": {
       "start": "2022-01-02T10:00:00.000Z",

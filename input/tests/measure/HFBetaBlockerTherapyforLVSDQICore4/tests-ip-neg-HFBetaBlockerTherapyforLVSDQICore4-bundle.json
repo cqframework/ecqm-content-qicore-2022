@@ -1,12 +1,12 @@
 {
     "resourceType": "Bundle",
-    "id": "tests-ip-neg-HFBetaBlockerTherapyforLVSDQICore4-bundle",
+    "id": "tests-ip-neg-EXM144v11QICore4-bundle",
     "type": "transaction",
     "entry": [
       {
         "resource": {
           "resourceType": "Encounter",
-          "id": "ip-neg-HFBetaBlockerTherapyforLVSDQICore4-1",
+          "id": "ip-neg-EXM144v11QICore4-1",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
@@ -30,7 +30,7 @@
             }
           ],
           "subject": {
-            "reference": "Patient/ip-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/ip-neg-EXM144v11QICore4"
           },
           "period": {
             "start": "2022-01-02T10:00:00.000Z",
@@ -39,13 +39,13 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Encounter/ip-neg-HFBetaBlockerTherapyforLVSDQICore4-1"
+          "url": "Encounter/ip-neg-EXM144v11QICore4-1"
         }
       },
       {
         "resource": {
           "resourceType": "Condition",
-          "id": "ip-neg-HFBetaBlockerTherapyforLVSDQICore4-2",
+          "id": "ip-neg-EXM144v11QICore4-2",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
@@ -97,19 +97,19 @@
             ]
           },
           "subject": {
-            "reference": "Patient/ip-neg-HFBetaBlockerTherapyforLVSDQICore4"
+            "reference": "Patient/ip-neg-EXM144v11QICore4"
           },
           "onsetDateTime": "2020-11-01"
         },
         "request": {
           "method": "PUT",
-          "url": "Condition/ip-neg-HFBetaBlockerTherapyforLVSDQICore4-2"
+          "url": "Condition/ip-neg-EXM144v11QICore4-2"
         }
       },
       {
         "resource": {
           "resourceType": "Patient",
-          "id": "ip-neg-HFBetaBlockerTherapyforLVSDQICore4",
+          "id": "ip-neg-EXM144v11QICore4",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
@@ -180,7 +180,7 @@
         },
         "request": {
           "method": "PUT",
-          "url": "Patient/ip-neg-HFBetaBlockerTherapyforLVSDQICore4"
+          "url": "Patient/ip-neg-EXM144v11QICore4"
         }
       }
     ]

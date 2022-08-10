@@ -1,7 +1,7 @@
 Running tests.
-Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\HFBetaBlockerTherapyforLVSDQICore4
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\EXM144v11QICore4
 Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
-Patient=Patient(id=denex-neg-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=denex-neg-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -31,7 +31,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=denex-pos-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=denex-pos-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -61,7 +61,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=denexcep-neg-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=denexcep-neg-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -91,7 +91,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=denexcep-pos-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=denexcep-pos-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -121,7 +121,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=true
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=denom-neg-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=denom-neg-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -151,7 +151,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=denom-pos-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=denom-pos-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -181,7 +181,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=ip-neg-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=ip-neg-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -211,7 +211,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=ip-pos-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=ip-pos-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -241,7 +241,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=numer-neg-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=numer-neg-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }
@@ -271,7 +271,7 @@ Atrioventricular Block without Cardiac Pacer=false
 Denominator Exceptions=false
 Has Diagnosis of Intolerance to Beta Blocker Therapy=false
 
-Patient=Patient(id=numer-pos-HFBetaBlockerTherapyforLVSDQICore4)
+Patient=Patient(id=numer-pos-EXM144v11QICore4)
 SDE Ethnicity=Concept {
 	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
 }

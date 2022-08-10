@@ -1,6 +1,6 @@
 {
   "resourceType": "Observation",
-  "id": "denom-neg-HFBetaBlockerTherapyforLVSDQICore4-4",
+  "id": "denom-neg-EXM144v11QICore4-4",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
@@ -28,7 +28,7 @@
     ]
   },
   "subject": {
-    "reference": "Patient/denom-neg-HFBetaBlockerTherapyforLVSDQICore4"
+    "reference": "Patient/denom-neg-EXM144v11QICore4"
   },
   "effectiveDateTime": "2020-11-01T10:30:00.000Z",
   "issued": "2020-11-01T10:30:00.000Z",

@@ -1,6 +1,6 @@
 {
   "resourceType": "MedicationRequest",
-  "id": "numer-pos-HFBetaBlockerTherapyforLVSDQICore4-5",
+  "id": "numer-pos-EXM144v11QICore4-5",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
@@ -18,11 +18,11 @@
     ]
   },
   "subject": {
-    "reference": "Patient/numer-pos-HFBetaBlockerTherapyforLVSDQICore4",
+    "reference": "Patient/numer-pos-EXM144v11QICore4",
     "display": "Betty Dunn"
   },
   "encounter": {
-    "reference": "Encounter/numer-pos-HFBetaBlockerTherapyforLVSDQICore4-2",
+    "reference": "Encounter/numer-pos-EXM144v11QICore4-2",
     "display": "encounter who leads to this prescription"
   },
   "authoredOn": "2022-03-02T10:15:00.000Z",

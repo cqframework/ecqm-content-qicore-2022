@@ -1,6 +1,6 @@
 {
     "resourceType": "Patient",
-    "id": "ip-neg-HFBetaBlockerTherapyforLVSDQICore4",
+    "id": "ip-neg-EXM144v11QICore4",
     "meta": {
         "profile": [
             "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
