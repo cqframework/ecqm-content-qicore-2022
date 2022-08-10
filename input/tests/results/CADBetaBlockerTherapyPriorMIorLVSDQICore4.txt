@@ -1,0 +1,705 @@
+Running tests.
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\CADBetaBlockerTherapyPriorMIorLVSDQICore4
+Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
+Patient=Patient(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denexcep1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 1=true
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denexcep1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 1=true
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=true
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=true
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[Encounter(id=denexcep2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 2=true
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[Encounter(id=denexcep2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 2=true
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=true
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=true
+
+Patient=Patient(id=denom1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denom1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denom1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denom1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 1=true
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=denom2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 1=true
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[Encounter(id=denom2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 2=true
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=ip-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[]
+Initial Population=false
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=ip-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=ip-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=ip-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 1=true
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[Encounter(id=numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 1=true
+Qualifying CAD Encounter and Prior MI=[]
+Denominator 2=false
+Has Beta Blocker Therapy for LVSD Ordered=true
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=true
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[Encounter(id=numer2-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 2=true
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=false
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=false
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+Patient=Patient(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Coronary Artery Disease Encounter=[Encounter(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+History of Cardiac Surgery=[]
+Qualifying CAD Encounter=[Encounter(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Initial Population=true
+Qualifying CAD Encounter and History of Moderate or Severe LVSD=[]
+Denominator 1=false
+Qualifying CAD Encounter and Prior MI=[Encounter(id=numer2-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2)]
+Denominator 2=true
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator 1=false
+Has Beta Blocker Therapy Ordered=true
+Is Currently Taking Beta Blocker Therapy=false
+Numerator 2=true
+Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD=false
+Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer=false
+Denominator Exceptions 1=false
+Has Arrhythmia with Qualifying CAD Encounter and Prior MI=false
+Has Asthma with Qualifying CAD Encounter and Prior MI=false
+Has Bradycardia with Qualifying CAD Encounter and Prior MI=false
+Has Hypotension with Qualifying CAD Encounter and Prior MI=false
+Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI=false
+Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI=false
+Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI=false
+Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI=false
+Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer=false
+Denominator Exceptions 2=false
+
+elapsed: -0.289 seconds
+

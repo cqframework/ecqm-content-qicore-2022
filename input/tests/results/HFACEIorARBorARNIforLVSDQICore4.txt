@@ -1,0 +1,225 @@
+Running tests.
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\HFACEIorARBorARNIforLVSDQICore4
+Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
+Patient=Patient(id=denex-neg-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=denex-pos-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=true
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=denexcep-neg-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=denexcep-pos-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=true
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=true
+
+Patient=Patient(id=denom-neg-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=false
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=denom-pos-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=ip-neg-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=false
+Denominator=false
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=ip-pos-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=false
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=numer-neg-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=false
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=false
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+Patient=Patient(id=numer-pos-HFACEIorARBorARNIforLVSDQICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has ACEI or ARB or ARNI Ordered=true
+Is Currently Taking ACEI or ARB or ARNI=false
+Numerator=true
+Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI=false
+Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient=false
+Has Diagnosis of Allergy or Intolerance to ACEI or ARB=false
+Has Diagnosis of Pregnancy=false
+Has Diagnosis of Renal Failure Due to ACEI=false
+Denominator Exceptions=false
+
+elapsed: -0.032 seconds
+
