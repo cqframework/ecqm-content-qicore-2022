@@ -30,13 +30,13 @@ context Patient
 
 define "Qualifying Encounter During Measurement Period":
   ( ["Encounter": "Care Services in Long Term Residential Facility"]
-                    union ["Encounter": "Home Healthcare Services"]
-                    union ["Encounter": "Nursing Facility Visit"]
-                    union ["Encounter": "Office Visit"]
-                    union ["Encounter": "Outpatient Consultation"]
-                    union ["Encounter": "Patient Provider Interaction"] ) ValidEncounter
-                    where ValidEncounter.period during "Measurement Period"
-                      and ValidEncounter.isFinished()
+    union ["Encounter": "Home Healthcare Services"]
+    union ["Encounter": "Nursing Facility Visit"]
+    union ["Encounter": "Office Visit"]
+    union ["Encounter": "Outpatient Consultation"]
+    union ["Encounter": "Patient Provider Interaction"] ) ValidEncounter
+    where ValidEncounter.period during "Measurement Period"
+      and ValidEncounter.isFinished()
 
 define "Heart Failure Outpatient Encounter":
   ( ["Encounter": "Care Services in Long Term Residential Facility"]

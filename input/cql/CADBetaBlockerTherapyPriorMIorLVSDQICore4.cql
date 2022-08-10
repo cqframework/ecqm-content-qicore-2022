@@ -91,62 +91,23 @@ define "Denominator Exceptions 2":
     or "Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy"
     or "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer"
 
-define "Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer":
-  "Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD"
-    and not "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD"
-    and not "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD"
+define "Coronary Artery Disease Encounter":
+   AHA."Qualifying Encounter During Measurement Period"  QualifyingEncounter
+    with ["Condition": "Coronary Artery Disease No MI"] CoronaryArteryDisease
+      such that CoronaryArteryDisease.toPrevalenceInterval() overlaps QualifyingEncounter.period
+        and CoronaryArteryDisease.isConfirmedActiveDiagnosis()
 
-define "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer":
-  "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI"
-    and not "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI"
-    and not "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI"
+define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
+  exists ( ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
+            union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
+            where BetaBlockerAllergyIntolerance.isActiveAllergyBeforeOrDuringEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
+         )
 
-define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
+define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI":
   exists ( 
-            from
-              ["observation-heartrate"] HeartRate,
-              "Qualifying CAD Encounter and History of Moderate or Severe LVSD" CADEncounterModerateOrSevereLVSD
-              let PriorHeartRate: 
-                Last ( ["observation-heartrate"] MostRecentPriorHeartRate
-                    where MostRecentPriorHeartRate.effective.toInterval() overlaps after CADEncounterModerateOrSevereLVSD.period
-                        and MostRecentPriorHeartRate.isCompleted()
-                    sort by start of effective.toInterval()
-                    )
-          where HeartRate.effective.toInterval() during CADEncounterModerateOrSevereLVSD.period
-              and HeartRate.isCompleted()
-              and HeartRate.value < 50 '/min'
-              and PriorHeartRate.value < 50 '/min'
-              return HeartRate
-        )
-
-define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI":
-  exists ( 
-            from
-              ["observation-heartrate"] HeartRate,
-              "Qualifying CAD Encounter and Prior MI" CADEncounterMI
-              let PriorHeartRate: 
-                Last ( ["observation-heartrate"] MostRecentPriorHeartRate
-                    where MostRecentPriorHeartRate.effective.toInterval() overlaps after CADEncounterMI.period
-                        and MostRecentPriorHeartRate.isCompleted()
-                    sort by start of effective.toInterval()
-                    )
-              where HeartRate.effective.toInterval() during CADEncounterMI.period
-                and HeartRate.isCompleted()
-                and HeartRate.value < 50 '/min'
-                and PriorHeartRate.value < 50 '/min'
-              return HeartRate
-          )
-
-define "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
-  exists ( 
-            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
-              where CardiacPacerDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
-          )
-
-define "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI":
-  exists ( 
-            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
-              where CardiacPacerDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and Prior MI")
+          ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
+              union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
+            where BetaBlockerAllergyIntolerance.isActiveAllergyBeforeOrDuringEncounter( "Qualifying CAD Encounter and Prior MI" )
           )
 
 define "Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
@@ -179,11 +140,21 @@ define "Has Atrioventricular Block with Qualifying CAD Encounter and History of 
               where AtrioventricularBlock.overlapsEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
           )
 
+define "Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer":
+  "Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD"
+    and not "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD"
+    and not "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD"
+
 define "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI":
   exists ( 
             ["Condition": "Atrioventricular Block"] AtrioventricularBlock
               where AtrioventricularBlock.overlapsEncounter("Qualifying CAD Encounter and Prior MI") 
           )
+
+define "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer":
+  "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI"
+    and not "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI"
+    and not "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI"
 
 define "Has Beta Blocker Therapy for LVSD Ordered":
   exists ( 
@@ -198,7 +169,7 @@ define "Has Beta Blocker Therapy Ordered":
   exists ( 
             ["MedicationRequest": "Beta Blocker Therapy"] BetaBlockerOrdered
               with "Qualifying CAD Encounter and Prior MI" CADEncounterMI
-              such that BetaBlockerOrdered.authoredOn during CADEncounterMI.period
+                such that BetaBlockerOrdered.authoredOn during CADEncounterMI.period
               where BetaBlockerOrdered.status in {'active', 'completed'}
                   and BetaBlockerOrdered.intent = 'order'
              )
@@ -207,24 +178,17 @@ define "Has Bradycardia with Qualifying CAD Encounter and History of Moderate or
   exists ( 
             ["Condition": "Bradycardia"] Bradycardia
               with "Qualifying CAD Encounter and History of Moderate or Severe LVSD" CADEncounterModerateOrSevereLVSD
-              such that Bradycardia.toPrevalenceInterval() overlaps CADEncounterModerateOrSevereLVSD.period
+                such that Bradycardia.toPrevalenceInterval() overlaps CADEncounterModerateOrSevereLVSD.period
               where Bradycardia.isConfirmedActiveDiagnosis()
-               )
+          )
 
 define "Has Bradycardia with Qualifying CAD Encounter and Prior MI":
   exists ( 
             ["Condition": "Bradycardia"] Bradycardia
               with "Qualifying CAD Encounter and Prior MI" CADEncounterMI
                 such that Bradycardia.toPrevalenceInterval() overlaps CADEncounterMI.period
-                where Bradycardia.isConfirmedActiveDiagnosis()
-                 )
-
-define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI":
-  exists ( 
-            ( ["Condition": "Allergy to Beta Blocker Therapy"]
-                union ["Condition": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
-              where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and Prior MI")
-       )
+              where Bradycardia.isConfirmedActiveDiagnosis()
+          )
 
 define "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI":
   exists ( 
@@ -243,6 +207,51 @@ define "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and His
             where ImplantedCardiacPacer.isCompleted()
           )
 
+define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
+  exists ( 
+            from
+              ["observation-heartrate"] HeartRate,
+              "Qualifying CAD Encounter and History of Moderate or Severe LVSD" CADEncounterModerateOrSevereLVSD
+              let PriorHeartRate: 
+                Last ( ["observation-heartrate"] MostRecentPriorHeartRate
+                    where MostRecentPriorHeartRate.effective.toInterval() during CADEncounterModerateOrSevereLVSD.period
+                        and MostRecentPriorHeartRate.isCompleted()
+                        and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
+                    sort by start of effective.toInterval()
+                    )
+          where HeartRate.effective.toInterval() during CADEncounterModerateOrSevereLVSD.period
+              and HeartRate.isCompleted()
+              and HeartRate.value < 50 '/min'
+              and PriorHeartRate.value < 50 '/min'
+              return HeartRate
+        )
+
+define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI":
+  exists ( 
+            from
+              ["observation-heartrate"] HeartRate,
+              "Qualifying CAD Encounter and Prior MI" CADEncounterMI
+              let PriorHeartRate: 
+                Last ( ["observation-heartrate"] MostRecentPriorHeartRate
+                    where MostRecentPriorHeartRate.effective.toInterval() during CADEncounterMI.period
+                        and MostRecentPriorHeartRate.isCompleted()
+                        and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
+                    sort by start of effective.toInterval()
+                    )
+              where HeartRate.effective.toInterval() during CADEncounterMI.period
+                and HeartRate.isCompleted()
+                and HeartRate.value < 50 '/min'
+                and PriorHeartRate.value < 50 '/min'
+              return HeartRate
+          )
+
+define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI":
+  exists ( 
+            ( ["Condition": "Allergy to Beta Blocker Therapy"]
+                union ["Condition": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
+              where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and Prior MI")
+       )
+
 define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
   exists ( 
             ( ["Condition": "Allergy to Beta Blocker Therapy"]
@@ -250,16 +259,16 @@ define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qua
                 where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
           )
 
-define "Has Diagnosis of Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
-  exists (  
-            ["Condition": "Intolerance to Beta Blocker Therapy"] BetaBlockerIntoleranceDiagnosis
-              where BetaBlockerIntoleranceDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
+define "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI":
+  exists ( 
+            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
+              where CardiacPacerDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and Prior MI")
           )
 
-define "Has Diagnosis of Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI":
+define "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
   exists ( 
-            ["Condition": "Intolerance to Beta Blocker Therapy"] BetaBlockerIntoleranceDiagnosis
-              where BetaBlockerIntoleranceDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and Prior MI")
+            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
+              where CardiacPacerDiagnosis.overlapsAfterEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
           )
 
 define "Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
@@ -274,18 +283,33 @@ define "Has Hypotension with Qualifying CAD Encounter and Prior MI":
               where Hypotension.overlapsAfterEncounter("Qualifying CAD Encounter and Prior MI")
           )
 
+/*This definition currently throws an error when evaluated in VS Code 
+refer to https://github.com/cqframework/vscode-cql/issues/14 */ 
 define "Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD":
   exists ( 
-            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] NoBetaBlockerOrdered
-              where NoBetaBlockerOrdered.isNotOrderedDuringEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
+            ["MedicationNotRequested"] NoBetaBlockerOrdered
+            //currently no primary code path in model info for MedicationNotRequested
+            //refer to https://github.com/cqframework/clinical_quality_language/issues/789
+              where NoBetaBlockerOrdered.medication in "Beta Blocker Therapy for LVSD" 
+                and NoBetaBlockerOrdered.isNotOrderedDuringEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
           )
-            
 
+/*This definition currently throws an error when evaluated in VS Code 
+refer to https://github.com/cqframework/vscode-cql/issues/14 */ 
 define "Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy":
   exists ( 
-            ["MedicationRequest": "Beta Blocker Therapy"] NoBetaBlockerOrdered
-              where NoBetaBlockerOrdered.isNotOrderedDuringEncounter("Qualifying CAD Encounter and Prior MI") 
+            ["MedicationNotRequested"] NoBetaBlockerOrdered
+            //currently no primary code path in model info for MedicationNotRequested
+            //refer to https://github.com/cqframework/clinical_quality_language/issues/789
+              where NoBetaBlockerOrdered.medication in "Beta Blocker Therapy" 
+                and NoBetaBlockerOrdered.isNotOrderedDuringEncounter("Qualifying CAD Encounter and Prior MI") 
           )
+
+define "History of Cardiac Surgery":
+  AHA."Qualifying Encounter During Measurement Period" QualifyingEncounter
+    with ["Procedure": "Cardiac Surgery"] CardiacSurgery
+        such that CardiacSurgery.performed.toInterval() starts before end of QualifyingEncounter.period
+          and CardiacSurgery.isCompleted()
 
 define "Is Currently Taking Beta Blocker Therapy":
   exists ( 
@@ -323,31 +347,6 @@ define "Qualifying CAD Encounter and Prior MI":
     where not ( exists ( AHA."Moderate or Severe LVSD Observations" )
       or exists (AHA."Moderate or Severe LVSD Conditions") )
 
-define "Coronary Artery Disease Encounter":
-   AHA."Qualifying Encounter During Measurement Period"  QualifyingEncounter
-    with ["Condition": "Coronary Artery Disease No MI"] CoronaryArteryDisease
-      such that CoronaryArteryDisease.toPrevalenceInterval() overlaps after QualifyingEncounter.period
-        and CoronaryArteryDisease.isConfirmedActiveDiagnosis()
-
-define "History of Cardiac Surgery":
-  AHA."Qualifying Encounter During Measurement Period" QualifyingEncounter
-    with ["Procedure": "Cardiac Surgery"] CardiacSurgery
-        such that CardiacSurgery.performed.toInterval() starts before end of QualifyingEncounter.period
-          and CardiacSurgery.isCompleted()
-
-define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
-  exists ( ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
-            union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
-            where BetaBlockerAllergyIntolerance.isActiveAllergyBeforeOrDuringEncounter("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
-         )
-
-define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI":
-  exists ( 
-          ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
-              union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
-            where BetaBlockerAllergyIntolerance.isActiveAllergyBeforeOrDuringEncounter( "Qualifying CAD Encounter and Prior MI" )
-          )
-
 define fluent function isActiveAllergyBeforeOrDuringEncounter(Allergy AllergyIntolerance, Encounters List<Encounter>):
   exists ( Encounters encounter
             where ( Allergy.onset.toInterval() before encounter.period
@@ -368,21 +367,19 @@ define fluent function overlapsAfterEncounter(Diagnosis Condition, Encounters Li
               and Diagnosis.isConfirmedActiveDiagnosis()
           )
 
-define fluent function isCompleted(Element Choice<"observation-heartrate", MedicationRequest, Procedure>):
+define fluent function isCompleted(Element Choice<"observation-heartrate", MedicationNotRequested, Procedure>):
   case 
     when Element is "observation-heartrate" then 
       Element.status in {'final', 'amended', 'corrected'}
-    when (Element is Procedure) or (Element is MedicationRequest) then 
+    when (Element is Procedure) or (Element is MedicationNotRequested) then 
       Element.status = 'completed'
     else false
   end
 
-define fluent function isNotOrderedDuringEncounter(MedicationOrder MedicationRequest, Encounters List<Encounter>):
+define fluent function isNotOrderedDuringEncounter(MedicationNotOrdered MedicationNotRequested, Encounters List<Encounter>):
   exists ( Encounters encounter
-            where MedicationOrder.authoredOn during encounter.period
-              and MedicationOrder.isCompleted()
-              and MedicationOrder.doNotPerform is true
-              and ( MedicationOrder.reasonCode in "Medical Reason"
-                or MedicationOrder.reasonCode in "Patient Reason"
-                or MedicationOrder.reasonCode in "System Reason" ) 
+            where MedicationNotOrdered.authoredOn during encounter.period
+              and ( MedicationNotOrdered.reasonCode in "Medical Reason"
+                or MedicationNotOrdered.reasonCode in "Patient Reason"
+                or MedicationNotOrdered.reasonCode in "System Reason" ) 
           )
