@@ -338,6 +338,11 @@ define "Qualifying CAD Encounter and History of Moderate or Severe LVSD":
       with AHA."Moderate or Severe LVSD Observations" LVSDObservations
         such that LVSDObservations.effective.toInterval() starts before end of EncounterWithCADProxy.period 
     )
+  union 
+  ( "Qualifying CAD Encounter" EncounterWithCADProxy
+      with AHA."Moderate or Severe LVSD Conditions" LVSDObservations
+        such that LVSDObservations.toPrevalenceInterval() starts before end of EncounterWithCADProxy.period 
+    )
 
 define "Qualifying CAD Encounter and Prior MI":
   "Qualifying CAD Encounter" EncounterWithCADProxy
