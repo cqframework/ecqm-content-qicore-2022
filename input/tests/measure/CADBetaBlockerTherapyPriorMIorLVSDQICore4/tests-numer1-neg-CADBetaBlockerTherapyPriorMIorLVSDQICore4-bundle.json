@@ -6,13 +6,13 @@
       {
         "resource": {
           "resourceType": "MedicationRequest",
-          "id": "numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-5",
+          "id": "numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-5",
           "meta": {
             "profile": [
               "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
             ]
           },
-          "status": "active",
+          "status": "on-hold",
           "intent": "order",
           "medicationCodeableConcept": {
             "coding": [
@@ -24,14 +24,14 @@
             ]
           },
           "subject": {
-            "reference": "Patient/numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4",
+            "reference": "Patient/numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4",
             "display": "Betty Dunn"
           },
           "encounter": {
-            "reference": "Encounter/numer1-pos-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2",
+            "reference": "Encounter/numer1-neg-CADBetaBlockerTherapyPriorMIorLVSDQICore4-2",
             "display": "encounter that leads to this prescription"
           },
-          "authoredOn": "2022-03-02T10:15:00.000Z",
+          "authoredOn": "2022-02-01T10:15:00.000Z",
           "note": [
             {
               "text": "Patient told to take with food"
@@ -55,8 +55,8 @@
               "timing": {
                 "repeat": {
                   "boundsPeriod": {
-                    "start": "2022-03-03",
-                    "end": "2022-06-11"
+                    "start": "2022-02-02",
+                    "end": "2022-05-13"
                   },
                   "frequency": 1,
                   "period": 1,
@@ -104,8 +104,8 @@
           ],
           "dispenseRequest": {
             "validityPeriod": {
-              "start": "2022-03-03",
-              "end": "2022-06-11"
+              "start": "2022-02-02",
+              "end": "2022-05-13"
             },
             "numberOfRepeatsAllowed": 0,
             "quantity": {

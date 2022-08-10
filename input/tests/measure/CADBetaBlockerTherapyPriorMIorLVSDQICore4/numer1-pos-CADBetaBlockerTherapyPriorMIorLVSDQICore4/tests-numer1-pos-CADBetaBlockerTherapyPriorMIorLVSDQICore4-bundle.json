@@ -56,7 +56,7 @@
                 "repeat": {
                   "boundsPeriod": {
                     "start": "2022-03-03",
-                    "end": "2022-06-11"
+                    "end": "2022-03-12"
                   },
                   "frequency": 1,
                   "period": 1,
@@ -104,8 +104,8 @@
           ],
           "dispenseRequest": {
             "validityPeriod": {
-              "start": "2022-03-03",
-              "end": "2022-06-11"
+              "start": "2022-03-02",
+              "end": "2023-03-02"
             },
             "numberOfRepeatsAllowed": 0,
             "quantity": {
