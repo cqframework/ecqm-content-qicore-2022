@@ -1,0 +1,305 @@
+Running tests.
+Data path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\tests\measure\EXM144v11QICore4
+Terminology path: c:\Users\Minji\Stan\gitRepos\ecqm-content-qicore-2022\input\vocabulary\valueset
+Patient=Patient(id=denex-neg-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=denex-pos-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=true
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=denexcep-neg-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=denexcep-pos-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=true
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=true
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=denom-neg-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=false
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=denom-pos-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=ip-neg-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2148-5, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Mexican }
+}
+SDE Sex=Code { code: M, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Male }
+Initial Population=false
+Denominator=false
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=ip-pos-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2148-5, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Mexican }
+}
+SDE Sex=Code { code: M, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Male }
+Initial Population=true
+Denominator=false
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=numer-neg-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=false
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=false
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+Patient=Patient(id=numer-pos-EXM144v11QICore4)
+SDE Ethnicity=Concept {
+	Code { code: 2135-2, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Hispanic or Latino }
+}
+SDE Payer=[]
+SDE Race=Concept {
+	Code { code: 2028-9, system: urn:oid:2.16.840.1.113883.6.238, version: null, display: Asian }
+}
+SDE Sex=Code { code: F, system: http://hl7.org/fhir/v3/AdministrativeGender, version: null, display: Female }
+Initial Population=true
+Denominator=true
+Denominator Exclusions=false
+Has Beta Blocker Therapy for LVSD Ordered=true
+Is Currently Taking Beta Blocker Therapy for LVSD=false
+Numerator=true
+Has Consecutive Heart Rates Less than 50=false
+Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD=false
+Has Arrhythmia Diagnosis=false
+Has Hypotension Diagnosis=false
+Has Asthma Diagnosis=false
+Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy=false
+Has Bradycardia Diagnosis=false
+Has Allergy or Intolerance to Beta Blocker Therapy Ingredient=false
+Has Atrioventricular Block Diagnosis=false
+Has Diagnosis of Cardiac Pacer in Situ=false
+Has Cardiac Pacer Device Implanted=false
+Atrioventricular Block without Cardiac Pacer=false
+Denominator Exceptions=false
+Has Diagnosis of Intolerance to Beta Blocker Therapy=false
+
+elapsed: 0.664 seconds
+
