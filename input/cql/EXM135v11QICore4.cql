@@ -25,7 +25,8 @@ code "Substance with angiotensin II receptor antagonist mechanism of action (sub
 code "Substance with angiotensin-converting enzyme inhibitor mechanism of action (substance)": '372733002' from "SNOMEDCT" display 'Substance with angiotensin-converting enzyme inhibitor mechanism of action (substance)'
 code "Substance with neprilysin inhibitor mechanism of action (substance)": '786886009' from "SNOMEDCT" display 'Substance with neprilysin inhibitor mechanism of action (substance)'
 
-parameter "Measurement Period" default Interval[@2022-01-01, @2022-12-31]
+parameter "Measurement Period" Interval<DateTime> 
+  default Interval[@2022-01-01T00:00:00.0, @2023-01-01T00:00:00.0)
 
 context Patient
 

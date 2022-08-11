@@ -24,7 +24,7 @@ valueset "Patient Provider Interaction": 'http://cts.nlm.nih.gov/fhir/ValueSet/2
 
 code "Left ventricular systolic dysfunction (disorder)": '134401001' from "SNOMEDCT" display 'Left ventricular systolic dysfunction (disorder)'
 
-parameter "Measurement Period" default Interval[@2022-01-01, @2022-12-31]
+parameter "Measurement Period" Interval<DateTime> default Interval[@2022-01-01T00:00:00.0, @2023-01-01T00:00:00.0)
 
 context Patient
 
