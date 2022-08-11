@@ -155,7 +155,7 @@ define fluent function overlapsAfterHeartFailureOutpatientEncounter(Event Choice
                   Event.performed.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
                     and Event.status = 'completed'
                 when Event is AllergyIntolerance then
-                  Event.onset.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
+                  Interval[start of Event.onset.toInterval(), Event.lastOccurrence] overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period
                     and Event.clinicalStatus ~ Common."allergy-active"
                     and Event.verificationStatus ~ Common."confirmed"
                 when Event is MedicationRequest then
