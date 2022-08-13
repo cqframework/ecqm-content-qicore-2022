@@ -31,8 +31,9 @@ valueset "System Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.11388
 code "Left ventricular systolic dysfunction (disorder)": '134401001' from "SNOMEDCT" display 'Left ventricular systolic dysfunction (disorder)'
 code "Substance with beta adrenergic receptor antagonist mechanism of action (substance)": '373254001' from "SNOMEDCT" display 'Substance with beta adrenergic receptor antagonist mechanism of action (substance)'
 
-parameter "Measurement Period" default Interval[@2022-01-01, @2022-12-31]
-
+parameter "Measurement Period" Interval<DateTime> 
+  default Interval[@2022-01-01T00:00:00.0, @2023-01-01T00:00:00.0)
+  
 context Patient
 
 define "SDE Ethnicity":
