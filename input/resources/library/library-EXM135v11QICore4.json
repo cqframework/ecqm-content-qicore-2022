@@ -14,22 +14,26 @@
     "relatedArtifact": [{
             "type": "depends-on",
             "display": "QICore model information",
-            "resource": "http://hl7.org/fhir/Library/QICore-ModelInfo|4.1.1"
+            "resource": "http://hl7.org/fhir/us/qicore/Library/QICore-ModelInfo|4.1.1"
+        }, {
+            "type": "depends-on",
+            "display": "FHIR model information",
+            "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
         }, {
             "type": "depends-on",
             "display": "Library FHIRHelpers",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.012"
         }, {
             "type": "depends-on",
-            "display": "Library SupplementalDataElementsQICore4",
+            "display": "Library SDE",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsQICore4|3.0.000"
         }, {
             "type": "depends-on",
-            "display": "Library QICoreCommon",
+            "display": "Library Common",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/QICoreCommon|1.0.000"
         }, {
             "type": "depends-on",
-            "display": "Library AHAOverallQICore4",
+            "display": "Library AHA",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/AHAOverallQICore4|1.0.000"
         }, {
             "type": "depends-on",
@@ -77,13 +81,13 @@
             "name": "Measurement Period",
             "use": "in",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "Period"
         }, {
             "name": "Patient",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "Any"
         }, {
             "name": "SDE Ethnicity",
@@ -107,79 +111,79 @@
             "name": "SDE Sex",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "Coding"
         }, {
             "name": "Initial Population",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator Exclusions",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Numerator",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator Exceptions",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Medical or Patient Reason for Not Ordering ACEI or ARB or ARNI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Allergy or Intolerance to ACEI or ARB or ARNI Ingredient",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Allergy or Intolerance to ACEI or ARB",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has ACEI or ARB or ARNI Ordered",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Pregnancy",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Is Currently Taking ACEI or ARB or ARNI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Renal Failure Due to ACEI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }
     ],

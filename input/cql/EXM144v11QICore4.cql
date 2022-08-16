@@ -79,33 +79,11 @@ define "Atrioventricular Block without Cardiac Pacer":
     and not "Has Diagnosis of Cardiac Pacer in Situ"
     and not "Has Cardiac Pacer Device Implanted"
 
-define "Is Currently Taking Beta Blocker Therapy for LVSD":
+define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient":
   exists ( 
-            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
-              where ActiveBetaBlocker.overlapsAfterHeartFailureOutpatientEncounter()
-          )
-
-define "Has Beta Blocker Therapy for LVSD Ordered":
-  exists ( 
-            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] BetaBlockerOrdered
-              where BetaBlockerOrdered.isOrderedDuringHeartFailureOutpatientEncounter()
-          )
-
-define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
-  exists ( 
-            ["MedicationNotRequested"] NoBetaBlockerOrdered
-              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
-                such that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
-              where NoBetaBlockerOrdered.medication in "Beta Blocker Therapy for LVSD"
-                and ( NoBetaBlockerOrdered.reasonCode in "Medical Reason"
-                      or NoBetaBlockerOrdered.reasonCode in "Patient Reason")
-             )
-
-define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy":
-  exists ( 
-          ( ["Condition": "Allergy to Beta Blocker Therapy"]
-             union ["Condition": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
-            where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
+            ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
+                union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
+              where BetaBlockerAllergyIntolerance.overlapsAfterHeartFailureOutpatientEncounter()
           )
 
 define "Has Arrhythmia Diagnosis":
@@ -126,41 +104,23 @@ define "Has Atrioventricular Block Diagnosis":
               where AtrioventricularBlock.overlapsHeartFailureOutpatientEncounter()
           )
 
+define "Has Beta Blocker Therapy for LVSD Ordered":
+  exists ( 
+            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] BetaBlockerOrdered
+              where BetaBlockerOrdered.isOrderedDuringHeartFailureOutpatientEncounter()
+          )
+
 define "Has Bradycardia Diagnosis":
   exists ( 
             ["Condition": "Bradycardia"] Bradycardia
               where Bradycardia.overlapsHeartFailureOutpatientEncounter()
           )
 
-define "Has Diagnosis of Cardiac Pacer in Situ":
-  exists ( 
-            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
-              where CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
-          )
-
-define "Has Diagnosis of Intolerance to Beta Blocker Therapy":
-  exists ( 
-            ["Condition": "Intolerance to Beta Blocker Therapy"] BetaBlockerIntoleranceDiagnosis
-              where BetaBlockerIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
-          )
-
-define "Has Hypotension Diagnosis":
-  exists ( 
-            ["Condition": "Hypotension"] Hypotension
-              where Hypotension.overlapsHeartFailureOutpatientEncounter()
-          )
-
-define "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient":
-  exists ( 
-            ( ["AllergyIntolerance": "Beta Blocker Therapy Ingredient"]
-                union ["AllergyIntolerance": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"] ) BetaBlockerAllergyIntolerance
-              where BetaBlockerAllergyIntolerance.overlapsAfterHeartFailureOutpatientEncounter()
-          )
-
 define "Has Cardiac Pacer Device Implanted":
   exists ( 
             ["Procedure": "Cardiac Pacer"] ImplantedCardiacPacer
-              where ImplantedCardiacPacer.overlapsAfterHeartFailureOutpatientEncounter()
+              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
+                such that ImplantedCardiacPacer.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period
           )
 
 define "Has Consecutive Heart Rates Less than 50":
@@ -178,4 +138,39 @@ define "Has Consecutive Heart Rates Less than 50":
                       and HeartRate.value < 50 '/min'
                       and PriorHeartRate.value < 50 '/min'
                   return HeartRate
+          )
+
+define "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy":
+  exists ( 
+          ( ["Condition": "Allergy to Beta Blocker Therapy"]
+             union ["Condition": "Intolerance to Beta Blocker Therapy"] ) BetaBlockerAllergyOrIntoleranceDiagnosis
+            where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
+          )
+
+define "Has Diagnosis of Cardiac Pacer in Situ":
+  exists ( 
+            ["Condition": "Cardiac Pacer in Situ"] CardiacPacerDiagnosis
+              where CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()
+          )
+
+define "Has Hypotension Diagnosis":
+  exists ( 
+            ["Condition": "Hypotension"] Hypotension
+              where Hypotension.overlapsHeartFailureOutpatientEncounter()
+          )
+
+define "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD":
+  exists ( 
+            ["MedicationNotRequested"] NoBetaBlockerOrdered
+              with AHA."Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD" ModerateOrSevereLVSDHFOutpatientEncounter
+                such that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period
+              where NoBetaBlockerOrdered.medication in "Beta Blocker Therapy for LVSD"
+                and ( NoBetaBlockerOrdered.reasonCode in "Medical Reason"
+                      or NoBetaBlockerOrdered.reasonCode in "Patient Reason")
+             )
+
+define "Is Currently Taking Beta Blocker Therapy for LVSD":
+  exists ( 
+            ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlocker
+              where ActiveBetaBlocker.overlapsAfterHeartFailureOutpatientEncounter()
           )

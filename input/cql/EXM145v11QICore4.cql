@@ -28,7 +28,6 @@ valueset "Myocardial Infarction": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840
 valueset "Patient Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1008' 
 valueset "System Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1009'
 
-code "Left ventricular systolic dysfunction (disorder)": '134401001' from "SNOMEDCT" display 'Left ventricular systolic dysfunction (disorder)'
 code "Substance with beta adrenergic receptor antagonist mechanism of action (substance)": '373254001' from "SNOMEDCT" display 'Substance with beta adrenergic receptor antagonist mechanism of action (substance)'
 
 parameter "Measurement Period" Interval<DateTime> 
@@ -209,37 +208,24 @@ define "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and His
           )
 
 define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD":
-  exists ( 
-            from
-              ["observation-heartrate"] HeartRate,
-              "Qualifying CAD Encounter and History of Moderate or Severe LVSD" CADEncounterModerateOrSevereLVSD
-              let PriorHeartRate: 
-                Last ( ["observation-heartrate"] MostRecentPriorHeartRate
-                    where MostRecentPriorHeartRate.effective.toInterval() during CADEncounterModerateOrSevereLVSD.period
-                        and MostRecentPriorHeartRate.isCompleted()
-                        and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
-                    sort by start of effective.toInterval()
-                    )
-          where HeartRate.effective.toInterval() during CADEncounterModerateOrSevereLVSD.period
-              and HeartRate.isCompleted()
-              and HeartRate.value < 50 '/min'
-              and PriorHeartRate.value < 50 '/min'
-              return HeartRate
-        )
+  "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter"("Qualifying CAD Encounter and History of Moderate or Severe LVSD")
 
 define "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI":
-  exists ( 
+  "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter"("Qualifying CAD Encounter and Prior MI")
+
+define function "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter"(Encounters List<Encounter>):
+    exists ( 
             from
               ["observation-heartrate"] HeartRate,
-              "Qualifying CAD Encounter and Prior MI" CADEncounterMI
+              Encounters CADEncounter
               let PriorHeartRate: 
                 Last ( ["observation-heartrate"] MostRecentPriorHeartRate
-                    where MostRecentPriorHeartRate.effective.toInterval() during CADEncounterMI.period
+                    where MostRecentPriorHeartRate.effective.toInterval() during CADEncounter.period
                         and MostRecentPriorHeartRate.isCompleted()
                         and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()
                     sort by start of effective.toInterval()
                     )
-              where HeartRate.effective.toInterval() during CADEncounterMI.period
+              where HeartRate.effective.toInterval() during CADEncounter.period
                 and HeartRate.isCompleted()
                 and HeartRate.value < 50 '/min'
                 and PriorHeartRate.value < 50 '/min'
@@ -325,7 +311,7 @@ define "Is Currently Taking Beta Blocker Therapy for LVSD":
   exists ( 
             ["MedicationRequest": "Beta Blocker Therapy for LVSD"] ActiveBetaBlockerForLVSD
               with "Qualifying CAD Encounter and History of Moderate or Severe LVSD" CADEncounterModerateOrSevereLVSD
-              such that exists(ActiveBetaBlockerForLVSD.dosageInstruction.timing T
+                such that exists(ActiveBetaBlockerForLVSD.dosageInstruction.timing T
                                   where T.repeat.bounds.toInterval() overlaps after CADEncounterModerateOrSevereLVSD.period )
               where ActiveBetaBlockerForLVSD.status in { 'active', 'completed', 'finished' }            
           )
@@ -358,7 +344,7 @@ define fluent function isActiveAllergyBeforeOrDuringEncounter(Allergy AllergyInt
             where ( Allergy.onset.toInterval() before encounter.period
                 or Allergy.onset.toInterval() during encounter.period )
               and Allergy.clinicalStatus ~ Common."allergy-active"
-              and Allergy.verificationStatus ~ Common."confirmed"
+              and Allergy.verificationStatus ~ Common."allergy-confirmed"
           )
 
 define fluent function overlapsEncounter(Diagnosis Condition, Encounters List<Encounter>): 

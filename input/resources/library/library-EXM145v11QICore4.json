@@ -14,22 +14,26 @@
     "relatedArtifact": [{
             "type": "depends-on",
             "display": "QICore model information",
-            "resource": "http://hl7.org/fhir/Library/QICore-ModelInfo|4.1.1"
+            "resource": "http://hl7.org/fhir/us/qicore/Library/QICore-ModelInfo|4.1.1"
+        }, {
+            "type": "depends-on",
+            "display": "FHIR model information",
+            "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
         }, {
             "type": "depends-on",
             "display": "Library FHIRHelpers",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.012"
         }, {
             "type": "depends-on",
-            "display": "Library SupplementalDataElementsQICore4",
+            "display": "Library SDE",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsQICore4|3.0.000"
         }, {
             "type": "depends-on",
-            "display": "Library QICoreCommon",
+            "display": "Library Common",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/QICoreCommon|1.0.000"
         }, {
             "type": "depends-on",
-            "display": "Library AHAOverallQICore4",
+            "display": "Library AHA",
             "resource": "http://ecqi.healthit.gov/ecqms/Library/AHAOverallQICore4|1.0.000"
         }, {
             "type": "depends-on",
@@ -121,13 +125,13 @@
             "name": "Measurement Period",
             "use": "in",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "Period"
         }, {
             "name": "Patient",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "Any"
         }, {
             "name": "SDE Ethnicity",
@@ -151,49 +155,49 @@
             "name": "SDE Sex",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "Coding"
         }, {
             "name": "Initial Population",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator 1",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator 2",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Numerator 1",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Numerator 2",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator Exceptions 1",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Denominator Exceptions 2",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Coronary Artery Disease Encounter",
@@ -205,157 +209,157 @@
             "name": "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Arrhythmia with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Arrhythmia with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Asthma with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Asthma with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Atrioventricular Block with Qualifying CAD Encounter and History of Moderate or Severe LVSD without Cardiac Pacer",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Atrioventricular Block with Qualifying CAD Encounter and Prior MI without Cardiac Pacer",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Beta Blocker Therapy for LVSD Ordered",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Beta Blocker Therapy Ordered",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Bradycardia with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Bradycardia with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Cardiac Pacer Device Implanted with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Consecutive Heart Rates Less than 50 with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Diagnosis of Cardiac Pacer in Situ with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Hypotension with Qualifying CAD Encounter and History of Moderate or Severe LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Hypotension with Qualifying CAD Encounter and Prior MI",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Medical Patient or System Reason for Not Ordering Beta Blocker for LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Has Medical Patient or System Reason for Not Ordering Beta Blocker Therapy",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "History of Cardiac Surgery",
@@ -367,13 +371,13 @@
             "name": "Is Currently Taking Beta Blocker Therapy",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Is Currently Taking Beta Blocker Therapy for LVSD",
             "use": "out",
             "min": 0,
-            "max": "1",
+            "max": 1,
             "type": "boolean"
         }, {
             "name": "Qualifying CAD Encounter",
@@ -589,7 +593,7 @@
                     "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.403"
                 }
             ]
-        }, 
+        } 
     ],
     "content": [{
             "contentType": "text/cql",
