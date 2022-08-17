@@ -5,6 +5,8 @@ This content is a work in progress and should not be considered a final specific
 or recommendation for guidance.
 */
 
+using QICore version '4.1.1'
+
 include FHIRHelpers version '4.0.012' called FHIRHelpers
 // include FHIRCommon version '4.0.012' called FHIRCommon //https://github.com/cqframework/ecqm-content-qicore-2022/issues/5
 include QICoreCommon version '1.0.000' called QICoreCommon
