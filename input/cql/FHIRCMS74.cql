@@ -1,6 +1,9 @@
 library PrimaryCariesPreventionasOfferedbyPCPsincludingDentistsFHIR version '0.0.001'
 
-/*This measure has not been tested.*/
+/*
+This content is a work in progress and should not be considered a final specification
+or recommendation for guidance.
+*/
 
 using QICore version '4.1.1'
 
