@@ -1,0 +1,83 @@
+{
+  "resourceType": "Bundle",
+  "id": "Patient-27-Fail-HospiceServiceRequestAfterMP",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "Patient-27",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2028-9",
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "display": "Asian"
+                }
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2135-2",
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "display": "Hispanic or Latino"
+                }
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "system": "http://hospital.smarthealthit.org",
+            "value": "999999995"
+          }
+        ],
+        "name": [
+          {
+            "family": "Bertha",
+            "given": [
+              "Betty"
+            ]
+          }
+        ],
+        "birthDate": "1998-12-31",
+        "gender": "female"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "ServiceRequest-27",
+        "subject": {
+          "reference": "Patient/Patient-27"
+        },
+        "status": "active",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "code": "170935008",
+              "system": "http://snomed.info/sct",
+              "display": "Full care by hospice (finding)"
+            }
+          ]
+        },
+        "authoredOn": "2024-01-01T00:00:00.000Z"
+      }
+    }
+  ]
+}
