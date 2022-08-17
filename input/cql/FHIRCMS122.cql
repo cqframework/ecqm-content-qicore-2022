@@ -1,6 +1,9 @@
 library DiabetesHemoglobinA1cHbA1cPoorControl9FHIR version '0.0.01'
 
-/*This measure has not been tested.*/
+/*
+This content is a work in progress and should not be considered a final specification
+or recommendation for guidance.
+*/
 
 using QICore version '4.1.1'
 
