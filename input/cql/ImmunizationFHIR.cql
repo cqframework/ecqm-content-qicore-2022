@@ -1,6 +1,9 @@
 library Immunization version '1.0.0'
 
-/*This library has not been tested.*/
+/*
+This content is a work in progress and should not be considered a final specification
+or recommendation for guidance.
+*/
 
 using QICore version '4.1.1'
 
