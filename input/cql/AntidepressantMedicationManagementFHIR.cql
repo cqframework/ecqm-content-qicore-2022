@@ -1,5 +1,10 @@
 library AntidepressantMedicationManagementFHIR version '0.0.001'
 
+/*
+This content is a work in progress and should not be considered a final specification
+or recommendation for guidance. Tests are available for this content.
+*/
+
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.012' called FHIRHelpers
