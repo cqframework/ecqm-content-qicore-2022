@@ -1,7 +1,14 @@
 library StatusFHIR version '1.0.0'
 
-/*This library has not been tested.*/
-/*The purpose of these functions is to constrain FHIR resource elements for measures authored by NCQA, based on QICore to QDM Mapping (http://build.fhir.org/ig/HL7/fhir-qi-core/qdm-to-qicore.html).*/
+/*
+This content is a work in progress and should not be considered a final specification
+or recommendation for guidance.
+*/
+
+/*
+The purpose of these functions is to constrain FHIR resource elements for measures authored by NCQA, 
+based on QICore to QDM Mapping (http://build.fhir.org/ig/HL7/fhir-qi-core/qdm-to-qicore.html).
+*/
 
 using QICore version '4.1.1'
 
