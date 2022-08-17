@@ -2,7 +2,7 @@ library AdvancedIllnessandFrailtyExclusionQICore4 version '6.0.000'
 
 /*
 This content is a work in progress and should not be considered a final specification
-or recommendation for guidance.
+or recommendation for guidance. Tests are available for this content.
 */
 
 using QICore version '4.1.1'
