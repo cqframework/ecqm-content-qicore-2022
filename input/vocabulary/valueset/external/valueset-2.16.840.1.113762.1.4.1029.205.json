@@ -14,19 +14,19 @@
   "publisher": "NLM",
   "expansion": {
     "identifier": "20220505",
-    "timestamp": "2022-06-06T10:34:58-04:00",
+    "timestamp": "2022-08-16T11:47:47-06:00",
     "contains": [ {
-      "system": "http://terminology.hl7.org/CodeSystem/hsloc",
+      "system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
       "version": "2020",
       "code": "1039-7",
       "display": "Neonatal Critical Care (Level II/III)"
     }, {
-      "system": "http://terminology.hl7.org/CodeSystem/hsloc",
+      "system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
       "version": "2020",
       "code": "1040-5",
       "display": "Neonatal Critical Care (Level III)"
     }, {
-      "system": "http://terminology.hl7.org/CodeSystem/hsloc",
+      "system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
       "version": "2020",
       "code": "1269-0",
       "display": "Neonatal Critical Care (Level IV)"
