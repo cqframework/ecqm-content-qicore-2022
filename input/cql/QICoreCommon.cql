@@ -1,7 +1,7 @@
 /*
 @author: Stan Rankins
 @description: Common terminologies and functions used in QI-Core-based CQL artifacts
-@update: Based on FHIRCommon Version 4.0.012 for use in ecqm-content-qicore-2022 repos
+@update: Fashioned after FHIRCommon Version 4.0.012 for use in ecqm-content-qicore-2022 repos
 */
 library QICoreCommon version '1.0.000'
 
@@ -21,10 +21,7 @@ codesystem "ConditionVerificationStatusCodes": 'http://terminology.hl7.org/CodeS
 codesystem "AllergyIntoleranceClinicalStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical'
 codesystem "AllergyIntoleranceVerificationStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification'
 codesystem "ConditionCategoryCodes": 'http://terminology.hl7.org/CodeSystem/condition-category'
-codesystem "USCoreConditionCategory": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
 codesystem "ObservationCategoryCodes": 'http://terminology.hl7.org/CodeSystem/observation-category'
-// NOTE: Introduced in USCore 5
-codesystem "USCoreObservationCategory": 'http://hl7.org/fhir/us/core/CodeSystem/us-core-observation-category'
 
 valueset "Active Condition": 'http://fhir.org/guides/cqf/common/ValueSet/active-condition'
 valueset "Inactive Condition": 'http://fhir.org/guides/cqf/common/ValueSet/inactive-condition'
@@ -83,129 +80,13 @@ code "survey": 'survey' from "ObservationCategoryCodes" display 'Survey'
 code "exam": 'exam' from "ObservationCategoryCodes" display 'Exam'
 code "therapy": 'therapy' from "ObservationCategoryCodes" display 'Therapy'
 code "activity": 'activity' from "ObservationCategoryCodes" display 'Activity'
-// NOTE: Introduced in USCore 5
-code "clinical-test": 'clinical-test' from "USCoreObservationCategory" display 'Clinical Test'
 
 // Condition Category Codes
 code "problem-list-item": 'problem-list-item' from "ConditionCategoryCodes" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "ConditionCategoryCodes" display 'Encounter Diagnosis'
-code "health-concern": 'health-concern' from "USCoreConditionCategory" display 'Health Concern'
 
 context Patient
 
-define function HasCategory(condition Condition, category Code):
-  exists (condition.category C
-    where C ~ category
-  )
-
-define function IsProblemListItem(condition Condition):
-  exists (condition.category C
-    where C ~ "problem-list-item"
-  )
-
-define function IsEncounterDiagnosis(condition Condition):
-  exists (condition.category C
-    where C ~ "encounter-diagnosis"
-  )
-
-define function IsHealthConcern(condition Condition):
-  exists (condition.category C
-    where C ~ "health-concern"
-  )
-
-define function HasCategory(observation Observation, category Code):
-  exists (observation.category C
-    where C ~ category
-  )
-
-define function IsSocialHistory(observation Observation):
-  exists (observation.category C
-    where C ~ "social-history"
-  )
-
-define function IsVitalSign(observation Observation):
-  exists (observation.category C
-    where C ~ "vital-signs"
-  )
-
-define function IsImaging(observation Observation):
-  exists (observation.category C
-    where C ~ "imaging"
-  )
-
-define function IsLaboratory(observation Observation):
-  exists (observation.category C
-    where C ~ "laboratory"
-  )
-
-define function IsProcedure(observation Observation):
-  exists (observation.category C
-    where C ~ "procedure"
-  )
-
-define function IsSurvey(observation Observation):
-  exists (observation.category C
-    where C ~ "survey"
-  )
-
-define function IsExam(observation Observation):
-  exists (observation.category C
-    where C ~ "exam"
-  )
-
-define function IsTherapy(observation Observation):
-  exists (observation.category C
-    where C ~ "therapy"
-  )
-
-define function IsActivity(observation Observation):
-  exists (observation.category C
-    where C ~ "activity"
-  )
-
-// NOTE: Introduced in USCore 5
-define function IsClinicalTest(observation Observation):
-  exists (observation.category C
-    where C ~ "clinical-test"
-  )
-
-/*
-@description: Returns true if the given MedicationRequest has a category of Community
-*/
-define function IsCommunity(medicationRequest MedicationRequest):
-  exists (medicationRequest.category C
-    where C ~ Community
-  )
-
-/*
-@description: Returns true if the given MedicationRequest has a category of Discharge
-*/
-define function IsDischarge(medicationRequest MedicationRequest):
-  exists (medicationRequest.category C
-    where C ~ Discharge
-  )
-
-
-/*
-@description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
-@comment: Normalizes a choice type of System.DateTime, System.Quantity, System.Interval<DateTime>, System.Interval<Quantity> types
-to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
-representations for timing-valued elements in QI-Core, allowing this function to be used across any resource.
-
-The input can be provided as a DateTime, Quantity, Interval<DateTime>, Interval<Quantity>.
-The intent of this function is to provide a clear and concise mechanism to treat single
-elements that have multiple possible representations as intervals so that logic doesn't have to account
-for the variability. More complex calculations (such as medication request period or dispense period
-calculation) need specific guidance and consideration. That guidance may make use of this function, but
-the focus of this function is on single element calculations where the semantics are unambiguous.
-If the input is a DateTime, the result a DateTime Interval beginning and ending on that dateTime.
-If the input is a Quantity, the result is a DateTime Interval beginning when the patient was the given Age,
-and ending immediately prior to when the patient was the given Age plus one year.
-If the input is a DateTime Interval, the result is a DateTime Interval.
-If the input is a Quantity Interval, the result is a DateTime Interval beginning when the patient was the Age given
-by the low end of the Interval, and ending immediately prior to when the patient was the Age given by the
-high end of the Interval plus one year.
-*/
 define function ToInterval(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>>):
   case
 	  when choice is DateTime then
@@ -222,26 +103,6 @@ define function ToInterval(choice Choice<DateTime, Quantity, Interval<DateTime>,
 			null as Interval<DateTime>
 	end
 
-/*
-@description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
-@comment: Normalizes a choice type of System.DateTime, System.Quantity, System.Interval<DateTime>, System.Interval<Quantity> types
-to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
-representations for timing-valued elements in QI-Core, allowing this function to be used across any resource.
-
-The input can be provided as a DateTime, Quantity, Interval<DateTime>, Interval<Quantity>.
-The intent of this function is to provide a clear and concise mechanism to treat single
-elements that have multiple possible representations as intervals so that logic doesn't have to account
-for the variability. More complex calculations (such as medication request period or dispense period
-calculation) need specific guidance and consideration. That guidance may make use of this function, but
-the focus of this function is on single element calculations where the semantics are unambiguous.
-If the input is a DateTime, the result a DateTime Interval beginning and ending on that dateTime.
-If the input is a Quantity, the result is a DateTime Interval beginning when the patient was the given Age,
-and ending immediately prior to when the patient was the given Age plus one year.
-If the input is a DateTime Interval, the result is a DateTime Interval.
-If the input is a Quantity Interval, the result is a DateTime Interval beginning when the patient was the Age given
-by the low end of the Interval, and ending immediately prior to when the patient was the Age given by the
-high end of the Interval plus one year.
-*/
 define fluent function toInterval(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>>):
   case
 	  when choice is DateTime then
@@ -258,26 +119,6 @@ define fluent function toInterval(choice Choice<DateTime, Quantity, Interval<Dat
 			null as Interval<DateTime>
 	end
 
-/*
-@description: Returns an interval representing the normalized Abatement of a given Condition resource.
-@comment: Normalizes a Condition's abatement, System.DateTime, System.Quantity, System.Interval<DateTime>, System.Interval<Quantity> types
-to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
-representations for timing-valued elements in QI-Core, allowing this function to be used across any resource.
-
-The input can be provided as a DateTime, Quantity, Interval<DateTime>, Interval<Quantity>.
-The intent of this function is to provide a clear and concise mechanism to treat single
-elements that have multiple possible representations as intervals so that logic doesn't have to account
-for the variability. More complex calculations (such as medication request period or dispense period
-calculation) need specific guidance and consideration. That guidance may make use of this function, but
-the focus of this function is on single element calculations where the semantics are unambiguous.
-If the input is a DateTime, the result a DateTime Interval beginning and ending on that dateTime.
-If the input is a Quantity, the result is a DateTime Interval beginning when the patient was the given Age,
-and ending immediately prior to when the patient was the given Age plus one year.
-If the input is a DateTime Interval, the result is a DateTime Interval.
-If the input is a Quantity Interval, the result is a DateTime Interval beginning when the patient was the Age given
-by the low end of the Interval, and ending immediately prior to when the patient was the Age given by the
-high end of the Interval plus one year.
-*/
 define function ToAbatementInterval(condition Condition):
 	if condition.abatement is DateTime then
 	  Interval[condition.abatement as DateTime, condition.abatement as DateTime]
@@ -291,11 +132,6 @@ define function ToAbatementInterval(condition Condition):
 	  Interval[condition.abatement.low, condition.abatement.high)
 	else null as Interval<DateTime>
 
-/*
-@description: Returns an interval representing the normalized Abatement of a given Condition resource.
-@comment: NOTE: Due to the complexity of determining an interval from a String, this function will throw
-a run-time exception if used with a Condition instance that has a String as the abatement value.
-*/
 define fluent function toAbatementInterval(condition Condition):
 	if condition.abatement is DateTime then
 	  Interval[condition.abatement as DateTime, condition.abatement as DateTime]
@@ -309,11 +145,6 @@ define fluent function toAbatementInterval(condition Condition):
 	  Interval[condition.abatement.low, condition.abatement.high)
 	else null as Interval<DateTime>
 
-/*
-@description: Returns an interval representing the normalized prevalence period of a given Condition resource.
-@comment: Uses the ToInterval and ToAbatementInterval functions to determine the widest potential interval from
-onset to abatement as specified in the given Condition.
-*/
 define function ToPrevalenceInterval(condition Condition):
 if condition.clinicalStatus ~ "active"
   or condition.clinicalStatus ~ "recurrence"
@@ -322,11 +153,6 @@ if condition.clinicalStatus ~ "active"
 else
   Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition))
 
-/*
-@description: Returns an interval representing the normalized prevalence period of a given Condition resource.
-@comment: Uses the ToInterval and ToAbatementInterval functions to determine the widest potential interval from
-onset to abatement as specified in the given Condition.
-*/
 define fluent function toPrevalenceInterval(condition Condition):
 if condition.clinicalStatus ~ "active"
   or condition.clinicalStatus ~ "recurrence"
@@ -335,96 +161,60 @@ if condition.clinicalStatus ~ "active"
 else
   Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition))
 
-/*
-Given an interval, return true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimum DateTime value)
-*/
 define function "HasStart"(period Interval<DateTime> ):
   not ( start of period is null
       or start of period = minimum DateTime
   )
 
-/*
-Given an interval, return true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimum DateTime value)
-*/
 define fluent function hasStart(period Interval<DateTime> ):
   not ( start of period is null
       or start of period = minimum DateTime
   )
 
-/*
-Given an interval, return true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value)
-*/
 define function "HasEnd"(period Interval<DateTime> ):
   not (
     end of period is null
       or end of period = maximum DateTime
   )
 
-/*
-Given an interval, return true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value)
-*/
 define fluent function hasEnd(period Interval<DateTime> ):
   not (
     end of period is null
       or end of period = maximum DateTime
   )
 
-/*
-Given an interval, return the ending point if the interval has an ending boundary specified, otherwise, return the starting point
-*/
 define function "Latest"(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
   (choice.toInterval()) period
     return
       if (HasEnd(period)) then end of period
       else start of period
 
-/*
-Given an interval, return the ending point if the interval has an ending boundary specified, otherwise, return the starting point
-*/
 define fluent function latest(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
   (choice.toInterval()) period
     return
       if (HasEnd(period)) then end of period
       else start of period
 
-/*
-Given an interval, return the starting point if the interval has a starting boundary specified, otherwise, return the ending point
-*/
 define function "Earliest"(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
   (choice.toInterval()) period
     return
       if (HasStart(period)) then start of period
       else end of period
 
-/*
-Given an interval, return the starting point if the interval has a starting boundary specified, otherwise, return the ending point
-*/
 define fluent function earliest(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
   (choice.toInterval()) period
     return
       if (HasStart(period)) then start of period
       else end of period
 
-/**
- * Creates a list of integers from 1 to how many days are in the interval. Note, this wont create an index for
- * the final day if it is less than 24 hours. This also includes the first 24 hour period.
- */
 define function "Interval To Day Numbers"(Period Interval<DateTime>):
   ( expand { Interval[1, duration in days between start of Period and end of Period]} ) DayNumber
     return end of DayNumber
 
-/**
- * Creates a list of integers from 1 to how many days are in the interval. Note, this wont create an index for
- * the final day if it is less than 24 hours. This also includes the first 24 hour period.
- */
 define fluent function toDayNumbers(Period Interval<DateTime>):
   ( expand { Interval[1, duration in days between start of Period and end of Period]} ) DayNumber
     return end of DayNumber
 
-/**
- * Creates a list of 24 hour long intervals in an interval paired with the index (1 indexed) to which 24 hour interval it is.
- * Note that the result will include intervals that are closed at the beginning and open at the end
- */
 define function "Days In Period"(Period Interval<DateTime>):
   ( "Interval To Day Numbers"(Period)) DayIndex
     let startPeriod: start of Period + (24 hours * (DayIndex - 1)),
@@ -435,10 +225,6 @@ define function "Days In Period"(Period Interval<DateTime>):
       dayPeriod: Interval[startPeriod, endPeriod)
     }
 
-/**
- * Creates a list of 24 hour long intervals in an interval paired with the index (1 indexed) to which 24 hour interval it is.
- * Note that the result will include intervals that are closed at the beginning and open at the end
- */
 define fluent function daysInPeriod(Period Interval<DateTime>):
   ( "Interval To Day Numbers"(Period)) DayIndex
     let startPeriod: start of Period + (24 hours * (DayIndex - 1)),
