@@ -1,0 +1,101 @@
+{
+  "resourceType": "Bundle",
+  "id": "Patient-10-Pass-Age66LivesInNursingHomeDuringMP",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "Patient-10",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2028-9",
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "display": "Asian"
+                }
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2135-2",
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "display": "Hispanic or Latino"
+                }
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "system": "http://hospital.smarthealthit.org",
+            "value": "999999995"
+          }
+        ],
+        "name": [
+          {
+            "family": "Bertha",
+            "given": [
+              "Betty"
+            ]
+          }
+        ],
+        "birthDate": "1957-12-31",
+        "gender": "female"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-10",
+        "subject": {
+          "reference": "Patient/Patient-10"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "71802-3",
+              "system": "http://loinc.org",
+              "display": "Housing status"
+            }
+          ]
+        },
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "survey",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "effectiveDateTime": "2023-11-01T23:59:00.000Z",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "160734000",
+              "system": "http://snomed.info/sct",
+              "display": "Lives in a nursing home (finding)"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

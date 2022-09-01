@@ -1,137 +1,166 @@
-library AdvancedIllnessandFrailtyExclusionQICore4 version '5.0.000'
+library AdvancedIllnessandFrailtyExclusionQICore4 version '6.0.000'
 
 /*
-@update: @@BTR 2020-03-31 ->
-Incremented version to 5.0.000
-Updated FHIR version to 4.0.1
-@@
+This content is a work in progress and should not be considered a final specification
+or recommendation for guidance. Tests are available for this content.
 */
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012'
-
-include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Global
+include FHIRHelpers version '4.0.012' called FHIRHelpers
+// include FHIRCommon version '4.0.012' called FHIRCommon //https://github.com/cqframework/ecqm-content-qicore-2022/issues/5
+include QICoreCommon version '1.0.000' called QICoreCommon 
+include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include CumulativeMedicationDurationQICore4 version '2.0.000' called CMD
+include StatusFHIR version '1.0.0' called Status
 
 codesystem "LOINC": 'http://loinc.org'
+codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
 valueset "Acute Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1083'
 valueset "Advanced Illness": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.110.12.1082'
-valueset "Care Services in Long-Term Residential Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014'
 valueset "Dementia Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.196.12.1510'
-valueset "ED": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1085'
+valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1010'
 valueset "Frailty Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.118.12.1300'
 valueset "Frailty Diagnosis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.113.12.1074'
 valueset "Frailty Encounter": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1088'
 valueset "Frailty Symptom": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.113.12.1075'
 valueset "Nonacute Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1084'
-valueset "Nursing Facility Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1012'
 valueset "Observation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1086'
 valueset "Outpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1087'
 
-code "Birth date": '21112-8' from "LOINC" display 'Birth date'
+code "Housing status": '71802-3' from "LOINC" display 'Housing status'
+code "Lives in a nursing home (finding)": '160734000' from "SNOMEDCT" display 'Lives in a nursing home (finding)'
+code "Medical equipment used": '98181-1' from "LOINC" display 'Medical equipment used'
 
 parameter "Measurement Period" Interval<DateTime>
-  default Interval[@2019-01-01T00:00:00.0, @2020-01-01T00:00:00.0)
+default Interval[@2023-01-01T00:00:00.000Z, @2024-01-01T00:00:00.000Z)
 
 context Patient
 
-define "Advanced Illness Diagnoses":
-    [Condition: "Advanced Illness"] AdvancedIllnessDiagnosis
+// AgeInYearsAt workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
+define "Is Age 66 or Older with Advanced Illness and Frailty":
+  // AgeInYearsAt(date from 
+  //   end of "Measurement Period"
+  // )>= 66
+  CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") >= 66
+    and "Has Criteria Indicating Frailty"
+    and ( "Has Two Outpatient Encounters with Advanced Illness on Different Dates of Service"
+        or "Has Inpatient Encounter with Advanced Illness"
+        or "Has Dementia Medications in Year Before or During Measurement Period"
+    )
 
-/*
-ISSUE: Encounter.diagnosis element not being translated due to issue with ModelInfo generation
-define "Outpatient Encounters with Advanced Illness":
-	( [Encounter: "Outpatient"]
-		union [Encounter: "Observation"]
-		union [Encounter: "ED"]
-		union [Encounter: "Nonacute Inpatient"] ) OutpatientEncounter
-		with [Condition: "Advanced Illness"] AdvancedIllnessDiagnosis
-            such that exists (
-                OutpatientEncounter.diagnosis.condition EncounterDiagnosis
-                    where EndsWith(EncounterDiagnosis.reference, AdvancedIllnessDiagnosis.id)
-            )
-            and OutpatientEncounter.period starts 2 years or less before
-			end of "Measurement Period"
-*/
-
-define "Long Term Care Periods During Measurement Period":
-	( [Encounter: "Care Services in Long-Term Residential Facility"]
-		union [Encounter: "Nursing Facility Visit"] ) LongTermFacilityEncounter
-		where LongTermFacilityEncounter.period overlaps "Measurement Period"
-		return LongTermFacilityEncounter.period
-			intersect "Measurement Period"
-
-/*
-ISSUE: Encounter.diagnosis element not being translated
-define "Inpatient Encounter with Advanced Illness":
-	[Encounter: "Acute Inpatient"] InpatientEncounter
-		with [Condition: "Advanced Illness"] AdvancedIllnessDiagnosis
-            such that exists (
-                InpatientEncounter.diagnosis.condition EncounterDiagnosis
-                    where EndsWith(EncounterDiagnosis.reference, AdvancedIllnessDiagnosis.id)
-            )
-			and InpatientEncounter.period starts 2 years or less before
-			end of "Measurement Period"
-*/
-
-define "Dementia Medications In Year Before or During Measurement Period":
-	["MedicationDispense": "Dementia Medications"] DementiaMed
-		where DementiaMed.whenHandedOver during day of Interval[
-            ( start of "Measurement Period" - 1 year ), end of "Measurement Period"
-        ]
+// AgeInYearsAt workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
+define "Is Age 66 to 80 with Advanced Illness and Frailty or Is Age 81 or Older with Frailty":
+  ( 
+    // AgeInYearsAt(date from 
+  //     end of "Measurement Period"
+  //   )in Interval[66, 80]
+      CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") in Interval[66, 80]
+      and "Has Criteria Indicating Frailty"
+      and ( "Has Two Outpatient Encounters with Advanced Illness on Different Dates of Service"
+          or "Has Inpatient Encounter with Advanced Illness"
+          or "Has Dementia Medications in Year Before or During Measurement Period"
+      )
+  )
+    or ( 
+      // AgeInYearsAt(date from 
+      //   end of "Measurement Period"
+      // )>= 81
+       CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") >= 81
+        and "Has Criteria Indicating Frailty"
+    )
 
 define "Has Criteria Indicating Frailty":
-	exists ( [DeviceRequest: "Frailty Device"] FrailtyDeviceOrder
-			where FrailtyDeviceOrder.authoredOn during "Measurement Period"
-	)
-		or exists ( [DeviceUseStatement: "Frailty Device"] FrailtyDeviceUse
-				where Global."Normalize Interval"(FrailtyDeviceUse.timing) overlaps "Measurement Period"
-		)
-		or exists ( [Condition: "Frailty Diagnosis"] FrailtyDiagnosis
-				where Global."Prevalence Period"(FrailtyDiagnosis) overlaps "Measurement Period"
-		)
-		or exists ( [Encounter: "Frailty Encounter"] FrailtyEncounter
-				where FrailtyEncounter.period overlaps "Measurement Period"
-		)
-		or exists ( [Observation: "Frailty Symptom"] FrailtySymptomObservation
-				where Global."Normalize Interval"(FrailtySymptomObservation.effective) overlaps "Measurement Period"
-		)
+  exists ( (Status."Completed or Ongoing Device Request"([DeviceRequest: code in "Frailty Device"])) FrailtyDeviceOrder
+      where QICoreCommon."ToInterval" ( FrailtyDeviceOrder.authoredOn ) during day of "Measurement Period"
+  )
+    or exists ( (Status."Final Survey Observation"([Observation: "Medical equipment used"])) FrailtyDeviceApplied
+        where //FrailtyDeviceApplied.value in "Frailty Device" and //InValueSet error per https://github.com/cqframework/vscode-cql/issues/16
+          QICoreCommon."ToInterval" ( FrailtyDeviceApplied.effective ) ends during day of "Measurement Period"
+    )
+    or exists ( [Condition: "Frailty Diagnosis"] FrailtyDiagnosis
+        where QICoreCommon."ToPrevalenceInterval" ( FrailtyDiagnosis ) overlaps "Measurement Period"
+    )
+    or exists ( (Status."Finished Encounter"([Encounter: "Frailty Encounter"])) FrailtyEncounter
+        where QICoreCommon."ToInterval" ( FrailtyEncounter.period ) overlaps "Measurement Period"
+    )
+    or exists ( (Status."Initial or Final Observation"([Observation: "Frailty Symptom"])) FrailtySymptom
+        where QICoreCommon."ToInterval" ( FrailtySymptom.effective ) overlaps "Measurement Period"
+    )
 
-/*
-ISSUE: Encounter.diagnosis element missing
-define "Advanced Illness and Frailty Exclusion Including Over Age 80":
-	//If the measure includes populations age 80 and older, then use this logic:
-	(
-        Global."CalendarAgeInYearsAt"(Patient.birthDate, start of "Measurement Period")in Interval[66, 80]
-            and "Has Criteria Indicating Frailty"
-            and ( Count("Outpatient Encounters with Advanced Illness")>= 2
-                or exists ( "Inpatient Encounter with Advanced Illness" )
-                or exists "Dementia Medications In Year Before or During Measurement Period"
-            )
-	)
-		or (
-            Global."CalendarAgeInYearsAt"(FHIRHelpers.ToDate(Patient.birthDate), start of "Measurement Period")>= 81
-			    and "Has Criteria Indicating Frailty"
-		)
+define "Has Two Outpatient Encounters with Advanced Illness on Different Dates of Service":
+  exists ( from
+      "Outpatient Encounters with Advanced Illness" OutpatientEncounter1,
+      "Outpatient Encounters with Advanced Illness" OutpatientEncounter2
+      where OutpatientEncounter2.period ends 1 day or more after day of 
+      end of OutpatientEncounter1.period
+      return OutpatientEncounter1
+  )
 
-define "Advanced Illness and Frailty Exclusion Including Under Age 80":
-	//If the measure does NOT include populations age 80 and older, then use this logic:
-	Global."CalendarAgeInYearsAt"(Patient.birthDate, start of "Measurement Period")>= 65
-        and "Has Criteria Indicating Frailty"
-        and ( Count("Outpatient Encounters with Advanced Illness")>= 2
-            or exists ( "Inpatient Encounter with Advanced Illness" )
-            or exists "Dementia Medications In Year Before or During Measurement Period"
-        )
-*/
+// define "Outpatient Encounters with Advanced Illness":
+//   (Status."Finished Encounter"([Encounter: "Outpatient"]
+//       union [Encounter: "Observation"]
+//       union [Encounter: "Emergency Department Visit"]
+//       union [Encounter: "Nonacute Inpatient"]
+//     )) OutpatientEncounter
+//     with [Condition: "Advanced Illness"] AdvancedIllnessDiagnosis
+//       such that AdvancedIllnessDiagnosis in Global.EncounterDiagnosis(OutpatientEncounter)
+//         and QICoreCommon."ToInterval" ( OutpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
+//         end of "Measurement Period"]
 
-define "Has Spent More Than 90 Days in Long Term Care":
-	"Days Spent in Long Term Care During Measurement Period" > 90
+//Encounter diagnosis workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/8 
+define "Outpatient Encounters with Advanced Illness":
+   (Status."Finished Encounter"( [Encounter: "Outpatient"]
+    union [Encounter: "Observation"]
+    union [Encounter: "Emergency Department Visit"]
+    union [Encounter: "Nonacute Inpatient"] )) OutpatientEncounter
+        where "EncounterDiagnosis" ( OutpatientEncounter, [Condition: "Advanced Illness"] )
+        and QICoreCommon."ToInterval" ( OutpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
+        end of "Measurement Period"]
 
-define "Days Spent in Long Term Care During Measurement Period":
-	"CumulativeDays"("Long Term Care Periods During Measurement Period")
+//Local version of Global."EncounterDiagnosis" due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/8 
+define function "EncounterDiagnosis"(Encounter Encounter, Conditions List<Condition>  ):
+  (Encounter.diagnosis D
+    return singleton from ([Condition] C where C.id = D.condition.reference.getId())) is not null
 
-define function "CumulativeDays"(Intervals List<Interval<DateTime>> ):
-	Sum((collapse Intervals)CollapsedInterval
-			return all duration in days of CollapsedInterval
-	)
+define fluent function getId(uri String ):
+  Last(Split(uri, '/'))
+
+// define "Has Inpatient Encounter with Advanced Illness":
+//   exists ( ( Status."Finished Encounter"([Encounter: "Acute Inpatient"])) InpatientEncounter
+//       with [Condition: "Advanced Illness"] AdvancedIllnessDiagnosis
+//         such that AdvancedIllnessDiagnosis in Global.EncounterDiagnosis ( InpatientEncounter )
+//         where Global.EncounterDiagnosis (InpatientEncounter) in [Condition: "Advanced Illness"]
+//           and QICoreCommon."ToInterval" ( InpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
+//           end of "Measurement Period"]
+//   )
+
+//Encounter diagnosis workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/8 
+define "Has Inpatient Encounter with Advanced Illness":
+  exists ( ( Status."Finished Encounter"([Encounter: "Acute Inpatient"])) InpatientEncounter
+      where "EncounterDiagnosis" ( InpatientEncounter, [Condition: "Advanced Illness"] )
+        and QICoreCommon."ToInterval" ( InpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
+          end of "Measurement Period"]
+  )
+
+define "Has Dementia Medications in Year Before or During Measurement Period":
+  exists (( Status."Active Medication"([MedicationRequest: "Dementia Medications"])) DementiaMedication
+      where CMD."MedicationRequestPeriod" ( DementiaMedication ) overlaps Interval[start of "Measurement Period" - 1 year, 
+        end of "Measurement Period"]
+  )
+
+// AgeInYearsAt workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
+define "Is Age 66 or Older Living Long Term in a Nursing Home":
+  // AgeInYearsAt(date from 
+  //   end of "Measurement Period"
+  // )>= 66
+CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") >= 66
+    and ( ( Last( (Status."Final Survey Observation"([Observation: "Housing status"])) HousingStatus    
+          where QICoreCommon."ToInterval"(HousingStatus.effective)ends on or before 
+          end of "Measurement Period"
+          sort by 
+          end of QICoreCommon."ToInterval"(effective)asc
+      )) LastHousingStatus
+        where LastHousingStatus.value ~ "Lives in a nursing home (finding)"
+    ) is not null
