@@ -31,8 +31,8 @@ library MATGlobalCommonFunctionsQICore4 version '7.0.000'
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
-include FHIRCommon version '4.0.012' called FHIRCommon
+include FHIRHelpers version '4.0.013' called FHIRHelpers
+include QICoreCommon version '1.0.000' called QICoreCommon
 
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
@@ -338,18 +338,23 @@ define fluent function firstInpatientIntensiveCareUnit(Encounter Encounter ):
 Returns the Condition resources referenced by the diagnosis element of the Encounter
 */
 define function "EncounterDiagnosis"(Encounter Encounter ):
-  Encounter.diagnosis D
-    return singleton from ([Condition] C where C.id = D.condition.reference.getId())
+  {
+	Encounter.diagnosis D
+		return singleton from ([Condition] C where C.id = D.condition.reference.getId())
+  }
 
 /*
 Returns the Condition resources referenced by the diagnosis element of the Encounter
 */
 define fluent function encounterDiagnosis(Encounter Encounter ):
-  Encounter.diagnosis D
-    return singleton from ([Condition] C where C.id = D.condition.reference.getId())
+  {
+    Encounter.diagnosis D
+      return singleton from ([Condition] C where C.id = D.condition.reference.getId())
+  }
 
 /*
 Returns the Condition resource for the given reference
+@deprecated
 */
 define function "GetCondition"(reference Reference):
   singleton from ([Condition] C where C.id = reference.reference.getId())
@@ -364,19 +369,23 @@ define fluent function getCondition(reference Reference):
 Returns the condition that is specified as the principal diagnosis for the encounter
 */
 define function "PrincipalDiagnosis"(Encounter Encounter ):
-  // TODO: Encounter.diagnosis is coming through as a singleton, issue with the model info generation
-  (Encounter.diagnosis D where D.rank = 1) PD
-  //(singleton from (Encounter.diagnosis D where D.rank = 1)) PD
-  		return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
+  {
+	// TODO: Encounter.diagnosis is coming through as a singleton, issue with the model info generation
+	(Encounter.diagnosis D where D.rank = 1) PD
+	//(singleton from (Encounter.diagnosis D where D.rank = 1)) PD
+			return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
+  }
 
 /*
 Returns the condition that is specified as the principal diagnosis for the encounter
 */
 define fluent function principalDiagnosis(Encounter Encounter ):
-  // TODO: Encounter.diagnosis is coming through as a singleton, issue with the model info generation
-  (Encounter.diagnosis D where D.rank = 1) PD
-  //(singleton from (Encounter.diagnosis D where D.rank = 1)) PD
-  		return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
+  {
+	// TODO: Encounter.diagnosis is coming through as a singleton, issue with the model info generation
+	(Encounter.diagnosis D where D.rank = 1) PD
+	//(singleton from (Encounter.diagnosis D where D.rank = 1)) PD
+			return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
+  }
 
 /*
 Returns the Location resource specified by the given reference

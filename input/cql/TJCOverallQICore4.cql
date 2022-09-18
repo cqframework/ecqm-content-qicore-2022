@@ -41,8 +41,13 @@ context Patient
 
 define "All Stroke Encounter":
   "Non Elective Inpatient Encounter" NonElectiveEncounter
-    where Global.PrincipalDiagnosis(NonElectiveEncounter).code in "Hemorrhagic Stroke"
-      or Global.PrincipalDiagnosis(NonElectiveEncounter).code in "Ischemic Stroke"
+    where exists ((Global.PrincipalDiagnosis(NonElectiveEncounter)) E where E.code in "Hemorrhagic Stroke")
+      or exists ((Global.PrincipalDiagnosis(NonElectiveEncounter)) E where E.code in "Ischemic Stroke")
+
+define "All Stroke Encounter (2)":
+  "Non Elective Inpatient Encounter" NonElectiveEncounter
+    where NonElectiveEncounter.principalDiagnosis().code in "Hemorrhagic Stroke"
+      or NonElectiveEncounter.principalDiagnosis().code in "Ischemic Stroke"
 
 define "Ischemic Stroke Encounter":
   "Encounter with Principal Diagnosis and Age" EncounterWithAge

@@ -7,7 +7,7 @@ library QICoreCommon version '1.0.000'
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012'
+include FHIRHelpers version '4.0.013'
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -160,6 +160,15 @@ if condition.clinicalStatus ~ "active"
   Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition)]
 else
   Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition))
+
+/*
+Returns the tail of the given uri (i.e. everything after the last slash in the URI).
+*/
+define function GetId(uri String ):
+  Last(Split(uri, '/'))
+
+define fluent function getId(uri String):
+  Last(Split(uri, '/'))
 
 define function "HasStart"(period Interval<DateTime> ):
   not ( start of period is null

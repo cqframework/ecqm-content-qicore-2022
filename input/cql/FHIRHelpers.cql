@@ -7,8 +7,9 @@
 @allowFluent: true
 
 @update: Refresh based on AU 2022 content; version 4.0.012 for use in the ecqm-content-qicore-2022 repository
+@update: Added ToValueSet function; version 4.0.013 for use in the ecqm-content-qicore-2022 repository
 */
-library FHIRHelpers version '4.0.012'
+library FHIRHelpers version '4.0.013'
 
 using FHIR version '4.0.1'
 
@@ -115,6 +116,14 @@ define function ToConcept(concept FHIR.CodeableConcept):
         System.Concept {
             codes: concept.coding C return ToCode(C),
             display: concept.text.value
+        }
+
+define function ToValueSet(uri String):
+    if uri is null then
+        null
+    else
+        System.ValueSet {
+            id: uri
         }
 
 define function reference(reference String):
