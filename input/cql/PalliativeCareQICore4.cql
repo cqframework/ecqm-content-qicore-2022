@@ -7,7 +7,7 @@ or recommendation for guidance. Tests are available for this content.
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRHelpers version '4.0.013' called FHIRHelpers
 // include FHIRCommon version '4.0.012' called FHIRCommon //https://github.com/cqframework/ecqm-content-qicore-2022/issues/5
 include QICoreCommon version '1.0.000' called QICoreCommon
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global

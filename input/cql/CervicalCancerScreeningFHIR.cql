@@ -7,7 +7,7 @@ or recommendation for guidance. Tests are available for this content.
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRHelpers version '4.0.013' called FHIRHelpers
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 include StatusFHIR version '1.0.0' called Status
@@ -34,9 +34,9 @@ context Patient
 
 // AgeInYearsAt workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
 define "Initial Population":
-  // AgeInYearsAt(date from 
-  //     end of "Measurement Period"
-  //   ) in Interval[24, 64]
+   //AgeInYearsAt(date from 
+   //    end of "Measurement Period"
+   //  ) in Interval[24, 64]
   CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") in Interval[24, 64]
       and Patient.gender = 'female'
       and exists "Qualifying Encounters"

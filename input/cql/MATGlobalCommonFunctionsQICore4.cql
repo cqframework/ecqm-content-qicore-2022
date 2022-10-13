@@ -338,19 +338,15 @@ define fluent function firstInpatientIntensiveCareUnit(Encounter Encounter ):
 Returns the Condition resources referenced by the diagnosis element of the Encounter
 */
 define function "EncounterDiagnosis"(Encounter Encounter ):
-  {
-	Encounter.diagnosis D
-		return singleton from ([Condition] C where C.id = D.condition.reference.getId())
-  }
+  Encounter.diagnosis D
+	return singleton from ([Condition] C where C.id = D.condition.reference.getId())
 
 /*
 Returns the Condition resources referenced by the diagnosis element of the Encounter
 */
 define fluent function encounterDiagnosis(Encounter Encounter ):
-  {
-    Encounter.diagnosis D
-      return singleton from ([Condition] C where C.id = D.condition.reference.getId())
-  }
+  Encounter.diagnosis D
+    return singleton from ([Condition] C where C.id = D.condition.reference.getId())
 
 /*
 Returns the Condition resource for the given reference
