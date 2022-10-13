@@ -365,23 +365,17 @@ define fluent function getCondition(reference Reference):
 Returns the condition that is specified as the principal diagnosis for the encounter
 */
 define function "PrincipalDiagnosis"(Encounter Encounter ):
-  {
-	// TODO: Encounter.diagnosis is coming through as a singleton, issue with the model info generation
-	(Encounter.diagnosis D where D.rank = 1) PD
-	//(singleton from (Encounter.diagnosis D where D.rank = 1)) PD
-			return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
-  }
+	singleton from ((Encounter.diagnosis D where D.rank = 1) PD
+      return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
+	)
 
 /*
 Returns the condition that is specified as the principal diagnosis for the encounter
 */
 define fluent function principalDiagnosis(Encounter Encounter ):
-  {
-	// TODO: Encounter.diagnosis is coming through as a singleton, issue with the model info generation
-	(Encounter.diagnosis D where D.rank = 1) PD
-	//(singleton from (Encounter.diagnosis D where D.rank = 1)) PD
-			return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
-  }
+	singleton from ((Encounter.diagnosis D where D.rank = 1) PD
+      return singleton from ([Condition] C where C.id = PD.condition.reference.getId())
+	)
 
 /*
 Returns the Location resource specified by the given reference
