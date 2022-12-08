@@ -76,8 +76,8 @@ define "Has Criteria Indicating Frailty":
       where QICoreCommon."ToInterval" ( FrailtyDeviceOrder.authoredOn ) during day of "Measurement Period"
   )
     or exists ( (Status."Final Survey Observation"([Observation: "Medical equipment used"])) FrailtyDeviceApplied
-        where //FrailtyDeviceApplied.value in "Frailty Device" and //InValueSet error per https://github.com/cqframework/vscode-cql/issues/16
-          QICoreCommon."ToInterval" ( FrailtyDeviceApplied.effective ) ends during day of "Measurement Period"
+        where FrailtyDeviceApplied.value as Concept in "Frailty Device"
+          and QICoreCommon."ToInterval" ( FrailtyDeviceApplied.effective ) ends during day of "Measurement Period"
     )
     or exists ( [Condition: "Frailty Diagnosis"] FrailtyDiagnosis
         where QICoreCommon."ToPrevalenceInterval" ( FrailtyDiagnosis ) overlaps "Measurement Period"
