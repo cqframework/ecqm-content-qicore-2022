@@ -34,10 +34,8 @@ context Patient
 
 // AgeInYearsAt workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
 define "Initial Population":
-   //AgeInYearsAt(date from 
-   //    end of "Measurement Period"
-   //  ) in Interval[24, 64]
-  CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") in Interval[24, 64]
+  AgeInYearsAt(date from end of "Measurement Period") in Interval[24, 64]
+  //CalculateAgeInYearsAt(Patient.birthDate, date from end of "Measurement Period") in Interval[24, 64]
       and Patient.gender = 'female'
       and exists "Qualifying Encounters"
 

@@ -13,6 +13,9 @@ Changed to provide Date-level calculation, rather than DateTime
 v2.0.000
 Updated as part of 2022 AU refresh
 Refactored to use QICoreCommon
+v2.0.001
+Fixed invalid unit error evaluating RolloutIntervals
+Fixed RolloutIntervals incorrectly eliminating duplicates
 */
 library CumulativeMedicationDurationQICore4 version '2.0.000'
 
@@ -465,7 +468,7 @@ define function RolloutIntervals(intervals List<Interval<DateTime>>):
         I X
           let
             S: Max({ end of Last(R) + 1 day, start of X }),
-            E: S + duration in days of X
+            E: S + Quantity(Coalesce(duration in days of X, 0), 'day')
           return Interval[S, E]
       })
 
