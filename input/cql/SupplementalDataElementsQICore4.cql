@@ -23,7 +23,7 @@ context Patient
 
 define "SDE Ethnicity":
   Patient.ethnicity E
-    return Concept {
+    return Tuple {
       codes: { E.ombCategory } union E.detailed,
       display: E.text
     }
@@ -37,7 +37,7 @@ define "SDE Payer":
 
 define "SDE Race":
   Patient.race R
-    return Concept {
+    return Tuple {
       codes: R.ombCategory union R.detailed,
       display: R.text
     }
