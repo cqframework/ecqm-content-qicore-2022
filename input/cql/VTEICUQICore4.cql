@@ -9,7 +9,7 @@ Updated FHIR version to 4.0.1
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '4.1.000'
 
 // NOTE: BTR 2019-07-30: Updated dependencies
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global

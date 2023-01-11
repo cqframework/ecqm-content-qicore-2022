@@ -81,7 +81,7 @@ define "Numerator":
       or ( not ( "Diabetic Retinopathy Overlapping Measurement Period" )
         and exists ( "Retinal Exam in Measurement Period or Year Prior" )
          )
-                                
+
 define "Diabetic Retinopathy Overlapping Measurement Period":
   exists (Status."Active Condition"([Condition: "Diabetic Retinopathy"]) Retinopathy
             where QICoreCommon."ToPrevalenceInterval"(Retinopathy) overlaps "Measurement Period"
