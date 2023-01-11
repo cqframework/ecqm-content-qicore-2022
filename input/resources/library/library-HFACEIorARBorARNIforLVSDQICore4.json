@@ -1,6 +1,6 @@
 {
   "resourceType": "Library",
-  "id": "HFACEIorARBorARNIforLVSD",
+  "id": "HFACEIorARBorARNIforLVSDQICore4",
   "extension": [
     {
       "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
@@ -9,9 +9,9 @@
       }
     }
   ],
-  "url": "http://ecqi.healthit.gov/ecqms/Library/HFACEIorARBorARNIforLVSD",
+  "url": "http://ecqi.healthit.gov/ecqms/Library/HFACEIorARBorARNIforLVSDQICore4",
   "version": "1.0.000",
-  "name": "HFACEIorARBorARNIforLVSD",
+  "name": "HFACEIorARBorARNIforLVSDQICore4",
   "relatedArtifact": [
     {
       "type": "depends-on",
