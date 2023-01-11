@@ -8,7 +8,7 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.0.1'
 
-include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Common
+include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Common
 include AdultOutpatientEncountersQICore4 version '2.0.000' called AdultOutpatientEncounters
 include SupplementalDataElementsQICore4 version '2.0.0' called SDE
 include AdvancedIllnessandFrailtyExclusionQICore4 version '5.0.000' called FrailtyLTI

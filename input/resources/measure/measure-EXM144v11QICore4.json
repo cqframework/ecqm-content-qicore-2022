@@ -1,1735 +1,1212 @@
 {
-    "resourceType": "Measure",
-    "id": "EXM144v11QICore4",
-    "meta": {
-        "versionId": "1",
-        "lastUpdated": "2022-08-14T09:30:08.000-06:00",
-        "source": "#CF7tG85423egh7U5",
-        "profile": [
-            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/proportion-measure-cqfm",
-            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"
-        ]
+  "resourceType": "Measure",
+  "id": "EXM144v11QICore4",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2022-08-14T09:30:08.000-06:00",
+    "source": "#CF7tG85423egh7U5",
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/proportion-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm" ]
+  },
+  "language": "en",
+  "contained": [ {
+    "resourceType": "Library",
+    "id": "effective-data-requirements",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://snomed.info/sct",
+        "code": "134401001",
+        "display": "Left ventricular systolic dysfunction (disorder)"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://snomed.info/sct",
+        "code": "373254001",
+        "display": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SupplementalDataElementsQICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Sex"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Sex\":\n  case\n      when Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }\n      when Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }\n      else null\n    end"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 0
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Sex"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Sex\":\n  SDE.\"SDE Sex\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 1
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Heart Failure Outpatient Encounter"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Heart Failure Outpatient Encounter\":\n  ( [\"Encounter\": \"Care Services in Long Term Residential Facility\"]\n      union [\"Encounter\": \"Home Healthcare Services\"]\n      union [\"Encounter\": \"Nursing Facility Visit\"]\n      union [\"Encounter\": \"Office Visit\"]\n      union [\"Encounter\": \"Outpatient Consultation\"] ) QualifyingEncounter\n    with [\"Condition\": \"Heart Failure\"] HeartFailure\n      such that HeartFailure.toPrevalenceInterval() overlaps QualifyingEncounter.period  \n        and HeartFailure.isConfirmedActiveDiagnosis()\n    where QualifyingEncounter.period during \"Measurement Period\"\n      and QualifyingEncounter.isFinished()"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 2
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Moderate or Severe LVSD Observations"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Moderate or Severe LVSD Observations\":\n  [\"Observation\": \"Ejection Fraction\"] EjectionFraction\n    where EjectionFraction.value <= 40 '%'\n      and EjectionFraction.status in {'final', 'amended', 'corrected'}"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 3
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Moderate or Severe LVSD Conditions"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Moderate or Severe LVSD Conditions\":\n  ( [\"Condition\": \"Moderate or Severe LVSD\"]\n      union ( [\"Condition\": \"Left ventricular systolic dysfunction (disorder)\"] LeftVentricular\n                where LeftVentricular.severity in \"Moderate or Severe\"\n              )\n    ) LVSD\n    where LVSD.isConfirmedActiveDiagnosis()"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 4
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD"
+      }, {
+        "url": "statement",
+        "valueString": "// define \"Moderate or Severe LVSD Findings\":\n//   ( [\"Observation\": \"Ejection Fraction\"] EjectionFraction\n//       where EjectionFraction.value <= 40 '%'\n//         and EjectionFraction.status in {'final', 'amended', 'corrected'}\n//     )\n//   union ( \n//     ( [\"Condition\": \"Moderate or Severe LVSD\"]\n//         union ( [\"Condition\": \"Left ventricular systolic dysfunction (disorder)\"] LeftVentricular\n//                   where LeftVentricular.severity in \"Moderate or Severe\"\n//                 )\n//       ) LVSD\n//       where LVSD.isConfirmedActiveDiagnosis()\n//     )\n\n//Execution had issues with returning the expected data when Observation and Condition \n//were joined with a union so made two separate definitions\ndefine \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\":\n  ( \"Heart Failure Outpatient Encounter\" HFOutpatientEncounter\n      with \"Moderate or Severe LVSD Observations\" LVSDObservations\n        such that LVSDObservations.effective.toInterval() starts before end of HFOutpatientEncounter.period )\n  union (\n    \"Heart Failure Outpatient Encounter\" HFOutpatientEncounter\n      with \"Moderate or Severe LVSD Conditions\" LVSDConditions\n        such that LVSDConditions.onset.toInterval() starts before end of HFOutpatientEncounter.period\n  )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 5
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Beta Blocker Therapy for LVSD Ordered"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Beta Blocker Therapy for LVSD Ordered\":\n  exists ( \n            [\"MedicationRequest\": \"Beta Blocker Therapy for LVSD\"] BetaBlockerOrdered\n              where BetaBlockerOrdered.isOrderedDuringHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 6
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Is Currently Taking Beta Blocker Therapy for LVSD"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Is Currently Taking Beta Blocker Therapy for LVSD\":\n  exists ( \n            [\"MedicationRequest\": \"Beta Blocker Therapy for LVSD\"] ActiveBetaBlocker\n              where ActiveBetaBlocker.overlapsAfterHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 7
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Numerator"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Numerator\":\n  \"Has Beta Blocker Therapy for LVSD Ordered\"\n    or \"Is Currently Taking Beta Blocker Therapy for LVSD\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 8
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Qualifying Encounter During Measurement Period"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Qualifying Encounter During Measurement Period\":\n  ( [\"Encounter\": \"Care Services in Long Term Residential Facility\"]\n    union [\"Encounter\": \"Home Healthcare Services\"]\n    union [\"Encounter\": \"Nursing Facility Visit\"]\n    union [\"Encounter\": \"Office Visit\"]\n    union [\"Encounter\": \"Outpatient Consultation\"]\n    union [\"Encounter\": \"Patient Provider Interaction\"] ) ValidEncounter\n    where ValidEncounter.period during \"Measurement Period\"\n      and ValidEncounter.isFinished()"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 9
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Initial Population"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Initial Population\":\n//curent problem with AgeInYearsAt required a modified approach - refer to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6\n  CalculateAgeInYearsAt(Patient.birthDate, date from start of \"Measurement Period\")>= 18\n    and Count(AHA.\"Qualifying Encounter During Measurement Period\")>= 2\n    and exists AHA.\"Heart Failure Outpatient Encounter\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 10
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Denominator"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator\":\n  \"Initial Population\"\n    and exists AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 11
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SupplementalDataElementsQICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Payer"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Payer\":\n  [Coverage: type in \"Payer\"] Payer\n    return {\n      code: Payer.type,\n      period: Payer.period\n    }"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 12
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Payer"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Payer\":\n  SDE.\"SDE Payer\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 13
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SupplementalDataElementsQICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Ethnicity"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Ethnicity\":\n  Patient.ethnicity E\n    return Tuple {\n      codes: { E.ombCategory } union E.detailed,\n      display: E.text\n    }"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 14
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Ethnicity"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Ethnicity\":\n  SDE.\"SDE Ethnicity\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 15
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Heart Transplant"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Heart Transplant\":\n  exists (\n          [\"Procedure\": \"Heart Transplant\"] HeartTransplant\n            with \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n              such that HeartTransplant.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n            where HeartTransplant.status = 'completed'\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 16
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Heart Transplant Related Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Heart Transplant Related Diagnosis\":\n  exists ( \n          [\"Condition\": \"Heart Transplant Related Diagnoses\"] HeartTransplantCondition\n            with \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n              such that HeartTransplantCondition.toPrevalenceInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n            where HeartTransplantCondition.isConfirmedActiveDiagnosis()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 17
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Left Ventricular Assist Device"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Left Ventricular Assist Device\":\n  exists (\n            [\"Procedure\": \"Left Ventricular Assist Device Placement\"] LVADOutpatient\n              with \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n                such that LVADOutpatient.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n              where LVADOutpatient.status = 'completed'\n            )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 18
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "AHAOverallQICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Left Ventricular Assist Device Related Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Left Ventricular Assist Device Related Diagnosis\":\n  exists (\n            [\"Condition\": \"Left Ventricular Assist Device Related Diagnoses\"] LVADCondition\n              with \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n                such that LVADCondition.toPrevalenceInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period  \n              where LVADCondition.isConfirmedActiveDiagnosis()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 19
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Denominator Exclusions"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator Exclusions\":\n  AHA.\"Has Heart Transplant\"\n    or AHA.\"Has Heart Transplant Related Diagnosis\"\n    or AHA.\"Has Left Ventricular Assist Device\"\n    or AHA.\"Has Left Ventricular Assist Device Related Diagnosis\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 20
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SupplementalDataElementsQICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Race"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Race\":\n  Patient.race R\n    return Tuple {\n      codes: R.ombCategory union R.detailed,\n      display: R.text\n    }"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 21
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "SDE Race"
+      }, {
+        "url": "statement",
+        "valueString": "define \"SDE Race\":\n  SDE.\"SDE Race\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 22
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Consecutive Heart Rates Less than 50"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Consecutive Heart Rates Less than 50\":\n  exists ( from\n              [\"observation-heartrate\"] HeartRate,\n              AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n                  let PriorHeartRate: \n                      Last ( [\"observation-heartrate\"] MostRecentPriorHeartRate\n                          where MostRecentPriorHeartRate.overlapsAfterHeartFailureOutpatientEncounter()\n                              and MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()\n                          sort by start of effective.toInterval() \n                          )\n                  where HeartRate.effective.toInterval() during ModerateOrSevereLVSDHFOutpatientEncounter.period\n                      and HeartRate.status in {'final', 'amended', 'corrected'}\n                      and HeartRate.value < 50 '/min'\n                      and PriorHeartRate.value < 50 '/min'\n                  return HeartRate\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 23
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD\":\n  exists ( \n            [\"MedicationNotRequested\"] NoBetaBlockerOrdered\n              with AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n                such that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period\n              where NoBetaBlockerOrdered.medication in \"Beta Blocker Therapy for LVSD\"\n                and ( NoBetaBlockerOrdered.reasonCode in \"Medical Reason\"\n                      or NoBetaBlockerOrdered.reasonCode in \"Patient Reason\")\n             )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 24
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Arrhythmia Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Arrhythmia Diagnosis\":\n  exists ( \n            [\"Condition\": \"Arrhythmia\"] Arrhythmia\n              where Arrhythmia.overlapsHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 25
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Hypotension Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Hypotension Diagnosis\":\n  exists ( \n            [\"Condition\": \"Hypotension\"] Hypotension\n              where Hypotension.overlapsHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 26
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Asthma Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Asthma Diagnosis\":\n  exists ( \n            [\"Condition\": \"Asthma\"] Asthma\n              where Asthma.overlapsHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 27
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy\":\n  exists ( \n          ( [\"Condition\": \"Allergy to Beta Blocker Therapy\"]\n             union [\"Condition\": \"Intolerance to Beta Blocker Therapy\"] ) BetaBlockerAllergyOrIntoleranceDiagnosis\n            where BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 28
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Bradycardia Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Bradycardia Diagnosis\":\n  exists ( \n            [\"Condition\": \"Bradycardia\"] Bradycardia\n              where Bradycardia.overlapsHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 29
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Allergy or Intolerance to Beta Blocker Therapy Ingredient\":\n  exists ( \n            ( [\"AllergyIntolerance\": \"Beta Blocker Therapy Ingredient\"]\n                union [\"AllergyIntolerance\": \"Substance with beta adrenergic receptor antagonist mechanism of action (substance)\"] ) BetaBlockerAllergyIntolerance\n              where BetaBlockerAllergyIntolerance.overlapsAfterHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 30
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Atrioventricular Block Diagnosis"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Atrioventricular Block Diagnosis\":\n  exists ( \n            [\"Condition\": \"Atrioventricular Block\"] AtrioventricularBlock\n              where AtrioventricularBlock.overlapsHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 31
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Diagnosis of Cardiac Pacer in Situ"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Diagnosis of Cardiac Pacer in Situ\":\n  exists ( \n            [\"Condition\": \"Cardiac Pacer in Situ\"] CardiacPacerDiagnosis\n              where CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 32
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Has Cardiac Pacer Device Implanted"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Cardiac Pacer Device Implanted\":\n  exists ( \n            [\"Procedure\": \"Cardiac Pacer\"] ImplantedCardiacPacer\n              with AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n                such that ImplantedCardiacPacer.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n          )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 33
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Atrioventricular Block without Cardiac Pacer"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Atrioventricular Block without Cardiac Pacer\":\n  \"Has Atrioventricular Block Diagnosis\"\n    and not \"Has Diagnosis of Cardiac Pacer in Situ\"\n    and not \"Has Cardiac Pacer Device Implanted\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 34
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "EXM144v11QICore4"
+      }, {
+        "url": "name",
+        "valueString": "Denominator Exceptions"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator Exceptions\":\n  \"Has Consecutive Heart Rates Less than 50\"\n    or \"Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD\"\n    or \"Has Arrhythmia Diagnosis\"\n    or \"Has Hypotension Diagnosis\"\n    or \"Has Asthma Diagnosis\"\n    or \"Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy\"\n    or \"Has Bradycardia Diagnosis\"\n    or \"Has Allergy or Intolerance to Beta Blocker Therapy Ingredient\"\n    or \"Atrioventricular Block without Cardiac Pacer\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 35
+      } ]
+    } ],
+    "status": "active",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "module-definition"
+      } ]
     },
-    "language": "en",
-    "contained": [{
-            "resourceType": "Library",
-            "id": "effective-data-requirements",
-            "extension": [{
-                "type": "depends-on",
-                "display": "QICore model information",
-                "resource": "http://hl7.org/fhir/us/qicore/Library/QICore-ModelInfo|4.1.1"
-                }, {
-                    "type": "depends-on",
-                    "display": "FHIR model information",
-                    "resource": "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-                        "code": "active",
-                        "display": "Active"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-                        "code": "confirmed",
-                        "display": "Confirmed"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-                        "code": "active",
-                        "display": "Active"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-                        "code": "recurrence",
-                        "display": "Recurrence"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-                        "code": "Relapse"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-                        "code": "confirmed",
-                        "display": "Confirmed"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://snomed.info/sct",
-                        "code": "373254001",
-                        "display": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://snomed.info/sct",
-                        "code": "8867-4",
-                        "display": "Heart rate"
-                    }
-                }, {
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
-                    "valueCoding": {
-                        "system": "http://loinc.org",
-                        "code": "134401001",
-                        "display": "Left ventricular systolic dysfunction (disorder)"
-                    }
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "SupplementalDataElementsQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Sex"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Sex\":\n\tcase\n\t\t\twhen Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }\n\t\t\twhen Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }\n\t\t\telse null\n\t\tend"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Sex"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Sex\":\n  SDE.\"SDE Sex\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "SupplementalDataElementsQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Payer"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Payer\":\n\t[Coverage: type in \"Payer\"] Payer\n\t\treturn {\n\t\t\tcode: Payer.type,\n\t\t\tperiod: Payer.period\n\t\t}"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Payer"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Payer\":\n  SDE.\"SDE Payer\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "SupplementalDataElementsQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Ethnicity"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Ethnicity\":\n\tPatient.ethnicity E\n\t\treturn Concept {\n\t\t\tcodes: { E.ombCategory } union E.detailed,\n\t\t\tdisplay: E.text\n\t\t}"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Ethnicity"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Ethnicity\":\n  SDE.\"SDE Ethnicity\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "SupplementalDataElementsQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Race"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Race\":\n\tPatient.race R\n\t\treturn Concept {\n\t\t\tcodes: R.ombCategory union R.detailed,\n\t\t\tdisplay: R.text\n\t\t}"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "SDE Race"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"SDE Race\":\n  SDE.\"SDE Race\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Initial Population"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Initial Population\":\n\tCalculateAgeInYearsAt(Patient.birthDate, date from start of \"Measurement Period\") >= 18\n\t\tand Count(AHA.\"Qualifying Encounter During Measurement Period\") >= 2\n\t\tand exists AHA.\"Heart Failure Outpatient Encounter\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Qualifying Encounter During Measurement Period"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Qualifying Encounter During Measurement Period\":\n\t( [\"Encounter\": \"Care Services in Long Term Residential Facility\"]\n\t\t\t\t\t\t\t\t\t\tunion [\"Encounter\": \"Home Healthcare Services\"]\n\t\t\t\t\t\t\t\t\t\tunion [\"Encounter\": \"Nursing Facility Visit\"]\n\t\t\t\t\t\t\t\t\t\tunion [\"Encounter\": \"Office Visit\"]\n\t\t\t\t\t\t\t\t\t\tunion [\"Encounter\": \"Outpatient Consultation\"]\n\t\t\t\t\t\t\t\t\t\tunion [\"Encounter\": \"Patient Provider Interaction\"] ) ValidEncounter\n\t\t\t\t\t\t\t\t\t\twhere ValidEncounter.period during \"Measurement Period\"\n\t\t\t\t\t\t\t\t\t\t\tand ValidEncounter.isFinished()"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "isFinished"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function isFinished(Visit Encounter):\n\t(Visit encounter\n\t\twhere encounter.status = 'finished') is not null"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Heart Failure Outpatient Encounter"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Heart Failure Outpatient Encounter\":\n\t( [\"Encounter\": \"Care Services in Long Term Residential Facility\"]\n\t\t\tunion [\"Encounter\": \"Home Healthcare Services\"]\n\t\t\tunion [\"Encounter\": \"Nursing Facility Visit\"]\n\t\t\tunion [\"Encounter\": \"Office Visit\"]\n\t\t\tunion [\"Encounter\": \"Outpatient Consultation\"] ) QualifyingEncounter\n\t\twith [\"Condition\": \"Heart Failure\"] HeartFailure\n\t\t\tsuch that HeartFailure.toPrevalenceInterval() overlaps QualifyingEncounter.period\t\n\t\t\t\tand HeartFailure.isConfirmedActiveDiagnosis()\n\t\twhere QualifyingEncounter.period during \"Measurement Period\"\n\t\t\tand QualifyingEncounter.isFinished()"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "QICoreCommon"
-                        }, {
-                            "url": "name",
-                            "valueString": "toPrevalenceInterval"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function toPrevalenceInterval(condition Condition):\nif condition.clinicalStatus ~ \"active\"\n\tor condition.clinicalStatus ~ \"recurrence\"\n\tor condition.clinicalStatus ~ \"relapse\" then\n\tInterval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition)]\nelse\n\tInterval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition))"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "QICoreCommon"
-                        }, {
-                            "url": "name",
-                            "valueString": "ToInterval"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define function ToInterval(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>>):\n\tcase\n\t\twhen choice is DateTime then\n\t\t\tInterval[choice as DateTime, choice as DateTime]\n\t\twhen choice is Interval<DateTime> then\n\t\t\tchoice as Interval<DateTime>\n\t\twhen choice is Quantity then\n\t\t\tInterval[Patient.birthDate + (choice as Quantity),\n\t\t\t\tPatient.birthDate + (choice as Quantity) + 1 year)\n\t\twhen choice is Interval<Quantity> then\n\t\t\tInterval[Patient.birthDate + (choice.low as Quantity),\n\t\t\t\tPatient.birthDate + (choice.high as Quantity) + 1 year)\n\t\telse\n\t\t\tnull as Interval<DateTime>\n\tend"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "QICoreCommon"
-                        }, {
-                            "url": "name",
-                            "valueString": "ToAbatementInterval"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define function ToAbatementInterval(condition Condition):\n\tif condition.abatement is DateTime then\n\t\tInterval[condition.abatement as DateTime, condition.abatement as DateTime]\n\telse if condition.abatement is Quantity then\n\t\tInterval[Patient.birthDate + (condition.abatement as Quantity),\n\t\t\tPatient.birthDate + (condition.abatement as Quantity) + 1 year)\n\telse if condition.abatement is Interval<Quantity> then\n\t\tInterval[Patient.birthDate + (condition.abatement.low as Quantity),\n\t\t\tPatient.birthDate + (condition.abatement.high as Quantity) + 1 year)\n\telse if condition.abatement is Interval<DateTime> then\n\t\tInterval[condition.abatement.low, condition.abatement.high)\n\telse null as Interval<DateTime>"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "isConfirmedActiveDiagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function isConfirmedActiveDiagnosis(Diagnosis Condition):\n\t( Diagnosis Dx\n\t\twhere Dx.clinicalStatus ~ Common.\"active\"\n\t\t\t\tand Dx.verificationStatus ~ Common.\"confirmed\" ) is not null"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Denominator"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Denominator\":\n\t\"Initial Population\"\n\t\tand exists AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\":\n\t( \"Heart Failure Outpatient Encounter\" HFOutpatientEncounter\n\t\t\twith \"Moderate or Severe LVSD Observations\" LVSDObservations\n\t\t\t\tsuch that LVSDObservations.effective.toInterval() starts before end of HFOutpatientEncounter.period )\n\tunion (\n\t\t\"Heart Failure Outpatient Encounter\" HFOutpatientEncounter\n\t\t\twith \"Moderate or Severe LVSD Conditions\" LVSDConditions\n\t\t\t\tsuch that LVSDConditions.onset.toInterval() starts before end of HFOutpatientEncounter.period\n\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "QICoreCommon"
-                        }, {
-                            "url": "name",
-                            "valueString": "toInterval"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function toInterval(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>>):\n\tcase\n\t\twhen choice is DateTime then\n\t\t\tInterval[choice as DateTime, choice as DateTime]\n\t\twhen choice is Interval<DateTime> then\n\t\t\tchoice as Interval<DateTime>\n\t\twhen choice is Quantity then\n\t\t\tInterval[Patient.birthDate + (choice as Quantity),\n\t\t\t\tPatient.birthDate + (choice as Quantity) + 1 year)\n\t\twhen choice is Interval<Quantity> then\n\t\t\tInterval[Patient.birthDate + (choice.low as Quantity),\n\t\t\t\tPatient.birthDate + (choice.high as Quantity) + 1 year)\n\t\telse\n\t\t\tnull as Interval<DateTime>\n\tend"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Moderate or Severe LVSD Observations"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Moderate or Severe LVSD Observations\":\n\t[\"Observation\": \"Ejection Fraction\"] EjectionFraction\n\t\twhere EjectionFraction.value <= 40 '%'\n\t\t\tand EjectionFraction.status in {'final', 'amended', 'corrected'}\n"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Moderate or Severe LVSD Conditions"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Moderate or Severe LVSD Conditions\":\n\t( [\"Condition\": \"Moderate or Severe LVSD\"]\n\t\t\tunion ( [\"Condition\": \"Left ventricular systolic dysfunction (disorder)\"] LeftVentricular\n\t\t\t\t\t\t\t\twhere LeftVentricular.severity in \"Moderate or Severe\"\n\t\t\t\t\t\t\t)\n\t\t) LVSD\n\t\twhere LVSD.isConfirmedActiveDiagnosis() "
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Denominator Exclusions"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Denominator Exclusions\":\n\tAHA.\"Has Heart Transplant\"\n\t\tor AHA.\"Has Heart Transplant Related Diagnosis\"\n\t\tor AHA.\"Has Left Ventricular Assist Device\"\n\t\tor AHA.\"Has Left Ventricular Assist Device Related Diagnosis\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Heart Transplant"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Heart Transplant\":\n\texists (\n\t\t\t\t\t[\"Procedure\": \"Heart Transplant\"] HeartTransplant\n\t\t\t\t\t\twith \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\tsuch that HeartTransplant.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\twhere HeartTransplant.status = 'completed'\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Heart Transplant Related Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Heart Transplant Related Diagnosis\":\n\texists ( \n\t\t\t\t\t[\"Condition\": \"Heart Transplant Related Diagnoses\"] HeartTransplantCondition\n\t\t\t\t\t\twith \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\tsuch that HeartTransplantCondition.toPrevalenceInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\twhere HeartTransplantCondition.isConfirmedActiveDiagnosis()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Left Ventricular Assist Device"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Left Ventricular Assist Device\":\n\texists (\n\t\t\t\t\t\t[\"Procedure\": \"Left Ventricular Assist Device Placement\"] LVADOutpatient\n\t\t\t\t\t\t\twith \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\t\tsuch that LVADOutpatient.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\twhere LVADOutpatient.status = 'completed'\n\t\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Left Ventricular Assist Device Related Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Left Ventricular Assist Device Related Diagnosis\":\n\texists (\n\t\t\t\t\t\t[\"Condition\": \"Left Ventricular Assist Device Related Diagnoses\"] LVADCondition\n\t\t\t\t\t\t\twith \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\t\tsuch that LVADCondition.toPrevalenceInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\t\n\t\t\t\t\t\t\twhere LVADCondition.isConfirmedActiveDiagnosis()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Numerator"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Numerator\":\n\t\"Has Beta Blocker Therapy for LVSD Ordered\"\n\t\tor \"Is Currently Taking Beta Blocker Therapy for LVSD\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Beta Blocker Therapy for LVSD Ordered"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Beta Blocker Therapy for LVSD Ordered\":\n\texists ( \n\t\t\t\t\t\t[\"MedicationRequest\": \"Beta Blocker Therapy for LVSD\"] BetaBlockerOrdered\n\t\t\t\t\t\t\twhere BetaBlockerOrdered.isOrderedDuringHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "isOrderedDuringHeartFailureOutpatientEncounter"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function isOrderedDuringHeartFailureOutpatientEncounter(Order MedicationRequest): \n\texists ( \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\twhere Order.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\tand Order.status in {'active', 'completed'}\n\t\t\t\t\t\tand Order.intent = 'order'\n\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Is Currently Taking Beta Blocker Therapy for LVSD"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Is Currently Taking Beta Blocker Therapy for LVSD\"\n\texists ( \n\t\t\t\t\t\t[\"MedicationRequest\": \"Beta Blocker Therapy for LVSD\"] ActiveBetaBlocker\n\t\t\t\t\t\t\twhere ActiveBetaBlocker.overlapsAfterHeartFailureOutpatientEncounter()\t\t\t\t \n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "overlapsAfterHeartFailureOutpatientEncounter"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function overlapsAfterHeartFailureOutpatientEncounter(Event Choice<Condition, Procedure, AllergyIntolerance, MedicationRequest, \"observation-heartrate\">): \n\texists ( \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\twhere \n\t\t\t\t\t\t\tcase\n\t\t\t\t\t\t\t\twhen Event is Condition then \n\t\t\t\t\t\t\t\t\tEvent.toPrevalenceInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\t\t\t\tand Event.isConfirmedActiveDiagnosis()\n\t\t\t\t\t\t\t\twhen Event is Procedure then\n\t\t\t\t\t\t\t\t\tEvent.performed.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\t\t\t\tand Event.status = 'completed'\n\t\t\t\t\t\t\t\twhen Event is AllergyIntolerance then\n\t\t\t\t\t\t\t\t\tInterval[start of Event.onset.toInterval(), Event.lastOccurrence] overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\t\t\t\tand Event.clinicalStatus ~ Common.\"allergy-active\"\n\t\t\t\t\t\t\t\t\t\tand Event.verificationStatus ~ Common.\"confirmed\"\n\t\t\t\t\t\t\t\twhen Event is MedicationRequest then\n\t\t\t\t\t\t\t\t\texists (Event.dosageInstruction.timing T\n\t\t\t\t\t\t\t\t\t\t\t\t\t\twhere T.repeat.bounds.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period )\n\t\t\t\t\t\t\t\t\t\tand Event.status in { 'active', 'completed', 'finished' } \n\t\t\t\t\t\t\t\twhen Event is \"observation-heartrate\" then\n\t\t\t\t\t\t\t\t\tEvent.effective.toInterval() overlaps after ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\t\t\t\tand Event.status in {'final', 'amended', 'corrected'}\n\t\t\t\t\t\t\t\telse false\n\t\t\t\t\t\t\tend\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Denominator Exceptions"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Denominator Exceptions\":\n\t\"Has Consecutive Heart Rates Less than 50\"\n\t\tor \"Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD\"\n\t\tor \"Has Arrhythmia Diagnosis\"\n\t\tor \"Has Hypotension Diagnosis\"\n\t\tor \"Has Asthma Diagnosis\"\n\t\tor \"Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy\"\n\t\tor \"Has Bradycardia Diagnosis\"\n\t\tor \"Has Allergy or Intolerance to Beta Blocker Therapy Ingredient\"\n\t\tor \"Atrioventricular Block without Cardiac Pacer\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Consecutive Heart Rates Less than 50"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Consecutive Heart Rates Less than 50\":\n\texists ( from\n\t\t\t\t\t\t\t[\"observation-heartrate\"] HeartRate,\n\t\t\t\t\t\t\tAHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\t\t\tlet PriorHeartRate: \n\t\t\t\t\t\t\t\t\t\t\tLast ( [\"observation-heartrate\"] MostRecentPriorHeartRate\n\t\t\t\t\t\t\t\t\t\t\t\t\twhere MostRecentPriorHeartRate.overlapsAfterHeartFailureOutpatientEncounter()\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tand MostRecentPriorHeartRate.effective.toInterval() before HeartRate.effective.toInterval()\n\t\t\t\t\t\t\t\t\t\t\t\t\tsort by start of effective.toInterval() \n\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\twhere HeartRate.effective.toInterval() during ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\t\t\t\t\tand HeartRate.status in {'final', 'amended', 'corrected'}\n\t\t\t\t\t\t\t\t\t\t\tand HeartRate.value < 50 '/min'\n\t\t\t\t\t\t\t\t\t\t\tand PriorHeartRate.value < 50 '/min'\n\t\t\t\t\t\t\t\t\treturn HeartRate\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD\":\n\texists ( \n\t\t\t\t\t\t[\"MedicationNotRequested\"] NoBetaBlockerOrdered\n\t\t\t\t\t\t\twith AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\t\tsuch that NoBetaBlockerOrdered.authoredOn during ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\twhere NoBetaBlockerOrdered.medication in \"Beta Blocker Therapy for LVSD\"\n\t\t\t\t\t\t\t\tand ( NoBetaBlockerOrdered.reasonCode in \"Medical Reason\"\n\t\t\t\t\t\t\t\t\t\t\tor NoBetaBlockerOrdered.reasonCode in \"Patient Reason\")\n\t\t\t\t\t\t )"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Arrhythmia Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Arrhythmia Diagnosis\":\n\texists ( \n\t\t\t\t\t\t[\"Condition\": \"Arrhythmia\"] Arrhythmia\n\t\t\t\t\t\t\twhere Arrhythmia.overlapsHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "AHAOverallQICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "overlapsHeartFailureOutpatientEncounter"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define fluent function overlapsHeartFailureOutpatientEncounter(Diagnosis Condition): \n\texists ( \"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\twhere Diagnosis.toPrevalenceInterval() overlaps ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t\t\tand Diagnosis.isConfirmedActiveDiagnosis()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Hypotension Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Hypotension Diagnosis\":\n\texists ( \n\t\t\t\t\t\t[\"Condition\": \"Hypotension\"] Hypotension\n\t\t\t\t\t\t\twhere Hypotension.overlapsHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Asthma Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Asthma Diagnosis\":\n\texists ( \n\t\t\t\t\t\t[\"Condition\": \"Asthma\"] Asthma\n\t\t\t\t\t\t\twhere Asthma.overlapsHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy\":\n\texists ( \n\t\t\t\t\t( [\"Condition\": \"Allergy to Beta Blocker Therapy\"]\n\t\t\t\t\t\t union [\"Condition\": \"Intolerance to Beta Blocker Therapy\"] ) BetaBlockerAllergyOrIntoleranceDiagnosis\n\t\t\t\t\t\twhere BetaBlockerAllergyOrIntoleranceDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Bradycardia Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Bradycardia Diagnosis\":\n\texists ( \n\t\t\t\t\t\t[\"Condition\": \"Bradycardia\"] Bradycardia\n\t\t\t\t\t\t\twhere Bradycardia.overlapsHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Allergy or Intolerance to Beta Blocker Therapy Ingredient\":\n\texists ( \n\t\t\t\t\t\t( [\"AllergyIntolerance\": \"Beta Blocker Therapy Ingredient\"]\n\t\t\t\t\t\t\t\tunion [\"AllergyIntolerance\": \"Substance with beta adrenergic receptor antagonist mechanism of action (substance)\"] ) BetaBlockerAllergyIntolerance\n\t\t\t\t\t\t\twhere BetaBlockerAllergyIntolerance.overlapsAfterHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Atrioventricular Block without Cardiac Pacer"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Atrioventricular Block without Cardiac Pacer\":\n\t\"Has Atrioventricular Block Diagnosis\"\n\t\tand not \"Has Diagnosis of Cardiac Pacer in Situ\"\n\t\tand not \"Has Cardiac Pacer Device Implanted\""
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Atrioventricular Block Diagnosis"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Atrioventricular Block Diagnosis\":\n\texists ( \n\t\t\t\t\t\t[\"Condition\": \"Atrioventricular Block\"] AtrioventricularBlock\n\t\t\t\t\t\t\twhere AtrioventricularBlock.overlapsHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Diagnosis of Cardiac Pacer in Situ"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Diagnosis of Cardiac Pacer in Situ\":\n\texists ( \n\t\t\t\t\t\t[\"Condition\": \"Cardiac Pacer in Situ\"] CardiacPacerDiagnosis\n\t\t\t\t\t\t\twhere CardiacPacerDiagnosis.overlapsAfterHeartFailureOutpatientEncounter()\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }, {
-                    "extension": [{
-                            "url": "libraryName",
-                            "valueString": "EXM144v11QICore4"
-                        }, {
-                            "url": "name",
-                            "valueString": "Has Cardiac Pacer Device Implanted"
-                        }, {
-                            "url": "statement",
-                            "valueString": "define \"Has Cardiac Pacer Device Implanted\":\n\texists ( \n\t\t\t\t\t\t[\"Procedure\": \"Cardiac Pacer\"] ImplantedCardiacPacer\n\t\t\t\t\t\t\twith AHA.\"Heart Failure Outpatient Encounter with History of Moderate or Severe LVSD\" ModerateOrSevereLVSDHFOutpatientEncounter\n\t\t\t\t\t\t\t\tsuch that ImplantedCardiacPacer.performed.toInterval() starts before end of ModerateOrSevereLVSDHFOutpatientEncounter.period\n\t\t\t\t\t)"
-                        }
-                    ],
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"
-                }
-
-            ],
-            "name": "EffectiveDataRequirements",
-            "status": "active",
-            "type": {
-                "coding": [{
-                        "system": "http://terminology.hl7.org/CodeSystem/library-type",
-                        "code": "module-definition"
-                    }
-                ]
-            },
-            "date": "2022-08-14T12:14:00-07:00",
-            "relatedArtifact": [{
-                    "type": "depends-on",
-                    "display": "Library SDE",
-                    "resource": "http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsQICore4|3.0.000"
-                }, {
-                    "type": "depends-on",
-                    "display": "Library FHIRHelpers",
-                    "resource": "http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.012"
-                }, {
-                    "type": "depends-on",
-                    "display": "Library Common",
-                    "resource": "http://ecqi.healthit.gov/ecqms/Library/QICoreCommon|1.0.000"
-                }, {
-                    "type": "depends-on",
-                    "display": "Library AHA",
-                    "resource": "http://ecqi.healthit.gov/ecqms/Library/AHAOverallQICore4|1.0.000"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system SNOMEDCT",
-                    "resource": "http://snomed.info/sct"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system RXNORM",
-                    "resource": "http://www.nlm.nih.gov/research/umls/rxnorm"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system LOINC",
-                    "resource": "http://loinc.org"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system ConditionClinicalStatusCodes",
-                    "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system ConditionVerificationStatusCodes",
-                    "resource": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system AllergyIntoleranceClinicalStatusCodes",
-                    "resource": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
-                }, {
-                    "type": "depends-on",
-                    "display": "Code system AllergyIntoleranceVerificationStatusCodes",
-                    "resource": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Allergy to Beta Blocker Therapy",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1177"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Arrhythmia",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.366"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Asthma",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.362"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Atrioventricular Block",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.367"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Beta Blocker Therapy for LVSD",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1184"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Beta Blocker Therapy Ingredient",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1493"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Bradycardia",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.412"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Cardiac Pacer",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.53"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Cardiac Pacer in Situ",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.368"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Hypotension",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.370"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Intolerance to Beta Blocker Therapy",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1178"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Left Ventricular Assist Device Placement",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.61"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Medical Reason",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Patient Reason",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1008"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Care Services in Long Term Residential Facility",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Ejection Fraction",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1134"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Heart Failure",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.376"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Heart Transplant",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.33"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Heart Transplant Related Diagnoses",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.56"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Home Healthcare Services",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1016"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Left Ventricular Assist Device Placement",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.61"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Left Ventricular Assist Device Related Diagnoses",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.58"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Moderate or Severe",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1092"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Moderate or Severe LVSD",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1090"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Nursing Facility Visit",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1012"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Office Visit",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Outpatient Consultation",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1008"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Patient Provider Interaction",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1012"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set ONC Administrative Sex",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Race",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Ethnicity",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837"
-                }, {
-                    "type": "depends-on",
-                    "display": "Value set Payer",
-                    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
-                }
-            ],
-            "parameter": [{
-                    "name": "Measurement Period",
-                    "use": "in",
-                    "min": 0,
-                    "max": 1,
-                    "type": "Period"
-                }, {
-                    "name": "SDE Sex",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "Coding"
-                }, {
-                    "name": "Numerator",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Denominator",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Denominator Exclusions",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Denominator Exceptions",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "SDE Payer",
-                    "use": "out",
-                    "min": 0,
-                    "max": "*",
-                    "type": "Any"
-                }, {
-                    "name": "Initial Population",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "SDE Ethnicity",
-                    "use": "out",
-                    "min": 0,
-                    "max": "*",
-                    "type": "CodeableConcept"
-                }, {
-                    "name": "SDE Race",
-                    "use": "out",
-                    "min": 0,
-                    "max": "*",
-                    "type": "CodeableConcept"
-                }, {
-                    "name": "Atrioventricular Block without Cardiac Pacer",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Allergy or Intolerance to Beta Blocker Therapy Ingredient",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Arrhythmia Diagnosis",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Asthma Diagnosis",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Atrioventricular Block Diagnosis",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Beta Blocker Therapy for LVSD Ordered",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Bradycardia Diagnosis",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Cardiac Pacer Device Implanted",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Consecutive Heart Rates Less than 50",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Diagnosis of Allergy or Intolerance to Beta Blocker Therapy",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Diagnosis of Cardiac Pacer in Situ",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Hypotension Diagnosis",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Has Medical or Patient Reason for Not Ordering Beta Blocker for LVSD",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }, {
-                    "name": "Is Currently Taking Beta Blocker Therapy for LVSD",
-                    "use": "out",
-                    "min": 0,
-                    "max": 1,
-                    "type": "boolean"
-                }
-            ],
-            "dataRequirement": [{
-                    "type": "Patient",
-                    "profile": [
-                        "http://hl7.org/fhir/StructureDefinition/Patient"
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "ombCategory"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "ombCategory"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "detailed"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "detailed"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "ombCategory"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "detailed"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Patient",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"],
-                    "codeFilter": [{
-                            "path": "url",
-                            "code": [{
-                                    "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
-                                }
-                            ]
-                        }, {
-                            "path": "url",
-                            "code": [{
-                                    "code": "detailed"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Coverage",
-                    "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"],
-                    "codeFilter": [{
-                            "path": "type",
-                            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
-                        }
-                    ]
-                }, {
-                    "type": "AllergyIntolerance",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1493"
-                        }
-                    ]
-                }, {
-                    "type": "AllergyIntolerance",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "code": [{
-                                    "system": "http://snomed.info/sct",
-                                    "code": "373254001",
-                                    "display": "Substance with beta adrenergic receptor antagonist mechanism of action (substance)"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.366"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.362"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.367"
-                        }
-                    ]
-                }, {
-                    "type": "MedicationRequest",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
-                    ],
-                    "codeFilter": [{
-                            "path": "medication",
-							"valueset":	"http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1184"						
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.412"
-                        }
-                    ]
-                }, {
-                    "type": "Procedure",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.53"
-                        }
-                    ]
-                }, {
-                    "type": "Observation",
-                    "profile": [
-                        "http://hl7.org/fhir/StructureDefinition/heartrate"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "code": [{
-                                    "system": "http://loinc.org",
-                                    "code": "8867-4",
-                                    "display": "Heart rate"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1177"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1178"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.368"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.370"
-                        }
-                    ]
-                }, {
-                    "type": "MedicationRequest",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested"
-                    ],
-                    "codeFilter": [{
-                            "path": "medication"
-                        }
-                    ]
-                }, {
-                    "type": "Encounter",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014"
-                        }
-                    ]
-                }, {
-                    "type": "Encounter",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1016"
-                        }
-                    ]
-                }, {
-                    "type": "Encounter",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1012"
-                        }
-                    ]
-                }, {
-                    "type": "Encounter",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001"
-                        }
-                    ]
-                }, {
-                    "type": "Encounter",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1008"
-                        }
-                    ]
-                }, {
-                    "type": "Encounter",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1012"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.376"
-                        }
-                    ]
-                }, {
-                    "type": "Observation",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1134"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1090"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "code": [{
-                                    "system": "http://snomed.info/sct",
-                                    "code": "134401001",
-                                    "display": "Left ventricular systolic dysfunction (disorder)"
-                                }
-                            ]
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.58"
-                        }
-                    ]
-                }, {
-                    "type": "Procedure",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.61"
-                        }
-                    ]
-                }, {
-                    "type": "Procedure",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueset": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.33"
-                        }
-                    ]
-                }, {
-                    "type": "Condition",
-                    "profile": [
-                        "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
-                    ],
-                    "codeFilter": [{
-                            "path": "code",
-                            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.56"
-                        }
-                    ]
-                }
-
-            ]
-        }
-    ],
-    "extension": [{
-            "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis",
-            "valueCode": "boolean"
-        }, {
-            "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
-            "valueReference": {
-                "reference": "Device/cqf-tooling"
-            }
-        }, {
-            "id": "effective-data-requirements",
-            "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements",
-            "valueReference": {
-                "reference": "#effective-data-requirements"
-            }
-        }
-    ],
-    "url": "http://ecqi.healthit.gov/ecqms/Measure/EXM135v11QICore4",
-    "identifier": [{
-            "use": "official",
-            "system": "http://example.org/fhir/cqi/ecqm/Measure/Identifier/exm",
-            "value": "135FHIR"
-        }, {
-            "use": "official",
-            "type": {
-                "coding": [{
-                        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
-                        "code": "version-independent"
-                    }
-                ]
-            },
-            "system": "urn:ietf:rfc:3986",
-            "value": "urn:uuid:8439f671-2932-4d4c-88ca-ea5faeacc89a"
-        }, {
-            "use": "official",
-            "type": {
-                "coding": [{
-                        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
-                        "code": "version-specific"
-                    }
-                ]
-            },
-            "system": "urn:ietf:rfc:3986",
-            "value": "urn:uuid:3013842f-8b11-421f-b958-79a21c2f14cf"
-        }, {
-            "use": "usual",
-            "type": {
-                "coding": [{
-                        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
-                        "code": "short-name"
-                    }
-                ]
-            },
-            "value": "144-QICore"
-        }
-    ],
-    "version": "1.0.000",
-    "name": "EXM144v11QICore4",
-    "title": "Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD) (QICore)",
-    "status": "draft",
-    "experimental": true,
-    "date": "2022-08-14T13:14:00-06:00",
-    "publisher": "American Heart Association",
-    "contact": [{
-            "telecom": [{
-                    "system": "url",
-                    "value": "https://www.heart.org"
-                }
-            ]
-        }
-    ],
-    "description": "Percentage of patients aged 18 years and older with a diagnosis of heart failure (HF) with a current or prior left ventricular ejection fraction (LVEF) <= 40% who were prescribed or already taking beta-blocker therapy during the measurement period",
-    "purpose": "Unknown",
-    "copyright": "Copyright 2022 American College of Cardiology and American Heart Association. All Rights Reserved.",
-    "effectivePeriod": {
-        "start": "2022-01-01",
-        "end": "2022-12-31"
+    "relatedArtifact": [ {
+      "type": "depends-on",
+      "display": "Library SDE",
+      "resource": "http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsQICore4|3.0.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library AHA",
+      "resource": "http://ecqi.healthit.gov/ecqms/Library/AHAOverallQICore4|1.0.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library Common",
+      "resource": "http://ecqi.healthit.gov/ecqms/Library/QICoreCommon|1.2.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library FHIRHelpers",
+      "resource": "http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.1.000"
+    }, {
+      "type": "depends-on",
+      "display": "Code system ConditionClinicalStatusCodes",
+      "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    }, {
+      "type": "depends-on",
+      "display": "Code system ConditionVerificationStatusCodes",
+      "resource": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    }, {
+      "type": "depends-on",
+      "display": "Code system SNOMEDCT",
+      "resource": "http://snomed.info/sct"
+    }, {
+      "type": "depends-on",
+      "display": "Code system AllergyIntoleranceClinicalStatusCodes",
+      "resource": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+    }, {
+      "type": "depends-on",
+      "display": "Code system AllergyIntoleranceVerificationStatusCodes",
+      "resource": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Beta Blocker Therapy for LVSD",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1184"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Care Services in Long Term Residential Facility",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Home Healthcare Services",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1016"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Nursing Facility Visit",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1012"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Office Visit",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Outpatient Consultation",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1008"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Heart Failure",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.376"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Ejection Fraction",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1134"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Moderate or Severe LVSD",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1090"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Moderate or Severe",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1092"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Patient Provider Interaction",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1012"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Payer",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Heart Transplant",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.33"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Heart Transplant Related Diagnoses",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.56"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Left Ventricular Assist Device Placement",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.61"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Left Ventricular Assist Device Related Diagnoses",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.58"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Medical Reason",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Patient Reason",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1008"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Arrhythmia",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.366"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Hypotension",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.370"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Asthma",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.362"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Allergy to Beta Blocker Therapy",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1177"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Intolerance to Beta Blocker Therapy",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1178"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Bradycardia",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.412"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Beta Blocker Therapy Ingredient",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1493"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Atrioventricular Block",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.367"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Cardiac Pacer in Situ",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.368"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Cardiac Pacer",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.53"
+    } ],
+    "parameter": [ {
+      "name": "Measurement Period",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "type": "Period"
+    }, {
+      "name": "SDE Sex",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "Coding"
+    }, {
+      "name": "Numerator",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "Denominator",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "SDE Payer",
+      "use": "out",
+      "min": 0,
+      "max": "*",
+      "type": "Any"
+    }, {
+      "name": "Initial Population",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "SDE Ethnicity",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "Any"
+    }, {
+      "name": "Denominator Exclusions",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "SDE Race",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "Any"
+    }, {
+      "name": "Denominator Exceptions",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    } ],
+    "dataRequirement": [ {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
+    }, {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ],
+      "mustSupport": [ "url", "extension" ],
+      "codeFilter": [ {
+        "path": "url",
+        "code": [ {
+          "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+        } ]
+      } ]
+    }, {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ],
+      "mustSupport": [ "url", "extension" ],
+      "codeFilter": [ {
+        "path": "url",
+        "code": [ {
+          "code": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+        } ]
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.376"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code", "severity" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://snomed.info/sct",
+          "code": "134401001",
+          "display": "Left ventricular systolic dysfunction (disorder)"
+        } ]
+      }, {
+        "path": "severity",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1092"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.56"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.58"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.366"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.370"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.362"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.412"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.367"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.368"
+      } ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation" ],
+      "mustSupport": [ "code", "value", "status", "status.value", "effective" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1134"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1184"
+      } ]
+    }, {
+      "type": "Coverage",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage" ],
+      "mustSupport": [ "type", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+      } ]
+    }, {
+      "type": "Procedure",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ],
+      "mustSupport": [ "code", "performed", "status", "status.value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.33"
+      }, {
+        "path": "status.value",
+        "code": [ {
+          "code": "completed"
+        } ]
+      } ]
+    }, {
+      "type": "Procedure",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ],
+      "mustSupport": [ "code", "performed", "status", "status.value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.61"
+      }, {
+        "path": "status.value",
+        "code": [ {
+          "code": "completed"
+        } ]
+      } ]
+    }, {
+      "type": "Procedure",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ],
+      "mustSupport": [ "code", "performed" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1178.53"
+      } ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/StructureDefinition/heartrate" ],
+      "mustSupport": [ "effective", "value", "status", "status.value" ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotrequested" ],
+      "mustSupport": [ "authoredOn", "authoredOn.value", "medication", "reasonCode" ]
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis",
+    "valueCode": "boolean"
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
+    "valueReference": {
+      "reference": "Device/cqf-tooling"
+    }
+  }, {
+    "id": "effective-data-requirements",
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements",
+    "valueReference": {
+      "reference": "#effective-data-requirements"
+    }
+  } ],
+  "url": "http://ecqi.healthit.gov/ecqms/Measure/EXM135v11QICore4",
+  "identifier": [ {
+    "use": "official",
+    "system": "http://example.org/fhir/cqi/ecqm/Measure/Identifier/exm",
+    "value": "135FHIR"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "version-independent"
+      } ]
     },
-    "relatedArtifact": [{
-            "extension": [{
-                    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isPrimaryCitation",
-                    "valueBoolean": true
-                }
-            ],
-            "type": "citation",
-            "citation": "Yancy, C. W., Jessup, M., Bozkurt, B., Butler, J., Casey, D. E., Drazner, M. H., … Wilkoff, B. L. (2013). 2013 ACCF/AHA Guideline for the Management of Heart Failure A Report of the American College of Cardiology Foundation/American Heart Association Task Force on Practice Guidelines. Circulation, 128(16), e240–e327.",
-            "url": "https://doi.org/10.1161/CIR.0b013e31829e8776",
-            "document": {
-                "url": "https://doi.org/10.1161/CIR.0b013e31829e8776"
-            }
-        }
-    ],
-    "library": [
-        "http://ecqi.healthit.gov/ecqms/Library/EXM144v11QICore4"
-    ],
-    "disclaimer": "The Measure is not a clinical guideline, does not establish a standard of medical care, and has not been tested for all potential applications.\n\nThe Measure, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, e.g., use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain.\n\nCommercial uses of the Measure require a license agreement between the user and the American College of Cardiology (ACC) or the American Heart Association (AHA). Neither the ACC, nor AHA, nor their members shall be responsible for any use of the Measure.\n\nACC and AHA encourage use of the Measure by other health care professionals, where appropriate.\n\nTHE MEASURE AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.\n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The ACC and AHA and their members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2021 American Medical Association. LOINC(R) is copyright 2004-2021 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2021 International Health Terminology Standards Development Organisation. ICD-10 is copyright 2021 World Health Organization. All Rights Reserved.\n\nThe American Medical Association’s and the PCPI(R) Foundation’s significant past efforts and contributions to the performance measure are gratefully acknowledged.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R].",
-    "scoring": {
-        "coding": [{
-                "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
-                "code": "proportion",
-                "display": "Proportion"
-            }
-        ]
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:8439f671-2932-4d4c-88ca-ea5faeacc89a"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "version-specific"
+      } ]
     },
-    "type": [{
-            "coding": [{
-                    "system": "http://terminology.hl7.org/CodeSystem/measure-type",
-                    "code": "process"
-                }
-            ]
-        }
-    ],
-    "rationale": "Beta blockers improve survival and reduce hospitalization for patients with stable heart failure and reduced LVEF (HFrEF). Treatment should be initiated as soon as a patient is diagnosed with reduced LVEF and does not have prohibitively low systemic blood pressure, fluid overload, or recent treatment with an intravenous positive inotropic agent. Beta blockers have also been shown to lessen the symptoms of heart failure, improve the clinical status of patients, and reduce future clinical deterioration. Despite these benefits, use of beta blockers in eligible patients remains suboptimal.",
-    "clinicalRecommendationStatement": "In approximately half of patients with HFrEF, variable degrees of LV enlargement may accompany HFrEF. The definition of HFrEF has varied, with guidelines of left ventricular ejection fraction (LVEF) ≤35%, <40%, and ≤40%. Randomized controlled trials (RCTs) in patients with HF have mainly enrolled patients with HFrEF with an EF ≤35% or ≤40%, and it is only in these patients that efficacious therapies have been demonstrated to date. For the present guideline, HFrEF is defined as the clinical diagnosis of HF and EF ≤40%. (ACCF/AHA, 2013).\nUse of 1 of the 3 beta blockers proven to reduce mortality (e.g., bisoprolol, carvedilol, and sustained-release metoprolol succinate) is recommended for all patients with current or prior symptoms of HFrEF [heart failure with reduced ejection fraction], unless contraindicated, to reduce morbidity and mortality (Class I, Level of Evidence: A) (ACCF/AHA, 2013).\nTreatment with a beta blocker should be initiated at very low doses [see excerpt from guideline table below] followed by gradual increments in dose if lower doses have been well tolerated... Clinicians should make every effort to achieve the target doses of the beta blockers shown to be effective in major clinical trials. Even if symptoms do not improve, long-term treatment should be maintained to reduce the risk of major clinical events. Abrupt withdrawal of treatment with a beta blocker can lead to clinical deterioration and should be avoided (ACCF/AHA, 2013).\nDrugs Commonly Used for Stage C HFrEF (abbreviated to align with focus of measure to include only Beta-blocker therapy)\nDrug\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Initial Daily Dose(s)\t\t\t Maximum Dose(s)\t\t\t\tMean Doses Achieved in Clinical Trials\nBeta Blockers\nBisoprolol\t\t\t\t\t\t\t\t\t\t\t\t 1.25 mg once\t\t\t\t\t\t\t 10 mg once\t\t\t\t\t\t\t\t\t8.6 mg/d\nCarvedilol\t\t\t\t\t\t\t\t\t\t\t\t 3.125 mg twice\t\t\t\t\t\t50 mg twice\t\t\t\t\t\t\t\t\t37 mg/d\nCarvedilol CR\t\t\t\t\t\t\t\t\t10 mg once\t\t\t\t\t\t\t\t\t80 mg once\t\t\t\t\t\t\t\t\t N/A\nMetoprolol succinate\t\t\t\t12.5 to 25 mg once\t\t\t200 mg once\t\t\t\t\t\t\t\t159 mg/d\nextended release\n(metoprolol CR/XL)",
-    "improvementNotation": {
-        "coding": [{
-                "system": "http://terminology.hl7.org/CodeSystem/measure-improvement-notation",
-                "code": "increase"
-            }
-        ]
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:3013842f-8b11-421f-b958-79a21c2f14cf"
+  }, {
+    "use": "usual",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "short-name"
+      } ]
     },
-    "guidance": "This eCQM is to be reported as patient-based. To satisfy this measure, it must be reported for all heart failure patients at least once during the measurement period.\nA range value should satisfy the logic requirement for 'Ejection Fraction' as long as the ranged observation value clearly meets the less than or equal to 40% threshold noted in the denominator logic. A range that is greater than 40% would not meet the measure requirement. \nBeta-blocker therapy:\n-For patients with prior LVEF <= 40%, beta-blocker therapy should include bisoprolol, carvedilol, or sustained release metoprolol succinate.\nThe requirement of two or more visits is to establish that the eligible professional or eligible clinician has an existing relationship with the patient.\nThis version of the eCQM uses QI-Core v4.1.1. Please refer to the QI-Core Implementation Guide (https://hl7.org/fhir/us/qicore/) for more information on QI-Core.",
-    "group": [{
-            "id": "group-1",
-            "population": [{
-                    "id": "a5b0e514-159f-4176-b063-c4a06ec0347f",
-                    "code": {
-                        "coding": [{
-                                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
-                                "code": "initial-population",
-                                "display": "Initial Population"
-                            }
-                        ]
-                    },
-                    "criteria": {
-                        "language": "text/cql.identifier",
-                        "expression": "Initial Population"
-                    }
-                }, {
-                    "id": "1707326a-f682-4868-89c7-47dbdc9d574c",
-                    "code": {
-                        "coding": [{
-                                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
-                                "code": "denominator",
-                                "display": "Denominator"
-                            }
-                        ]
-                    },
-                    "criteria": {
-                        "language": "text/cql.identifier",
-                        "expression": "Denominator"
-                    }
-                }, {
-                    "id": "e7198fc6-a03e-45a9-a5db-d799d792ebde",
-                    "code": {
-                        "coding": [{
-                                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
-                                "code": "denominator-exclusion",
-                                "display": "Denominator Exclusion"
-                            }
-                        ]
-                    },
-                    "criteria": {
-                        "language": "text/cql.identifier",
-                        "expression": "Denominator Exclusions"
-                    }
-                }, {
-                    "id": "1b84cea2-0cc9-4dbf-b38a-6bad6b460a8a",
-                    "code": {
-                        "coding": [{
-                                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
-                                "code": "numerator",
-                                "display": "Numerator"
-                            }
-                        ]
-                    },
-                    "criteria": {
-                        "language": "text/cql.identifier",
-                        "expression": "Numerator"
-                    }
-                }, {
-                    "id": "6bbb672e-ab5f-43dc-9168-e30e77c78185",
-                    "code": {
-                        "coding": [{
-                                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
-                                "code": "denominator-exception",
-                                "display": "Denominator Exception"
-                            }
-                        ]
-                    },
-                    "criteria": {
-                        "language": "text/cql.identifier",
-                        "expression": "Denominator Exceptions"
-                    }
-                }
-            ]
-        }
-    ],
-    "supplementalData": [{
-            "id": "855bcaa3-c5a5-48d2-8fe2-cbb0b96a5a30",
-            "usage": [{
-                    "coding": [{
-                            "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
-                            "code": "supplemental-data"
-                        }
-                    ]
-                }
-            ],
-            "criteria": {
-                "language": "text/cql.identifier",
-                "expression": "SDE Ethnicity"
-            }
-        }, {
-            "id": "bebb789e-5325-4919-8e5a-3a7d9ee27300",
-            "usage": [{
-                    "coding": [{
-                            "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
-                            "code": "supplemental-data"
-                        }
-                    ]
-                }
-            ],
-            "criteria": {
-                "language": "text/cql.identifier",
-                "expression": "SDE Payer"
-            }
-        }, {
-            "id": "92bc787d-fcee-438f-b43b-0b9f0978578f",
-            "usage": [{
-                    "coding": [{
-                            "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
-                            "code": "supplemental-data"
-                        }
-                    ]
-                }
-            ],
-            "criteria": {
-                "language": "text/cql.identifier",
-                "expression": "SDE Race"
-            }
-        }, {
-            "id": "08fae553-3225-47d2-9bbc-a729f5c3fa23",
-            "usage": [{
-                    "coding": [{
-                            "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
-                            "code": "supplemental-data"
-                        }
-                    ]
-                }
-            ],
-            "criteria": {
-                "language": "text/cql.identifier",
-                "expression": "SDE Sex"
-            }
-        }
-    ]
+    "value": "144-QICore"
+  } ],
+  "version": "1.0.000",
+  "name": "EXM144v11QICore4",
+  "title": "Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD) (QICore)",
+  "status": "draft",
+  "experimental": true,
+  "date": "2023-01-11T11:32:33-06:00",
+  "publisher": "American Heart Association",
+  "contact": [ {
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.heart.org"
+    } ]
+  } ],
+  "description": "Percentage of patients aged 18 years and older with a diagnosis of heart failure (HF) with a current or prior left ventricular ejection fraction (LVEF) <= 40% who were prescribed or already taking beta-blocker therapy during the measurement period",
+  "purpose": "Unknown",
+  "copyright": "Copyright 2022 American College of Cardiology and American Heart Association. All Rights Reserved.",
+  "effectivePeriod": {
+    "start": "2022-01-01",
+    "end": "2022-12-31"
+  },
+  "relatedArtifact": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isPrimaryCitation",
+      "valueBoolean": true
+    } ],
+    "type": "citation",
+    "citation": "Yancy, C. W., Jessup, M., Bozkurt, B., Butler, J., Casey, D. E., Drazner, M. H., … Wilkoff, B. L. (2013). 2013 ACCF/AHA Guideline for the Management of Heart Failure A Report of the American College of Cardiology Foundation/American Heart Association Task Force on Practice Guidelines. Circulation, 128(16), e240–e327.",
+    "url": "https://doi.org/10.1161/CIR.0b013e31829e8776",
+    "document": {
+      "url": "https://doi.org/10.1161/CIR.0b013e31829e8776"
+    }
+  } ],
+  "library": [ "http://ecqi.healthit.gov/ecqms/Library/EXM144v11QICore4" ],
+  "disclaimer": "The Measure is not a clinical guideline, does not establish a standard of medical care, and has not been tested for all potential applications.\n\nThe Measure, while copyrighted, can be reproduced and distributed, without modification, for noncommercial purposes, e.g., use by health care providers in connection with their practices. Commercial use is defined as the sale, license, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain.\n\nCommercial uses of the Measure require a license agreement between the user and the American College of Cardiology (ACC) or the American Heart Association (AHA). Neither the ACC, nor AHA, nor their members shall be responsible for any use of the Measure.\n\nACC and AHA encourage use of the Measure by other health care professionals, where appropriate.\n\nTHE MEASURE AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.\n\nLimited proprietary coding is contained in the Measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. The ACC and AHA and their members disclaim all liability for use or accuracy of any Current Procedural Terminology (CPT[R]) or other coding contained in the specifications.\n\nCPT(R) contained in the Measure specifications is copyright 2004-2021 American Medical Association. LOINC(R) is copyright 2004-2021 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2021 International Health Terminology Standards Development Organisation. ICD-10 is copyright 2021 World Health Organization. All Rights Reserved.\n\nThe American Medical Association’s and the PCPI(R) Foundation’s significant past efforts and contributions to the performance measure are gratefully acknowledged.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R].",
+  "scoring": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
+      "code": "proportion",
+      "display": "Proportion"
+    } ]
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/measure-type",
+      "code": "process"
+    } ]
+  } ],
+  "rationale": "Beta blockers improve survival and reduce hospitalization for patients with stable heart failure and reduced LVEF (HFrEF). Treatment should be initiated as soon as a patient is diagnosed with reduced LVEF and does not have prohibitively low systemic blood pressure, fluid overload, or recent treatment with an intravenous positive inotropic agent. Beta blockers have also been shown to lessen the symptoms of heart failure, improve the clinical status of patients, and reduce future clinical deterioration. Despite these benefits, use of beta blockers in eligible patients remains suboptimal.",
+  "clinicalRecommendationStatement": "In approximately half of patients with HFrEF, variable degrees of LV enlargement may accompany HFrEF. The definition of HFrEF has varied, with guidelines of left ventricular ejection fraction (LVEF) ≤35%, <40%, and ≤40%. Randomized controlled trials (RCTs) in patients with HF have mainly enrolled patients with HFrEF with an EF ≤35% or ≤40%, and it is only in these patients that efficacious therapies have been demonstrated to date. For the present guideline, HFrEF is defined as the clinical diagnosis of HF and EF ≤40%. (ACCF/AHA, 2013).\nUse of 1 of the 3 beta blockers proven to reduce mortality (e.g., bisoprolol, carvedilol, and sustained-release metoprolol succinate) is recommended for all patients with current or prior symptoms of HFrEF [heart failure with reduced ejection fraction], unless contraindicated, to reduce morbidity and mortality (Class I, Level of Evidence: A) (ACCF/AHA, 2013).\nTreatment with a beta blocker should be initiated at very low doses [see excerpt from guideline table below] followed by gradual increments in dose if lower doses have been well tolerated... Clinicians should make every effort to achieve the target doses of the beta blockers shown to be effective in major clinical trials. Even if symptoms do not improve, long-term treatment should be maintained to reduce the risk of major clinical events. Abrupt withdrawal of treatment with a beta blocker can lead to clinical deterioration and should be avoided (ACCF/AHA, 2013).\nDrugs Commonly Used for Stage C HFrEF (abbreviated to align with focus of measure to include only Beta-blocker therapy)\nDrug\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Initial Daily Dose(s)\t\t\t Maximum Dose(s)\t\t\t\tMean Doses Achieved in Clinical Trials\nBeta Blockers\nBisoprolol\t\t\t\t\t\t\t\t\t\t\t\t 1.25 mg once\t\t\t\t\t\t\t 10 mg once\t\t\t\t\t\t\t\t\t8.6 mg/d\nCarvedilol\t\t\t\t\t\t\t\t\t\t\t\t 3.125 mg twice\t\t\t\t\t\t50 mg twice\t\t\t\t\t\t\t\t\t37 mg/d\nCarvedilol CR\t\t\t\t\t\t\t\t\t10 mg once\t\t\t\t\t\t\t\t\t80 mg once\t\t\t\t\t\t\t\t\t N/A\nMetoprolol succinate\t\t\t\t12.5 to 25 mg once\t\t\t200 mg once\t\t\t\t\t\t\t\t159 mg/d\nextended release\n(metoprolol CR/XL)",
+  "improvementNotation": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/measure-improvement-notation",
+      "code": "increase"
+    } ]
+  },
+  "guidance": "This eCQM is to be reported as patient-based. To satisfy this measure, it must be reported for all heart failure patients at least once during the measurement period.\nA range value should satisfy the logic requirement for 'Ejection Fraction' as long as the ranged observation value clearly meets the less than or equal to 40% threshold noted in the denominator logic. A range that is greater than 40% would not meet the measure requirement. \nBeta-blocker therapy:\n-For patients with prior LVEF <= 40%, beta-blocker therapy should include bisoprolol, carvedilol, or sustained release metoprolol succinate.\nThe requirement of two or more visits is to establish that the eligible professional or eligible clinician has an existing relationship with the patient.\nThis version of the eCQM uses QI-Core v4.1.1. Please refer to the QI-Core Implementation Guide (https://hl7.org/fhir/us/qicore/) for more information on QI-Core.",
+  "group": [ {
+    "id": "group-1",
+    "population": [ {
+      "id": "a5b0e514-159f-4176-b063-c4a06ec0347f",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Initial Population"
+      }
+    }, {
+      "id": "1707326a-f682-4868-89c7-47dbdc9d574c",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator"
+      }
+    }, {
+      "id": "e7198fc6-a03e-45a9-a5db-d799d792ebde",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator Exclusions"
+      }
+    }, {
+      "id": "1b84cea2-0cc9-4dbf-b38a-6bad6b460a8a",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Numerator"
+      }
+    }, {
+      "id": "6bbb672e-ab5f-43dc-9168-e30e77c78185",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator Exceptions"
+      }
+    } ]
+  } ],
+  "supplementalData": [ {
+    "id": "855bcaa3-c5a5-48d2-8fe2-cbb0b96a5a30",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "criteria": {
+      "language": "text/cql.identifier",
+      "expression": "SDE Ethnicity"
+    }
+  }, {
+    "id": "bebb789e-5325-4919-8e5a-3a7d9ee27300",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "criteria": {
+      "language": "text/cql.identifier",
+      "expression": "SDE Payer"
+    }
+  }, {
+    "id": "92bc787d-fcee-438f-b43b-0b9f0978578f",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "criteria": {
+      "language": "text/cql.identifier",
+      "expression": "SDE Race"
+    }
+  }, {
+    "id": "08fae553-3225-47d2-9bbc-a729f5c3fa23",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "criteria": {
+      "language": "text/cql.identifier",
+      "expression": "SDE Sex"
+    }
+  } ]
 }

@@ -108,8 +108,8 @@ define "Initial Population":
  AgeInYearsAt(date from 
         end of "Measurement Period"
       )in Interval[52, 74]
-      and Patient.gender.value = 'female'
-      and exists AdultOutpatientEncounters."Qualifying Encounters"
+      and Patient.gender = 'female'
+      and exists AdultOutpatientEncounter."Qualifying Encounters"
   
 define "Numerator":
   exists ( (Status."Final Observation"(["Observation": "Mammography"])) Mammogram
