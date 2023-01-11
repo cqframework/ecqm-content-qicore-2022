@@ -1,14 +1,4 @@
-/*
-@update: BTR 2020-03-31 ->
-Incremented version to 2.0.0
-
-@update: BTR 2022-05-26 ->
-Updated FHIR version to 4.0.1
-Updated FHIRHelpers version to 4.0.002
-Updated for AU 2022 Content
-*/
-
-library SupplementalDataElementsQICore4 version '3.0.000'
+library SupplementalDataElements version '3.0.000'
 
 using QICore version '4.1.1'
 
@@ -23,7 +13,7 @@ context Patient
 
 define "SDE Ethnicity":
   Patient.ethnicity E
-    return Tuple {
+    return Concept {
       codes: { E.ombCategory } union E.detailed,
       display: E.text
     }
@@ -37,7 +27,7 @@ define "SDE Payer":
 
 define "SDE Race":
   Patient.race R
-    return Tuple {
+    return Concept {
       codes: R.ombCategory union R.detailed,
       display: R.text
     }

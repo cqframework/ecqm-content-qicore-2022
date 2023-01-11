@@ -107,20 +107,20 @@
     "display": "Diabetes: Medical Attention for Nephropathy",
     "resource": "http://ecqi.healthit.gov/ecqms/Measure/DiabetesMedicalAttentionforNephropathyFHIR|0.0.001"
   }, {
-   "type": "composed-of",
-   "display": "Falls: Screening for Future Fall Risk",
-   "resource": "http://ecqi.healthit.gov/ecqms/Measure/FallsScreeningforFutureFallRiskFHIR|0.0.001"
+    "type": "composed-of",
+    "display": "Falls: Screening for Future Fall Risk",
+    "resource": "http://ecqi.healthit.gov/ecqms/Measure/FallsScreeningforFutureFallRiskFHIR|0.0.001"
   }, {
-   "type": "composed-of",
-   "display": "Follow-Up Care for Children Prescribed ADHD Medication (ADD)",
-   "resource": "http://ecqi.healthit.gov/ecqms/Measure/FollowUpCareforChildrenPrescribedADHDMedicationADDFHIR|0.0.001"  
+    "type": "composed-of",
+    "display": "Follow-Up Care for Children Prescribed ADHD Medication (ADD)",
+    "resource": "http://ecqi.healthit.gov/ecqms/Measure/FollowUpCareforChildrenPrescribedADHDMedicationADDFHIR|0.0.001"
   }, {
-   "type": "composed-of",
-   "display": "Initiation and Engagement of Alcohol and Other Drug Dependence Treatment",
-   "resource": "http://ecqi.healthit.gov/ecqms/Measure/InitiationandEngagementofAlcoholandOtherDrugDependenceTreatmentFHIR|0.0.001" 
+    "type": "composed-of",
+    "display": "Initiation and Engagement of Alcohol and Other Drug Dependence Treatment",
+    "resource": "http://ecqi.healthit.gov/ecqms/Measure/InitiationandEngagementofAlcoholandOtherDrugDependenceTreatmentFHIR|0.0.001"
   }, {
-   "type": "composed-of",
-   "display": "Preventive Care and Screening: Tobacco Use: Screening and Cessation Intervention",
-   "resource": "http://ecqi.healthit.gov/ecqms/Measure/PreventiveCareandScreeningTobaccoUseScreeningandCessationInterventionFHIR|0.0.001"   
+    "type": "composed-of",
+    "display": "Preventive Care and Screening: Tobacco Use: Screening and Cessation Intervention",
+    "resource": "http://ecqi.healthit.gov/ecqms/Measure/PreventiveCareandScreeningTobaccoUseScreeningandCessationInterventionFHIR|0.0.001"
   } ]
 }

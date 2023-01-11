@@ -1,33 +1,4 @@
-/*
-@update: BTR 2020-03-31 ->
-Incremented version to 5.0.000
-Updated FHIR version to 4.0.1
-Changed timezone keyword to timezoneoffset for use with CQL 1.4
-Removed Normalize Onset in favor of more general Normalize Interval
-Updated CodeSystems for ConditionVerificationStatusCodes and RoleCodes
-
-@update: BTR 2021-05-13 ->
-Added ActiveCondition Codes and Inactive Condition Codes value sets
-Added function documentation throughout
-Fixed EDVisit not using Last
-Updated prevalence period to use an inclusive boundary if the condition is active
-Added HasStart, HasEnd, Earliest, and Latest functions
-Removed ToDate and Age calculation functions
-
-@update: BTR 2021-06-25 ->
-Added GetBaseExtension overloads for Element
-
-@update: BTR 2022-05-24 ->
-Update for 2022 AU content
-Refactor to use CQF.FHIRCommon
-
-@update: BTR 2022-06-14 ->
-Update to use QICore
-Rename from MATGlobalCommonFunctionsFHIR4 to MATGlobalCommonFunctionsQICore4
-Added fluent functions
-Removed Normalize Interval
-*/
-library MATGlobalCommonFunctionsQICore4 version '7.0.000'
+library CQMCommon version '1.0.000'
 
 using QICore version '4.1.1'
 
@@ -187,7 +158,7 @@ define fluent function hospitalArrivalTime(TheEncounter Encounter ):
   	).period
 
 /*
-Returns the latest departure time for encounter including any prior ED visit. 
+Returns the latest departure time for encounter including any prior ED visit.
 */
 define function "Hospital Departure Time"(TheEncounter Encounter):
 	end of Last(
@@ -196,7 +167,7 @@ define function "Hospital Departure Time"(TheEncounter Encounter):
 	).period
 
 /*
-Returns the latest departure time for encounter including any prior ED visit. 
+Returns the latest departure time for encounter including any prior ED visit.
 */
 define fluent function hospitalDepartureTime(TheEncounter Encounter):
 	end of Last(
@@ -410,4 +381,3 @@ define fluent function getMedicationCode(request MedicationRequest ):
   	  request.medication as Concept
   	else
   	  (singleton from ([Medication] M where M.id = (request.medication as Reference).reference.getId())).code
-

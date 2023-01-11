@@ -7,9 +7,9 @@ Definition names with 'DISPLAY' are used to display pertinent data
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include QICoreCommon version '1.0.000' called QICoreCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
 include VTEQICore4 version '7.0.000' called VTE
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 

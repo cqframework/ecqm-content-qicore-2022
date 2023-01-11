@@ -14,7 +14,7 @@ Refresh from 2022 AU
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 include FHIRCommon version '4.0.012' called FHIRCommon
 
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global

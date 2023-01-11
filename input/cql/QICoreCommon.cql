@@ -1,13 +1,8 @@
-/*
-@author: Stan Rankins
-@description: Common terminologies and functions used in QI-Core-based CQL artifacts
-@update: Fashioned after FHIRCommon Version 4.0.012 for use in ecqm-content-qicore-2022 repos
-*/
-library QICoreCommon version '1.0.000'
+library QICoreCommon version '1.2.000'
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.013'
+include FHIRHelpers version '4.1.000'
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -23,8 +18,9 @@ codesystem "AllergyIntoleranceVerificationStatusCodes": 'http://terminology.hl7.
 codesystem "ConditionCategoryCodes": 'http://terminology.hl7.org/CodeSystem/condition-category'
 codesystem "ObservationCategoryCodes": 'http://terminology.hl7.org/CodeSystem/observation-category'
 
-valueset "Active Condition": 'http://fhir.org/guides/cqf/common/ValueSet/active-condition'
-valueset "Inactive Condition": 'http://fhir.org/guides/cqf/common/ValueSet/inactive-condition'
+//Currently unresolveable in VSAC
+//valueset "Active Condition": 'http://fhir.org/guides/cqf/common/ValueSet/active-condition'
+//valueset "Inactive Condition": 'http://fhir.org/guides/cqf/common/ValueSet/inactive-condition'
 
 code "Birthdate": '21112-8' from "LOINC" display 'Birth date'
 code "Dead": '419099009' from "SNOMEDCT" display 'Dead'
@@ -92,7 +88,6 @@ context Patient
 @comment: Normalizes a choice type of DateTime, Quanitty, Interval<DateTime>, or Interval<Quantity> types
 to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
 representations for timing-valued elements in QICore, allowing this function to be used across any resource.
-
 The input can be provided as a DateTime, Quantity, Interval<DateTime> or Interval<Quantity>.
 The intent of this function is to provide a clear and concise mechanism to treat single
 elements that have multiple possible representations as intervals so that logic doesn't have to account
@@ -100,11 +95,11 @@ for the variability. More complex calculations (such as medication request perio
 calculation) need specific guidance and consideration. That guidance may make use of this function, but
 the focus of this function is on single element calculations where the semantics are unambiguous.
 If the input is a DateTime, the result a DateTime Interval beginning and ending on that DateTime.
-If the input is a Quantity, the quantity is expected to be a calendar-duration interpreted as an Age, 
+If the input is a Quantity, the quantity is expected to be a calendar-duration interpreted as an Age,
 and the result is a DateTime Interval beginning on the Date the patient turned that age and ending immediately before one year later.
 If the input is a DateTime Interval, the result is the input.
 If the input is a Quantity Interval, the quantities are expected to be calendar-durations interpreted as an Age, and the result
-is a DateTime Interval beginning on the date the patient turned the age given as the start of the quantity interval, and ending 
+is a DateTime Interval beginning on the date the patient turned the age given as the start of the quantity interval, and ending
 immediately before one year later than the date the patient turned the age given as the end of the quantity interval.
 Any other input will reslt in a null DateTime Interval
 */
@@ -129,7 +124,6 @@ define function ToInterval(choice Choice<DateTime, Quantity, Interval<DateTime>,
 @comment: Normalizes a choice type of DateTime, Quanitty, Interval<DateTime>, or Interval<Quantity> types
 to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
 representations for timing-valued elements in QICore, allowing this function to be used across any resource.
-
 The input can be provided as a DateTime, Quantity, Interval<DateTime> or Interval<Quantity>.
 The intent of this function is to provide a clear and concise mechanism to treat single
 elements that have multiple possible representations as intervals so that logic doesn't have to account
@@ -137,11 +131,11 @@ for the variability. More complex calculations (such as medication request perio
 calculation) need specific guidance and consideration. That guidance may make use of this function, but
 the focus of this function is on single element calculations where the semantics are unambiguous.
 If the input is a DateTime, the result a DateTime Interval beginning and ending on that DateTime.
-If the input is a Quantity, the quantity is expected to be a calendar-duration interpreted as an Age, 
+If the input is a Quantity, the quantity is expected to be a calendar-duration interpreted as an Age,
 and the result is a DateTime Interval beginning on the Date the patient turned that age and ending immediately before one year later.
 If the input is a DateTime Interval, the result is the input.
 If the input is a Quantity Interval, the quantities are expected to be calendar-durations interpreted as an Age, and the result
-is a DateTime Interval beginning on the date the patient turned the age given as the start of the quantity interval, and ending 
+is a DateTime Interval beginning on the date the patient turned the age given as the start of the quantity interval, and ending
 immediately before one year later than the date the patient turned the age given as the end of the quantity interval.
 Any other input will reslt in a null DateTime Interval
 */
@@ -254,7 +248,7 @@ define fluent function getId(uri String):
   Last(Split(uri, '/'))
 
 /*
-@description: Given an interval, return true if the interval has a starting boundary specified 
+@description: Given an interval, return true if the interval has a starting boundary specified
 (i.e. the start of the interval is not null and not the minimum DateTime value)
 */
 define function "HasStart"(period Interval<DateTime> ):
@@ -263,7 +257,7 @@ define function "HasStart"(period Interval<DateTime> ):
   )
 
 /*
-@description: Given an interval, return true if the interval has a starting boundary specified 
+@description: Given an interval, return true if the interval has a starting boundary specified
 (i.e. the start of the interval is not null and not the minimum DateTime value)
 */
 define fluent function hasStart(period Interval<DateTime> ):
@@ -272,7 +266,7 @@ define fluent function hasStart(period Interval<DateTime> ):
   )
 
 /*
-@description: Given an interval, returns true if the interval has an ending boundary specified 
+@description: Given an interval, returns true if the interval has an ending boundary specified
 (i.e. the end of the interval is not null and not the maximum DateTime value)
 */
 define function "HasEnd"(period Interval<DateTime> ):
@@ -282,7 +276,7 @@ define function "HasEnd"(period Interval<DateTime> ):
   )
 
 /*
-@description: Given an interval, returns true if the interval has an ending boundary specified 
+@description: Given an interval, returns true if the interval has an ending boundary specified
 (i.e. the end of the interval is not null and not the maximum DateTime value)
 */
 define fluent function hasEnd(period Interval<DateTime> ):
@@ -292,7 +286,7 @@ define fluent function hasEnd(period Interval<DateTime> ):
   )
 
 /*
-@description: Given an interval, returns the ending point if the interval has an ending boundary specified, 
+@description: Given an interval, returns the ending point if the interval has an ending boundary specified,
 otherwise, returns the starting point
 */
 define function "Latest"(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
@@ -302,7 +296,7 @@ define function "Latest"(choice Choice<DateTime, Quantity, Interval<DateTime>, I
       else start of period
 
 /*
-@description: Given an interval, returns the ending point if the interval has an ending boundary specified, 
+@description: Given an interval, returns the ending point if the interval has an ending boundary specified,
 otherwise, returns the starting point
 */
 define fluent function latest(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
@@ -312,7 +306,7 @@ define fluent function latest(choice Choice<DateTime, Quantity, Interval<DateTim
       else start of period
 
 /*
-@description: Given an interval, return the starting point if the interval has a starting boundary specified, 
+@description: Given an interval, return the starting point if the interval has a starting boundary specified,
 otherwise, return the ending point
 */
 define function "Earliest"(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
@@ -322,7 +316,7 @@ define function "Earliest"(choice Choice<DateTime, Quantity, Interval<DateTime>,
       else end of period
 
 /*
-@description: Given an interval, return the starting point if the interval has a starting boundary specified, 
+@description: Given an interval, return the starting point if the interval has a starting boundary specified,
 otherwise, return the ending point
 */
 define fluent function earliest(choice Choice<DateTime, Quantity, Interval<DateTime>, Interval<Quantity>> ):
