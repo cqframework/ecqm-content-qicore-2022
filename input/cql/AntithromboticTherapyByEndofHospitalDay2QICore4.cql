@@ -206,16 +206,16 @@ define "Encounter with Thrombolytic Therapy Documented As Already Given":
               			  or PriorTPA.clinicalStatus ~  FHIRCommon."relapse" )
                 and PriorTPA.verificationStatus ~ FHIRCommon."confirmed"
 
-/*Error: Could not resolve operator Exists with signature (QICore.Condition) */
+/*Error: Could not resolve operator Exists with signature (QICore.Condition)
 define "Encounter with Thrombolytic Therapy Prior to Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     where exists ((Global."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
-      where (EncounterDiagnosis.code in "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival")) /**/
-/*define "Encounter with Thrombolytic Therapy Prior to Arrival":
+      where (EncounterDiagnosis.code in "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival")) */
+define "Encounter with Thrombolytic Therapy Prior to Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
    with (Global."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
       such that (EncounterDiagnosis.code in "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival")
-  */
+
 //---------------------------------------------------------------------------------------------------------------------------
 //===========================================================================================================================
 
