@@ -7,7 +7,7 @@ or recommendation for guidance.
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
 include HospiceQICore4 version '3.0.000' called Hospice

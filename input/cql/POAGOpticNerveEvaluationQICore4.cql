@@ -2,10 +2,10 @@ library POAGOpticNerveEvaluationQICore4 version '0.0.003'
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.013' called FHIRHelpers
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include QICoreCommon version '1.0.000' called QICoreCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 

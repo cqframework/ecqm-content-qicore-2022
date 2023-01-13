@@ -7,13 +7,13 @@ or recommendation for guidance. Tests are available for this content.
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
 include HospiceQICore4 version '3.0.000' called Hospice
 include StatusFHIR version '1.0.0' called Status
 //include FHIRCommon version '4.0.012' called FHIRCommon //https://github.com/cqframework/ecqm-content-qicore-2022/issues/5
-include QICoreCommon version '1.0.000' called QICoreCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
 
 valueset "Clinical Oral Evaluation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.125.12.1003' 
 valueset "Dental Caries": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.125.12.1004' 

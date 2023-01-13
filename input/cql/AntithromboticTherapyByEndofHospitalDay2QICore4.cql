@@ -7,10 +7,10 @@ Definition names with 'DISPLAY' are used to display pertinent data
 
 using QICore version '4.1.1'
 
-include FHIRCommon version '4.0.012' called FHIRCommon
-include FHIRHelpers version '4.0.012' called FHIRHelpers
+include FHIRCommon version '4.1.000' called FHIRCommon
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include QICoreCommon version '1.0.000' called QICoreCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
 //include TJCOverallQICore4 version '6.0.000' called TJC
 
@@ -206,7 +206,7 @@ define "Encounter with Thrombolytic Therapy Documented As Already Given":
               			  or PriorTPA.clinicalStatus ~  FHIRCommon."relapse" )
                 and PriorTPA.verificationStatus ~ FHIRCommon."confirmed"
 
-/*Error: Could not resolve operator Exists with signature (QICore.Condition) 
+/*Error: Could not resolve operator Exists with signature (QICore.Condition)
 define "Encounter with Thrombolytic Therapy Prior to Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     where exists ((Global."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
@@ -215,7 +215,7 @@ define "Encounter with Thrombolytic Therapy Prior to Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
    with (Global."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
       such that (EncounterDiagnosis.code in "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival")
-      
+
 //---------------------------------------------------------------------------------------------------------------------------
 //===========================================================================================================================
 

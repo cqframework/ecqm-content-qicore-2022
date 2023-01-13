@@ -12,7 +12,7 @@ based on QICore to QDM Mapping (http://build.fhir.org/ig/HL7/fhir-qi-core/qdm-to
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.013' called FHIRHelpers
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 
 codesystem "ObservationCategoryCodes": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "ConditionClinicalStatusCodes": 'http://terminology.hl7.org/CodeSystem/condition-clinical'

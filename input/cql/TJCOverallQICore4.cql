@@ -14,8 +14,7 @@ Refresh from 2022 AU
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.012' called FHIRHelpers
-include FHIRCommon version '4.0.012' called FHIRCommon
+include FHIRHelpers version '4.1.000' called FHIRHelpers
 
 include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
 include SupplementalDataElementsQICore4 version '3.0.000' called SDE
@@ -82,11 +81,11 @@ define "Comfort Measures during Hospitalization":
 define "Encounter with Comfort Measures during Hospitalization":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures" ComfortMeasure
-     such that Coalesce((start of Global."Normalize Interval"(ComfortMeasure.performed)), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
-//      such that Coalesce((start of ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
+     such that Coalesce((ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
+/*      such that Coalesce((start of ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
 //      Could not resolve call to operator Normalize interval with signature (choice<System.DateTime.interval<System.DateTime>>).
 //      Could not resolve call to operator ToInterval with signature (choice<System.DateTime.interval<System.DateTime>>).
-
+*/
 define "Intervention Comfort Measures":
   ( ["ServiceRequest": "Comfort Measures"] P
       where P.intent = 'order'

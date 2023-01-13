@@ -2,7 +2,7 @@ library QICorePatterns
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.013'
+include FHIRHelpers version '4.1.000'
 
 codesystem "Marital Status Codes": 'http://terminology.hl7.org/CodeSystem/v3-MaritalStatus'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'

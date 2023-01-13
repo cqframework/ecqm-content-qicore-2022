@@ -6,33 +6,34 @@ Controlling High Blood Pressure (CBP)
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '4.1.000'
 
-include MATGlobalCommonFunctionsQICore4 version '5.0.000' called Common
-include AdultOutpatientEncountersQICore4 version '2.0.000' called AdultOutpatientEncounters
-include SupplementalDataElementsQICore4 version '2.0.0' called SDE
-include AdvancedIllnessandFrailtyExclusionQICore4 version '5.0.000' called FrailtyLTI
-include HospiceQICore4 version '2.0.000' called Hospice
+include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Common
+include QICoreCommon version '1.2.000' called QICoreCommon
+include AdultOutpatientEncountersQICore4 version '3.0.000' called AdultOutpatientEncounters
+include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include AdvancedIllnessandFrailtyExclusionQICore4 version '6.0.000' called FrailtyLTI
+include HospiceQICore4 version '3.0.000' called Hospice
 //include NCQACommon_FHIR version '3.10.000' called Common
 //include Participation_FHIR version '1.0.0'
 
 codesystem "LOINC": 'urn:oid:2.16.840.1.113883.6.1'
 
-valueset "Chronic Kidney Disease, Stage 5": 'urn:oid:2.16.840.1.113883.3.526.3.1002'
-valueset "Dialysis Services": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1013'
-valueset "ED": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1085'
-valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307'
-valueset "End Stage Renal Disease": 'urn:oid:2.16.840.1.113883.3.526.3.353'
-valueset "ESRD Monthly Outpatient Services": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1014'
-valueset "Essential Hypertension": 'urn:oid:2.16.840.1.113883.3.464.1003.104.12.1011'
-valueset "Ethnicity": 'urn:oid:2.16.840.1.114222.4.11.837'
-valueset "Kidney Transplant": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1012'
-valueset "Kidney Transplant Recipient": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1029'
-valueset "ONC Administrative Sex": 'urn:oid:2.16.840.1.113762.1.4.1'
-valueset "Payer": 'urn:oid:2.16.840.1.114222.4.11.3591'
-valueset "Pregnancy": 'urn:oid:2.16.840.1.113883.3.526.3.378'
-valueset "Race": 'urn:oid:2.16.840.1.114222.4.11.836'
-valueset "Vascular Access for Dialysis": 'urn:oid:2.16.840.1.113883.3.464.1003.109.12.1011'
+valueset "Chronic Kidney Disease, Stage 5": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1002'
+valueset "Dialysis Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1013'
+valueset "ED": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1085'
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+valueset "End Stage Renal Disease": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.353'
+valueset "ESRD Monthly Outpatient Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1014'
+valueset "Essential Hypertension": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.104.12.1011'
+valueset "Ethnicity": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837'
+valueset "Kidney Transplant": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1012'
+valueset "Kidney Transplant Recipient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1029'
+valueset "ONC Administrative Sex": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1'
+valueset "Payer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591'
+valueset "Pregnancy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.378'
+valueset "Race": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836'
+valueset "Vascular Access for Dialysis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.109.12.1011'
 
 code "Birth date": '21112-8' from "LOINC" display 'Birth date'
 code "Blood pressure": '85354-9' from "LOINC" display 'blood pressure'
@@ -107,7 +108,7 @@ define "Qualifying Diastolic Blood Pressure Reading":
 
 // TODO: Move to Common Functions
 define function GetEncounter(reference Reference):
-  singleton from ( [Encounter: id in Common.GetId(reference.reference)] )
+  singleton from ( [Encounter: id in QICoreCommon.GetId(reference.reference)] )
 
 define "Qualifying Systolic Blood Pressure Reading":
 	["observation-bp"] BloodPressure
@@ -123,7 +124,7 @@ define "Numerator":
 		and "Has Systolic Blood Pressure Less Than 140"
 
 define "Initial Population":
-	Common.CalendarAgeInYearsAt(ToDate(Patient.birthDate), end of "Measurement Period") between 18 and 85
+	CalculateAgeInYearsAt(ToDate(Patient.birthDate), end of "Measurement Period") between 18 and 85
 		and exists "Essential Hypertension Diagnosis"
 		and exists AdultOutpatientEncounters."Qualifying Encounters"
 
@@ -132,7 +133,7 @@ define "Pregnancy Or Renal Diagnosis Exclusions":
 		union ["Condition": "End Stage Renal Disease"]
 		union ["Condition": "Kidney Transplant Recipient"]
 		union ["Condition": "Chronic Kidney Disease, Stage 5"] ) PregnancyESRDDiagnosis
-      where PregnancyESRDDiagnosis.verificationStatus = Common."confirmed"
+      where PregnancyESRDDiagnosis.verificationStatus = QICoreCommon."confirmed"
         and PregnancyESRDDiagnosis.recordedDate before end of "Measurement Period"
 
 define "Denominator":
@@ -148,11 +149,11 @@ define "End Stage Renal Disease Procedures":
 		union ["Procedure": "Kidney Transplant"]
 		union ["Procedure": "Dialysis Services"] ) ESRDProcedure
 		where ESRDProcedure.status = 'completed'
-      and Common."Normalize Interval"(ESRDProcedure.performed) starts before end of "Measurement Period"
+      and (ESRDProcedure.performed starts before end of "Measurement Period")
 
 define "Essential Hypertension Diagnosis":
 	["Condition": "Essential Hypertension"] Hypertension
-    where Hypertension.verificationStatus = ToConcept(Common."confirmed")
+    where Hypertension.verificationStatus = ToConcept(QICoreCommon."confirmed")
      and (Hypertension.recordedDate 6 months or less on or after start of "Measurement Period"
       or Hypertension.recordedDate before end of "Measurement Period"
     )
