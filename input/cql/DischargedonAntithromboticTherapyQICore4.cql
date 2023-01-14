@@ -8,10 +8,9 @@ Definition names with 'DISPLAY' are used to display pertinent data
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include CQMCommon version '1.0.000' called CQMCommon
 include QICoreCommon version '1.2.000' called QICoreCommon
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
-//include TJCOverallQICore4 version '6.0.000' called TJC
+include SupplementalDataElements version '3.0.000' called SDE
 
 valueset "Antithrombotic Therapy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.62' 
 valueset "Medical Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.473' 

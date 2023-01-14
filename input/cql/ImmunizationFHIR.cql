@@ -9,7 +9,7 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include CQMCommon version '1.0.000' called CQMCommon
 
 context Patient
 

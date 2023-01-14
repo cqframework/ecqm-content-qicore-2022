@@ -3,7 +3,7 @@ library EXM144v11QICore4 version '11.1.000'
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include SupplementalDataElements version '3.0.000' called SDE
 include QICoreCommon version '1.2.000' called Common
 include AHAOverallQICore4 version '1.0.000' called AHA
 

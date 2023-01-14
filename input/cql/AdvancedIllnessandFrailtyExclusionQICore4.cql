@@ -8,10 +8,9 @@ or recommendation for guidance. Tests are available for this content.
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-// include FHIRCommon version '4.0.012' called FHIRCommon //https://github.com/cqframework/ecqm-content-qicore-2022/issues/5
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include CumulativeMedicationDurationQICore4 version '2.0.000' called CMD
+include CQMCommon version '1.0.000' called CQMCommon
+include CumulativeMedicationDuration version '3.0.000' called CMD
 include StatusFHIR version '1.0.0' called Status
 
 codesystem "LOINC": 'http://loinc.org'
@@ -98,33 +97,18 @@ define "Has Two Outpatient Encounters with Advanced Illness on Different Dates o
       return OutpatientEncounter1
   )
 
-// BTR 2022-10-13:
-// Addressed by fixes in QICore ModelInfo and the MATGlobalCommonFunctions EncounterDiagnosis function.
-// Use EncounterDiagnosis as shown below
-
-//Encounter diagnosis workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/8 
 define "Outpatient Encounters with Advanced Illness":
    (Status."Finished Encounter"( [Encounter: "Outpatient"]
     union [Encounter: "Observation"]
     union [Encounter: "Emergency Department Visit"]
     union [Encounter: "Nonacute Inpatient"] )) OutpatientEncounter
-      where exists ((Global.EncounterDiagnosis(OutpatientEncounter)) Diagnosis where Diagnosis.code in "Advanced Illness")
+      where exists ((CQMCommon.EncounterDiagnosis(OutpatientEncounter)) Diagnosis where Diagnosis.code in "Advanced Illness")
         and QICoreCommon."ToInterval" ( OutpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
         end of "Measurement Period"]
 
-// define "Has Inpatient Encounter with Advanced Illness":
-//   exists ( ( Status."Finished Encounter"([Encounter: "Acute Inpatient"])) InpatientEncounter
-//       with [Condition: "Advanced Illness"] AdvancedIllnessDiagnosis
-//         such that AdvancedIllnessDiagnosis in Global.EncounterDiagnosis ( InpatientEncounter )
-//         where Global.EncounterDiagnosis (InpatientEncounter) in [Condition: "Advanced Illness"]
-//           and QICoreCommon."ToInterval" ( InpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
-//           end of "Measurement Period"]
-//   )
-
-//Encounter diagnosis workaround due to https://github.com/cqframework/ecqm-content-qicore-2022/issues/8 
 define "Has Inpatient Encounter with Advanced Illness":
   exists ( ( Status."Finished Encounter"([Encounter: "Acute Inpatient"])) InpatientEncounter
-      where exists ((Global.EncounterDiagnosis(InpatientEncounter)) Diagnosis where Diagnosis.code in "Advanced Illness")
+      where exists ((CQMCommon.EncounterDiagnosis(InpatientEncounter)) Diagnosis where Diagnosis.code in "Advanced Illness")
         and QICoreCommon."ToInterval" ( InpatientEncounter.period ) starts during day of Interval[start of "Measurement Period" - 1 year, 
           end of "Measurement Period"]
   )

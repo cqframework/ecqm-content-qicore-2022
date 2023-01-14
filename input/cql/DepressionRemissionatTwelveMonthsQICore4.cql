@@ -3,9 +3,9 @@ library DepressionRemissionatTwelveMonthsQICore4 version '0.0.001'
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include SupplementalDataElements version '3.0.000' called SDE
 include QICoreCommon version '1.2.000' called QICoreCommon
+include CQMCommon version '1.0.000' called CQMCommon
 
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "SNOMEDCT": 'http://snomed.info/sct' 

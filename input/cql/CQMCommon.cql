@@ -158,7 +158,7 @@ define fluent function hospitalArrivalTime(TheEncounter Encounter ):
   	).period
 
 /*
-Returns the latest departure time for encounter including any prior ED visit.
+Returns the latest departure time for encounter including any prior ED visit. 
 */
 define function "Hospital Departure Time"(TheEncounter Encounter):
 	end of Last(
@@ -167,7 +167,7 @@ define function "Hospital Departure Time"(TheEncounter Encounter):
 	).period
 
 /*
-Returns the latest departure time for encounter including any prior ED visit.
+Returns the latest departure time for encounter including any prior ED visit. 
 */
 define fluent function hospitalDepartureTime(TheEncounter Encounter):
 	end of Last(

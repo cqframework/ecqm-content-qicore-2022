@@ -7,11 +7,10 @@ Definition names with 'DISPLAY' are used to display pertinent data
 
 using QICore version '4.1.1'
 
-include FHIRCommon version '4.1.000' called FHIRCommon
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include CQMCommon version '1.0.000' called CQMCommon
 include QICoreCommon version '1.2.000' called QICoreCommon
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include SupplementalDataElements version '3.0.000' called SDE
 //include TJCOverallQICore4 version '6.0.000' called TJC
 
 valueset "Antithrombotic Therapy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.62' 
@@ -55,13 +54,13 @@ define "Encounter with Principal Diagnosis and Age":
 //TJCOverall
 define "Non Elective Inpatient Encounter":
   ["Encounter": "Non-Elective Inpatient Encounter"] NonElectiveEncounter
-		where Global."LengthInDays"(NonElectiveEncounter.period) <= 120
+		where CQMCommon."LengthInDays"(NonElectiveEncounter.period) <= 120
 			and NonElectiveEncounter.period ends during day of "Measurement Period"
 
-//TJCOverall - needs fix to Global."PrincipalDiagnosis", should not need to search Condition again and not tied to Dx 
+//TJCOverall - needs fix to CQMCommon."PrincipalDiagnosis", should not need to search Condition again and not tied to Dx 
 define "All Stroke Encounter":
   "Non Elective Inpatient Encounter" NonElectiveEncounter
-    let EncPrincipalDx: Global."PrincipalDiagnosis"(NonElectiveEncounter)
+    let EncPrincipalDx: CQMCommon."PrincipalDiagnosis"(NonElectiveEncounter)
     where NonElectiveEncounter.status ~ 'finished'
       and exists (
             (["Condition": "Hemorrhagic Stroke"]
@@ -97,16 +96,16 @@ define "Intervention Comfort Measures":
         where InterventionPerformed.status in { 'completed', 'in-progress' }
     )
 
-//TJCOverall - needs fix to Global."PrincipalDiagnosis", should not need to search Condition again and not tied to Dx
+//TJCOverall - needs fix to CQMCommon."PrincipalDiagnosis", should not need to search Condition again and not tied to Dx
 define "Ischemic Stroke Encounter":
   "Encounter with Principal Diagnosis and Age" EncounterWithAge
-    let EncPrincipalDx: Global."PrincipalDiagnosis"(EncounterWithAge)
+    let EncPrincipalDx: CQMCommon."PrincipalDiagnosis"(EncounterWithAge)
      where EncounterWithAge.status = 'finished'
         and exists ["Condition": "Ischemic Stroke"] 
 /*Original before QICore
 define "Ischemic Stroke Encounter":
   "Encounter with Principal Diagnosis and Age" EncounterWithAge
-		where Global."PrincipalDiagnosis"(EncounterWithAge).code in "Ischemic Stroke"
+		where CQMCommon."PrincipalDiagnosis"(EncounterWithAge).code in "Ischemic Stroke"
 */
 //---------------------------------------------------------------------------------------------------------------------------
 
@@ -134,18 +133,18 @@ define "Denominator Exclusions":
 
 define "Encounter Less Than Two Days":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
-        where Global."LengthInDays" (Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )) < 2
+        where CQMCommon."LengthInDays" (CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter )) < 2
 
 //Note: Below does not have 'as dateTime' after performed because it errored, and tried many variations
 define "Encounter with Comfort Measure Procedure during Day of or Day After Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures Procedure" ComfortMeasure
-     such that start of QICoreCommon."ToInterval"(ComfortMeasure.performed) during day of "CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+     such that start of QICoreCommon."ToInterval"(ComfortMeasure.performed) during day of "CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 define "Encounter with Comfort Measure ServiceRequest during Day of or Day After Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures ServiceRequest" ComfortMeasure
-     such that ComfortMeasure.authoredOn  during day of "CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+     such that ComfortMeasure.authoredOn  during day of "CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 //Instead split ServiceRequest and Procedure into two different definitions
 define "Intervention Comfort Measures ServiceRequest":
@@ -163,8 +162,8 @@ define "Encounter with Comfort Measures during Day of or Day After Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
              with "Intervention Comfort Measures" ComfortMeasure
                         such that Coalesce(start of QICoreCommon."ToInterval"(ComfortMeasure.performed), ComfortMeasure.authoredOn) 
-                        during day of "CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
-          //              such that date from(Coalesce(start of Global."Normalize Interval"(ComfortMeasure.performed), ComfortMeasure.authoredOn)) during TJC."CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+                        during day of "CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+          //              such that date from(Coalesce(start of CQMCommon."Normalize Interval"(ComfortMeasure.performed), ComfortMeasure.authoredOn)) during TJC."CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 
 define "Encounter with Thrombolytic Therapy Given Prior To Arrival Or During Hospitalization":
@@ -193,27 +192,27 @@ define "Encounter with Thrombolytic Therapy Medication or Procedures":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Thrombolytic Therapy Medication or Procedures" ThrombolyticTherapy
       such that QICoreCommon."ToInterval" ( ThrombolyticTherapy.effective ) starts during 
-        Interval[ start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) - 24 hours, 
-                    end of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+        Interval[ start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) - 24 hours, 
+                    end of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 
 define "Encounter with Thrombolytic Therapy Documented As Already Given":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
         with [Condition: "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival"] PriorTPA
-            such that PriorTPA.recordedDate during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
-                and (PriorTPA.clinicalStatus ~ FHIRCommon."active"
-                      or PriorTPA.clinicalStatus ~ FHIRCommon."recurrence"
-              			  or PriorTPA.clinicalStatus ~  FHIRCommon."relapse" )
-                and PriorTPA.verificationStatus ~ FHIRCommon."confirmed"
+            such that PriorTPA.recordedDate during CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter )
+                and (PriorTPA.clinicalStatus ~ QICoreCommon."active"
+                      or PriorTPA.clinicalStatus ~ QICoreCommon."recurrence"
+              			  or PriorTPA.clinicalStatus ~  QICoreCommon."relapse" )
+                and PriorTPA.verificationStatus ~ QICoreCommon."confirmed"
 
 /*Error: Could not resolve operator Exists with signature (QICore.Condition)
 define "Encounter with Thrombolytic Therapy Prior to Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
-    where exists ((Global."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
+    where exists ((CQMCommon."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
       where (EncounterDiagnosis.code in "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival")) */
 define "Encounter with Thrombolytic Therapy Prior to Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
-   with (Global."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
+   with (CQMCommon."EncounterDiagnosis"(IschemicStrokeEncounter)) EncounterDiagnosis
       such that (EncounterDiagnosis.code in "Intravenous or Intra arterial Thrombolytic (tPA) Therapy Prior to Arrival")
 
 //---------------------------------------------------------------------------------------------------------------------------
@@ -226,8 +225,8 @@ define "Encounter with Antithrombotic Therapy":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
      with ["MedicationAdministration": "Antithrombotic Therapy"] Antithrombotic
         such that Antithrombotic.status in { 'in-progress', 'completed' }
-            and QICoreCommon."ToInterval" ( Antithrombotic.effective) starts during day of "CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
-          //          and date from (start of Global."Normalize Interval" ( Antithrombotic.effective)) during TJC."CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+            and QICoreCommon."ToInterval" ( Antithrombotic.effective) starts during day of "CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+          //          and date from (start of CQMCommon."Normalize Interval" ( Antithrombotic.effective)) during TJC."CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 //from STK-2 -check above to make sure has all of the necessary elements. Delete this example afterwards.
 //Note: QICore manual says to constrain status to 'active' and category to 'Community' and does not mention intent.
@@ -260,8 +259,8 @@ define "Denominator Exceptions":
 define "No Antithrombotic Ordered or Administered Day Of or Day After Hospital Arrival":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "No Antithrombotic Ordered or Administered" NoAntithrombotic
-      such that NoAntithrombotic.authoredOn during day of "CalendarDayOfOrDayAfter"(start of Global."HospitalizationWithObservation"(IschemicStrokeEncounter) )
-              // such that date from NoAntithrombotic.authoredOn during TJC."CalendarDayOfOrDayAfter"(start of Global."HospitalizationWithObservation"(IschemicStrokeEncounter))
+      such that NoAntithrombotic.authoredOn during day of "CalendarDayOfOrDayAfter"(start of CQMCommon."HospitalizationWithObservation"(IschemicStrokeEncounter) )
+              // such that date from NoAntithrombotic.authoredOn during TJC."CalendarDayOfOrDayAfter"(start of CQMCommon."HospitalizationWithObservation"(IschemicStrokeEncounter))
 
 define "No Antithrombotic Ordered or Administered":
   "Reason for Not Ordering Antithrombotic"
@@ -286,16 +285,16 @@ define "Encounter with Pharmacological Contraindications for Antithrombotic Ther
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with ["MedicationAdministration": "Pharmacological Contraindications For Antithrombotic Therapy"] PharmacologicalContraindications
         such that PharmacologicalContraindications.status in { 'in-progress', 'completed' }
-        and QICoreCommon."ToInterval" ( PharmacologicalContraindications.effective) starts during day of "CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
-          //          and date from (start of Global."Normalize Interval" ( PharmacologicalContraindications.effective))  during TJC."CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+        and QICoreCommon."ToInterval" ( PharmacologicalContraindications.effective) starts during day of "CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+          //          and date from (start of CQMCommon."Normalize Interval" ( PharmacologicalContraindications.effective))  during TJC."CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 define "Encounter with An INR Greater Than 3.5":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with ["Observation": "INR"] INR
-      such that INR.issued during day of "CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+      such that INR.issued during day of "CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
             and INR.value as Quantity > 3.5
             and INR.status in { 'final', 'amended', 'corrected' }
-        //  such that date from (INR.issued) during TJC."CalendarDayOfOrDayAfter" ( start of Global."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
+        //  such that date from (INR.issued) during TJC."CalendarDayOfOrDayAfter" ( start of CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter ) )
 
 //--------------------------------------------------------------------------------------------------------------------------
 

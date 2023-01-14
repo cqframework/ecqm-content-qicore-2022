@@ -8,10 +8,10 @@ Definition names with 'DISPLAY' are used to display pertinent data
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include CQMCommon version '1.0.000' called CQMCommon
 include QICoreCommon version '1.2.000' called QICoreCommon
-include VTEQICore4 version '7.0.000' called VTE
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include VTEICUQICore4 version '7.0.000' called VTE
+include SupplementalDataElements version '3.0.000' called SDE
 
 codesystem "LOINC": 'http://loinc.org' 
 
@@ -65,15 +65,15 @@ define "Initial Population":
 "Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions"
 
 define "Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions":
-  ( Global."Inpatient Encounter" InpatientEncounter
+  ( CQMCommon."Inpatient Encounter" InpatientEncounter
     where CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
   )
 //  intersect "Admission without VTE or Obstetrical Conditions"
 
 //QA: 8/30 Collob call - Bryn needs to fix ModelInfo and QICoreCOmmon to allow EncounterDiagnoses return more than 1 dx so continue using exists() - CQLIT-330
 define "Admission without VTE or Obstetrical Conditions":
-  Global."Inpatient Encounter" InpatientEncounter
-      let EncounterDiagnosis: Global.EncounterDiagnosis(InpatientEncounter)
+  CQMCommon."Inpatient Encounter" InpatientEncounter
+      let EncounterDiagnosis: CQMCommon.EncounterDiagnosis(InpatientEncounter)
       where not exists (
         ["Condition": "Obstetrics"]
         union ["Condition": "Venous Thromboembolism"]
@@ -83,7 +83,7 @@ define "Admission without VTE or Obstetrical Conditions":
 define "Encounter with ICU Location":
   VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
           	where exists (QualifyingEncounter.location Location
-        				where Global.GetLocation(Location.location).type in "Intensive Care Unit"
+        				where CQMCommon.GetLocation(Location.location).type in "Intensive Care Unit"
           			and Location.period during QualifyingEncounter.period
           	)
 */
@@ -97,13 +97,13 @@ define "Denominator":
 define "Encounter with ICU Location":
   VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
           	with QualifyingEncounter.location Location
-        				such that (Global.GetLocation(Location.location).type in "Intensive Care Unit"
+        				such that (CQMCommon.GetLocation(Location.location).type in "Intensive Care Unit"
           			and Location.period during QualifyingEncounter.period)
 
 define "Encounter with ICU Location DISPLAY":
   VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
           	with QualifyingEncounter.location Location
-        				such that (Global.GetLocation(Location.location).type in "Intensive Care Unit"
+        				such that (CQMCommon.GetLocation(Location.location).type in "Intensive Care Unit"
           			and Location.period during QualifyingEncounter.period)
       return Tuple { QualEnc: QualifyingEncounter, QualLoc: QualifyingEncounter.location, 
                      LocPeriod: QualifyingEncounter.location.period}
@@ -116,7 +116,7 @@ define "Denominator Exclusions":
 
 define "Encounter with ICU Location And Encounter Less Than 2 Days":
   "Encounter with ICU Location"QualifyingEncounterICU
-          	where Global."LengthInDays"(QualifyingEncounterICU.period)< 2
+          	where CQMCommon."LengthInDays"(QualifyingEncounterICU.period)< 2
 define "SCIP VTE Selected Surgery":
   (	["Procedure": "General Surgery"]
           		union ["Procedure": "Gynecological Surgery"]
@@ -248,7 +248,7 @@ define "Encounter with Medication Oral Factor Xa Inhibitor Administered on Day o
 //Julia Temporary
 define "Encounter with Prior or Present Diagnosis of Atrial Fibrillation or Prior Diagnosis of VTE":
 ( "Encounter with ICU Location" QualifyingEncounterICU
-        where Global.EncounterDiagnosis ( QualifyingEncounterICU ).code in "Atrial Fibrillation/Flutter"
+        where CQMCommon.EncounterDiagnosis ( QualifyingEncounterICU ).code in "Atrial Fibrillation/Flutter"
     )
 
 /*OriginalYanyan
@@ -264,7 +264,7 @@ define "Encounter with Prior or Present Diagnosis of Atrial Fibrillation or Prio
           end of QualifyingEncounterICU.period
   )
     union ( "Encounter with ICU Location" QualifyingEncounterICU
-        where Global.EncounterDiagnosis ( QualifyingEncounterICU ).code in "Atrial Fibrillation/Flutter"
+        where CQMCommon.EncounterDiagnosis ( QualifyingEncounterICU ).code in "Atrial Fibrillation/Flutter"
     )
     union ( "Encounter with ICU Location" QualifyingEncounterICU
         with ["Condition": "Venous Thromboembolism"] VTEDiagnosis
@@ -572,5 +572,5 @@ define "Denominator Exceptions":
 
 define "Encounter with First ICU Location Stay Less Than 1 day":
   "Encounter with ICU Location" QualifyingEncounterICU
-        	 where Global."LengthInDays"(VTE."FirstICULocationPeriod"(QualifyingEncounterICU)) < 1
+        	 where CQMCommon."LengthInDays"(VTE."FirstICULocationPeriod"(QualifyingEncounterICU)) < 1
 

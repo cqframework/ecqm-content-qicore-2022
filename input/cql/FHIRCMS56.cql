@@ -1,4 +1,8 @@
-library FunctionalStatusAssessmentforTotalHipReplacementFHIR version '0.0.001'
+/*
+@title: Functional Status Assessment for TOtal Hip Replacement
+@identifier: CMS56
+*/
+library FHIRCMS56 version '0.0.001'
 
 /*
 This content is a work in progress and should not be considered a final specification
@@ -9,8 +13,8 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
 include HospiceQICore4 version '3.0.000' called Hospice
 include StatusFHIR version '1.0.0' called Status 
 
@@ -33,13 +37,13 @@ valueset "Telephone Visits": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.11
 code "Activities of daily living score [HOOS]": '72095-3' from "LOINC" display 'Activities of daily living score [HOOS]'
 code "Pain score [HOOS]": '72097-9' from "LOINC" display 'Pain score [HOOS]'
 code "Postoperative follow-up visit, normally included in the surgical package, to indicate that an evaluation and management service was performed during a postoperative period for a reason(s) related to the original procedure": '99024' from "CPT" display 'Postoperative follow-up visit, normally included in the surgical package, to indicate that an evaluation and management service was performed during a postoperative period for a reason(s) related to the original procedure'
-code "Problem List Item": 'problem-list-item' from "ConditionCategoryCodes" display 'Problem List Item'
+code "Problem List Item": 'problem-list-item' from QICoreCommon."ConditionCategoryCodes" display 'Problem List Item'
 code "PROMIS-10 Global Mental Health (GMH) score T-score": '71969-0' from "LOINC" display 'PROMIS-10 Global Mental Health (GMH) score T-score'
 code "PROMIS-10 Global Physical Health (GPH) score T-score": '71971-6' from "LOINC" display 'PROMIS-10 Global Physical Health (GPH) score T-score'
 code "Quality of life score [HOOS]": '72093-8' from "LOINC" display 'Quality of life score [HOOS]'
 code "Severe dementia (disorder)": '428351000124105' from "SNOMEDCT" display 'Severe dementia (disorder)'
 code "Sport-recreation score [HOOS]": '72094-6' from "LOINC" display 'Sport-recreation score [HOOS]'
-code "survey": 'survey' from "ObservationCategoryCodes" display 'Survey'
+code "survey": 'survey' from QICoreCommon."ObservationCategoryCodes" display 'Survey'
 code "Symptoms score [HOOS]": '72096-1' from "LOINC" display 'Symptoms score [HOOS]'
 code "Total interval score [HOOSJR]": '82323-7' from "LOINC" display 'Total interval score [HOOSJR]'
 code "VR-12 Mental component summary (MCS) score - oblique method T-score": '72026-8' from "LOINC" display 'VR-12 Mental component summary (MCS) score - oblique method T-score'
@@ -69,16 +73,16 @@ define "Initial Population":
         and AgeInYearsAt(date from start of "Measurement Period")>= 19
 
 define "Has Qualifying Encounter":
-  exists ( Status."Finished Encounter"(( [Encounter: "Outpatient Consultation"]
+  exists ((Status."Finished Encounter"(( [Encounter: "Outpatient Consultation"]
             union [Encounter: "Office Visit"]
             union [Encounter: "Postoperative follow-up visit, normally included in the surgical package, to indicate that an evaluation and management service was performed during a postoperative period for a reason(s) related to the original procedure"] 
             union [Encounter: "Telephone Visits"]
-            union [Encounter: "Online Assessments"])) ValidEncounters
+            union [Encounter: "Online Assessments"]))) ValidEncounters
             where QICoreCommon."ToInterval"(ValidEncounters.period) during day of "Measurement Period"
         )
 
 define "Total Hip Arthroplasty Procedure":
-  Status."Completed Procedure"([Procedure: "Primary THA Procedure"]) THAProcedure
+  (Status."Completed Procedure"([Procedure: "Primary THA Procedure"])) THAProcedure
         where QICoreCommon."ToInterval"(THAProcedure.performed) starts 12 months or less on or before start of "Measurement Period"
 
 define "Denominator":
@@ -130,7 +134,7 @@ define "Has THA with Initial and Follow Up VR12 Orthogonal Assessments":
         )
 
 define "Has Dementia Diagnosis":
-  exists ( Status."Active Condition"([Condition: "Severe dementia (disorder)"]) Dementia
+  exists ( (Status."Active Condition"([Condition: "Severe dementia (disorder)"])) Dementia
             where QICoreCommon."ToPrevalenceInterval"(Dementia) overlaps "Measurement Period"
          )
 
@@ -151,29 +155,29 @@ define "Has THA with Initial and Follow Up HOOSJr Assessments":
             with "Time HOOSJr Total Assessment Completed" InitialHipAssessment
                 such that TotalHip starts 90 days or less on or after InitialHipAssessment
                 with "Time HOOSJr Total Assessment Completed" FollowupHipAssessment
-                such that FollowupHipAssessment.effective during day of Interval[
+                such that FollowupHipAssessment during day of Interval[
                   end of TotalHip + 270 days, 
                   end of TotalHip + 365 days]
           )
 
 define "Has Total Hip Arthroplasty with 2 or More Lower Body Fractures":
   exists ( "Total Hip Arthroplasty Procedure" THAProcedure
-            where Count(Status."Active Condition"([Condition: "Fracture - Lower Body"]) LowerBodyFracture
+            where Count((Status."Active Condition"([Condition: "Fracture - Lower Body"])) LowerBodyFracture
                 where QICoreCommon."ToPrevalenceInterval"(LowerBodyFracture) starts 24 hours or less on or before start of QICoreCommon."ToInterval"(THAProcedure.performed))>= 2
             )
 
 define "Time HOOSJr Total Assessment Completed":
-  ( Status."Final Survey Observation"([Observation: "Total interval score [HOOSJR]"]) HOOSJr
+  ( (Status."Final Survey Observation"([Observation: "Total interval score [HOOSJR]"])) HOOSJr
             where HOOSJr.value is not null ) DocumentedHOOSJr
   return start of QICoreCommon."ToInterval" ( DocumentedHOOSJr.effective )
 
 define "Time HOOS Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "Quality of life score [HOOS]"]) HOOSLifeQuality,  
-    Status."Final Survey Observation"([Observation: "Sport-recreation score [HOOS]"]) HOOSSport,
-    Status."Final Survey Observation"([Observation: "Activities of daily living score [HOOS]"]) HOOSActivityScore,
-    Status."Final Survey Observation"([Observation: "Symptoms score [HOOS]"]) HOOSSymptoms,
-    Status."Final Survey Observation"([Observation: "Pain score [HOOS]"]) HOOSPain
+    (Status."Final Survey Observation"([Observation: "Quality of life score [HOOS]"])) HOOSLifeQuality,  
+    (Status."Final Survey Observation"([Observation: "Sport-recreation score [HOOS]"])) HOOSSport,
+    (Status."Final Survey Observation"([Observation: "Activities of daily living score [HOOS]"])) HOOSActivityScore,
+    (Status."Final Survey Observation"([Observation: "Symptoms score [HOOS]"])) HOOSSymptoms,
+    (Status."Final Survey Observation"([Observation: "Pain score [HOOS]"])) HOOSPain
     let HOOSLifeQualityTime: start of QICoreCommon."ToInterval"(HOOSLifeQuality.effective),
     HOOSSportTime: start of QICoreCommon."ToInterval" ( HOOSSport.effective),
     HOOSActivityScoreTime: start of QICoreCommon."ToInterval" (HOOSActivityScore.effective),
@@ -192,19 +196,19 @@ define "Time HOOS Total Assessment Completed":
 
 define "Time PROMIS10 Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "PROMIS-10 Global Mental Health (GMH) score T-score"]) PROMIS10MentalScore,
-    Status."Final Survey Observation"([Observation: "PROMIS-10 Global Physical Health (GPH) score T-score"]) PROMIS10PhysicalScore
+    (Status."Final Survey Observation"([Observation: "PROMIS-10 Global Mental Health (GMH) score T-score"])) PROMIS10MentalScore,
+    (Status."Final Survey Observation"([Observation: "PROMIS-10 Global Physical Health (GPH) score T-score"])) PROMIS10PhysicalScore
     let PROMIS10MentalScoreTime: start of QICoreCommon."ToInterval"( PROMIS10MentalScore.effective),
         PROMIS10PhysicalScoreTime: start of QICoreCommon."ToInterval"( PROMIS10PhysicalScore.effective)
         where PROMIS10MentalScoreTime same day as PROMIS10PhysicalScoreTime
             and PROMIS10PhysicalScore.value is not null
-            and PROMIS10MentalScore.value is not nul
+            and PROMIS10MentalScore.value is not null
                 return Max({PROMIS10MentalScoreTime, PROMIS10PhysicalScoreTime})
 
 define "Time VR12 Oblique Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - oblique method T-score"]) VR12MentalAssessment,
-    Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - oblique method T-score"]) VR12PhysicalAssessment
+    (Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - oblique method T-score"])) VR12MentalAssessment,
+    (Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - oblique method T-score"])) VR12PhysicalAssessment
     let VR12MentalAssessmentTime: start of QICoreCommon."ToInterval"(VR12MentalAssessment.effective),
 VR12PhysicalAssessmentTime: start of QICoreCommon."ToInterval"( VR12PhysicalAssessment.effective)          
     where VR12MentalAssessmentTime same day as VR12PhysicalAssessmentTime
@@ -214,8 +218,8 @@ VR12PhysicalAssessmentTime: start of QICoreCommon."ToInterval"( VR12PhysicalAsse
 
 define "Time VR12 Orthogonal Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"]) VR12MentalAssessment,
-    Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"]) VR12PhysicalAssessment
+    (Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"])) VR12MentalAssessment,
+    (Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"])) VR12PhysicalAssessment
     let VR12MentalAssessmentTime: start of QICoreCommon."ToInterval" (VR12MentalAssessment.effective),
 VR12PhysicalAssessmentTime: start of QICoreCommon."ToInterval"(VR12PhysicalAssessment.effective)          
      where VR12MentalAssessmentTime same day as VR12PhysicalAssessmentTime

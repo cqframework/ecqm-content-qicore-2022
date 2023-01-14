@@ -12,7 +12,7 @@ using QICore version '4.1.1'
 include FHIRHelpers version '4.1.000'
 
 // NOTE: BTR 2019-07-30: Updated dependencies
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include CQMCommon version '1.0.000' called CQMCommon
 
 valueset "Intensive Care Unit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.23'
 
@@ -22,20 +22,20 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 define function "FromDayOfStartOfHospitalizationToDayAfterAdmission"(Encounter Encounter ):
-	Interval[Global."ToDate"(start of Global."HospitalizationWithObservation"(Encounter)), Global."ToDate"(start of Encounter.period + 2 days))
+	Interval[Global."ToDate"(start of CQMCommon."HospitalizationWithObservation"(Encounter)), Global."ToDate"(start of Encounter.period + 2 days))
 
 define function "StartOfFirstICU"(Encounter Encounter ):
 	start of "FirstICULocationPeriod"(Encounter)
 
 define function "FromDayOfStartOfHospitalizationToDayAfterFirstICU"(Encounter Encounter ):
-	Interval[Global."ToDate"(start of Global."HospitalizationWithObservation"(Encounter)), Global."ToDate"(StartOfFirstICU(Encounter)+ 2 days))
+	Interval[Global."ToDate"(start of CQMCommon."HospitalizationWithObservation"(Encounter)), Global."ToDate"(StartOfFirstICU(Encounter)+ 2 days))
 
 define function "FirstICULocationPeriod"(Encounter Encounter ):
 	"FirstInpatientIntensiveCareUnit"(Encounter).period
 
 define function "FirstInpatientIntensiveCareUnit"(Encounter Encounter ):
 	First((Encounter.location)HospitalLocation
-			where Global.GetLocation(HospitalLocation.location).type in "Intensive Care Unit"
+			where CQMCommon.GetLocation(HospitalLocation.location).type in "Intensive Care Unit"
 				and HospitalLocation.period during Encounter.period
 			sort by start of period
 	)

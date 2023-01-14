@@ -16,8 +16,8 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
 
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Discharge To Acute Care Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87'
@@ -40,17 +40,12 @@ context Patient
 
 define "All Stroke Encounter":
   "Non Elective Inpatient Encounter" NonElectiveEncounter
-    where exists ((Global.PrincipalDiagnosis(NonElectiveEncounter)) E where E.code in "Hemorrhagic Stroke")
-      or exists ((Global.PrincipalDiagnosis(NonElectiveEncounter)) E where E.code in "Ischemic Stroke")
-
-define "All Stroke Encounter (2)":
-  "Non Elective Inpatient Encounter" NonElectiveEncounter
     where NonElectiveEncounter.principalDiagnosis().code in "Hemorrhagic Stroke"
       or NonElectiveEncounter.principalDiagnosis().code in "Ischemic Stroke"
 
 define "Ischemic Stroke Encounter":
   "Encounter with Principal Diagnosis and Age" EncounterWithAge
-		where Global.PrincipalDiagnosis(EncounterWithAge).code in "Ischemic Stroke"
+		where CQMCommon.PrincipalDiagnosis(EncounterWithAge).code in "Ischemic Stroke"
 
 define "Ischemic Stroke Encounters with Discharge Disposition":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
@@ -62,7 +57,7 @@ define "Ischemic Stroke Encounters with Discharge Disposition":
 
 define "Non Elective Inpatient Encounter":
   ["Encounter": "Non-Elective Inpatient Encounter"] NonElectiveEncounter
-		where Global."LengthInDays"(NonElectiveEncounter.period) <= 120
+		where CQMCommon."LengthInDays"(NonElectiveEncounter.period) <= 120
 			and NonElectiveEncounter.period ends during day of "Measurement Period"
 
 define "Encounter with Principal Diagnosis and Age":
@@ -72,7 +67,7 @@ define "Encounter with Principal Diagnosis and Age":
 define "Comfort Measures during Hospitalization":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures" ComfortMeasure
-     such that FHIRHelpers.ToDateTime(Coalesce(ComfortMeasure.performed as dateTime, ComfortMeasure.authoredOn)) during Global."HospitalizationWithObservation"(IschemicStrokeEncounter)
+     such that Coalesce(ComfortMeasure.performed as DateTime, ComfortMeasure.authoredOn) during CQMCommon."HospitalizationWithObservation"(IschemicStrokeEncounter)
 //      such that (Coalesce(ComfortMeasure.performed, ComfortMeasure.authoredOn)) during Global."HospitalizationWithObservation"(IschemicStrokeEncounter)
 //     A named type is required in this context (line 70, col 77) 
 //     Could not resolve call to operator ToDateTime with signature dateTime 
@@ -81,7 +76,7 @@ define "Comfort Measures during Hospitalization":
 define "Encounter with Comfort Measures during Hospitalization":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures" ComfortMeasure
-     such that Coalesce((ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
+     such that Coalesce((ComfortMeasure.performed), ComfortMeasure.authoredOn) during CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter )
 /*      such that Coalesce((start of ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
 //      Could not resolve call to operator Normalize interval with signature (choice<System.DateTime.interval<System.DateTime>>).
 //      Could not resolve call to operator ToInterval with signature (choice<System.DateTime.interval<System.DateTime>>).
@@ -102,4 +97,4 @@ define function "CalendarDayOfOrDayAfter"(StartValue DateTime ):
   Interval["TruncateTime"(StartValue), "TruncateTime"(StartValue + 2 days))
 
 define function "HospitalizationWithObservationLengthofStay"(Encounter "Encounter"):
-  Global."LengthInDays"(Global."HospitalizationWithObservation"(Encounter))
+  CQMCommon."LengthInDays"(CQMCommon."HospitalizationWithObservation"(Encounter))
