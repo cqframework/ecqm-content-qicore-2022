@@ -1,0 +1,227 @@
+{
+  "resourceType": "Bundle",
+  "id": "SimpleTestCase",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2022-03-30T17:43:42.957+00:00"
+  },
+  "type": "collection",
+  "entry": [
+	  {
+		"fullUrl": "http://local/Patient",
+		"resource": {
+		  "resourceType": "Patient",
+		  "id": "SimpleTestCase",
+		  "meta": {
+			"profile": [
+				"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+			]
+		  },
+		  "text": {
+			"status": "generated",
+			"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Lizzy Health</div>"
+		  },
+		  "identifier": [ {
+			"system": "http://clinfhir.com/fhir/NamingSystem/identifier",
+			"value": "20181011LizzyHealth"
+		  } ],
+		  "name": [ {
+			"use": "official",
+			"text": "Lizzy Health",
+			"family": "Health",
+			"given": [ "Lizzy" ]
+		  } ],
+			"extension": [
+				{
+					"extension": [
+						{
+							"url": "ombCategory",
+							"valueCoding": {
+								"code": "1002-5",
+								"system": "urn:oid:2.16.840.1.113883.6.238",
+								"display": "American Indian or Alaska Native",
+								"userSelected": true
+							}
+						},
+						{
+							"url": "text",
+							"valueString": "American Indian or Alaska Native"
+						}
+					],
+					"url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+				},
+				{
+					"extension": [
+						{
+							"url": "ombCategory",
+							"valueCoding": {
+								"code": "2135-2",
+								"system": "urn:oid:2.16.840.1.113883.6.238",
+								"display": "Hispanic or Latino",
+								"userSelected": true
+							}
+						},
+						{
+							"url": "text",
+							"valueString": "Hispanic or Latino"
+						}
+					],
+					"url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+				}
+				],		  "gender": "female",
+		  "birthDate": "2000-10-11"
+		}
+	  }, 
+	  {
+		"fullUrl": "http://local/Encounter",
+		"resource": {
+		  "resourceType": "Encounter",
+		  "meta": {
+			"versionId": "1",
+			"lastUpdated": "2021-10-13T03:34:10.160+00:00",
+			"source": "#nEcAkGd8PRwPP5fA",
+			"profile": [
+				"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+			]
+		  },
+		  "id": "TestCaseEncounter",
+		  "text": {
+			"status": "generated",
+			"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sep 9th 2021 for Asthma<a name=\"mm\"/></div>"
+		  },
+		  "status": "finished",
+		  "class": {
+			"system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+			"code": "IMP",
+			"display": "inpatient encounter"
+		  },
+		  "type": [
+			{
+			  "coding": [
+				{
+				  "system": "http://snomed.info/sct",
+				  "code": "32485007",
+				  "display": "Hospital admission (procedure)"
+				}
+			  ]
+			}
+		  ],
+		  "subject": {
+			"reference": "Patient/SimpleTestCase"
+		  },
+		  "participant": [ {
+			"individual": {
+			  "reference": "Practitioner/30164",
+			  "display": "Dr John Doe"
+			}
+		  } ],
+		  "period": {
+			"start": "2022-09-10T03:34:10.054Z",
+			"end": "2022-12-31T03:34:10.054Z"
+		  },
+		  "diagnosis": [
+			{
+			  "condition": {
+				"reference": "Condition/SimpleTestCaseCondition"
+			  },
+			  "use": {
+				"coding": [
+				  {
+					"system": "http://hl7.org/fhir/diagnosis-role",
+					"code": "billing",
+					"display": "Billing"
+				  }
+				]
+			  },
+			  "rank": 1
+			}
+		  ]
+		}
+	  }, 
+	  {
+		"fullUrl": "http://local/Condition",
+		"resource": {
+    	  "resourceType": "Condition",
+    	  "id": "SimpleTestCaseCondition",
+    	  "meta": {
+    		"profile": [
+    		  "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+    		]
+    	  },
+    	  "verificationStatus": {
+    		"coding": [
+    		  {
+    			"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+    			"code": "confirmed",
+    			"display": "Confirmed"
+    		  }
+    		]
+    	  },
+    	  "category": [
+    		{
+    		  "coding": [
+    			{
+    			  "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+    			  "code": "encounter-diagnosis",
+    			  "display": "Encounter Diagnosis"
+    			}
+    		  ]
+    		}
+    	  ],
+    	  "code": {
+    		"coding": [
+    		  {
+    			"system": "http://snomed.info/sct",
+    			"code": "116288000",
+    			"display": "Paralytic stroke (disorder)"
+    		  }
+    		]
+    	  },
+    	  "subject": {
+    		"reference": "Patient/SimpleTestCase"
+    	  }
+    	}
+	  },
+	  {
+		"fullUrl": "http://local/MedicationRequest",
+		"resource": {
+			"resourceType": "MedicationRequest",
+			"id": "SimpleTestCaseMedicationRequest",
+			"meta": {
+				"profile": [
+					"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
+				]
+			},
+			"status": "completed",
+			"intent": "order",
+			"category": [
+			  {
+				"coding": [
+				  {
+					"system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+					"code": "discharge",
+					"display": "Discharge"
+				  }
+				]
+			  }
+			],
+			"medicationCodeableConcept": {
+			  "coding": [
+				{
+				  "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+				  "code": "1037045",
+				  "display": "dabigatran etexilate 150 MG Oral Capsule"
+				}
+			  ]
+			},
+			"subject": {
+			  "reference": "Patient/SimpleTestCase"
+			},
+			"authoredOn": "2022-12-17T08:15:00-07:00",
+			"requester": {
+			  "reference": "Practitioner/30164"
+			  }
+    	}
+	  }
+  ]
+}

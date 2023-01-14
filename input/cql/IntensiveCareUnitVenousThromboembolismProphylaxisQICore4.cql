@@ -19,18 +19,19 @@ library IntensiveCareUnitVenousThromboembolismProphylaxisQICore4 version '0.0.01
 
 using QICore version '4.1.1'
 
-include QICoreCommon version '1.2.000' called QICoreCommon
-include CQMCommon version '1.0.000' called CQMCommon
-include VTEQICore4 version '7.0.000' called VTE
-include FHIRHelpers version '4.1.000' called FHIRHelpers
-include SupplementalDataElements version '3.0.000' called SDE
+include QICoreCommon version '1.0.000' called QICoreCommon
+include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include VTEQICore4 version '8.0.000' called VTE
+include FHIRHelpers version '4.0.013' called FHIRHelpers
+include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include TJCOverallQICore4 version '6.0.000' called TJC
 
-
+//Copied from MADiE 1/13/2023
 codesystem "LOINC": 'http://loinc.org' 
 
 valueset "Application of Graduated Compression Stockings (GCS)":'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.66'
 valueset "Application of Intermittent Pneumatic Compression Devices (IPC)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65'
-valueset "Application of Venous Foot Pumps (VFP)": 'http://cts.nlm.nih.gov/fhir/ValueSeint/2.16.840.1.113762.1.4.1110.64'
+valueset "Application of Venous Foot Pumps (VFP)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.64'
 valueset "Atrial Fibrillation/Flutter": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.202' 
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Direct Thrombin Inhibitor": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.205' 
@@ -64,13 +65,145 @@ valueset "Unfractionated Heparin": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.84
 valueset "Urological Surgery": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.272' 
 valueset "Venous foot pumps (VFP)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230' 
 valueset "Venous Thromboembolism": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.279' 
-valueset "Warfarin": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232' 
+valueset "Warfarin": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232'  
 
 code "Risk for venous thromboembolism": '72136-5' from "LOINC" display 'Risk for venous thromboembolism'
 
 parameter "Measurement Period" Interval<DateTime>
 
 context Patient
+
+//Temporary stuff beginning
+/*
+define "zDISPLAY Patient":
+["Patient"] P
+  return Tuple {
+    Pid: P.id,
+    PbirthDate: P.birthDate,
+    Page: CalculateAgeInYearsAt(P.birthDate, @2022-01-01T00:00:00.0)
+  }
+
+define "zDISPLAY Encounter":
+["Encounter"] E
+let Elocations: Global."Hospitalization Locations"(E)
+  return Tuple {
+    Eperiod: E.period,
+    Estatus: E.status,
+    Eclass:  E.class,
+    Elocationreference: E.location.location.reference,
+    ElocationPeriod: E.location.period,
+    Ediagnosis: Global.EncounterDiagnosis(E),
+    EDxInObs: Global.EncounterDiagnosis(E).code in "Obstetrics",
+    EDxInVTE: Global.EncounterDiagnosis(E).code in "Venous Thromboembolism",
+    EDxInObsVTE: Global.EncounterDiagnosis(E).code in "Obstetrics VTE",
+    Ehosp: Global."HospitalizationWithObservation" ( E ),
+    EGetlocations: Elocations,
+    EinICU: Elocations.location.type in "Intensive Care Unit"
+  }
+
+define "zDISPLAY Location":
+["Location"] L
+  return Tuple {
+    Lid: L.id,
+    Lcode: L.type
+  }
+
+
+define "zDISPLAY DxP":
+["Encounter"] E
+let DxP: Global."PrincipalDiagnosis"(E)
+  return Tuple {
+    DxPVerStat: DxP.verificationStatus,
+    DxPCode: DxP.code
+  }  
+define "zDISPLAY Condition":
+[Condition] C
+  return Tuple {
+    Cid: C.id,
+    Ccode: C.code,
+    CverificationStatus: C.verificationStatus
+  }  
+define "zDISPLAY Procedure":
+[Procedure] Px
+  return Tuple {
+    Pxid: Px.id,
+    Pxcode: Px.code,
+    Pxstatus: Px.status,
+    Pxperformed: Px.performed
+  }    
+define "zDISPLAY Medication Request":
+["MedicationRequest"] NoAntithromboticDischarge
+  return Tuple {
+    meta: NoAntithromboticDischarge.meta,
+    doNotPerform: NoAntithromboticDischarge.doNotPerform,
+    medication: NoAntithromboticDischarge.medication,
+    reasonCode: NoAntithromboticDischarge.reasonCode,
+    reasonInMed: ( NoAntithromboticDischarge.reasonCode in "Medical Reason"),
+    reasonInPatRef: (NoAntithromboticDischarge.reasonCode in "Patient Refusal"),
+    category: NoAntithromboticDischarge.category,
+    dischargeStatus: NoAntithromboticDischarge.status,
+    intent: NoAntithromboticDischarge.intent,
+    authoredOn: NoAntithromboticDischarge.authoredOn
+  }
+  
+ define "zDISPLAY Medication Administration":
+["MedicationAdministration"] AntithromboticAdmin
+  return Tuple {
+    MAStatus: AntithromboticAdmin.status,
+    MAmedication: AntithromboticAdmin.medication,
+    MAeffective: AntithromboticAdmin.effective,
+    MAinterval: QICoreCommon."ToInterval" (AntithromboticAdmin.effective)
+  }
+
+define "zDISPLAY Comfort Measure":
+    TJC."Intervention Comfort Measures" ComfortMeasure
+      return Tuple {
+       comfMeasPerformed: ComfortMeasure.performed,
+       comfmeasPerfToInt: QICoreCommon."ToInterval"(ComfortMeasure.performed),
+       comfMeasAuthoredOn: ComfortMeasure.authoredOn,
+       comfMeasCoalesce: Coalesce((start of QICoreCommon."ToInterval"(ComfortMeasure.performed)), ComfortMeasure.authoredOn)
+     } 
+
+define "zAdmission without VTE or Obstetrical Conditions":
+  Global."Inpatient Encounter" InpatientEncounter
+   where not (exists (Global.EncounterDiagnosis(InpatientEncounter)) EncDx
+                 where (EncDx.code in "Obstetrics" 
+                      or EncDx.code in "Venous Thromboembolism"
+          							or EncDx.code in "Obstetrics VTE"
+          			         )
+                     )
+
+define "zEncounter with Age Range and without VTE Diagnosis or Obstetrical Conditions":
+  ( Global."Inpatient Encounter" InpatientEncounter
+     // where AgeInYearsAt(date from start of InpatientEncounter.period) >= 18 ----->//curent problem with AgeInYearsAt required a modified approach - refer to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
+        where CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
+  )
+    intersect "zAdmission without VTE or Obstetrical Conditions"
+
+define "zEncounter with ICU Location":
+ "zEncounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
+  let QELocation: First(QualifyingEncounter.location)
+  return Tuple {
+       ELlocationreference: QELocation.location,
+       ELlocationperiod: QELocation.period,
+       ELlocationlocation: Global.GetLocation(QELocation.location),
+       ELlocationlocationtype: Global.GetLocation(QELocation.location).type,
+       ELlocationICU: Global.GetLocation(QELocation.location).type in "Intensive Care Unit"
+     } 
+
+    where exists (QualifyingEncounter.location Location
+                    where Global.GetLocation(Location.location).type in "Intensive Care Unit"
+  				    and Location.period during QualifyingEncounter.period
+  				    )
+              
+      First((Encounter.location)HospitalLocation
+  			where GetLocation(HospitalLocation.location).type in "Intensive Care Unit"
+  				and HospitalLocation.period during Encounter.period
+  			sort by start of period
+  	)          
+*/
+  
+//Temporary stuff ending
 
 define "SDE Ethnicity":
   SDE."SDE Ethnicity"
@@ -84,47 +217,28 @@ define "SDE Race":
 define "SDE Sex":
   SDE."SDE Sex"
 
-
 define "Initial Population":
-"Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions"
-
-
-define "Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions":
-  ( Global."Inpatient Encounter" InpatientEncounter
-              where CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
-              )
-              intersect "Admission without VTE or Obstetrical Conditions"
-
-//QA: 8/30 Collob call - Bryn needs to fix ModelInfo and QICoreCOmmon to allow EncounterDiagnoses return more than 1 dx so continue using exists() - CQLIT-330
-define "Admission without VTE or Obstetrical Conditions":
-  Global."Inpatient Encounter" InpatientEncounter
-  where not exists (Global.EncounterDiagnosis(InpatientEncounter).code in "Obstetrics" 
-      or Global.EncounterDiagnosis(InpatientEncounter).code in "Venous Thromboembolism"
-      or Global.EncounterDiagnosis(InpatientEncounter).code in "Obstetrics VTE")
-          		  /*  where not (exists (Global.EncounterDiagnosis(InpatientEncounter) EncDx
-                  where (EncDx.code in "Obstetrics" 
-                      or EncDx.code in "Venous Thromboembolism"
-          							or EncDx.code in "Obstetrics VTE"
-          			         )
-                     )
-                  )
-*/
+  VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions"
 
 define "Denominator":
   "Encounter with ICU Location"
-
+  
+  
 define "Encounter with ICU Location":
-  VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
-          	where exists (QualifyingEncounter.location Location
-        				where Global.GetLocation(Location.location).type in "Intensive Care Unit"
-          			and Location.period during QualifyingEncounter.period
-          	)
+ VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
+    where exists (QualifyingEncounter.location Location
+                    where Global.GetLocation(Location.location).type in "Intensive Care Unit"
+  				    and Location.period during QualifyingEncounter.period
+  				    )
+
+
 
 define "Denominator Exclusions":
-  "Encounter with ICU Location And Encounter Less Than 2 Days"
+"Encounter with ICU Location And Encounter Less Than 2 Days"
           union "Encounter with First ICU Stay with Principal Procedure of SCIP VTE Selected Surgery"
         	union "Encounter with Intervention Comfort Measures From Day Of Start of Hospitalization To Day After First ICU Stay"
           union "Encounter with Intervention Comfort Measures on Day of or Day After Procedure"
+
 
 define "Encounter with ICU Location And Encounter Less Than 2 Days":
   "Encounter with ICU Location"QualifyingEncounterICU
@@ -141,17 +255,16 @@ define "SCIP VTE Selected Surgery":
           		union ["Procedure": "Urological Surgery"] ) Procedure
           		where Procedure.status = 'completed'
 
-//QA: 9/6 - Bryn will add getID() into QICoreCommon
+
 define "Encounter with First ICU Stay with Principal Procedure of SCIP VTE Selected Surgery":
   from
       "Encounter with ICU Location" QualifyingEncounterICU,
       "SCIP VTE Selected Surgery" SelectedProcedure
       let EncounterProcedure: singleton from (QualifyingEncounterICU.procedure P where P.rank = 1)
       where EncounterProcedure.procedure.reference.getId() = SelectedProcedure.id
-        and date from ( 
-          end of QICoreCommon."ToInterval" ( SelectedProcedure.performed )
-        ) during VTE."CalendarDayOfOrDayAfter" ( VTE."StartOfFirstICU" ( QualifyingEncounterICU ) )
+        and date from (end of QICoreCommon."ToInterval" ( SelectedProcedure.performed )) during TJC."CalendarDayOfOrDayAfter" ( VTE."StartOfFirstICU" ( QualifyingEncounterICU ) )
       return QualifyingEncounterICU
+
 
 
 define "Encounter with Intervention Comfort Measures From Day Of Start of Hospitalization To Day After First ICU Stay":
@@ -160,8 +273,9 @@ define "Encounter with Intervention Comfort Measures From Day Of Start of Hospit
             such that date from(Coalesce(start of QICoreCommon."ToInterval" (ComfortMeasure.performed), ComfortMeasure.authoredOn)) during VTE."FromDayOfStartOfHospitalizationToDayAfterFirstICU"(QualifyingEncounterICU)
 
 
+
 define "Intervention Comfort Measures":
-  ( ["ServiceRequest": "Comfort Measures"] P
+  ( ["ServiceRequest": code in "Comfort Measures"] P
       where P.intent = 'order'
       and P.status in { 'active', 'on-hold', 'completed'}
   )
@@ -177,7 +291,7 @@ define "Encounter with Intervention Comfort Measures on Day of or Day After Proc
             "Intervention Comfort Measures" ComfortMeasure
             where  AnesthesiaProcedure.status = 'completed'
               	and QICoreCommon."ToInterval" (AnesthesiaProcedure.performed ) ends 1 day after day of VTE."StartOfFirstICU"(QualifyingEncounterICU)
-                and date from (Coalesce(start of QICoreCommon."ToInterval" (ComfortMeasure.performed), ComfortMeasure.authoredOn)) during VTE.CalendarDayOfOrDayAfter( 
+                and date from (Coalesce(start of QICoreCommon."ToInterval" (ComfortMeasure.performed), ComfortMeasure.authoredOn)) during TJC.CalendarDayOfOrDayAfter( 
                   end of QICoreCommon.ToInterval(AnesthesiaProcedure.performed))
             	return QualifyingEncounterICU
 
@@ -209,19 +323,19 @@ define "Pharmacological or Mechanical VTE Prophylaxis Received":
                   where DeviceApplied.status = 'completed'
                             ) 
 
+
 define "Encounter with VTE Prophylaxis Received on Day of or Day After First ICU Stay or Procedure":
   ( "Encounter with ICU Location" QualifyingEncounterICU
       with	"Pharmacological or Mechanical VTE Prophylaxis Received" VTEProphylaxis
-        //such that date from(start of QICoreCommon."ToInterval" (VTEProphylaxis.effective)) during VTE.CalendarDayOfOrDayAfter(VTE.StartOfFirstICU(QualifyingEncounterICU))
-        such that date from(start of Coalesce(QICoreCommon."ToInterval" (VTEProphylaxis.effective), QICoreCommon."ToInterval" (VTEProphylaxis.performed))) during VTE."CalendarDayOfOrDayAfter"(VTE."StartOfFirstICU"(QualifyingEncounterICU))
+        such that date from(start of Coalesce(QICoreCommon."ToInterval" (VTEProphylaxis.effective), QICoreCommon."ToInterval" (VTEProphylaxis.performed))) during TJC."CalendarDayOfOrDayAfter"(VTE."StartOfFirstICU"(QualifyingEncounterICU))
         	)
         	union ( from
         				"Encounter with ICU Location" QualifyingEncounterICU,
         				["Procedure": "General or Neuraxial Anesthesia"] AnesthesiaProcedure,
         				"Pharmacological or Mechanical VTE Prophylaxis Received" VTEProphylaxis
-        				where QICoreCommon."ToInterval" (AnesthesiaProcedure.performed) ends 1 day after day of VTE."StartOfFirstICU"(QualifyingEncounterICU)
-        					//and date from(start of QICoreCommon."ToInterval" (VTEProphylaxis.effective)) during VTE."CalendarDayOfOrDayAfter"(
-        					and date from(start of Coalesce(QICoreCommon."ToInterval" (VTEProphylaxis.effective), QICoreCommon."ToInterval" (VTEProphylaxis.performed))) during VTE."CalendarDayOfOrDayAfter"(
+        				where AnesthesiaProcedure.status = 'completed'
+                        	and QICoreCommon."ToInterval" (AnesthesiaProcedure.performed) ends 1 day after day of VTE."StartOfFirstICU"(QualifyingEncounterICU)
+        					and date from(start of Coalesce(QICoreCommon."ToInterval" (VTEProphylaxis.effective), QICoreCommon."ToInterval" (VTEProphylaxis.performed))) during TJC."CalendarDayOfOrDayAfter"(
           				end of QICoreCommon."ToInterval" (AnesthesiaProcedure.performed))
                     return QualifyingEncounterICU
                 )
@@ -231,7 +345,7 @@ define "Encounter with Medication Oral Factor Xa Inhibitor Administered on Day o
   (  "Encounter with ICU Location" QualifyingEncounterICU
      with ["MedicationAdministration":  "Oral Factor Xa Inhibitor for VTE Prophylaxis or VTE Treatment"] FactorXaMedication
      such that FactorXaMedication.status = 'completed'
-                  and date from(start of QICoreCommon."ToInterval" (FactorXaMedication.effective)) during VTE.CalendarDayOfOrDayAfter(VTE.StartOfFirstICU(QualifyingEncounterICU))
+                  and date from(start of QICoreCommon."ToInterval" (FactorXaMedication.effective)) during TJC.CalendarDayOfOrDayAfter(VTE.StartOfFirstICU(QualifyingEncounterICU))
            )
           union ( from
             			 "Encounter with ICU Location" QualifyingEncounterICU,
@@ -240,7 +354,7 @@ define "Encounter with Medication Oral Factor Xa Inhibitor Administered on Day o
             			where FactorXaMedication.status = 'completed'
                     and AnesthesiaProcedure.status = 'completed'
             				and QICoreCommon."ToInterval" (AnesthesiaProcedure.performed) ends 1 day after day of VTE."StartOfFirstICU"(QualifyingEncounterICU)
-            					and date from(start of QICoreCommon."ToInterval" (FactorXaMedication.effective)) during VTE."CalendarDayOfOrDayAfter"(
+            					and date from(start of QICoreCommon."ToInterval" (FactorXaMedication.effective)) during TJC."CalendarDayOfOrDayAfter"(
               				end of QICoreCommon."ToInterval" (AnesthesiaProcedure.performed))
             			return QualifyingEncounterICU
                 )
@@ -284,7 +398,7 @@ define "Encounter with Low Risk for VTE or Anticoagulant Administered":
           union "Low Risk for VTE or Anticoagulant Administered on Day of or Day After Procedure"
 
 
-//QA: 8/30 FHIR Collab call - due to bryn, oberservation.value for INR as Quantiy (not ratio) wihtout unit after 3.0. The default unit for as quantity will be '1' if there is no unit after the number
+
 define "Low Risk Indicator For VTE":
   ( ["Observation": "Risk for venous thromboembolism"] VTERiskAssessment
       where  exists (VTERiskAssessment.category C
@@ -329,12 +443,12 @@ define "Low Risk for VTE or Anticoagulant Administered on Day of or Day After Pr
             "Low Risk Indicator For VTE" LowRiskForVTE
           where AnesthesiaProcedure.status = 'completed'
             and QICoreCommon."ToInterval" (AnesthesiaProcedure.performed) ends 1 day after day of VTE."StartOfFirstICU"(QualifyingEncounterICU)
-          	and LowRiskForVTE.LowRiskDatetime during day of VTE."CalendarDayOfOrDayAfter"(end of QICoreCommon."ToInterval" (AnesthesiaProcedure.performed))
+          	and LowRiskForVTE.LowRiskDatetime during day of TJC."CalendarDayOfOrDayAfter"(end of QICoreCommon."ToInterval" (AnesthesiaProcedure.performed))
           return QualifyingEncounterICU
 
 
 define "Encounter with No VTE Prophylaxis Due to Medical Reason":
-  ( "No VTE Prophylaxis Medication Due to Medical Reason From Day of Start of Hospitalization To Day After First ICU Stay"
+  ( "No VTE Prophylaxis Medication Due to Medical Reason From Day Of Start of Hospitalization To Day After First ICU Stay"
             intersect "No Mechanical VTE Prophylaxis Due to Medical Reason From Day of Start of Hospitalization To Day After First ICU Stay"
           )
           union ( "No VTE Prophylaxis Medication Due to Medical Reason on Day of or Day After Procedure"
@@ -344,33 +458,30 @@ define "Encounter with No VTE Prophylaxis Due to Medical Reason":
 
 define "No VTE Prophylaxis Medication Due to Medical Reason From Day Of Start of Hospitalization To Day After First ICU Stay":
   "Encounter with ICU Location" QualifyingEncounterICU
-      with "No VTE Prophlaxis Medication Administered or Order" NoVTEMedication
+      with "No VTE Prophylaxis Medication Administered or Ordered" NoVTEMedication
         such that NoVTEMedication.MedicationStatusReason in "Medical Reason"
           and date from ( NoVTEMedication.authoredOn ) during VTE."FromDayOfStartOfHospitalizationToDayAfterFirstICU" ( QualifyingEncounterICU )         
 
 
-//QA: Terminology retrieving issue occurs in MedicationAdminstration - CQLIT-331
-//QA: 9/6 Bryn will look into ModelInfo to fix terminology issue
+
 define "No VTE Prophylaxis Medication Administered or Ordered":
   ( ( [MedicationAdministrationNotDone: "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
        union [MedicationAdministrationNotDone: "Low Molecular Weight Heparin for VTE Prophylaxis"]
         union [MedicationAdministrationNotDone: "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
         union [MedicationAdministrationNotDone: "Warfarin"]
         union [MedicationAdministrationNotDone: "Rivaroxaban for VTE Prophylaxis"] ) MedicationAdm
-        where MedicationAdm.status = 'not-done' //still needed for tooling usage
+        //where MedicationAdm.status = 'not-done' // 10/4 per Bryn, it is no longer needed 
         return {
           id: MedicationAdm.id,
           MedicationStatusReason: MedicationAdm.statusReason,
           authoredOn: MedicationAdm.recorded
         }
     )
-      union ( ( ["MedicationRequest": "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
-          union ["MedicationRequest": "Low Molecular Weight Heparin for VTE Prophylaxis"]
-          union ["MedicationRequest": "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
-          union ["MedicationRequest": "Warfarin"]
-          union ["MedicationRequest": "Rivaroxaban for VTE Prophylaxis"]) MedicationOrder
-          where MedicationOrder.doNotPerform is true
-            and MedicationOrder.status in { 'completed', 'cancelled' }
+      union ( ( ["MedicationNotRequested": "Low Dose Unfractionated Heparin for VTE Prophylaxis"]
+          union ["MedicationNotRequested": "Low Molecular Weight Heparin for VTE Prophylaxis"]
+          union ["MedicationNotRequested": "Injectable Factor Xa Inhibitor for VTE Prophylaxis"]
+          union ["MedicationNotRequested": "Warfarin"]
+          union ["MedicationNotRequested": "Rivaroxaban for VTE Prophylaxis"]) MedicationOrder
           return {
             id: MedicationOrder.id,
             MedicationStatusReason: MedicationOrder.reasonCode,
@@ -387,14 +498,11 @@ define "No Mechanical VTE Prophylaxis Due to Medical Reason From Day of Start of
                 and date from(NoVTEDevice.authoredOn) during VTE."FromDayOfStartOfHospitalizationToDayAfterFirstICU"(QualifyingEncounterICU)
 
 
-//QA: Terminology retrieving issue occurs in ProcedureNotDone and Precedure.recorded is not regnozied - CQLIT-331
-//QA: 9/6 Bryn will look into ModelInfo to fix terminology issue
+
 define "No Mechanical VTE Prophylaxis Performed or Ordered":
-  ( ( [ServiceNotRequested: "Venous foot pumps (VFP)"]
-      union [ServiceNotRequested: "Intermittent pneumatic compression devices (IPC)"]
-      union [ServiceNotRequested: "Graduated compression stockings (GCS)"] ) DeviceNotOrder
-      where DeviceNotOrder.status = 'completed'
-        and DeviceNotOrder.doNotPerform is true
+  ( ( [ServiceNotRequested: code in "Venous foot pumps (VFP)"]
+      union [ServiceNotRequested: code in "Intermittent pneumatic compression devices (IPC)"]
+      union [ServiceNotRequested: code in "Graduated compression stockings (GCS)"] ) DeviceNotOrder
       return {
         id: DeviceNotOrder.id,
         requestStatusReason: DeviceNotOrder.reasonRefused,
@@ -405,7 +513,6 @@ define "No Mechanical VTE Prophylaxis Performed or Ordered":
                   union [ProcedureNotDone: "Application of Venous Foot Pumps (VFP)"] 
                   union [ProcedureNotDone: "Application of Graduated Compression Stockings (GCS)"]) DeviceNotApplied
         let DeviceNotDoneTiming: DeviceNotApplied.recorded
-        where DeviceNotApplied.status = 'not-done'
         return {
           id: DeviceNotApplied.id,
           requestStatusReason: DeviceNotApplied.statusReason,
@@ -418,12 +525,12 @@ define "No VTE Prophylaxis Medication Due to Medical Reason on Day of or Day Aft
   from
       "Encounter with ICU Location" QualifyingEncounterICU,
       ["Procedure": "General or Neuraxial Anesthesia"] AnesthesiaProcedure,
-      "No VTE prophylaxis Medication Administered or Ordered" NoVTEMedication
+      "No VTE Prophylaxis Medication Administered or Ordered" NoVTEMedication
       where NoVTEMedication.MedicationStatusReason in "Medical Reason"
         and AnesthesiaProcedure.status = 'completed'
         and QICoreCommon."ToInterval"  ( AnesthesiaProcedure.performed ) ends 1 day after day of VTE."StartOfFirstICU" ( QualifyingEncounterICU )
-        and date from ( NoVTEMedication.authoredOn ) during VTE."CalendarDayOfOrDayAfter" ( 
-        end of QICoreCommon."ToInterval"  ( AnesthesiaProcedure.performed as Period ) )
+        and date from ( NoVTEMedication.authoredOn ) during TJC."CalendarDayOfOrDayAfter" ( 
+        end of QICoreCommon."ToInterval"  ( AnesthesiaProcedure.performed ) )
       return QualifyingEncounterICU                        
 
 
@@ -431,33 +538,34 @@ define "No Mechanical VTE Prophylaxis Due to Medical Reason on Day of or Day Aft
   from
         		"Encounter with ICU Location" QualifyingEncounterICU,
         		["Procedure": "General or Neuraxial Anesthesia"] AnesthesiaProcedure,
-            "No Mechanical VTE Proplylaxis Performed or Ordered" NoVTEDevice
+            "No Mechanical VTE Prophylaxis Performed or Ordered" NoVTEDevice
         		where NoVTEDevice.requestStatusReason in "Medical Reason"
                 and AnesthesiaProcedure.status = 'completed'
                 and QICoreCommon."ToInterval" (AnesthesiaProcedure.performed ) ends 1 day after day of VTE."StartOfFirstICU"(QualifyingEncounterICU)
-                and date from (NoVTEDevice.authoredOn) during VTE."CalendarDayOfOrDayAfter"(
+                and date from (NoVTEDevice.authoredOn) during TJC."CalendarDayOfOrDayAfter"(
         			         end of QICoreCommon."ToInterval" (AnesthesiaProcedure.performed))
         		return QualifyingEncounterICU
 
         
 
 define "Encounter with No VTE Prophylaxis Due to Patient Refusal":
-  "No VTE Prophlaxis Due to Patient Refusal From Day of Start of Hospitalization To Day After First ICU Stay"
+  "No VTE Prophylaxis Due to Patient Refusal From Day of Start of Hospitalization To Day After First ICU Stay"
         	union "No VTE Prophylaxis Due to Patient Refusal on Day of or Day After Procedure"
 
 
 define "No VTE Prophylaxis Due to Patient Refusal From Day of Start of Hospitalization To Day After First ICU Stay":
   "Encounter with ICU Location" QualifyingEncounterICU
-      with "No Mechanic or Pharmacological VTE Prophlaxis Due to Patient Refusal" PatientRefusal
+      with "No Mechanical or Pharmacological VTE Prophylaxis Due to Patient Refusal" PatientRefusal
         such that date from ( PatientRefusal.authoredOn ) during VTE.FromDayOfStartOfHospitalizationToDayAfterFirstICU ( QualifyingEncounterICU )
 
 define "No VTE Prophylaxis Due to Patient Refusal on Day of or Day After Procedure":
   from
       "Encounter with ICU Location" QualifyingEncounterICU,
       ["Procedure": "General or Neuraxial Anesthesia"] AnesthesiaProcedure,
-      "No Mechanical or Pharmacological VTE Prophlaxis Due to Patient Refusal" PatientRefusal
-      where QICoreCommon."ToInterval"  ( AnesthesiaProcedure.performed ) ends 1 day after day of VTE."StartOfFirstICU" ( QualifyingEncounterICU )
-        and date from ( PatientRefusal.authoredOn ) during VTE."CalendarDayOfOrDayAfter" ( 
+      "No Mechanical or Pharmacological VTE Prophylaxis Due to Patient Refusal" PatientRefusal
+      where AnesthesiaProcedure.status = 'completed'
+            and QICoreCommon."ToInterval"  ( AnesthesiaProcedure.performed ) ends 1 day after day of VTE."StartOfFirstICU" ( QualifyingEncounterICU )
+        and date from ( PatientRefusal.authoredOn ) during TJC."CalendarDayOfOrDayAfter" ( 
         end of QICoreCommon."ToInterval"  ( AnesthesiaProcedure.performed ) )
       return QualifyingEncounterICU
 
@@ -476,4 +584,3 @@ define "Denominator Exceptions":
 define "Encounter with First ICU Location Stay Less Than 1 day":
   "Encounter with ICU Location" QualifyingEncounterICU
         	 where Global."LengthInDays"(VTE."FirstICULocationPeriod"(QualifyingEncounterICU)) < 1
-
