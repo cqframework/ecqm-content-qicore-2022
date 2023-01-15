@@ -1,6 +1,8 @@
 library TJCOverallQICore4 version '6.0.000'
 /* Copied from MADiE on 1-12-2023 from 'context Patient' onwards */
 /*
+@update: BTR 2023-01-14 -> Updated for connectathon 23
+
 @update: BTR 2020-03-31 ->
 Incremented version to 5.0.000
 Updated FHIR version to 4.0.1
@@ -15,10 +17,10 @@ Refresh from 2022 AU
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.013' called FHIRHelpers
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
-include QICoreCommon version '1.0.000' called QICoreCommon 
+include FHIRHelpers version '4.1.000' called FHIRHelpers
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
+include QICoreCommon version '1.2.000' called QICoreCommon 
 
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Discharge To Acute Care Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87'
@@ -39,19 +41,19 @@ context Patient
 
 define "Non Elective Inpatient Encounter":
   ["Encounter": "Non-Elective Inpatient Encounter"] NonElectiveEncounter
-		where Global."LengthInDays"(NonElectiveEncounter.period) <= 120
+		where CQMCommon."LengthInDays"(NonElectiveEncounter.period) <= 120
       and NonElectiveEncounter.period ends during day of "Measurement Period"
       /* this does not work but above works ... and E.period ends during day of "Measurement Period" */
 
 define "All Stroke Encounter":
   "Non Elective Inpatient Encounter" NonElectiveEncounter
-    where (Global."PrincipalDiagnosis"(NonElectiveEncounter).code in "Hemorrhagic Stroke"
-        or Global."PrincipalDiagnosis"(NonElectiveEncounter).code in "Ischemic Stroke")
+    where (CQMCommon."PrincipalDiagnosis"(NonElectiveEncounter).code in "Hemorrhagic Stroke"
+        or CQMCommon."PrincipalDiagnosis"(NonElectiveEncounter).code in "Ischemic Stroke")
         
   
 define "Ischemic Stroke Encounter":
   "Encounter with Principal Diagnosis and Age" EncounterWithAge
-		where Global."PrincipalDiagnosis"(EncounterWithAge).code in "Ischemic Stroke"
+		where CQMCommon."PrincipalDiagnosis"(EncounterWithAge).code in "Ischemic Stroke"
 
 define "Ischemic Stroke Encounters with Discharge Disposition":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
@@ -70,12 +72,12 @@ define "Encounter with Principal Diagnosis and Age":
 define "Comfort Measures during Hospitalization":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures" ComfortMeasure
-     such that Coalesce(start of QICoreCommon.ToInterval(ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation"(IschemicStrokeEncounter)
+     such that Coalesce(start of QICoreCommon.ToInterval(ComfortMeasure.performed), ComfortMeasure.authoredOn) during CQMCommon."HospitalizationWithObservation"(IschemicStrokeEncounter)
 
 define "Encounter with Comfort Measures during Hospitalization":
   "Ischemic Stroke Encounter" IschemicStrokeEncounter
     with "Intervention Comfort Measures" ComfortMeasure
-     such that Coalesce(start of QICoreCommon."ToInterval"(ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( IschemicStrokeEncounter )
+     such that Coalesce(start of QICoreCommon."ToInterval"(ComfortMeasure.performed), ComfortMeasure.authoredOn) during CQMCommon."HospitalizationWithObservation" ( IschemicStrokeEncounter )
 
 define "Intervention Comfort Measures":
   ( ["ServiceRequest"] P
@@ -93,4 +95,4 @@ define function "CalendarDayOfOrDayAfter"(StartValue DateTime ):
   Interval["TruncateTime"(StartValue), "TruncateTime"(StartValue + 2 days))
 
 define function "HospitalizationWithObservationLengthofStay"(Encounter "Encounter"):
-  Global."LengthInDays"(Global."HospitalizationWithObservation"(Encounter))
+  CQMCommon."LengthInDays"(CQMCommon."HospitalizationWithObservation"(Encounter))

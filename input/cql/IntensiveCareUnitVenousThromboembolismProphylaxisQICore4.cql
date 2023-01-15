@@ -19,11 +19,11 @@ library IntensiveCareUnitVenousThromboembolismProphylaxisQICore4 version '0.0.01
 
 using QICore version '4.1.1'
 
-include QICoreCommon version '1.0.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
+include QICoreCommon version '1.2.000' called QICoreCommon
+include CQMCommon version '1.0.000' called CQMCommon
 include VTEQICore4 version '8.0.000' called VTE
-include FHIRHelpers version '4.0.013' called FHIRHelpers
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include FHIRHelpers version '4.1.000' called FHIRHelpers
+include SupplementalDataElements version '3.0.000' called SDE
 include TJCOverallQICore4 version '6.0.000' called TJC
 
 //Copied from MADiE 1/13/2023
@@ -85,18 +85,18 @@ define "zDISPLAY Patient":
 
 define "zDISPLAY Encounter":
 ["Encounter"] E
-let Elocations: Global."Hospitalization Locations"(E)
+let Elocations: CQMCommon."Hospitalization Locations"(E)
   return Tuple {
     Eperiod: E.period,
     Estatus: E.status,
     Eclass:  E.class,
     Elocationreference: E.location.location.reference,
     ElocationPeriod: E.location.period,
-    Ediagnosis: Global.EncounterDiagnosis(E),
-    EDxInObs: Global.EncounterDiagnosis(E).code in "Obstetrics",
-    EDxInVTE: Global.EncounterDiagnosis(E).code in "Venous Thromboembolism",
-    EDxInObsVTE: Global.EncounterDiagnosis(E).code in "Obstetrics VTE",
-    Ehosp: Global."HospitalizationWithObservation" ( E ),
+    Ediagnosis: CQMCommon.EncounterDiagnosis(E),
+    EDxInObs: CQMCommon.EncounterDiagnosis(E).code in "Obstetrics",
+    EDxInVTE: CQMCommon.EncounterDiagnosis(E).code in "Venous Thromboembolism",
+    EDxInObsVTE: CQMCommon.EncounterDiagnosis(E).code in "Obstetrics VTE",
+    Ehosp: CQMCommon."HospitalizationWithObservation" ( E ),
     EGetlocations: Elocations,
     EinICU: Elocations.location.type in "Intensive Care Unit"
   }
@@ -111,7 +111,7 @@ define "zDISPLAY Location":
 
 define "zDISPLAY DxP":
 ["Encounter"] E
-let DxP: Global."PrincipalDiagnosis"(E)
+let DxP: CQMCommon."PrincipalDiagnosis"(E)
   return Tuple {
     DxPVerStat: DxP.verificationStatus,
     DxPCode: DxP.code
@@ -165,8 +165,8 @@ define "zDISPLAY Comfort Measure":
      } 
 
 define "zAdmission without VTE or Obstetrical Conditions":
-  Global."Inpatient Encounter" InpatientEncounter
-   where not (exists (Global.EncounterDiagnosis(InpatientEncounter)) EncDx
+  CQMCommon."Inpatient Encounter" InpatientEncounter
+   where not (exists (CQMCommon.EncounterDiagnosis(InpatientEncounter)) EncDx
                  where (EncDx.code in "Obstetrics" 
                       or EncDx.code in "Venous Thromboembolism"
           							or EncDx.code in "Obstetrics VTE"
@@ -174,7 +174,7 @@ define "zAdmission without VTE or Obstetrical Conditions":
                      )
 
 define "zEncounter with Age Range and without VTE Diagnosis or Obstetrical Conditions":
-  ( Global."Inpatient Encounter" InpatientEncounter
+  ( CQMCommon."Inpatient Encounter" InpatientEncounter
      // where AgeInYearsAt(date from start of InpatientEncounter.period) >= 18 ----->//curent problem with AgeInYearsAt required a modified approach - refer to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
         where CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
   )
@@ -186,13 +186,13 @@ define "zEncounter with ICU Location":
   return Tuple {
        ELlocationreference: QELocation.location,
        ELlocationperiod: QELocation.period,
-       ELlocationlocation: Global.GetLocation(QELocation.location),
-       ELlocationlocationtype: Global.GetLocation(QELocation.location).type,
-       ELlocationICU: Global.GetLocation(QELocation.location).type in "Intensive Care Unit"
+       ELlocationlocation: CQMCommon.GetLocation(QELocation.location),
+       ELlocationlocationtype: CQMCommon.GetLocation(QELocation.location).type,
+       ELlocationICU: CQMCommon.GetLocation(QELocation.location).type in "Intensive Care Unit"
      } 
 
     where exists (QualifyingEncounter.location Location
-                    where Global.GetLocation(Location.location).type in "Intensive Care Unit"
+                    where CQMCommon.GetLocation(Location.location).type in "Intensive Care Unit"
   				    and Location.period during QualifyingEncounter.period
   				    )
               
@@ -227,7 +227,7 @@ define "Denominator":
 define "Encounter with ICU Location":
  VTE."Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions" QualifyingEncounter
     where exists (QualifyingEncounter.location Location
-                    where Global.GetLocation(Location.location).type in "Intensive Care Unit"
+                    where CQMCommon.GetLocation(Location.location).type in "Intensive Care Unit"
   				    and Location.period during QualifyingEncounter.period
   				    )
 
@@ -242,7 +242,7 @@ define "Denominator Exclusions":
 
 define "Encounter with ICU Location And Encounter Less Than 2 Days":
   "Encounter with ICU Location"QualifyingEncounterICU
-          	where Global."LengthInDays"(QualifyingEncounterICU.period)< 2
+          	where CQMCommon."LengthInDays"(QualifyingEncounterICU.period)< 2
 
 
 define "SCIP VTE Selected Surgery":
@@ -372,7 +372,7 @@ define "Encounter with Prior or Present Diagnosis of Atrial Fibrillation or Prio
           end of QualifyingEncounterICU.period
   )
     union ( "Encounter with ICU Location" QualifyingEncounterICU
-        where Global.EncounterDiagnosis ( QualifyingEncounterICU ).code in "Atrial Fibrillation/Flutter"
+        where CQMCommon.EncounterDiagnosis ( QualifyingEncounterICU ).code in "Atrial Fibrillation/Flutter"
     )
     union ( "Encounter with ICU Location" QualifyingEncounterICU
         with ["Condition": "Venous Thromboembolism"] VTEDiagnosis
@@ -583,4 +583,4 @@ define "Denominator Exceptions":
 
 define "Encounter with First ICU Location Stay Less Than 1 day":
   "Encounter with ICU Location" QualifyingEncounterICU
-        	 where Global."LengthInDays"(VTE."FirstICULocationPeriod"(QualifyingEncounterICU)) < 1
+        	 where CQMCommon."LengthInDays"(VTE."FirstICULocationPeriod"(QualifyingEncounterICU)) < 1

@@ -2,10 +2,10 @@ library AnticoagulationTherapyforAtrialFibrillationFlutterQICore4 version '0.0.0
 
 using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.013' called FHIRHelpers
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include QICoreCommon version '1.0.000' called QICoreCommon
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include FHIRHelpers version '4.1.000' called FHIRHelpers
+include CQMCommon version '1.0.000' called CQMCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
+include SupplementalDataElements version '3.0.000' called SDE
 include TJCOverallQICore4 version '6.0.000' called TJC
 
 valueset "Anticoagulant Therapy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.200' 
@@ -54,7 +54,7 @@ define "Denominator":
     
     define "Encounter with Current Diagnosis Code of Atrial Fibrillation or Flutter":
         TJC."Ischemic Stroke Encounter" IschemicStrokeEncounter
-            where Global.EncounterDiagnosis(IschemicStrokeEncounter).code in "Atrial Fibrillation/Flutter"
+            where CQMCommon.EncounterDiagnosis(IschemicStrokeEncounter).code in "Atrial Fibrillation/Flutter"
 
 /* D E N O M I N A T O R   E X C L U S I O N S ============================================================================================================================================*/
 define "Denominator Exclusions":
@@ -73,7 +73,7 @@ define "Denominator Exclusions":
     define "Encounter with Comfort Measures during Hospitalization for Patients with Documented Atrial Fibrillation or Flutter":
         "Denominator" Encounter
             with TJC."Intervention Comfort Measures" ComfortMeasure
-                such that Coalesce(start of QICoreCommon."ToInterval"(ComfortMeasure.performed), ComfortMeasure.authoredOn) during Global."HospitalizationWithObservation" ( Encounter )
+                such that Coalesce(start of QICoreCommon."ToInterval"(ComfortMeasure.performed), ComfortMeasure.authoredOn) during CQMCommon."HospitalizationWithObservation" ( Encounter )
                     
 
 /* N U M E R A T O R ================================================================================================================================================*/

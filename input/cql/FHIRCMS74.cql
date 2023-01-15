@@ -1,4 +1,8 @@
-library PrimaryCariesPreventionasOfferedbyPCPsincludingDentistsFHIR version '0.0.001'
+/*
+@title: Primary Caries Prevention as Offered by PCPs Including Dentists
+@identifier: CMS74
+*/
+library FHIRCMS74 version '0.0.001'
 
 /*
 This content is a work in progress and should not be considered a final specification
@@ -9,8 +13,8 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
 include HospiceQICore4 version '3.0.000' called Hospice
 include StatusFHIR version '1.0.0' called Status 
 
@@ -61,7 +65,7 @@ define "Stratification 3":
   AgeInYearsAt(date from start of "Measurement Period" ) in Interval[12, 20 )
 
 define "Numerator":
-  exists  Status."Completed Procedure"([Procedure: "Fluoride Varnish Application for Children"]) FluorideApplication
+  exists (Status."Completed Procedure"([Procedure: "Fluoride Varnish Application for Children"])) FluorideApplication
                 where QICoreCommon."ToInterval"(FluorideApplication.performed) during day of "Measurement Period"
 
 define "Initial Population":

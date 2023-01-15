@@ -9,10 +9,10 @@ Issue tracker -  where AgeInYearsAt(date from start of InpatientEncounter.period
 using QICore version '4.1.1'
 
 //Copied from MADiE 1/13/2023
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include QICoreCommon version '1.0.000' called QICoreCommon
-include FHIRHelpers version '4.0.013' called FHIRHelpers
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
+include FHIRHelpers version '4.1.000' called FHIRHelpers
+include SupplementalDataElements version '3.0.000' called SDE
 include TJCOverallQICore4 version '6.0.000' called TJC
 
 valueset "Intensive Care Unit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.23'
@@ -29,8 +29,8 @@ define "Initial Population":
 "Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions"
 
 define "Admission without VTE or Obstetrical Conditions":
-  Global."Inpatient Encounter" InpatientEncounter
-   where not (exists (Global.EncounterDiagnosis(InpatientEncounter)) EncDx
+  CQMCommon."Inpatient Encounter" InpatientEncounter
+   where not (exists (CQMCommon.EncounterDiagnosis(InpatientEncounter)) EncDx
                  where (EncDx.code in "Obstetrics" 
                       or EncDx.code in "Venous Thromboembolism"
           							or EncDx.code in "Obstetrics VTE"
@@ -39,7 +39,7 @@ define "Admission without VTE or Obstetrical Conditions":
 
 
 define "Encounter with Age Range and without VTE Diagnosis or Obstetrical Conditions":
-  ( Global."Inpatient Encounter" InpatientEncounter
+  ( CQMCommon."Inpatient Encounter" InpatientEncounter
      // where AgeInYearsAt(date from start of InpatientEncounter.period) >= 18 ----->//curent problem with AgeInYearsAt required a modified approach - refer to https://github.com/cqframework/ecqm-content-qicore-2022/issues/6
         where CalculateAgeInYearsAt(Patient.birthDate, date from start of "Measurement Period") >= 18
   )
@@ -47,20 +47,20 @@ define "Encounter with Age Range and without VTE Diagnosis or Obstetrical Condit
 
 
 define function "FromDayOfStartOfHospitalizationToDayAfterAdmission"(Encounter Encounter ):
-	Interval[TJC."TruncateTime" (start of Global."HospitalizationWithObservation"(Encounter)), TJC."TruncateTime" (start of Encounter.period + 2 days))
+	Interval[TJC."TruncateTime" (start of CQMCommon."HospitalizationWithObservation"(Encounter)), TJC."TruncateTime" (start of Encounter.period + 2 days))
 
 define function "StartOfFirstICU"(Encounter Encounter ):
 	start of "FirstICULocationPeriod"(Encounter)
 
 define function "FromDayOfStartOfHospitalizationToDayAfterFirstICU"(Encounter Encounter ):
-	Interval[TJC."TruncateTime" (start of Global."HospitalizationWithObservation"(Encounter)), TJC."TruncateTime" (StartOfFirstICU(Encounter)+ 2 days))
+	Interval[TJC."TruncateTime" (start of CQMCommon."HospitalizationWithObservation"(Encounter)), TJC."TruncateTime" (StartOfFirstICU(Encounter)+ 2 days))
 
 define function "FirstICULocationPeriod"(Encounter Encounter ):
 	"FirstInpatientIntensiveCareUnit"(Encounter).period
 
 define function "FirstInpatientIntensiveCareUnit"(Encounter Encounter ):
 	First((Encounter.location)HospitalLocation
-			where Global.GetLocation(HospitalLocation.location).type in "Intensive Care Unit"
+			where CQMCommon.GetLocation(HospitalLocation.location).type in "Intensive Care Unit"
 				and HospitalLocation.period during Encounter.period
 			sort by start of period
 	)

@@ -9,12 +9,12 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
 include StatusFHIR version '1.0.0' called Status
-include AdultOutpatientEncountersQICore4 version '3.0.000' called AdultOutpatientEncounter
+include AdultOutpatientEncountersQICore4 version '3.0.000' called AdultOutpatientEncounters
 include AdvancedIllnessandFrailtyExclusionQICore4 version '6.0.000' called AIFrailLTCF
-include CumulativeMedicationDurationQICore4 version '2.0.000' called CMD
+include CumulativeMedicationDuration version '3.0.000' called CMD
 include HospiceQICore4 version '3.0.000' called Hospice
 include PalliativeCareQICore4 version '1.0.000' called PalliativeCare
 
