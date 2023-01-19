@@ -1,4 +1,8 @@
-library FunctionalStatusAssessmentforTotalKneeReplacementFHIR version '0.0.001'
+/*
+@title: Functional Status Assessment for Total Knee Replacement
+@identifier: CMS66
+*/
+library FHIRCMS66 version '0.0.001'
 
 /*
 This content is a work in progress and should not be considered a final specification
@@ -9,8 +13,8 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
 include HospiceQICore4 version '3.0.000' called Hospice
 include StatusFHIR version '1.0.0' called Status 
 
@@ -66,23 +70,23 @@ define "Initial Population":
     and AgeInYearsAt(date from start of "Measurement Period")>= 19
 
 define "Has Qualifying Encounters":
-  exists ( Status."Finished Encounter"( ( [Encounter: "Outpatient Consultation"]
+  exists (( Status."Finished Encounter"( ( [Encounter: "Outpatient Consultation"]
     union [Encounter: "Office Visit"]
     union [Encounter: "Postoperative follow-up visit, normally included in the surgical package, to indicate that an evaluation and management service was performed during a postoperative period for a reason(s) related to the original procedure"] 
     union [Encounter: "Telephone Visits"]
-    union [Encounter: "Online Assessments"]  )) ValidEncounters
+    union [Encounter: "Online Assessments"]  ))) ValidEncounters
         where QICoreCommon."ToInterval"(ValidEncounters.period) during day of "Measurement Period"
       )
 
 define "Total Knee Arthroplasty Procedure":
-  Status."Completed Procedure"([Procedure: "Primary TKA Procedure"]) TKAProcedure
+  (Status."Completed Procedure"([Procedure: "Primary TKA Procedure"])) TKAProcedure
     where QICoreCommon."ToInterval"(TKAProcedure.performed) starts 12 months or less before start of "Measurement Period"
 
 define "Denominator":
   "Initial Population"
 
 define "Denominator Exclusions":
-  Hospice."Has Hospice"
+  Hospice."Has Hospice Services"
     or "Has Total Knee Arthroplasty with 2 or More Lower Body Fractures"
     or "Has Dementia Diagnosis"
 
@@ -117,11 +121,11 @@ define "Has TKA with Initial and Follow Up KOOS Assessments":
 
 define "Time KOOS Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "Quality of life score [KOOS]"]) KOOSLifeQuality,
-    Status."Final Survey Observation"([Observation: "Sport-recreation score [KOOS]"]) KOOSSport,
-    Status."Final Survey Observation"([Observation: "Activities of daily living score [KOOS]"]) KOOSActivityScore,
-    Status."Final Survey Observation"([Observation: "Symptoms score [KOOS]"]) KOOSSymptoms,
-    Status."Final Survey Observation"([Observation: "Pain score [KOOS]"]) KOOSPain
+    (Status."Final Survey Observation"([Observation: "Quality of life score [KOOS]"])) KOOSLifeQuality,
+    (Status."Final Survey Observation"([Observation: "Sport-recreation score [KOOS]"])) KOOSSport,
+    (Status."Final Survey Observation"([Observation: "Activities of daily living score [KOOS]"])) KOOSActivityScore,
+    (Status."Final Survey Observation"([Observation: "Symptoms score [KOOS]"])) KOOSSymptoms,
+    (Status."Final Survey Observation"([Observation: "Pain score [KOOS]"])) KOOSPain
     let KOOSLifeQualityTime: start of QICoreCommon."ToInterval"(KOOSLifeQuality.effective),
     KOOSSportTime: start of QICoreCommon."ToInterval"(KOOSSport.effective),
     KOOSActivityScoreTime: start of QICoreCommon."ToInterval"(KOOSActivityScore.effective),
@@ -140,7 +144,7 @@ define "Time KOOS Total Assessment Completed":
 
 define "Has TKA with Initial and Follow Up KOOSJr Assessments":
   exists (("Total Knee Arthroplasty Procedure" TKAProcedure
-  return QICoreCommon."ToInterval" ( TKAProcedure.performed ) ) TotalKnee
+  return QICoreCommon."ToInterval" ( TKAProcedure.performed )) TotalKnee
     with "KOOSJr Total Assessment Completed" InitialKOOSJrAssessment
       such that TotalKnee starts 90 days or less on or after InitialKOOSJrAssessment
     with "KOOSJr Total Assessment Completed" FollowupKOOSJrAssessment
@@ -150,7 +154,7 @@ define "Has TKA with Initial and Follow Up KOOSJr Assessments":
 )
 
 define "KOOSJr Total Assessment Completed":
-  Status."Final Survey Observation"(( [Observation: "Knee injury and osteoarthritis outcome score for joint replacement [KOOSJR]"]) KOOSJr
+  ((Status."Final Survey Observation"(( [Observation: "Knee injury and osteoarthritis outcome score for joint replacement [KOOSJR]"]))) KOOSJr
     where KOOSJr.value is not null) DocumentedKOOSJr
   return start of QICoreCommon."ToInterval" ( DocumentedKOOSJr.effective )
 
@@ -158,7 +162,7 @@ define "Has TKA with Initial and Follow Up PROMIS10 Assessments":
   exists (( "Total Knee Arthroplasty Procedure" TKAProcedure
     return QICoreCommon."ToInterval" ( TKAProcedure.performed ) ) TotalKnee
     with "Time PROMIS10 Total Assessment Completed" InitialPROMIS10AssessmentTime
-      such that QICoreCommon."ToInterval" TotalKnee starts 90 days or less on or after InitialPROMIS10AssessmentTime
+      such that QICoreCommon."ToInterval"(TotalKnee) starts 90 days or less on or after InitialPROMIS10AssessmentTime
     with "Time PROMIS10 Total Assessment Completed" FollowupPROMIS10AssessmentTime
       such that FollowupPROMIS10AssessmentTime during day of Interval[
       end of TotalKnee + 270 days,
@@ -167,8 +171,8 @@ define "Has TKA with Initial and Follow Up PROMIS10 Assessments":
 
 define "Time PROMIS10 Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "PROMIS-10 Global Mental Health (GMH) score T-score"]) PROMIS10MentalScore,
-    Status."Final Survey Observation"([Observation: "PROMIS-10 Global Physical Health (GPH) score T-score"]) PROMIS10PhysicalScore
+    (Status."Final Survey Observation"([Observation: "PROMIS-10 Global Mental Health (GMH) score T-score"])) PROMIS10MentalScore,
+    (Status."Final Survey Observation"([Observation: "PROMIS-10 Global Physical Health (GPH) score T-score"])) PROMIS10PhysicalScore
     let PROMIS10MentalScoreTime: start of QICoreCommon."ToInterval"(PROMIS10MentalScore.effective),
     PROMIS10PhysicalScoreTime: start of QICoreCommon."ToInterval"( PROMIS10PhysicalScore.effective)
     where PROMIS10MentalScoreTime same day as PROMIS10PhysicalScoreTime
@@ -189,8 +193,8 @@ define "Has TKA with Initial and Follow Up VR12 Oblique Assessments":
 
 define "Time VR12 Oblique Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - oblique method T-score"]) VR12MentalAssessment,
-    Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - oblique method T-score"]) VR12PhysicalAssessment
+    (Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - oblique method T-score"])) VR12MentalAssessment,
+    (Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - oblique method T-score"])) VR12PhysicalAssessment
     let VR12MentalAssessmentTime: start of QICoreCommon."ToInterval"( VR12MentalAssessment.effective),
     VR12PhysicalAssessmentTime: start of QICoreCommon."ToInterval"( VR12PhysicalAssessment.effective)           
     where VR12MentalAssessmentTime same day as VR12PhysicalAssessmentTime
@@ -211,8 +215,8 @@ define "Has TKA with Initial and Follow Up VR12 Orthogonal Assessments":
 
 define "Time VR12 Orthogonal Total Assessment Completed":
   from
-    Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"]) VR12MentalAssessment,
-    Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"]) VR12PhysicalAssessment
+    (Status."Final Survey Observation"([Observation: "VR-12 Mental component summary (MCS) score - orthogonal method T-score"])) VR12MentalAssessment,
+    (Status."Final Survey Observation"([Observation: "VR-12 Physical component summary (PCS) score - orthogonal method T-score"])) VR12PhysicalAssessment
     let VR12MentalAssessmentTime: start of QICoreCommon."ToInterval"( VR12MentalAssessment.effective),
     VR12PhysicalAssessmentTime: start of QICoreCommon."ToInterval"( VR12PhysicalAssessment.effective)
     where VR12MentalAssessmentTime same day as VR12PhysicalAssessmentTime

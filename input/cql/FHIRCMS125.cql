@@ -9,8 +9,8 @@ using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
 include QICoreCommon version '1.2.000' called QICoreCommon
-include MATGlobalCommonFunctionsQICore4 version '7.0.000' called Global
-include SupplementalDataElementsQICore4 version '3.0.000' called SDE
+include CQMCommon version '1.0.000' called CQMCommon
+include SupplementalDataElements version '3.0.000' called SDE
 include StatusFHIR version '1.0.0' called Status
 include AdultOutpatientEncountersQICore4 version '3.0.000' called AdultOutpatientEncounter
 include AdvancedIllnessandFrailtyExclusionQICore4 version '6.0.000' called AIFrailLTCF
@@ -81,7 +81,8 @@ define "Denominator Exclusions":
 define "Left Mastectomy Diagnosis":
   ( ["Condition": "Status Post Left Mastectomy"]
       union ( ["Condition": "Unilateral Mastectomy, Unspecified Laterality"] UnilateralMastectomyDiagnosis
-          where UnilateralMastectomyDiagnosis.bodySite ~ "Left (qualifier value)"
+          // NOTE: This should be a ~contains, but until that operator is defined, reverse it to use an in
+          where "Left (qualifier value)" in UnilateralMastectomyDiagnosis.bodySite 
       ) ) LeftMastectomy
       where QICoreCommon."ToPrevalenceInterval"(LeftMastectomy) starts on or before 
       end of "Measurement Period"
@@ -94,7 +95,8 @@ define "Left Mastectomy Procedure":
 define "Right Mastectomy Diagnosis":
   ( ["Condition": "Status Post Right Mastectomy"] RightMastectomyProcedure
       union ( ["Condition": "Unilateral Mastectomy, Unspecified Laterality"] UnilateralMastectomyDiagnosis
-          where UnilateralMastectomyDiagnosis.bodySite ~ "Right (qualifier value)"
+        // NOTE: This should be a ~contains, but until that operator is defined, reverse it to use an in
+          where "Right (qualifier value)" in UnilateralMastectomyDiagnosis.bodySite 
       ) ) RightMastectomy
       where QICoreCommon."ToPrevalenceInterval"(RightMastectomy) starts on or before 
       end of "Measurement Period"

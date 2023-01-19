@@ -50,6 +50,10 @@ define "SDE Sex":
 define "Denominator":
   "Initial Population"
 
+/*
+@description: New or recurrent major depressive disorder for patients 17 
+years or older at the start of the measurement period.
+*/
 define "Initial Population":
   "New or Recurrent Major Depressive Disorder Encounter" NewOrRecurrentMDDEncounter
       where "AgeInYearsAt"(date from start of "Measurement Period")>= 17
