@@ -88,7 +88,11 @@
       "resource": {
         "id": "5c953f97b848462de0ae40d7",
         "resourceType": "Encounter",
-        "status": "finished",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
+        },        "status": "finished",
         "class": {
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
           "code": "IMP",
@@ -109,11 +113,11 @@
           "reference": "Patient/DENEXPassAMA"
         },
         "period": {
-          "start": "2012-11-20T08:00:00.000Z",
-          "end": "2012-11-24T08:15:00.000Z"
+          "start": "2022-11-20T08:00:00.000Z",
+          "end": "2022-11-24T08:15:00.000Z"
         },
         "length": {
-          "value": "4.0",
+          "value": 4.0,
           "unit": "days"
         },
         "diagnosis": [
@@ -152,10 +156,15 @@
       "resource": {
         "id": "5f2c53c71c76ba5c996056cc",
         "resourceType": "Coverage",
-    	  "status": "active",
-    	  "payor": {
-          "reference": "Patient/DENEXPassAMA"
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"
+          ]
         },
+        "status": "active",
+    	  "payor": [{
+          "reference": "Patient/DENEXPassAMA"
+        }],
         "beneficiary": {
           "reference": "Patient/DENEXPassAMA"
         },
@@ -169,6 +178,11 @@
       "resource": {
         "id": "5c953f97b848462de0ae40d9",
         "resourceType": "Procedure",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
+          ]
+        },
         "status": "completed",
         "code": {
           "coding": [
@@ -186,8 +200,8 @@
           "reference": "Patient/DENEXPassAMA"
         },
         "performedPeriod": {
-          "start": "2012-11-19T08:00:00.000Z",
-          "end": "2012-11-20T08:15:00.000Z"
+          "start": "2022-11-19T08:00:00.000Z",
+          "end": "2022-11-20T08:15:00.000Z"
         }
       }
     },
@@ -196,6 +210,11 @@
       "resource": {
         "id": "ischemic-stroke-6dfa",
         "resourceType": "Condition",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -210,7 +229,7 @@
     	"subject": {
 			  "reference": "Patient/DENEXPassAMA"
     	},
-    	"recordedDate": "2012-10-04T08:00:00.000+00:00"
+    	"recordedDate": "2022-10-04T08:00:00.000+00:00"
       }
     }
   ]

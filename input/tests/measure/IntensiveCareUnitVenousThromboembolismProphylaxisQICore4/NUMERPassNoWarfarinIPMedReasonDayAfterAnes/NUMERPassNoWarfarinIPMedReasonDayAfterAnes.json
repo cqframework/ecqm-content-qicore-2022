@@ -158,7 +158,7 @@
           {
             "coding": [
               {
-                "system": "http://cts.nlm.nih.gov/fhir/cs/hsloc",
+                "system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
                 "version": "2020",
                 "code": "1025-6",
                 "display": "Trauma Critical Care",
