@@ -1,0 +1,150 @@
+{
+    "resourceType": "Bundle",
+    "id": "Connectathon-CMS124-Bundle-NumPass",
+    "type": "transaction",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "Patient-9",
+          "meta": {
+            "profile": [
+              "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+              "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+            ]
+          },
+          "extension": [
+            {
+              "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                "system": "urn:oid:2.16.840.1.113883.6.238",
+                "code": "2028-9",
+                "display": "Asian",
+                "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Asian"
+              }
+              ],
+              "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+            },
+            {
+              "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                "system": "urn:oid:2.16.840.1.113883.6.238",
+                "code": "2135-2",
+                "display": "Hispanic or Latino",
+                "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+              ],
+              "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+            }
+          ],
+          "identifier": [
+            {
+              "system": "http://hospital.smarthealthit.org",
+              "value": "000231"
+            }
+          ],
+          "name": [
+            {
+              "family": "CONNECTATHON",
+              "given": [
+                "CMS124 NUM"
+              ]
+            }
+          ],
+          "birthDate": "1959-11-19",
+          "gender": "female"
+        }
+      },
+      {
+        "resource": {
+          "resourceType": "Encounter",
+          "id": "Encounter-9",
+          "meta": {
+            "profile": [
+              "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter",
+              "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+            ]
+          },
+          "subject": {
+            "reference": "Patient/Patient-9"
+          },
+          "status": "finished",
+          "class": {
+            "code": "AMB",
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+            "display": "ambulatory"
+          },
+          "type": [
+            {
+              "coding": [
+                {
+                  "code": "3391000175108",
+                  "system": "http://snomed.info/sct",
+                  "display": "Office visit for pediatric care and assessment (procedure)"
+                }
+              ]
+            }
+          ],
+          "period": {
+            "start": "2023-01-11T07:24:30.000Z",
+            "end": "2023-01-11T08:00:00.000Z"
+          }
+        }
+      },
+      {
+        "resource": {
+          "resourceType": "Observation",
+          "id": "Observation-9",
+          "meta": {
+            "profile": [
+              "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation",
+              "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation"
+            ]
+          },
+          "status": "final",
+          "category": [
+            {
+              "coding": [
+                {
+                  "code": "laboratory",
+                  "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                }
+              ]
+            }
+          ],  
+          "subject": {
+            "reference": "Patient/Patient-9"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "10524-7",
+                "system": "http://loinc.org",
+                "display": "Microscopic observation [Identifier] in Cervix by Cyto stain"
+              }
+            ]
+          },
+          "valueString": "Negative",
+          "effectivePeriod": {
+            "start": "2023-01-11T07:26:00.000Z",
+            "end": "2023-01-11T07:26:00.000Z"
+          }
+        }
+      }
+    ]
+  }
+  

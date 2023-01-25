@@ -9,7 +9,8 @@
         "id": "Patient-2",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
           ]
         },
         "extension": [
@@ -64,6 +65,12 @@
         "id": "Encounter-2",
         "subject": {
           "reference": "Patient/Patient-2"
+        },
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter",
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
         },
         "status": "finished",
         "class": {

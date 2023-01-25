@@ -9,7 +9,8 @@
         "id": "Patient-6",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
           ]
         },
         "extension": [
@@ -62,6 +63,12 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter",
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
+        },
         "subject": {
           "reference": "Patient/Patient-6"
         },
@@ -94,6 +101,12 @@
         "id": "Observation-6",
         "subject": {
           "reference": "Patient/Patient-6"
+        },
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation",
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
+          ]
         },
         "code": {
           "coding": [
