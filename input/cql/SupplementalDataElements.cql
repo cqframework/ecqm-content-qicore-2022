@@ -1,13 +1,4 @@
-/*
-@update: BTR 2020-03-31 ->
-Incremented version to 2.0.0
-
-@update: BTR 2022-05-26 ->
-Updated FHIR version to 4.0.1
-Updated FHIRHelpers version to 4.0.002
-Updated for AU 2022 Content
-*/
-library SupplementalDataElements version '3.0.000'
+library SupplementalDataElements version '3.1.000'
 
 using QICore version '4.1.1'
 
