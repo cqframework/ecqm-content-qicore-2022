@@ -120,7 +120,7 @@ define "Denominator Exclusions":
               end of "Measurement Period"],
           IPSD: "Earliest Antidepressant Dispensed During Intake Period"
           where IPSD is not null
-            and Global."ToDateInterval" ( ActiveMedPeriod ) overlaps Interval[IPSD - 105 days, IPSD )
+            and CQMCommon."ToDateInterval" ( ActiveMedPeriod ) overlaps Interval[IPSD - 105 days, IPSD )
       )
 
 define "Numerator 1":

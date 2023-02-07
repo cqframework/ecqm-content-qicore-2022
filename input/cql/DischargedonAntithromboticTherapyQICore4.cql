@@ -8,8 +8,8 @@ Definition names with 'DISPLAY' are used to display pertinent data
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include CQMCommon version '1.0.000' called CQMCommon
-include QICoreCommon version '1.2.000' called QICoreCommon
+include CQMCommon version '1.1.000' called CQMCommon
+include QICoreCommon version '1.3.000' called QICoreCommon
 include SupplementalDataElements version '3.0.000' called SDE
 include TJCOverallQICore4 version '6.0.000' called TJC
 
@@ -47,7 +47,7 @@ define "zDISPLAY Encounter":
   }
 define "zDISPLAY DxP":
 ["Encounter"] E
-let DxP: Global."PrincipalDiagnosis"(E)
+let DxP: CQMCommon."PrincipalDiagnosis"(E)
   return Tuple {
     DxPVerStat: DxP.verificationStatus,
     DxPCode: DxP.code

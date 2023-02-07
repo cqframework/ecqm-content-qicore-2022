@@ -18,9 +18,9 @@ Refresh from 2022 AU
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include CQMCommon version '1.0.000' called CQMCommon
+include CQMCommon version '1.1.000' called CQMCommon
 include SupplementalDataElements version '3.0.000' called SDE
-include QICoreCommon version '1.2.000' called QICoreCommon 
+include QICoreCommon version '1.3.000' called QICoreCommon 
 
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Discharge To Acute Care Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87'
