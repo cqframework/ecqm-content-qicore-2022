@@ -13,10 +13,7 @@ context Patient
 
 define "SDE Ethnicity":
   Patient.ethnicity E
-    return Tuple {
-      codes: { E.ombCategory } union E.detailed,
-      display: E.text
-    }
+    return E.ombCategory
 
 define "SDE Payer":
   [Coverage: type in "Payer"] Payer
@@ -27,10 +24,7 @@ define "SDE Payer":
 
 define "SDE Race":
   Patient.race R
-    return Tuple {
-      codes: R.ombCategory union R.detailed,
-      display: R.text
-    }
+    return R.ombCategory
 
 define "SDE Sex":
   case
