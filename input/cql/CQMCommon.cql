@@ -1,9 +1,9 @@
-library CQMCommon version '1.1.000'
+library CQMCommon version '1.0.000'
 
 using QICore version '4.1.1'
 
 include FHIRHelpers version '4.1.000' called FHIRHelpers
-include QICoreCommon version '1.3.000' called QICoreCommon
+include QICoreCommon version '1.2.000' called QICoreCommon
 
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
@@ -34,21 +34,19 @@ define function "ToDateInterval"(period Interval<DateTime>):
   Interval[date from start of period, date from end of period]
 
 /*
-@description: Calculates the difference in calendar days between the start and end of the given interval.
-@deprecated: This function in deprecated. Use the fluent function `lengthInDays()` instead.
+Calculates the difference in calendar days between the start and end of the given interval.
 */
 define function "LengthInDays"(Value Interval<DateTime> ):
   difference in days between start of Value and end of Value
 
 /*
-@description: Calculates the difference in calendar days between the start and end of the given interval.
+Calculates the difference in calendar days between the start and end of the given interval.
 */
 define fluent function lengthInDays(Value Interval<DateTime> ):
   difference in days between start of Value and end of Value
 
 /*
-@description: Returns the most recent emergency department visit, if any, that occurs 1 hour or less prior to the given encounter.
-@deprecated: This function is deprecated. Use the fluent function `edVisit()` instead.
+Returns the most recent emergency department visit, if any, that occurs 1 hour or less prior to the given encounter.
 */
 define function "ED Visit"(TheEncounter Encounter ):
   Last(
@@ -59,7 +57,7 @@ define function "ED Visit"(TheEncounter Encounter ):
     )
 
 /*
-@description: Returns the most recent emergency department visit, if any, that occurs 1 hour or less prior to the given encounter.
+Returns the most recent emergency department visit, if any, that occurs 1 hour or less prior to the given encounter.
 */
 define fluent function edVisit(TheEncounter Encounter ):
   Last(
@@ -70,8 +68,7 @@ define fluent function edVisit(TheEncounter Encounter ):
     )
 
 /*
-@description: Hospitalization returns the total interval for admission to discharge for the given encounter, or for the admission of any immediately prior emergency department visit to the discharge of the given encounter.
-@deprecated: This function is deprecated. Use the fluent function `hospitalization()` instead.
+Hospitalization returns the total interval for admission to discharge for the given encounter, or for the admission of any immediately prior emergency department visit to the discharge of the given encounter.
 */
 define function "Hospitalization"(TheEncounter Encounter ):
   ( "ED Visit"(TheEncounter) ) X
@@ -80,7 +77,7 @@ define function "Hospitalization"(TheEncounter Encounter ):
         else Interval[start of X.period, end of TheEncounter.period)
 
 /*
-@description: Hospitalization returns the total interval for admission to discharge for the given encounter, or for the admission of any immediately prior emergency department visit to the discharge of the given encounter.
+Hospitalization returns the total interval for admission to discharge for the given encounter, or for the admission of any immediately prior emergency department visit to the discharge of the given encounter.
 */
 define fluent function hospitalization(TheEncounter Encounter ):
   ( "ED Visit"(TheEncounter) ) X
@@ -89,8 +86,7 @@ define fluent function hospitalization(TheEncounter Encounter ):
         else Interval[start of X.period, end of TheEncounter.period]
 
 /*
-@description: Returns list of all locations within an encounter, including locations for immediately prior ED visit.
-@deprecated: This function is deprecated. Use the fluent function `hospitalizationLocations()` instead.
+Returns list of all locations within an encounter, including locations for immediately prior ED visit.
 */
 define function "Hospitalization Locations"(TheEncounter Encounter ):
   ( "ED Visit"(TheEncounter) ) EDEncounter
@@ -99,7 +95,7 @@ define function "Hospitalization Locations"(TheEncounter Encounter ):
         else flatten { EDEncounter.location, TheEncounter.location }
 
 /*
-@description: Returns list of all locations within an encounter, including locations for immediately prior ED visit.
+Returns list of all locations within an encounter, including locations for immediately prior ED visit.
 */
 define fluent function hospitalizationLocations(TheEncounter Encounter ):
   ( "ED Visit"(TheEncounter) ) EDEncounter
@@ -108,47 +104,43 @@ define fluent function hospitalizationLocations(TheEncounter Encounter ):
         else flatten { EDEncounter.location, TheEncounter.location }
 
 /*
-@description: Returns the length of stay in days (i.e. the number of days between admission and discharge) for the given encounter, or from the admission of any immediately prior emergency department visit to the discharge of the encounter
-@deprecated: This function is deprecated. Use the fluent function `hospitalizationLengthOfStay()` instead.
+Returns the length of stay in days (i.e. the number of days between admission and discharge) for the given encounter, or from the admission of any immediately prior emergency department visit to the discharge of the encounter
 */
 define function "Hospitalization Length of Stay"(TheEncounter Encounter ):
   LengthInDays("Hospitalization"(TheEncounter))
 
 /*
-@description: Returns the length of stay in days (i.e. the number of days between admission and discharge) for the given encounter, or from the admission of any immediately prior emergency department visit to the discharge of the encounter
+Returns the length of stay in days (i.e. the number of days between admission and discharge) for the given encounter, or from the admission of any immediately prior emergency department visit to the discharge of the encounter
 */
 define fluent function hospitalizationLengthOfStay(TheEncounter Encounter ):
   LengthInDays("Hospitalization"(TheEncounter))
 
 /*
-@description: Returns admission time for an encounter or for immediately prior emergency department visit.
-@deprecated: This function is deprecated. Use the fluent function `hospitalAdmissionTime()` instead.
+Returns admission time for an encounter or for immediately prior emergency department visit.
 */
 define function "Hospital Admission Time"(TheEncounter Encounter ):
   start of "Hospitalization"(TheEncounter)
 
 /*
-@description: Returns admission time for an encounter or for immediately prior emergency department visit.
+Returns admission time for an encounter or for immediately prior emergency department visit.
 */
 define fluent function hospitalAdmissionTime(TheEncounter Encounter ):
   start of "Hospitalization"(TheEncounter)
 
 /*
-@description: Hospital Discharge Time returns the discharge time for an encounter
-@deprecated: This function is deprecated. Use the fluent function `hospitalDischargeTime()` instead.
+Hospital Discharge Time returns the discharge time for an encounter
 */
 define function "Hospital Discharge Time"(TheEncounter Encounter ):
   end of TheEncounter.period
 
 /*
-@description: Hospital Discharge Time returns the discharge time for an encounter
+Hospital Discharge Time returns the discharge time for an encounter
 */
 define fluent function hospitalDischargeTime(TheEncounter Encounter ):
   end of TheEncounter.period
 
 /*
-@description: Returns earliest arrival time for an encounter including any prior ED visit.
-@deprecated: This function is deprecated. Use the fluent function `hospitalArrivalTime()` instead.
+Returns earliest arrival time for an encounter including any prior ED visit.
 */
 define function "Hospital Arrival Time"(TheEncounter Encounter ):
   start of First(
@@ -157,7 +149,7 @@ define function "Hospital Arrival Time"(TheEncounter Encounter ):
   	).period
 
 /*
-@description: Returns earliest arrival time for an encounter including any prior ED visit.
+Returns earliest arrival time for an encounter including any prior ED visit.
 */
 define fluent function hospitalArrivalTime(TheEncounter Encounter ):
   start of First(
@@ -166,8 +158,7 @@ define fluent function hospitalArrivalTime(TheEncounter Encounter ):
   	).period
 
 /*
-@description: Returns the latest departure time for encounter including any prior ED visit.
-@deprecated: This function is deprecated. Use the fluent function `hospitalDepartureTime()` instead.
+Returns the latest departure time for encounter including any prior ED visit. 
 */
 define function "Hospital Departure Time"(TheEncounter Encounter):
 	end of Last(
@@ -176,7 +167,7 @@ define function "Hospital Departure Time"(TheEncounter Encounter):
 	).period
 
 /*
-@description: Returns the latest departure time for encounter including any prior ED visit.
+Returns the latest departure time for encounter including any prior ED visit. 
 */
 define fluent function hospitalDepartureTime(TheEncounter Encounter):
 	end of Last(
@@ -184,10 +175,6 @@ define fluent function hospitalDepartureTime(TheEncounter Encounter):
 			sort by start of period
 	).period
 
-/*
-@description: Returns the emergency department arrival time for the encounter.
-@deprecated. This function is deprecated. Use the fluent function `emergencyDepartmentArrivalTime()` instead.
-*/
 define function "Emergency Department Arrival Time"(TheEncounter Encounter):
 	start of (
 	    singleton from (
@@ -196,9 +183,6 @@ define function "Emergency Department Arrival Time"(TheEncounter Encounter):
 		)
 	).period
 
-/*
-@description: Returns the emergency department arrival time for the encounter.
-*/
 define fluent function emergencyDepartmentArrivalTime(TheEncounter Encounter):
 	start of (
 	    singleton from (
@@ -208,8 +192,7 @@ define fluent function emergencyDepartmentArrivalTime(TheEncounter Encounter):
 	).period
 
 /*
-@description: Hospitalization with Observation and Outpatient Surgery Service returns the total interval from the start of any immediately prior emergency department visit, outpatient surgery visit or observation visit to the discharge of the given encounter.
-@deprecated: This function is deprecated. Use the fluent function `hospitalizationWithObservationAndOutpatientSurgeryService()` instead.
+Hospitalization with Observation and Outpatient Surgery Service returns the total interval from the start of any immediately prior emergency department visit, outpatient surgery visit or observation visit to the discharge of the given encounter.
 */
 define function "HospitalizationWithObservationAndOutpatientSurgeryService"(TheEncounter "Encounter" ):
   TheEncounter Visit
@@ -232,7 +215,7 @@ define function "HospitalizationWithObservationAndOutpatientSurgeryService"(TheE
   	return Interval[Coalesce(start of OutpatientSurgeryVisit.period, VisitStartWithED), end of Visit.period]
 
 /*
-@description: Hospitalization with Observation and Outpatient Surgery Service returns the total interval from the start of any immediately prior emergency department visit, outpatient surgery visit or observation visit to the discharge of the given encounter.
+Hospitalization with Observation and Outpatient Surgery Service returns the total interval from the start of any immediately prior emergency department visit, outpatient surgery visit or observation visit to the discharge of the given encounter.
 */
 define fluent function hospitalizationWithObservationAndOutpatientSurgeryService(TheEncounter "Encounter" ):
   TheEncounter Visit
@@ -255,8 +238,7 @@ define fluent function hospitalizationWithObservationAndOutpatientSurgeryService
   	return Interval[Coalesce(start of OutpatientSurgeryVisit.period, VisitStartWithED), end of Visit.period]
 
 /*
-@description: Hospitalization with Observation returns the total interval from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
-@deprecated: This function is deprecated. Use the fluent function `hospitalizationWithObservation()` instead.
+Hospitalization with Observation returns the total interval from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
 */
 define function "HospitalizationWithObservation"(TheEncounter Encounter ):
   TheEncounter Visit
@@ -274,7 +256,7 @@ define function "HospitalizationWithObservation"(TheEncounter Encounter ):
   		return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
 /*
-@description: Hospitalization with Observation returns the total interval from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
+Hospitalization with Observation returns the total interval from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
 */
 define fluent function hospitalizationWithObservation(TheEncounter Encounter ):
   TheEncounter Visit
@@ -292,21 +274,19 @@ define fluent function hospitalizationWithObservation(TheEncounter Encounter ):
   		return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
 /*
-@description: Hospitalization with Observation Length of Stay returns the length in days from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
-@deprecated: This function is deprecated. Use the fluent function `hospitalizationWithObservationLengthofStay()` instead.
+Hospitalization with Observation Length of Stay returns the length in days from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
 */
 define function "HospitalizationWithObservationLengthofStay"(TheEncounter "Encounter" ):
   "LengthInDays"("HospitalizationWithObservation"(TheEncounter))
 
 /*
-@description: Hospitalization with Observation Length of Stay returns the length in days from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
+Hospitalization with Observation Length of Stay returns the length in days from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
 */
 define fluent function hospitalizationWithObservationLengthofStay(TheEncounter "Encounter" ):
   "LengthInDays"("HospitalizationWithObservation"(TheEncounter))
 
 /*
-@description: First Inpatient Intensive Care Unit returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.
-@deprecated: This function is deprecated. Use the fluent function `firstInpatientIntensiveCareUnit()` instead.
+First Inpatient Intensive Care Unit returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.
 */
 define function "FirstInpatientIntensiveCareUnit"(Encounter Encounter ):
   First((Encounter.location)HospitalLocation
@@ -316,7 +296,7 @@ define function "FirstInpatientIntensiveCareUnit"(Encounter Encounter ):
   	)
 
 /*
-@description: First Inpatient Intensive Care Unit returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.
+First Inpatient Intensive Care Unit returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.
 */
 define fluent function firstInpatientIntensiveCareUnit(Encounter Encounter ):
   First((Encounter.location)HospitalLocation
@@ -326,36 +306,34 @@ define fluent function firstInpatientIntensiveCareUnit(Encounter Encounter ):
   	)
 
 /*
-@description: Returns the Condition resource referenced by the `diagnosis.condition` element of the Encounter
-@deprecated: This function is deprecated. Use the fluent function `encounterDiagnosis()` instead.
+Returns the Condition resources referenced by the diagnosis element of the Encounter
 */
 define function "EncounterDiagnosis"(Encounter Encounter ):
   Encounter.diagnosis D
 	return singleton from ([Condition] C where C.id = D.condition.reference.getId())
 
 /*
-@description: Returns the Condition resources referenced by the diagnosis element of the Encounter
+Returns the Condition resources referenced by the diagnosis element of the Encounter
 */
 define fluent function encounterDiagnosis(Encounter Encounter ):
   Encounter.diagnosis D
     return singleton from ([Condition] C where C.id = D.condition.reference.getId())
 
 /*
-@description: Returns the Condition resource for the given reference
-@deprecated: This function is deprecated. Use the fluent function `getCondition()` instead
+Returns the Condition resource for the given reference
+@deprecated
 */
 define function "GetCondition"(reference Reference):
   singleton from ([Condition] C where C.id = reference.reference.getId())
 
 /*
-@description: Returns the Condition resource for the given reference
+Returns the Condition resource for the given reference
 */
 define fluent function getCondition(reference Reference):
   singleton from ([Condition] C where C.id = reference.reference.getId())
 
 /*
-@description: Returns the condition that is specified as the principal diagnosis for the encounter
-@deprecated: This function is deprecated. Use the fluent function `principalDiagnosis()` instead.
+Returns the condition that is specified as the principal diagnosis for the encounter
 */
 define function "PrincipalDiagnosis"(Encounter Encounter ):
 	singleton from ((Encounter.diagnosis D where D.rank = 1) PD
@@ -363,7 +341,7 @@ define function "PrincipalDiagnosis"(Encounter Encounter ):
 	)
 
 /*
-@description: Returns the condition that is specified as the principal diagnosis for the encounter
+Returns the condition that is specified as the principal diagnosis for the encounter
 */
 define fluent function principalDiagnosis(Encounter Encounter ):
 	singleton from ((Encounter.diagnosis D where D.rank = 1) PD
@@ -371,8 +349,7 @@ define fluent function principalDiagnosis(Encounter Encounter ):
 	)
 
 /*
-@description: Returns the Location resource specified by the given reference
-@deprecated: This function is deprecated. Use the fluent function `getLocation()` instead.
+Returns the Location resource specified by the given reference
 */
 define function "GetLocation"(reference Reference ):
   singleton from (
@@ -380,7 +357,7 @@ define function "GetLocation"(reference Reference ):
   )
 
 /*
-@description: Returns the Location resource specified by the given reference.
+Returns the Location resource specified by the given reference
 */
 define fluent function getLocation(reference Reference ):
   singleton from (
@@ -388,8 +365,7 @@ define fluent function getLocation(reference Reference ):
   )
 
 /*
-@description: Returns the medication code for the given MedicationRequest
-@deprecated: This function is deprecated. Use the fluent function `getMedicationCode()` instead.
+Returns the medication code for the given MedicationRequest
 */
 define function "GetMedicationCode"(request MedicationRequest ):
   if request.medication is Concept then
@@ -398,7 +374,7 @@ define function "GetMedicationCode"(request MedicationRequest ):
   	  (singleton from ([Medication] M where M.id = (request.medication as Reference).reference.getId())).code
 
 /*
-@description: Returns the medication code for the given MedicationRequest
+Returns the medication code for the given MedicationRequest
 */
 define fluent function getMedicationCode(request MedicationRequest ):
   if request.medication is Concept then
