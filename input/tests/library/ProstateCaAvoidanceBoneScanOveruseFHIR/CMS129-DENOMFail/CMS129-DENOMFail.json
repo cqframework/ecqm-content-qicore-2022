@@ -204,8 +204,10 @@
         "effectiveDateTime": "2023-08-17T08:00:00.000+00:00",
         "issued": "2023-04-24T08:00:00.000+00:00",
         "valueQuantity": {
-          "value": "5.0",
-          "unit": "ng/ml"
+          "value": 5.0,
+          "unit": "ng/ml",
+          "system": "http://unitsofmeasure.org",
+          "code": "ng/mL"
         }
       }
     },
