@@ -1,0 +1,1658 @@
+{
+  "resourceType": "Measure",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Library",
+    "id": "effective-data-requirements",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://loinc.org",
+        "code": "73831-0",
+        "display": "Adolescent depression screening assessment"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://snomed.info/sct",
+        "code": "428171000124102",
+        "display": "Depression screening negative (finding)"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://snomed.info/sct",
+        "code": "428181000124104",
+        "display": "Depression screening positive (finding)"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://loinc.org",
+        "code": "73832-8",
+        "display": "Adult depression screening assessment"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "recurrence"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "relapse"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "remission"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Patient Age 12 to 16 Years at Start of Measurement Period"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Patient Age 12 to 16 Years at Start of Measurement Period\":\n  AgeInYearsAt(date from start of \"Measurement Period\") in Interval[12, 16]"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 0
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Qualifying Encounter During Measurement Period"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Qualifying Encounter During Measurement Period\":\n  ( [Encounter: \"Encounter to Screen for Depression\"]\n    union [Encounter: \"Physical Therapy Evaluation\"]\n    union [Encounter: \"Telephone Visits\"] ) QualifyingEncounter\n    where QualifyingEncounter.period during \"Measurement Period\"\n      and QualifyingEncounter.status = 'finished'"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 1
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Most Recent Adolescent Depression Screening"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Most Recent Adolescent Depression Screening\":\n  Last([Observation: \"Adolescent depression screening assessment\"] AdolescentDepressionScreening\n      with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n        such that QICoreCommon.\"ToInterval\"(AdolescentDepressionScreening.effective) 14 days or less on or before day of start of QualifyingEncounter.period\n          and AdolescentDepressionScreening.value is not null\n      sort by start of QICoreCommon.\"ToInterval\"(effective)\n  )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 2
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Has Most Recent Adolescent Screening Negative"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Most Recent Adolescent Screening Negative\":\n  ( \"Most Recent Adolescent Depression Screening\" AdolescentScreen\n      where AdolescentScreen.value ~ \"Depression screening negative (finding)\"\n  ) is not null"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 3
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Follow Up Intervention for Positive Adolescent Depression Screening"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Follow Up Intervention for Positive Adolescent Depression Screening\":\n  [MedicationRequest: \"Adolescent Depression Medications\"]\n    union [ServiceRequest: code in \"Referral for Adolescent Depression\"]\n    union [Procedure: \"Follow Up for Adolescent Depression\"]"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 4
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Most Recent Adolescent Depression Screening Positive and Follow Up Provided"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Most Recent Adolescent Depression Screening Positive and Follow Up Provided\":\n  from\n    \"Most Recent Adolescent Depression Screening\" LastAdolescentScreen,\n    \"Follow Up Intervention for Positive Adolescent Depression Screening\" FollowUpPositiveAdolescentScreen,\n    \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n    where QICoreCommon.\"ToInterval\" ( LastAdolescentScreen.effective ) 14 days or less on or before day of start of QualifyingEncounter.period\n      and LastAdolescentScreen.value ~ \"Depression screening positive (finding)\"\n      and ( ( Coalesce(start of QICoreCommon.\"ToInterval\"(FollowUpPositiveAdolescentScreen.performed), FollowUpPositiveAdolescentScreen.authoredOn) same day as start of QualifyingEncounter.period )\n          or ( Coalesce(start of QICoreCommon.\"ToInterval\"(FollowUpPositiveAdolescentScreen.performed), FollowUpPositiveAdolescentScreen.authoredOn) 2 days or less after day of end of QualifyingEncounter.period )\n      )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 5
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Patient Age 17 Years at Start of Measurement Period"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Patient Age 17 Years at Start of Measurement Period\":\n  AgeInYearsAt(date from start of \"Measurement Period\") = 17"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 6
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Most Recent Adult Depression Screening"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Most Recent Adult Depression Screening\":\n  Last([Observation: \"Adult depression screening assessment\"] AdultDepressionScreening\n      with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n        such that QICoreCommon.\"ToInterval\"(AdultDepressionScreening.effective) 14 days or less on or before day of start of QualifyingEncounter.period\n          and AdultDepressionScreening.value is not null\n      sort by start of QICoreCommon.\"ToInterval\"(effective)\n  )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 7
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Has Most Recent Adult Screening Negative"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Most Recent Adult Screening Negative\":\n  ( \"Most Recent Adult Depression Screening\" AdultScreen\n      where AdultScreen.value ~ \"Depression screening negative (finding)\"\n  ) is not null"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 8
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Follow Up Intervention for Positive Adult Depression Screening"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Follow Up Intervention for Positive Adult Depression Screening\":\n  [MedicationRequest: \"Adult Depression Medications\"]\n    union [ServiceRequest: code in \"Referral for Adult Depression\"]\n    union [Procedure: \"Follow Up for Adult Depression\"]"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 9
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Most Recent Adult Depression Screening Positive and Follow Up Provided"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Most Recent Adult Depression Screening Positive and Follow Up Provided\":\n  from\n    \"Most Recent Adult Depression Screening\" LastAdultScreen,\n    \"Follow Up Intervention for Positive Adult Depression Screening\" FollowUpPositiveAdultScreen,\n    \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n    where QICoreCommon.\"ToInterval\" ( LastAdultScreen.effective ) starts 14 days or less on or before day of start of QualifyingEncounter.period\n      and LastAdultScreen.value ~ \"Depression screening positive (finding)\"\n      and ( ( Coalesce(start of QICoreCommon.\"ToInterval\"(FollowUpPositiveAdultScreen.performed), FollowUpPositiveAdultScreen.authoredOn) same day as start of QualifyingEncounter.period )\n          or ( Coalesce(start of QICoreCommon.\"ToInterval\"(FollowUpPositiveAdultScreen.performed), FollowUpPositiveAdultScreen.authoredOn) 2 days or less after day of end of QualifyingEncounter.period )\n      )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 10
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Patient Age 18 Years or Older at Start of Measurement Period"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Patient Age 18 Years or Older at Start of Measurement Period\":\n  AgeInYearsAt(date from start of \"Measurement Period\") >= 18"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 11
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Numerator"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Numerator\":\n  ( \"Patient Age 12 to 16 Years at Start of Measurement Period\"\n      and ( \"Has Most Recent Adolescent Screening Negative\"\n          or exists \"Most Recent Adolescent Depression Screening Positive and Follow Up Provided\"\n      )\n  )\n    or ( \"Patient Age 17 Years at Start of Measurement Period\"\n        and ( \"Has Most Recent Adolescent Screening Negative\"\n            or exists \"Most Recent Adolescent Depression Screening Positive and Follow Up Provided\"\n            or \"Has Most Recent Adult Screening Negative\"\n            or exists \"Most Recent Adult Depression Screening Positive and Follow Up Provided\"\n        )\n    )\n    or ( \"Patient Age 18 Years or Older at Start of Measurement Period\"\n        and ( \"Has Most Recent Adult Screening Negative\"\n            or exists \"Most Recent Adult Depression Screening Positive and Follow Up Provided\"\n        )\n    )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 12
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Patient Age 12 Years or Older at Start of Measurement Period"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Patient Age 12 Years or Older at Start of Measurement Period\":\n  AgeInYearsAt(date from start of \"Measurement Period\") >= 12"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 13
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Initial Population"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Initial Population\":\n  \"Patient Age 12 Years or Older at Start of Measurement Period\"\n    and exists ( \"Qualifying Encounter During Measurement Period\" )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 14
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Denominator"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator\":\n  \"Initial Population\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 15
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "History of Bipolar Diagnosis Before Qualifying Encounter"
+      }, {
+        "url": "statement",
+        "valueString": "define \"History of Bipolar Diagnosis Before Qualifying Encounter\":\n  [Condition: \"Bipolar Disorder\"] BipolarDiagnosis\n    with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n      such that QICoreCommon.\"ToPrevalenceInterval\" ( BipolarDiagnosis ) starts before QualifyingEncounter.period\n    where ( BipolarDiagnosis.clinicalStatus ~ FHIRCommon.\"active\"\n        or BipolarDiagnosis.clinicalStatus ~ FHIRCommon.\"recurrence\"\n        or BipolarDiagnosis.clinicalStatus ~ FHIRCommon.\"relapse\"\n        or BipolarDiagnosis.clinicalStatus ~ FHIRCommon.\"remission\"\n    )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 16
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Denominator Exclusions"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator Exclusions\":\n  exists \"History of Bipolar Diagnosis Before Qualifying Encounter\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 17
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Medical or Patient Reason for Not Screening Adolescent for Depression"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Medical or Patient Reason for Not Screening Adolescent for Depression\":\n  [ObservationNotDone: code ~ \"Adolescent depression screening assessment\"] NoAdolescentScreen\n    with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n      such that NoAdolescentScreen.issued during QualifyingEncounter.period\n    where ( NoAdolescentScreen.notDoneReason in \"Patient Declined\"\n        or NoAdolescentScreen.notDoneReason in \"Medical Reason\"\n    )\n      and NoAdolescentScreen.status = 'cancelled'"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 18
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Has Adolescent Depression Screening"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Adolescent Depression Screening\":\n  exists ( [Observation: \"Adolescent depression screening assessment\"] AdolescentScreening\n      with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n        such that QICoreCommon.\"ToInterval\" ( AdolescentScreening.effective ) 14 days or less on or before day of start of QualifyingEncounter.period\n          and AdolescentScreening.value is not null\n  )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 19
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Medical or Patient Reason for Not Screening Adult for Depression"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Medical or Patient Reason for Not Screening Adult for Depression\":\n  [ObservationNotDone: code ~ \"Adult depression screening assessment\"] NoAdultScreen\n    with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n      such that NoAdultScreen.issued during QualifyingEncounter.period\n    where ( NoAdultScreen.notDoneReason in \"Patient Declined\"\n        or NoAdultScreen.notDoneReason in \"Medical Reason\"\n    )\n      and NoAdultScreen.status = 'cancelled'"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 20
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Has Adult Depression Screening"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Has Adult Depression Screening\":\n  exists ( [Observation: \"Adult depression screening assessment\"] AdultScreening\n      with \"Qualifying Encounter During Measurement Period\" QualifyingEncounter\n        such that QICoreCommon.\"ToInterval\" ( AdultScreening.effective ) 14 days or less on or before day of start of QualifyingEncounter.period\n          and AdultScreening.value is not null\n  )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 21
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "PCSDepressionScreenAndFollowUpFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Denominator Exceptions"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator Exceptions\":\n  ( exists \"Medical or Patient Reason for Not Screening Adolescent for Depression\"\n      and not \"Has Adolescent Depression Screening\"\n  )\n    or ( exists \"Medical or Patient Reason for Not Screening Adult for Depression\"\n        and not \"Has Adult Depression Screening\"\n    )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 22
+      } ]
+    } ],
+    "status": "active",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "module-definition"
+      } ]
+    },
+    "relatedArtifact": [ {
+      "type": "depends-on",
+      "display": "Library FHIRHelpers",
+      "resource": "Library/FHIRHelpers|4.1.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library QICoreCommon",
+      "resource": "Library/QICoreCommon|1.2.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library FHIRCommon",
+      "resource": "Library/FHIRCommon|4.1.000"
+    }, {
+      "type": "depends-on",
+      "display": "Code system LOINC",
+      "resource": "http://loinc.org"
+    }, {
+      "type": "depends-on",
+      "display": "Code system SNOMEDCT",
+      "resource": "http://snomed.info/sct"
+    }, {
+      "type": "depends-on",
+      "display": "Code system ConditionClinicalStatusCodes",
+      "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Encounter to Screen for Depression",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1916"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Physical Therapy Evaluation",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1022"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Telephone Visits",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1080"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Adolescent Depression Medications",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1567"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Referral for Adolescent Depression",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1570"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Follow Up for Adolescent Depression",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1569"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Adult Depression Medications",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1566"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Referral for Adult Depression",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1571"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Follow Up for Adult Depression",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1568"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Bipolar Disorder",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.67.1.101.1.128"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Patient Declined",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1582"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Medical Reason",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007"
+    } ],
+    "parameter": [ {
+      "name": "Measurement Period",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "type": "Period"
+    }, {
+      "name": "Numerator",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "Denominator",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "Initial Population",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "Denominator Exclusions",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    }, {
+      "name": "Denominator Exceptions",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "boolean"
+    } ],
+    "dataRequirement": [ {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1916"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1022"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1080"
+      } ]
+    }, {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
+    }, {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/Patient" ],
+      "mustSupport": [ "birthDate", "birthDate.value" ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation" ],
+      "mustSupport": [ "code", "effective", "value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://loinc.org",
+          "code": "73831-0",
+          "display": "Adolescent depression screening assessment"
+        } ]
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1567"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1567"
+      } ]
+    }, {
+      "type": "ServiceRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1570"
+      } ]
+    }, {
+      "type": "Procedure",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1569"
+      } ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation" ],
+      "mustSupport": [ "code", "effective", "value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://loinc.org",
+          "code": "73832-8",
+          "display": "Adult depression screening assessment"
+        } ]
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1566"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1566"
+      } ]
+    }, {
+      "type": "ServiceRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1571"
+      } ]
+    }, {
+      "type": "Procedure",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1568"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code", "clinicalStatus" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.67.1.101.1.128"
+      } ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AccountStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionCardinalityBehavior" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionConditionKind" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionGroupingBehavior" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionParticipantType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionPrecheckBehavior" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionRelationshipType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionRequiredBehavior" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActionSelectionBehavior" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActivityDefinitionKind" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ActivityParticipantType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AddressType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AddressUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AdministrativeGender" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AdverseEventActuality" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AggregationMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AllergyIntoleranceCategory" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AllergyIntoleranceCriticality" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AllergyIntoleranceSeverity" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AllergyIntoleranceType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AppointmentStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AssertionDirectionType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AssertionOperatorType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AssertionResponseTypes" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AuditEventAction" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AuditEventAgentNetworkType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/AuditEventOutcome" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/BindingStrength" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/BiologicallyDerivedProductCategory" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/BiologicallyDerivedProductStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/BiologicallyDerivedProductStorageScale" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/BundleType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CapabilityStatementKind" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CarePlanActivityKind" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CarePlanActivityStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CarePlanIntent" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CarePlanStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CareTeamStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CatalogEntryRelationType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ChargeItemDefinitionPriceComponentType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ChargeItemStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ClaimResponseStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ClaimStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ClinicalImpressionStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CodeSearchSupport" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CodeSystemContentMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CodeSystemHierarchyMeaning" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CommunicationPriority" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CommunicationRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CommunicationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CompartmentCode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CompartmentType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CompositionAttestationMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CompositionStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConceptMapEquivalence" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConceptMapGroupUnmappedMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConditionalDeleteStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConditionalReadStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConsentDataMeaning" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConsentProvisionType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConsentState" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ConstraintSeverity" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ContactPointSystem" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ContactPointUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ContractPublicationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ContractStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ContributorType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CoverageStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/CurrencyCode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DayOfWeek" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DaysOfWeek" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DetectedIssueSeverity" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DetectedIssueStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceMetricCalibrationState" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceMetricCalibrationType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceMetricCategory" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceMetricColor" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceMetricOperationalStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceNameType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DeviceUseStatementStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DiagnosticReportStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DiscriminatorType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DocumentConfidentiality" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DocumentMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DocumentReferenceStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/DocumentRelationshipType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EligibilityRequestPurpose" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EligibilityRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EligibilityResponsePurpose" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EligibilityResponseStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EnableWhenBehavior" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EncounterLocationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EncounterStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EndpointStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EnrollmentRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EnrollmentResponseStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EpisodeOfCareStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EventCapabilityMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EventTiming" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/EvidenceVariableType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ExampleScenarioActorType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ExplanationOfBenefitStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ExposureState" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ExtensionContextType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FHIRAllTypes" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FHIRDefinedType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FHIRDeviceStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FHIRResourceType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FHIRSubstanceStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FHIRVersion" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FamilyHistoryStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FilterOperator" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/FlagStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GoalLifecycleStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GraphCompartmentRule" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GraphCompartmentUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GroupMeasure" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GroupType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GuidanceResponseStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GuidePageGeneration" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/GuideParameterCode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/HTTPVerb" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/IdentifierUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/IdentityAssuranceLevel" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ImagingStudyStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ImmunizationEvaluationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ImmunizationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/InvoicePriceComponentType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/InvoiceStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/IssueSeverity" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/IssueType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/LinkType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/LinkageType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ListMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ListStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/LocationMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/LocationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MeasureReportStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MeasureReportType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MediaStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationAdministrationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationDispenseStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationKnowledgeStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationRequestIntent" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationRequestPriority" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationStatementStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MedicationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MessageSignificanceCategory" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/Messageheader_Response_Request" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/MimeType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NameUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NamingSystemIdentifierType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NamingSystemType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NarrativeStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NoteType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NutritiionOrderIntent" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/NutritionOrderStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ObservationDataType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ObservationRangeCategory" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ObservationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/OperationKind" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/OperationParameterUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/OrientationType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ParameterUse" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ParticipantRequired" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ParticipantStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ParticipationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/PaymentNoticeStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/PaymentReconciliationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ProcedureStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/PropertyRepresentation" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/PropertyType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ProvenanceEntityRole" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/PublicationStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/QualityType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/QuantityComparator" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/QuestionnaireItemOperator" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/QuestionnaireItemType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/QuestionnaireResponseStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ReferenceHandlingPolicy" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ReferenceVersionRules" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ReferredDocumentStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RelatedArtifactType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RemittanceOutcome" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RepositoryType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RequestIntent" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RequestPriority" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ResearchElementType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ResearchStudyStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ResearchSubjectStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ResourceType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ResourceVersionPolicy" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ResponseType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RestfulCapabilityMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/RiskAssessmentStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SPDXLicense" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SearchComparator" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SearchEntryMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SearchModifierCode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SearchParamType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SectionMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SequenceType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ServiceRequestIntent" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ServiceRequestPriority" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/ServiceRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SlicingRules" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SlotStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SortDirection" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SpecimenContainedPreference" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SpecimenStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/Status" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StrandType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureDefinitionKind" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapContextType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapGroupTypeMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapInputMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapModelMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapSourceListMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapTargetListMode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/StructureMapTransform" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SubscriptionChannelType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "type": "SubscriptionStatus",
+      "profile": [ "http://hl7.org/fhir/SubscriptionStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SupplyDeliveryStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SupplyRequestStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/SystemRestfulInteraction" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TaskIntent" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TaskPriority" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TaskStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TestReportActionResult" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TestReportParticipantType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TestReportResult" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TestReportStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TestScriptRequestMethodCode" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TriggerType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TypeDerivationRule" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/TypeRestfulInteraction" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/UDIEntryType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/UnitsOfTime" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/Use" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/VariableType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/VisionBase" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/VisionEyes" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/VisionStatus" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "profile": [ "http://hl7.org/fhir/XPathUsageType" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "type": "base64Binary",
+      "profile": [ "http://hl7.org/fhir/base64Binary" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "type": "string",
+      "profile": [ "http://hl7.org/fhir/string" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "type": "uri",
+      "profile": [ "http://hl7.org/fhir/uri" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "type": "xhtml",
+      "profile": [ "http://hl7.org/fhir/xhtml" ],
+      "mustSupport": [ "value" ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observationnotdone" ],
+      "mustSupport": [ "code", "issued", "issued.value", "extension", "status", "status.value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://loinc.org",
+          "code": "73831-0",
+          "display": "Adolescent depression screening assessment"
+        } ]
+      } ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation" ],
+      "mustSupport": [ "code", "effective", "value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://loinc.org",
+          "code": "73831-0",
+          "display": "Adolescent depression screening assessment"
+        } ]
+      } ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observationnotdone" ],
+      "mustSupport": [ "code", "issued", "issued.value", "extension", "status", "status.value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://loinc.org",
+          "code": "73832-8",
+          "display": "Adult depression screening assessment"
+        } ]
+      } ]
+    }, {
+      "type": "Observation",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation" ],
+      "mustSupport": [ "code", "effective", "value" ],
+      "codeFilter": [ {
+        "path": "code",
+        "code": [ {
+          "system": "http://loinc.org",
+          "code": "73832-8",
+          "display": "Adult depression screening assessment"
+        } ]
+      } ]
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements",
+    "valueReference": {
+      "reference": "#effective-data-requirements"
+    }
+  } ],
+  "url": "http://ecqi.healthit.gov/ecqms/Measure/PCSDepressionScreenAndFollowUpFHIR",
+  "identifier": [ {
+    "use": "usual",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "short-name"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/shortName",
+    "value": "CMS2FHIR"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "version-independent"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:deb30835-dbec-4f11-aab0-3a282040e37c"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "version-specific"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:6385021b4ba3d47c885c02b3"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "endorser"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/nqfId",
+    "assigner": {
+      "display": "NQF"
+    }
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "publisher"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/cmsId",
+    "value": "2FHIR",
+    "assigner": {
+      "display": "CMS"
+    }
+  } ],
+  "version": "0.0.017",
+  "name": "PCSDepressionScreenAndFollowUpFHIR",
+  "title": "Preventive Care and Screening: Screening for Depression and Follow-Up PlanFHIR",
+  "status": "draft",
+  "experimental": true,
+  "date": "2023-04-04T17:26:07+00:00",
+  "publisher": "Centers for Medicare & Medicaid Services (CMS)",
+  "contact": [ {
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.cms.gov/"
+    } ]
+  } ],
+  "description": "Percentage of patients aged 12 years and older screened for depression on the date of the encounter or up to 14 days prior to the date of the encounter using an age-appropriate standardized depression screening tool AND if positive, a follow-up plan is documented on the date of or up to two days after the date of the qualifying encounter",
+  "purpose": "UNKNOWN",
+  "usage": "The intent of the measure is to screen for new cases of depression in patients who have never had a diagnosis of depression or bipolar disorder. Patients who have ever been diagnosed with depression or bipolar disorder prior to the qualifying encounter used to evaluate the numerator will be excluded from the measure regardless of whether the diagnosis is active or not.\n\nA depression screen is completed on the date of the encounter or up to 14 calendar days prior to the date of the encounter using an age-appropriate standardized depression screening tool AND if positive, a follow-up plan must be documented on the date of or up to two calendar days after the date of the encounter, such as referral to a provider for additional evaluation, pharmacological interventions, or other interventions for the treatment of depression. An example to illustrate the follow-up plan documentation timing: if the encounter is on a Monday from 3-4 pm (day 0) and the patient screens positive, the clinician has through anytime on Wednesday (day 2) to complete follow-up plan documentation.\n\nThis measure does not require documentation of a specific score, just whether results of the normalized and validated depression screening tool used are considered positive or negative. Each standardized screening tool provides guidance on whether a particular score is considered positive for depression.  \n\nThis eCQM is a patient-based measure. Depression screening is required once per measurement period, not at all encounters.\n\nScreening Tools:\n *  An age-appropriate, standardized, and validated depression screening tool must be used for numerator compliance.\n *  The name of the age-appropriate standardized depression screening tool utilized must be documented in the medical record.\n *  The depression screening must be reviewed and addressed by the provider, filing the code, on the date of the encounter. Positive pre-screening results indicating a patient is at high risk for self-harm should receive more urgent intervention as determined by the provider practice.\n *  The screening should occur during a qualifying encounter or up to 14 calendar days prior to the date of the qualifying encounter.\n *  The measure assesses the most recent depression screening completed either during the qualifying encounter or within the 14 calendar days prior to that encounter. Therefore, a clinician would not be able to complete another screening at the time of the encounter to count towards a follow-up, because that would serve as the most recent screening. In order to satisfy the follow-up requirement for a patient screening positively, the eligible clinician would need to provide one of the aforementioned follow-up actions, which does not include use of a standardized depression screening tool.\n\nFollow-Up Plan:\nThe follow-up plan MUST still be provided for and discussed with the patient during the qualifying encounter used to evaluate the numerator. However, documentation of the follow-up plan can occur up to two calendar days after the qualifying encounter, in accordance with the policies of an eligible clinician or provider’s practice or health system. All services should be documented during, or as soon as practicable, after the qualifying encounter in order to maintain an accurate medical record.\n\nThe follow-up plan must be related to a positive depression screening, for example: \"Patient referred for psychiatric evaluation due to positive depression screening.\"\n\nExamples of a follow-up plan include but are not limited to: \n *  Referral to a provider or program for further evaluation for depression, for example, referral to a psychiatrist, psychiatric nurse practitioner, psychologist, clinical social worker, mental health counselor, or other mental health service such as family or group therapy, support group, depression management program, or other service for treatment of depression\n *  Other interventions designed to treat depression such as behavioral health evaluation, psychotherapy, pharmacological interventions, or additional treatment options\n\nShould a patient screen positive for depression, a clinician should:\n*  Only order pharmacological intervention when appropriate and after sufficient diagnostic evaluation. However, for the purposes of this measure, additional screening and assessment during the qualifying encounter will not qualify as a follow-up plan.\n*  Opt to complete a suicide risk assessment when appropriate and based on individual patient characteristics. However, for the purposes of this measure, a suicide risk assessment or additional screening using a standardized tool will not qualify as a follow-up plan.\n\nThis FHIR-based measure has been derived from the QDM-based-based measure: CMS2v13.\n\nPlease refer to the HL7 QI-Core Implementation Guide (http://hl7.org/fhir/us/quicore/index.html) for more information on QI-Core and mapping recommendations from QDM to QI-Core 4.1.1 (http://hl7.org/fhir/us/qicore/qdm-to-qicore.html).",
+  "copyright": "Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. \n\nCPT(R) contained in the Measure specifications is copyright 2004-2021 American Medical Association. LOINC(R) is copyright 2004-2021 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2021 International Health Terminology Standards Development Organisation. ICD-10 is copyright 2021 World Health Organization. All Rights Reserved.",
+  "approvalDate": "2023-04-04",
+  "lastReviewDate": "2023-04-04",
+  "effectivePeriod": {
+    "start": "2023-01-01",
+    "end": "2023-12-31"
+  },
+  "author": [ {
+    "name": "Mathematica",
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.mathematica.org/"
+    } ]
+  } ],
+  "library": [ "http://ecqi.healthit.gov/ecqms/Library/PCSDepressionScreenAndFollowUpFHIR" ],
+  "disclaimer": "These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.\n\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+  "rationale": "Depression is a serious medical illness associated with higher rates of chronic disease, increased health care utilization, and impaired functioning (Pratt and Brody, 2014). Results from a 2016 U.S. survey indicated that 12.8 percent of adolescents (3.1 million adolescents) had a major depressive episode (MDE) in the past year, with nine percent of adolescents (2.2 million adolescents) having one MDE with severe impairment (Substance Abuse and Mental Health Services Administration, 2017). The odds of a diagnosis of depression are believed to be 2.6 times greater for children and adolescents exposed to trauma as compared to those unexposed or less exposed (Vibhakar et al., 2019). Children and teens with major depressive disorder (MDD) have been found to have difficulty carrying out their daily activities, relating to others, growing up healthy, and are at an increased risk of suicide (Siu on behalf of the U.S. Preventive Services Task Force [USPSTF], 2016). \n\nThe same 2016 study indicated that 6.7 percent of adults aged 18 or older (16.2 million adults) had at least one MDE with 4.3 percent of adults (10.3 million adults) having one MDE with severe impairment in the past year (Substance Abuse and Mental Health Services Administration, 2017). Moreover, it is estimated 22.9 percent of adult patients with chronic pain (2.2 million adults) were diagnosed with comorbid depression from 2011 to 2015, with an upward trend of prevalence among Black Americans, patients aged 65 to 84 years old, Medicare and Medicaid insured patients, and patients from zip code areas with low annual household incomes (Orhurhu et al., 2020). \n\nDepression and other mood disorders, such as bipolar disorder and anxiety disorders, especially during the perinatal period, can have devastating effects on women, infants, and families (American College of Obstetricians and Gynecologists, 2018). It's estimated that the global prevalence of antenatal (or perinatal) depression ranges from 15 to 65 percent, with current or previous exposure to abuse and violence, lack of social support, and family history of mental disorders being risk factors. Depressive symptoms measured during pregnancy have been shown to influence the quality of the postpartum mother-infant relationship (Raine et al., 2020). Additionally, the risk of low birth weight and preterm birth is higher among infants born from depressed mothers (Dadi, Miller, Bisetegn, & Mwanri, 2020).\n\nNegative outcomes associated with depression make it crucial to screen in order to identify and treat depression in its early stages. Data indicates that as the severity of depressive symptoms increase, rates of having difficulty with work, home, or social activities related to depressive symptoms increase. For those twelve and older with mild depressive symptoms, 45.7 percent reported difficulty with activities, and for those with severe depressive symptoms, 88 percent reported difficulty (Pratt & Brody, 2014). Depression also imposes significant economic burden through direct and indirect costs, supporting the need for regular depression screening. \"In the United States, an estimated $22.8 billion was spent on depression treatment in 2009, and lost productivity cost an additional estimated $23 billion in 2011\" (Siu & USPSTF, 2016, p. 383-384). \n\nNumerous studies have found significant disparities in depression prevalence and treatment among racial/ethnic minorities. One study revealed that Indigenous adults are at a high risk for posttraumatic stress disorder, depression, suicide, substance use disorder, and concurrent behavioral health disorders secondary to these initial health problems (Ka’apu and Burnette, 2019). Additionally, though rates of depression are lower among Blacks and Hispanics than among whites, depression among Blacks and Hispanics is likely to be more recurrent. Furthermore, 48 percent of whites receive mental health services, compared to just 31 percent of Blacks and Hispanics, and 22 percent of Asians (American Psychiatric Association, 2017). Asian Americans and Black Americans are also significantly more likely to utilize emergency rooms for depression treatment, which contributes to inconsistent follow-up care (Lee et al., 2014). \n\nWhile primary care providers (PCPs) serve as the first line of defense in the detection of depression, studies show that PCPs fail to recognize up to 46 percent of depressed patients (Borner et al, 2010). \"In nationally representative U.S. surveys, about eight percent of adolescents reported having major depression in the past year. Only 36 percent to 44 percent of children and adolescents with depression receive treatment, suggesting that the majority of depressed youth are undiagnosed and untreated\" (Siu on behalf of USPSTF, 2016, p. 360 & p. 364). Furthermore, evidence supports that screening for depression in pregnant and postpartum women is of moderate net benefit, and treatment options for positive depression screening should be available for patients twelve and older including pregnant and postpartum women. \n\nThis measure seeks to align with clinical guideline recommendations as well as the Healthy People 2020 recommendation for routine screening for mental health problems as a part of primary care for both children and adults (U.S. Department of Health and Human Services, 2014) and makes an important contribution to the quality domain of community and population health.",
+  "clinicalRecommendationStatement": "Adolescent Recommendation (12-18 years):\n\"The USPSTF recommends screening for MDD in adolescents aged 12 to 18 years. Screening should be implemented with adequate systems in place to ensure accurate diagnosis, effective treatment, and appropriate follow-up (B recommendation)\" (Siu on behalf of USPSTF, 2016, p. 360).\n\nAdult Recommendation (18 years and older):\n\"The USPSTF recommends screening for depression in the general adult population, including pregnant and postpartum women. Screening should be implemented with adequate systems in place to ensure accurate diagnosis, effective treatment, and appropriate follow-up (B recommendation)\" (Siu & USPSTF, 2016, p. 380).\n\n“The USPSTF recommends that clinicians provide or refer pregnant and postpartum persons who are at increased risk of perinatal depression to counseling interventions. (B recommendation)” (U.S. Preventive Services Task Force, 2019). \n\nThe American College of Obstetricians and Gynecologists (ACOG) provides the following recommendation:\n\"All obstetrician–gynecologists and other obstetric care providers should complete a full assessment of mood and emotional well-being (including screening for postpartum depression and anxiety with a validated instrument) during the comprehensive postpartum visit for each patient.\" (American College of Obstetricians and Gynecologists, 2018) \n\nThe Institute for Clinical Systems Improvement (ICSI) health care guideline, Adult Depression in Primary Care, provides the following recommendations:\n1. \"Clinicians should routinely screen all adults for depression using a standardized instrument.\"\n2. \"Clinicians should establish and maintain follow-up with patients.\"\n3. \"Clinicians should screen and monitor depression in pregnant and post-partum women.\" (Trangle et al., 2016, p. 8-10).",
+  "group": [ {
+    "id": "6385021b4ba3d47c885c02b2",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
+          "code": "proportion",
+          "display": "Proportion"
+        } ]
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis",
+      "valueCode": "boolean"
+    } ],
+    "population": [ {
+      "id": "34AE0037-E4E3-443E-B7A7-ACE09BF46826",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "description": "All patients aged 12 years and older at the beginning of the measurement period with at least one qualifying encounter during the measurement period",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Initial Population"
+      }
+    }, {
+      "id": "13152749-0C35-476A-89F2-5C579BD9BE4A",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "description": "Equals Initial Population",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator"
+      }
+    }, {
+      "id": "5001B9F9-5ECE-4E40-9B3C-46161FA366F9",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "description": "Patients who have ever been diagnosed with depression or with bipolar disorder at any time prior to the qualifying encounter",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator Exclusions"
+      }
+    }, {
+      "id": "0411DA66-4881-4FC9-B4CE-73973320F1DC",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "description": "Patient Reason(s)\nPatient refuses to participate \nOR\nMedical Reason(s)\t\nDocumentation of medical reason for not screening patient for depression (e.g., cognitive, functional, or motivational limitations that may impact accuracy of results; patient is in an urgent or emergent situation where time is of the essence and to delay treatment would jeopardize the patient's health status)",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator Exceptions"
+      }
+    }, {
+      "id": "BFE91CA3-DC28-49B0-AD42-97D6808E7689",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "description": "Patients screened for depression on the date of the encounter or up to 14 days prior to the date of the encounter using an age-appropriate standardized tool AND if positive, a follow-up plan is documented on the date of or up to two days after the date of the qualifying encounter",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Numerator"
+      }
+    }, {
+      "id": "71d99636-b27c-472b-bf96-af9c4e1b246f",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator-exclusion",
+          "display": "Numerator Exclusion"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier"
+      }
+    } ]
+  } ]
+}
