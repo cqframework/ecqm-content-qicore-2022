@@ -1,0 +1,172 @@
+{
+  "id": "62f658195efef5272905e700",
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "62f658195efef5272905e700",
+      "resource": {
+        "id": "CMS2_DENEXFail",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "resourceType": "Patient",
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "1002-5",
+                  "display": "American Indian or Alaska Native",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "62f658195efef5272905e700"
+          }
+        ],
+        "name": [
+          {
+            "family": "DENOMEXPass",
+            "given": [
+              "ActiveAdultHistoryOfDepression"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1999-01-01"
+      }
+    },
+    {
+      "fullUrl": "encounter-to-screen-for-depression-cf3c",
+      "resource": {
+        "id": "encounter-to-screen-for-depression-cf3c",
+        "resourceType": "Encounter",
+        "meta": { 
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" 
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "version": "2021-09",
+                "code": "10197000",
+                "display": "Psychiatric interview and evaluation (procedure)",
+                "userSelected": true
+              }
+            ]
+          }
+        ],
+        "period": {
+          "start": "2023-06-21T08:00:00.000+00:00",
+          "end": "2023-06-21T08:15:00.000+00:00"
+        },
+        "subject": {
+          "reference": "Patient/CMS2_DENEXFail"
+        }
+      }
+    },
+    {
+      "fullUrl": "bipolar-disorder-6d53",
+      "resource": {
+        "id": "bipolar-disorder-6d53",
+        "resourceType": "Condition",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system":"http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display":"Encounter Diagnosis"
+              },
+              { 
+                "system": "http://snomed.info/sct",
+                "code": "439401001",
+                "display": "Diagnosis"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active",
+              "userSelected": true
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2021-09",
+              "code": "10875004",
+              "display": "Severe mixed bipolar I disorder with psychotic features, mood-incongruent (disorder)",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/CMS2_DENEXFail"
+        },
+        "onsetDateTime": "2023-06-21T08:10:00.000+00:00"
+      }
+    }
+  ]
+}
