@@ -1,0 +1,164 @@
+{
+    "id": "62ec389311a78d0ca7dcb4b9",
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "fullUrl": "62ec389311a78d0ca7dcb4b9",
+        "resource": {
+          "id": "CMS68_DENEXCEPPass",
+          "meta": {
+            "profile": [
+              "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+            ]
+          },
+          "resourceType": "Patient",
+          "extension": [
+            {
+              "extension": [
+                {
+                  "url": "ombCategory",
+                  "valueCoding": {
+                    "system": "urn:oid:2.16.840.1.113883.6.238",
+                    "code": "1002-5",
+                    "display": "American Indian or Alaska Native",
+                    "userSelected": true
+                  }
+                },
+                {
+                  "url": "text",
+                  "valueString": "American Indian or Alaska Native"
+                }
+              ],
+              "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+            },
+            {
+              "extension": [
+                {
+                  "url": "ombCategory",
+                  "valueCoding": {
+                    "system": "urn:oid:2.16.840.1.113883.6.238",
+                    "code": "2135-2",
+                    "display": "Hispanic or Latino",
+                    "userSelected": true
+                  }
+                },
+                {
+                  "url": "text",
+                  "valueString": "Hispanic or Latino"
+                }
+              ],
+              "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+            }
+          ],
+          "identifier": [
+            {
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "MR"
+                  }
+                ]
+              },
+              "system": "https://bonnie-fhir.healthit.gov/",
+              "value": "62ec389311a78d0ca7dcb4b9"
+            }
+          ],
+          "name": [
+            {
+              "family": "DENEXCEPPass",
+              "given": [
+                "MedNoDocStatusRejectedWithReasonCode"
+              ]
+            }
+          ],
+          "gender": "unknown",
+          "birthDate": "1966-01-19"
+        }
+      },
+      {
+        "fullUrl": "encounter-to-document-medications-a085",
+        "resource": {
+          "id": "encounter-to-document-medications-a085",
+          "resourceType": "Encounter",
+          "meta": {
+             "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+            ]
+              },
+          "status": "finished",
+          "class": { 
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode", 
+            "code": "IMP", 
+            "display": "inpatient encounter" 
+            
+          }, 
+          "type": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "version": "2022-03",
+                  "code": "10197000",
+                  "display": "Psychiatric interview and evaluation (procedure)",
+                  "userSelected": true
+                }
+              ]
+            }
+          ],
+          "period": {
+            "start": "2023-03-10T08:00:00.000+00:00",
+            "end":   "2023-03-10T09:15:00.000+00:00"
+          },
+          "subject": {
+            "reference": "Patient/CMS68_DENEXCEPPass"
+          }
+        }
+      },
+      {
+        "fullUrl": "documentation-of-current-medications-procedure-a086",
+        "resource": {
+          "id": "documentation-of-current-medications-procedure-a086",
+          "resourceType": "Task",
+          "meta": {
+                      "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task"]
+                  },
+           "identifier": [
+                {
+                  "use": "official",
+                  "system": "http:/goodhealth.org/identifiers",
+                  "value": "20170201-002"
+                }
+              ],
+          "status": "rejected",
+          "intent" : "proposal",
+          "priority": "routine",
+          "code": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "428191000124101",
+                "display": "Documentation of current medications (procedure)",
+                "userSelected": true
+              }
+            ]
+          },
+          "for" : {
+            "reference" : "Patient/CMS68_DENEXCEPPass"
+          },
+          "executionPeriod": {"start": "2023-03-10T08:00:00+10:00"},
+          "authoredOn": "2023-03-10T08:15:00.000+00:00",
+          "reasonCode": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183932001",
+                "display": "Procedure contraindicated (situation)",
+                "userSelected": true
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
