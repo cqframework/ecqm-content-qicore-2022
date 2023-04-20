@@ -120,17 +120,16 @@
         "resource": {
           "id": "documentation-of-current-medications-procedure-a086",
           "resourceType": "Task",
-            "meta": {
-            "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task"
-                 ]
-                   },
-             "identifier": [
-      {
-        "use": "official",
-        "system": "http:/goodhealth.org/identifiers",
-        "value": "20170201-002"
-      }
-    ],
+          "meta": {
+                      "profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task"]
+                  },
+           "identifier": [
+                {
+                  "use": "official",
+                  "system": "http:/goodhealth.org/identifiers",
+                  "value": "20170201-002"
+                }
+              ],
           "status": "rejected",
           "intent" : "proposal",
           "priority": "routine",
@@ -143,6 +142,9 @@
                 "userSelected": true
               }
             ]
+          },
+          "for" : {
+            "reference" : "Patient/CMS68_DENEXCEPPass"
           },
           "executionPeriod": {"start": "2023-03-10T08:00:00+10:00"},
           "authoredOn": "2023-03-10T08:15:00.000+00:00",
