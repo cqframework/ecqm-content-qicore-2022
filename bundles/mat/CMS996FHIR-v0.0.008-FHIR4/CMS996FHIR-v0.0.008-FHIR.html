@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      body {
+        background-color: #ffffff;;
+        margin: 0px;
+        padding: 10px;
+        height: 100%;
+        font-size: 1em;
+      }
+
+      p, li {
+        font-size: 12px;
+        line-height: 1.4em;
+        font-family: verdana;
+        margin: 0 0 20px 0;
+        font-weight: normal;
+      }
+
+      td {
+        font-size: 12px;
+        line-height: 1.4em;
+        font-family: verdana;
+        font-weight: normal;
+        padding: 3px;
+        vertical-align: top;
+      }
+
+      tr {
+        font-size: 12px;
+        line-height: 1.4em;
+        font-family: verdana;
+        font-weight: normal;
+        padding: 3px;
+        vertical-align: top;
+        text-align: left;
+      }
+
+      table.colstu td {
+        border: 1px grey solid;
+        border-spacing: 0;
+        padding: 5px;
+        border-collapse: collapse;
+        background-color: #fff5e6;
+      }
+
+      table.colsd td {
+        border: 1px grey solid;
+        border-spacing: 0;
+        padding: 5px;
+        border-collapse: collapse;
+        background-color: #efefef;
+      }
+
+      table.colsn td {
+        border: 1px grey solid;
+        border-spacing: 0;
+        padding: 5px;
+        border-collapse: collapse;
+        background-color: #e6ffe6;
+      }
+
+      table.colse td {
+        border: 1px grey solid;
+        border-spacing: 0;
+        padding: 5px;
+        border-collapse: collapse;
+        background-color: #e6e6e6;
+      }
+
+      table.colsi td {
+        border: 1px grey solid;
+        border-spacing: 0;
+        padding: 5px;
+        border-collapse: collapse;
+        background-color: #ffffe6;
+      }
+
+      table.list td {
+        border-top: 1px silver solid;
+        border-spacing: 0;
+      }
+
+      table.bare td {
+        border-spacing: 0;
+      }
+
+      ul.dict li {
+        font-size: 11px;
+        line-height: 1.2em;
+        font-family: verdana;
+        font-weight: normal;
+        padding: 3px;
+      }
+
+      table.dict td {
+        padding: 3px 7px 2px 7px;
+        font-size: 11px;
+        line-height: 1.2em;
+        font-family: verdana;
+        font-weight: normal;
+        padding: 3px;
+        vertical-align: top;
+      }
+
+      table.dict p {
+        font-size: 11px;
+      }
+
+      table {
+        margin-bottom: 10px;
+        border-collapse: collapse;
+      }
+
+      table.codes td {
+        border: 1px solid silver;
+        padding: 3px 7px 2px 7px;
+        font-size: 12px;
+        line-height: 1.4em;
+        font-family: verdana;
+        font-weight: normal;
+        padding: 3px;
+        vertical-align: top;
+      }
+
+      table.grid {
+        margin-bottom: 10px;
+        border: 1px black solid;
+        margin-right: auto;
+
+      }
+
+      table.grid th {
+        border: 1px solid silver;
+        padding: 3px 7px 2px 7px;
+        font-size: 12px;
+        line-height: 1.4em;
+        font-family: verdana;
+        font-weight: bold;
+        padding: 3px;
+        vertical-align: top;
+      }
+
+      table.grid td {
+        border: 1px solid silver;
+        padding: 3px 7px 2px 7px;
+        font-size: 12px;
+        line-height: 1.4em;
+        font-family: verdana;
+        font-weight: normal;
+        padding: 3px;
+        vertical-align: top;
+      }
+
+      ul {
+        margin: 10px 0;
+        padding: 0 0 0 25px;
+      }
+
+      .dense li {
+        margin: 0 0 0 0;
+      }
+
+      li {
+        margin: 0 0 5px 0;
+      }
+
+      h1 {
+        font-size: 16px;
+        margin: 0 0 4px 0;
+        font-family: verdana;
+        border-bottom: 1px solid #7e7e7e;
+        padding-bottom: 2px;
+      }
+
+      h2 {
+        font-family: verdana;
+        line-height: 1.2em;
+        font-size: 14px;
+        margin: 0 0 3px 0;
+        margin-top: 15px;
+        border-bottom: 1px solid #dcdcdc;
+        padding-bottom: 2px;
+      }
+
+      h3 {
+        font-family: verdana;
+        line-height: 1.2em;
+        font-size: 12px;
+        margin: 0 0 3px 0;
+        margin-top: 10px;
+      }
+
+      h4 {
+        font-family: verdana;
+        line-height: 1.2em;
+        font-size: 11px;
+        margin: 0 0 3px 0;
+        margin-top: 10px;
+      }
+
+      div.sidebar h2 {
+        border-bottom: 1px solid #dcdcdc;
+        padding-bottom: 2px;
+        padding-top: 0px;
+        margin-top: 0px;
+        font-weight: normal;
+        margin-left: 8px;
+        margin-bottom: 0px;
+        font-size: 12px;
+      }
+
+      div.sidebar p {
+        padding-bottom: 0px;
+        padding-top: 10px;
+        font-weight: normal;
+        margin-left: 8px;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      div.sidebar ul {
+        list-style: none;
+        padding: 0px;
+        margin-left: 6px;
+        font-size: 11px;
+        line-height: 2.125em;
+      }
+
+      div.sidebar li {
+        margin: 0px 0px 0px 6px;
+        padding: 0px;
+        font-size: 11px;
+        line-height: 2.125em;
+      }
+
+      a {
+        color: #428bca;
+        text-decoration: none;
+      }
+
+      a.xmltag :visited {
+        color: Navy;
+      }
+
+      a.xmltag :hover {
+        color: Blue;
+      }
+
+      pre {
+        display: block;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+      }
+
+      pre a {
+        color: darkgreen;
+        text-decoration: none;
+        border: 0;
+
+      }
+
+      /* PrismJS 1.21.0
+      https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+abap+abnf+actionscript+ada+agda+al+antlr4+apacheconf+apl+applescript+aql+arduino+arff+asciidoc+aspnet+asm6502+autohotkey+autoit+bash+basic+batch+bbcode+birb+bison+bnf+brainfuck+brightscript+bro+bsl+c+csharp+cpp+cil+clojure+cmake+coffeescript+concurnas+csp+crystal+css-extras+cypher+d+dart+dax+dhall+diff+django+dns-zone-file+docker+ebnf+editorconfig+eiffel+ejs+elixir+elm+etlua+erb+erlang+excel-formula+fsharp+factor+firestore-security-rules+flow+fortran+ftl+gml+gcode+gdscript+gedcom+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+hcl+hlsl+http+hpkp+hsts+ichigojam+icon+ignore+inform7+ini+io+j+java+javadoc+javadoclike+javastacktrace+jolie+jq+jsdoc+js-extras+json+json5+jsonp+jsstacktrace+js-templates+julia+keyman+kotlin+latex+latte+less+lilypond+liquid+lisp+livescript+llvm+lolcode+lua+makefile+markdown+markup-templating+matlab+mel+mizar+mongodb+monkey+moonscript+n1ql+n4js+nand2tetris-hdl+naniscript+nasm+neon+nginx+nim+nix+nsis+objectivec+ocaml+opencl+oz+parigp+parser+pascal+pascaligo+pcaxis+peoplecode+perl+php+phpdoc+php-extras+plsql+powerquery+powershell+processing+prolog+properties+protobuf+pug+puppet+pure+purebasic+purescript+python+q+qml+qore+r+racket+jsx+tsx+reason+regex+renpy+rest+rip+roboconf+robotframework+ruby+rust+sas+sass+scss+scala+scheme+shell-session+smali+smalltalk+smarty+sml+solidity+solution-file+soy+sparql+splunk-spl+sqf+sql+stan+iecst+stylus+swift+t4-templating+t4-cs+t4-vb+tap+tcl+tt2+textile+toml+turtle+twig+typescript+typoscript+unrealscript+vala+vbnet+velocity+verilog+vhdl+vim+visual-basic+warpscript+wasm+wiki+xeora+xml-doc+xojo+xquery+yaml+yang+zig&plugins=keep-markup */
+      /**
+       * prism.js default theme for JavaScript, CSS and HTML
+       * Based on dabblet (http://dabblet.com)
+       * @author Lea Verou
+       */
+
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: black;
+        background: none;
+        text-shadow: 0 1px white;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        font-size: 0.95em;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+
+      pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+      code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+        text-shadow: none;
+        background: #b3d4fc;
+      }
+
+      pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+      code[class*="language-"]::selection, code[class*="language-"] ::selection {
+        text-shadow: none;
+        background: #b3d4fc;
+      }
+
+      @media print {
+        code[class*="language-"],
+        pre[class*="language-"] {
+          text-shadow: none;
+        }
+      }
+
+      /* Code blocks */
+      pre[class*="language-"] {
+        padding: 1em;
+        margin: .5em 0;
+        overflow: auto;
+      }
+
+      :not(pre) > code[class*="language-"],
+      pre[class*="language-"] {
+        background: #f5f2f0;
+      }
+
+      /* Inline code */
+      :not(pre) > code[class*="language-"] {
+        padding: .1em;
+        border-radius: .3em;
+        white-space: normal;
+      }
+    </style>
+</head>
+<body>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+    <table class="grid dict">
+        
+        
+            <tr>
+                <th scope="row"><b>Url: </b></th>
+                <td style="padding-left: 4px;">http://ecqi.healthit.gov/ecqms/Measure/AppropriateTreatmentforSTEMIFHIR</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Version: </b></th>
+                <td style="padding-left: 4px;">0.0.008</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Identifier: </b></th>
+                <td style="padding-left: 4px;">
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>type: </b> <span></span>
+                        </p>
+                    
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>value: </b> <span>CMS996FHIR</span>
+                        </p>
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <th scope="row"><b>Identifier: </b></th>
+                <td style="padding-left: 4px;">
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>type: </b> <span></span>
+                        </p>
+                    
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>value: </b> <span>urn:uuid:a48685e0-4926-4ae8-9eb3-d8e8839b1704</span>
+                        </p>
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <th scope="row"><b>Identifier: </b></th>
+                <td style="padding-left: 4px;">
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>type: </b> <span></span>
+                        </p>
+                    
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>value: </b> <span>urn:uuid:6384fdb64ba3d47c885c02a7</span>
+                        </p>
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <th scope="row"><b>Identifier: </b></th>
+                <td style="padding-left: 4px;">
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>type: </b> <span></span>
+                        </p>
+                    
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>value: </b> <span>3613e</span>
+                        </p>
+                    
+                </td>
+            </tr>
+        
+            <tr>
+                <th scope="row"><b>Identifier: </b></th>
+                <td style="padding-left: 4px;">
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>type: </b> <span></span>
+                        </p>
+                    
+                    
+                        <p style="margin-bottom: 5px;">
+                            <b>value: </b> <span>996FHIR</span>
+                        </p>
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Name: </b></th>
+                <td style="padding-left: 4px;">AppropriateTreatmentforSTEMIFHIR</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Title: </b></th>
+                <td style="padding-left: 4px;">Appropriate Treatment for ST-Segment Elevation Myocardial Infarction (STEMI) Patients in the Emergency Department (ED)FHIR</td>
+            </tr>
+        
+        
+        
+            <tr>
+                <th scope="row"><b>Status: </b></th>
+                <td style="padding-left: 4px;">draft</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Experimental: </b></th>
+                <td style="padding-left: 4px;">true</td>
+            </tr>
+        
+        
+        
+        
+        
+        
+            <tr>
+                <th scope="row"><b>Date: </b></th>
+                <td style="padding-left: 4px;">2023-03-27T21:35:29+00:00</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Publisher: </b></th>
+                <td style="padding-left: 4px;">Centers for Medicare &amp; Medicaid Services (CMS)</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Description: </b></th>
+                <td style="padding-left: 4px;">Percentage of emergency department (ED) encounters for patients 18 years and older with a diagnosis of ST-segment elevation myocardial infarction (STEMI) that received appropriate treatment, defined as fibrinolytic therapy within 30 minutes of ED arrival, percutaneous coronary intervention (PCI) within 90 minutes of ED arrival, or transfer within 45 minutes of ED arrival.</td>
+            </tr>
+        
+        
+            
+                <tr>
+                    <th scope="row"><b>Population Criteria: </b></th>
+                    <td style="padding-left: 4px;">
+                        
+                            <table class="grid-dict">
+                                
+                                    <tr>
+                                        <th><b>6384fdb64ba3d47c885c02a6</b></th>
+                                    </tr>
+                                
+                                
+                                    <tr>
+                                        <td>Initial Population: </td>
+                                        <td>All emergency department encounters for patients 18 years and older with a diagnosis of ST-segment elevation myocardial infarction (STEMI)</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>Denominator: </td>
+                                        <td>Equals Initial Population</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>Denominator Exclusion: </td>
+                                        <td>Patients with the following conditions are excluded from measure denominator:
+ • Expired in the ED
+ • Bleeding or bleeding diathesis (excluding menses)
+ • Intracranial or intraspinal surgery
+ • Ischemic stroke 
+ • Known malignant intracranial neoplasm (primary or metastatic)
+ • Known structural cerebral vascular lesion (e.g., AVM)
+ • Significant facial and/or closed head trauma
+ • Suspected aortic dissection
+ •  Peptic ulcer
+ •  Cardiopulmonary arrest, including: cardiac arrest, CPR, defibrillation, respiratory arrest, or ventricular fibrillation (V-fib), ventricular tachycardia (VT), or pulseless electrical activity (PEA); or, traumatic or prolonged (&gt;10 minutes) CPR
+ • Allergic reaction to alteplase, streptokinase, anistreplase, tenecteplase, or reteplase
+ • Intubation, including endotracheal intubation, mechanical ventilation, nasotracheal intubation, or orotracheal intubation
+ • Mechanical circulatory assist device placement, including: aortic balloon pump, biventricular assist device, intra-aortic balloon, intra-aortic balloon counterpulsation, intra-aortic counterpulsation balloon pump, left ventricular device, percutaneous ventricular assist device, or ventricular assist device
+ • Oral anticoagulant therapy 
+ • Advanced dementia
+ • Pregnancy
+ • Internal bleeding
+ • Major surgery
+ • Severe neurologic impairment (e.g., based on Glasgow coma scale or as indicated by the patient receiving therapeutic hypothermia in the ED)</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>Denominator Exception: </td>
+                                        <td></td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>Numerator: </td>
+                                        <td>Emergency department encounters with a diagnosis of STEMI:
+ - where time from ED arrival to fibrinolysis is 30 minutes or fewer;
+OR 
+- where PCI is performed within 90 minutes of arrival for non-transfer patients; 
+OR
+- where the patient is transferred within 45 minutes of ED arrival.</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>Numerator Exclusion: </td>
+                                        <td></td>
+                                    </tr>
+                                
+                            </table>
+                        
+                    </td>
+                </tr>
+            
+        
+        
+        
+        
+            
+                <tr>
+                    <th scope="row"><b>Related Artifact Dependencies: </b></th>
+                    <td style="padding-left: 4px;">
+                        
+                            <li>Library/FHIRHelpers|4.1.000</li>
+                        
+                            <li>Library/CQMCommon|1.0.000</li>
+                        
+                            <li>Library/QICoreCommon|1.2.000</li>
+                        
+                            <li>Library/QICoreCommon|1.2.000</li>
+                        
+                            <li>http://terminology.hl7.org/CodeSystem/v3-ActCode</li>
+                        
+                            <li>http://terminology.hl7.org/CodeSystem/condition-clinical</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1085</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4017</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4020</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.2000.5</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4028</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.114.12.1012</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4048</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.69</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4052</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4056</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4036</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.3</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4025</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4043</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4055</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.5</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.2</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4045</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.104.12.1024</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4026</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4031</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.4</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.6</li>
+                        
+                            <li>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.309</li>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><b>Parameters:</b></th>
+                    <td style="padding-left: 4px;">
+                        <table class="grid-dict">
+                            <tr><th><b>name</b></th><th><b>use</b></th><th><b>min</b></th><th><b>max</b></th><th><b>type</b></th></tr>
+                            
+                                <tr>
+                                    <td>Measurement Period</td>
+                                    <td>in</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>Period</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Numerator</td>
+                                    <td>out</td>
+                                    <td>0</td>
+                                    <td>*</td>
+                                    <td>Any</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Denominator</td>
+                                    <td>out</td>
+                                    <td>0</td>
+                                    <td>*</td>
+                                    <td>Any</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Initial Population</td>
+                                    <td>out</td>
+                                    <td>0</td>
+                                    <td>*</td>
+                                    <td>Any</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Denominator Exclusions</td>
+                                    <td>out</td>
+                                    <td>0</td>
+                                    <td>*</td>
+                                    <td>Any</td>
+                                </tr>
+                            
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><b>DataRequirements:</b></th>
+                    <td style="padding-left: 4px;">
+                        <table class="grid-dict">
+                            <tr><th><b>Type</b></th><th><b>Must Support</b></th><th><b>Valueset Name</b></th><th><b>Valueset</b></th></tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            id
+                                        
+                                            id.value
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Encounter</td>
+                                    <td>
+                                        
+                                            type
+                                        
+                                            status
+                                        
+                                            status.value
+                                        
+                                            class
+                                        
+                                            reasonCode
+                                        
+                                            period
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 ED
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1085</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Encounter</td>
+                                    <td>
+                                        
+                                            type
+                                        
+                                            status
+                                        
+                                            status.value
+                                        
+                                            class
+                                        
+                                            period
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 ED
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1085</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                            clinicalStatus
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 STEMI
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4017</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>MedicationAdministration</td>
+                                    <td>
+                                        
+                                            medication
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Fibrinolytic Therapy
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4020</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>MedicationAdministration</td>
+                                    <td>
+                                        
+                                            medication
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Fibrinolytic Therapy
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4020</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Procedure</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                            performed
+                                        
+                                            status
+                                        
+                                            status.value
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Percutaneous Coronary Intervention
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.2000.5</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Patient</td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Aortic Dissection and Rupture
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4028</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Neurologic impairment
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.114.12.1012</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Cardiopulmonary Arrest
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4048</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Procedure</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Endotracheal Intubation
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.69</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Procedure</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Mechanical Circulatory Assist Device
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4052</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Procedure</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                            performed
+                                        
+                                            status
+                                        
+                                            status.value
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Major Surgical Procedure
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4056</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Active Bleeding or Bleeding Diathesis (Excluding Menses)
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4036</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Malignant Intracranial Neoplasm Group
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.3</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Cerebral Vascular Lesion
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4025</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Dementia
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4043</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Pregnancy
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4055</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Allergy to thrombolytics
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.5</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Procedure</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                            performed
+                                        
+                                            status
+                                        
+                                            status.value
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Intracranial or Intraspinal surgery
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.2</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>MedicationRequest</td>
+                                    <td>
+                                        
+                                            medication
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Anticoagulant Medications, Oral
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4045</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>MedicationRequest</td>
+                                    <td>
+                                        
+                                            medication
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Anticoagulant Medications, Oral
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4045</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Ischemic Stroke
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.104.12.1024</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Closed Head and Facial Trauma
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4026</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Active Peptic Ulcer
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4031</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Condition</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Cardiopulmonary Arrest
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4048</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Patient</td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>Patient</td>
+                                    <td>
+                                        
+                                            birthDate
+                                        
+                                            birthDate.value
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>AllergyIntolerance</td>
+                                    <td>
+                                        
+                                            code
+                                        
+                                            clinicalStatus
+                                        
+                                            onset
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Thrombolytic medications
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.4</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>AdverseEvent</td>
+                                    <td>
+                                        
+                                            event
+                                        
+                                            category
+                                        
+                                            recordedDate
+                                        
+                                            recordedDate.value
+                                        
+                                            actuality
+                                        
+                                            actuality.value
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                            
+                                                 Thrombolytic medications
+                                            
+                                        
+                                    </td>
+                                    <td>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.4</td>
+                                </tr>
+                            
+                        </table>
+                    </td>
+                </tr>
+                
+                    <tr>
+                        <th scope="row"><b>Direct Reference Codes:</b></th>
+                        <td style="padding-left: 4px;">
+                            <table class="grid-dict">
+                                <tr><th><b>display</b></th><th><b>code</b></th><th><b>system</b></th></tr>
+                                
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                
+                            </table>
+                        </td>
+                    </tr>
+                
+                
+                    <tr>
+                        <th scope="row"><b>Logic Definitions:</b></th>
+                        <td style="padding-left: 4px;">
+                            <table class="grid-dict">
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>ED Encounter with Encounter Diagnosis of STEMI</td>
+                                        
+                                        
+                                            
+                                                <td>0</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;ED Encounter with Encounter Diagnosis of STEMI&quot;:
+  [&quot;Encounter&quot;: &quot;ED&quot;] EDEncounter
+    where EDEncounter.status = 'finished'
+      and EDEncounter.class ~ &quot;EMER&quot;
+      and ( EDEncounter.reasonCode in &quot;STEMI&quot;
+          or exists ( ( CQMCommon.&quot;EncounterDiagnosis&quot; ( EDEncounter ) ) EncDiagnosis
+              where EncDiagnosis.code in &quot;STEMI&quot;
+          )
+      )
+      and EDEncounter.period during &quot;Measurement Period&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>ED Encounter with Diagnosis of STEMI</td>
+                                        
+                                        
+                                            
+                                                <td>1</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;ED Encounter with Diagnosis of STEMI&quot;:
+  [&quot;Encounter&quot;: &quot;ED&quot;] EDEncounter
+    with [&quot;Condition&quot;: &quot;STEMI&quot;] DxSTEMI
+      such that DxSTEMI.clinicalStatus ~ QICoreCommon.&quot;active&quot;
+        and EDEncounter.status = 'finished'
+        and EDEncounter.class ~ &quot;EMER&quot;
+        and QICoreCommon.&quot;ToPrevalenceInterval&quot; ( DxSTEMI ) starts during EDEncounter.period
+        and EDEncounter.period during &quot;Measurement Period&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>ED Encounter with STEMI Diagnosis</td>
+                                        
+                                        
+                                            
+                                                <td>2</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;ED Encounter with STEMI Diagnosis&quot;:
+  &quot;ED Encounter with Encounter Diagnosis of STEMI&quot;
+    union &quot;ED Encounter with Diagnosis of STEMI&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Fibrinolytic Therapy within 30 Minutes of Arrival</td>
+                                        
+                                        
+                                            
+                                                <td>3</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Fibrinolytic Therapy within 30 Minutes of Arrival&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with [&quot;MedicationAdministration&quot;: &quot;Fibrinolytic Therapy&quot;] Fibrinolytic
+      such that Fibrinolytic.status = 'completed'
+        and start of ( QICoreCommon.&quot;ToInterval&quot; ( Fibrinolytic.effective ) ) 30 minutes or less after start of ( EDwithSTEMI.period )</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>PCI within 90 Minutes of Arrival</td>
+                                        
+                                        
+                                            
+                                                <td>4</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;PCI within 90 Minutes of Arrival&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with [&quot;Procedure&quot;: &quot;Percutaneous Coronary Intervention&quot;] PCI
+      such that QICoreCommon.&quot;ToInterval&quot; ( PCI.performed ) starts 90 minutes or less after start of ( EDwithSTEMI.period )
+        and PCI.status = 'completed'</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>ED Departure with Transfer to Acute Care Facility Within 45 Minutes of Arrival</td>
+                                        
+                                        
+                                            
+                                                <td>5</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;ED Departure with Transfer to Acute Care Facility Within 45 Minutes of Arrival&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    where ( EDwithSTEMI.period ) ends 45 minutes or less after start of ( EDwithSTEMI.period )
+      and EDwithSTEMI.hospitalization.dischargeDisposition in &quot;Discharge To Acute Care Facility&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Numerator</td>
+                                        
+                                        
+                                            
+                                                <td>6</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Numerator&quot;:
+  &quot;Fibrinolytic Therapy within 30 Minutes of Arrival&quot;
+    union &quot;PCI within 90 Minutes of Arrival&quot;
+    union &quot;ED Departure with Transfer to Acute Care Facility Within 45 Minutes of Arrival&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Initial Population</td>
+                                        
+                                        
+                                            
+                                                <td>7</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Initial Population&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    where AgeInYearsAt(date from start of(EDwithSTEMI.period)) &gt;= 18</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Denominator</td>
+                                        
+                                        
+                                            
+                                                <td>8</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Denominator&quot;:
+  &quot;Initial Population&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encounter Start</td>
+                                        
+                                        
+                                            
+                                                <td>9</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encounter Start&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with ( [&quot;Condition&quot;: &quot;Aortic Dissection and Rupture&quot;]
+      union [&quot;Condition&quot;: &quot;Neurologic impairment&quot;]
+      union [&quot;Condition&quot;: &quot;Cardiopulmonary Arrest&quot;] ) ExclusionDiagnosis
+      such that ( QICoreCommon.&quot;ToPrevalenceInterval&quot; ( ExclusionDiagnosis ) starts during EDwithSTEMI.period )
+        or ( QICoreCommon.&quot;ToPrevalenceInterval&quot; ( ExclusionDiagnosis ) starts 24 hours or less before start of EDwithSTEMI.period )</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Intubation or Mechanical Circulatory Assist Procedure During ED Encounter or Within 24 Hours of ED Encounter Start</td>
+                                        
+                                        
+                                            
+                                                <td>10</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">/*Did not include a status of active as any diagnosis that resolves during the ED visit would not be counted*/
+define &quot;Intubation or Mechanical Circulatory Assist Procedure During ED Encounter or Within 24 Hours of ED Encounter Start&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with ( [&quot;Procedure&quot;: &quot;Endotracheal Intubation&quot;]
+      union [&quot;Procedure&quot;: &quot;Mechanical Circulatory Assist Device&quot;] ) AirwayProcedure
+      such that ( ( QICoreCommon.&quot;ToInterval&quot; ( AirwayProcedure.performed ) starts during ( EDwithSTEMI.period ) )
+          or ( QICoreCommon.&quot;ToInterval&quot; ( AirwayProcedure.performed ) starts 24 hours or less before start of ( EDwithSTEMI.period ) )
+      )
+        and AirwayProcedure.status = 'completed'</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Major Surgical Procedure 21 Days or Less Before End of ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>11</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Major Surgical Procedure 21 Days or Less Before End of ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with [&quot;Procedure&quot;: &quot;Major Surgical Procedure&quot;] MajorSurgery
+      such that QICoreCommon.&quot;ToInterval&quot; ( MajorSurgery.performed ) starts 21 days or less before end of ( EDwithSTEMI.period )
+        and MajorSurgery.status = 'completed'</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Active Exclusion Diagnosis at Start of ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>12</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Active Exclusion Diagnosis at Start of ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with ( [&quot;Condition&quot;: &quot;Active Bleeding or Bleeding Diathesis (Excluding Menses)&quot;]
+      union [&quot;Condition&quot;: &quot;Malignant Intracranial Neoplasm Group&quot;]
+      union [&quot;Condition&quot;: &quot;Cerebral Vascular Lesion&quot;]
+      union [&quot;Condition&quot;: &quot;Dementia&quot;]
+      union [&quot;Condition&quot;: &quot;Pregnancy&quot;]
+      union [&quot;Condition&quot;: &quot;Allergy to thrombolytics&quot;] ) ActiveExclusionDx
+      such that ActiveExclusionDx.clinicalStatus ~ QICoreCommon.&quot;active&quot;
+        and QICoreCommon.&quot;ToPrevalenceInterval&quot; ( ActiveExclusionDx ) overlaps before ( EDwithSTEMI.period )</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Intracranial or Intraspinal Procedure 90 Days or Less Before Start of ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>13</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Intracranial or Intraspinal Procedure 90 Days or Less Before Start of ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with [&quot;Procedure&quot;: &quot;Intracranial or Intraspinal surgery&quot;] CranialorSpinalSurgery
+      such that QICoreCommon.&quot;ToInterval&quot; ( CranialorSpinalSurgery.performed ) starts 90 days or less before start of ( EDwithSTEMI.period )
+        and CranialorSpinalSurgery.status = 'completed'</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Active Oral Anticoagulant Medication Overlaps Before ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>14</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Active Oral Anticoagulant Medication Overlaps Before ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    with [&quot;MedicationRequest&quot;: &quot;Anticoagulant Medications, Oral&quot;] OralAnticoagulant
+      such that OralAnticoagulant.status = 'active'
+        and OralAnticoagulant.intent = 'order'
+        and OralAnticoagulant.authoredOn before start of EDwithSTEMI.period</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Active Exclusion Diagnosis Within 90 Days Before Start of ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>15</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">/*cannot use overlaps for a single point in time*/
+define &quot;Active Exclusion Diagnosis Within 90 Days Before Start of ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwSTEMI
+    with ( [&quot;Condition&quot;: &quot;Ischemic Stroke&quot;]
+      union [&quot;Condition&quot;: &quot;Closed Head and Facial Trauma&quot;]
+      union [&quot;Condition&quot;: &quot;Active Peptic Ulcer&quot;]
+      union [&quot;Condition&quot;: &quot;Cardiopulmonary Arrest&quot;] ) ExclusionCondition
+      such that ExclusionCondition.clinicalStatus ~ QICoreCommon.&quot;active&quot;
+        and QICoreCommon.&quot;ToPrevalenceInterval&quot; ( ExclusionCondition ) overlaps Interval[start of ( EDwSTEMI.period ) - 90 days, start of ( EDwSTEMI.period )]</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>16</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwSTEMI
+    with [&quot;AllergyIntolerance&quot;: &quot;Thrombolytic medications&quot;] ThrombolyticAllergy
+      such that ThrombolyticAllergy.clinicalStatus ~ QICoreCommon.&quot;active&quot;
+        and QICoreCommon.&quot;ToInterval&quot; ( ThrombolyticAllergy.onset ) overlaps ( EDwSTEMI.period )</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Adverse Effect to Thrombolytic Medications Before End of ED Encounter</td>
+                                        
+                                        
+                                            
+                                                <td>17</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Adverse Effect to Thrombolytic Medications Before End of ED Encounter&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwSTEMI
+    with [AdverseEvent: event in &quot;Thrombolytic medications&quot;] ThrombolyticAdverseEvent
+      such that ThrombolyticAdverseEvent.category in &quot;Adverse reaction to thrombolytics&quot;
+        and ThrombolyticAdverseEvent.recordedDate before end ( EDwSTEMI.period )
+        and ThrombolyticAdverseEvent.actuality = 'actual'</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>ED Encounter with Expired Discharge Disposition</td>
+                                        
+                                        
+                                            
+                                                <td>18</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;ED Encounter with Expired Discharge Disposition&quot;:
+  &quot;ED Encounter with STEMI Diagnosis&quot; EDwithSTEMI
+    where EDwithSTEMI.hospitalization.dischargeDisposition in &quot;Patient Expired&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                                    <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
+                                    <tr>
+                                        
+                                            <td>AppropriateTreatmentforSTEMIFHIR</td>
+                                        
+                                        
+                                            <td>Denominator Exclusions</td>
+                                        
+                                        
+                                            
+                                                <td>19</td>
+                                            
+                                        
+                                    </tr>
+                                    <tr>
+                                        
+                                            <td></td>
+                                            <td><pre class="highlight language-cql"><code data-lang="cql" class="language-cql">define &quot;Denominator Exclusions&quot;:
+  &quot;Exclusion Diagnosis During ED Encounter or Within 24 Hours of ED Encounter Start&quot;
+    union &quot;Intubation or Mechanical Circulatory Assist Procedure During ED Encounter or Within 24 Hours of ED Encounter Start&quot;
+    union &quot;Major Surgical Procedure 21 Days or Less Before End of ED Encounter&quot;
+    union &quot;Active Exclusion Diagnosis at Start of ED Encounter&quot;
+    union &quot;Intracranial or Intraspinal Procedure 90 Days or Less Before Start of ED Encounter&quot;
+    union &quot;Active Oral Anticoagulant Medication Overlaps Before ED Encounter&quot;
+    union &quot;Active Exclusion Diagnosis Within 90 Days Before Start of ED Encounter&quot;
+    union &quot;Allergy or Intolerance to Thrombolytic Medications Overlaps ED Encounter&quot;
+    union &quot;Adverse Effect to Thrombolytic Medications Before End of ED Encounter&quot;
+    union &quot;ED Encounter with Expired Discharge Disposition&quot;</code></pre></td>
+                                        
+                                    </tr>
+                                
+                            </table>
+                        </td>
+                    </tr>
+                
+            
+        
+        
+        
+        
+        
+        
+            <tr>
+                <th scope="row"><b>Purpose: </b></th>
+                <td style="padding-left: 4px;">UNKNOWN</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Usage: </b></th>
+                <td style="padding-left: 4px;">This FHIR-based measure has been derived from the QDM-based measure: CMS996v3.
+
+Please refer to the HL7 QI-Core Implementation Guide (http://hl7.org/fhir/us/qicore/index.html) for more information on QI-Core and mapping recommendations from QDM to QI-Core 4.1.1 (http://hl7.org/fhir/us/qicore/qdm-to-qicore.html).</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Copyright: </b></th>
+                <td style="padding-left: 25px;">Limited proprietary coding is contained in these specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.
+
+This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2021 International Health Terminology Standards Development Organisation. All rights reserved.
+
+LOINC(R) copyright 2004-2021 Regenstrief Institute, Inc.</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Disclaimer: </b></th>
+                <td style="padding-left: 25px;">These performance specifications are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.
+
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.
+
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Approval Date: </b></th>
+                <td style="padding-left: 4px;">2023-04-03</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Last Review Date: </b></th>
+                <td style="padding-left: 4px;">2023-04-03</td>
+            </tr>
+        
+        
+            <tr>
+                <th scope="row"><b>Effective Period: </b></th>
+                <td style="padding-left: 4px;">2023-01-01..2023-12-31</td>
+            </tr>
+        
+        
+        
+        
+        
+        
+            <tr>
+                <th scope="row"><b>Libraries: </b></th>
+                <td style="padding-left: 4px;">
+                    <table class="grid-dict">
+                        
+                            <tr><td>http://ecqi.healthit.gov/ecqms/Library/AppropriateTreatmentforSTEMIFHIR</td></tr>
+                        
+                    </table>
+                </td>
+            </tr>
+        
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.3157.4020",
+  "meta": {
+    "versionId": "14",
+    "lastUpdated": "2022-03-08T01:01:59.000-05:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "Yale Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2022-12-15"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2020-08-21"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4020",
+  "version": "20200821",
+  "name": "Fibrinolytic Therapy",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-03-08T01:02:00-05:00",
+  "publisher": "Yale",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for fibrinolytic therapy used in the treatment of ST-segment elevation myocardial infarction (STEMI).),(Data Element Scope: This value set may use a model element related to Medication, Laboratory Test and Measurement.),(Inclusion Criteria: Includes RXNORM codes that represent medications and LOINC codes that represent administration and measurement of fibrinolytic therapy for STEMI treatment.),(Exclusion Criteria: No exclusions.)",
+  "compose": {
+    "include": [ {
+      "valueSet": [ "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4019" ]
+    }, {
+      "valueSet": [ "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3157.4018" ]
+    } ]
+  }
+}
