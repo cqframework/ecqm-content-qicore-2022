@@ -35,7 +35,12 @@
       "version": "2022",
       "code": "F32.3",
       "display": "Major depressive disorder, single episode, severe with psychotic features"
-    }, {
+    },  {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2023",
+      "code": "F32.4",
+      "display": "Major depressive disorder, single episode, in partial remission"
+    },{
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
       "version": "2022",
       "code": "F32.89",
@@ -66,6 +71,11 @@
       "code": "F33.3",
       "display": "Major depressive disorder, recurrent, severe with psychotic symptoms"
     }, {
+      "system": "http://hl7.org/fhir/sid/icd-10-cm",
+      "version": "2023",
+      "code": "F33.41",
+      "display": "Major depressive disorder, recurrent, in partial remission"
+    },{
       "system": "http://hl7.org/fhir/sid/icd-10-cm",
       "version": "2022",
       "code": "F33.9",
