@@ -1,0 +1,183 @@
+{
+  "id": "IPPassLOS120",
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "IPPassLOS120",
+      "resource": {
+        "id": "IPPassLOS120",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">LOS=120 <b>IPPASS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>6eb6a09cf087d3679e08bb1b3533860e</td></tr><tr><td>Date of birth</td><td><span>01 December 1960</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "1002-5",
+                  "display": "American Indian or Alaska Native",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "IPPassLOS120"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "usual",
+            "family": "IPPass",
+            "given": [
+              "LOS=120"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1960-12-01"
+      }
+    },
+    {
+      "fullUrl": "5c953f96b848462de0ae408a",
+      "resource": {
+        "id": "5c953f96b848462de0ae408a",
+        "resourceType": "Encounter",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "emergency",
+          "userSelected": true
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "32485007"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/IPPassLOS120"
+        },
+        "period": {
+          "start": "2022-02-08T00:00:00.000Z",
+          "end": "2022-06-07T23:59:00.000Z"
+        },
+        "length": {
+          "value": 120.0,
+          "unit": "days"
+        },
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "Condition/ischemic-stroke-1995"
+            },
+            "rank": 1
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "5f2c53c91c76ba5c996056f9",
+      "resource": {
+      "id": "5f2c53c91c76ba5c996056f9",
+      "resourceType": "Coverage",
+      "meta": {
+        "profile": [
+          "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"
+        ]
+      },    	"status": "active",
+    	"payor": [{
+          "reference": "Patient/IPPassLOS120"
+        }],
+        "beneficiary": {
+          "reference": "Patient/IPPassLOS120"
+        },
+        "period": {
+          "start": "1960-12-01T08:00:00.000Z"
+        }
+      }
+    },
+    {
+      "fullUrl": "ischemic-stroke-1995",
+      "resource": {
+        "id": "ischemic-stroke-1995",
+        "resourceType": "Condition",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2021-09",
+              "code": "111297002",
+              "display": "Nonparalytic stroke (disorder)",
+              "userSelected": true
+            }
+          ]
+        },
+    	"subject": {
+			  "reference": "Patient/IPPassLOS120"
+    	},
+      "recordedDate": "2022-10-13T08:00:00.000+00:00"
+      }
+    }
+  ]
+}

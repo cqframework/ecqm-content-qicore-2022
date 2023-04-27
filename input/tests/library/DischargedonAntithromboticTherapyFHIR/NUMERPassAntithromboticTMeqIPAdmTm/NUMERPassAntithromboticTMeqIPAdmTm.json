@@ -1,0 +1,217 @@
+{
+  "id": "NUMERPassAntithromboticTMeqIPAdmTm",
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "NUMERPassAntithromboticTMeqIPAdmTm",
+      "resource": {
+        "id": "NUMERPassAntithromboticTMeqIPAdmTm",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">AntithromboticTMeqIPAdmTM <b>NUMERPASS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>09185becde4292df8c5ecbeb8287eadc</td></tr><tr><td>Date of birth</td><td><span>31 May 1990</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "1002-5",
+                  "display": "American Indian or Alaska Native",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "NUMERPassAntithromboticTMeqIPAdmTm"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "usual",
+            "family": "NUMERPass",
+            "given": [
+              "AntithromboticTMeqIPAdmTM "
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1990-05-31"
+      }
+    },
+    {
+      "fullUrl": "5c954112b8484612c37f27b0",
+      "resource": {
+        "id": "5c954112b8484612c37f27b0",
+        "resourceType": "Encounter",
+	    "meta": {
+		  "profile": [
+			"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+		  ]
+	    },
+		"status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "32485007"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/NUMERPassAntithromboticTMeqIPAdmTm"
+        },
+        "period": {
+          "start": "2022-06-15T09:30:00.000+00:00",
+          "end": "2022-10-12T10:30:00.000+00:00"
+        },
+        "length": {
+          "value": 119.0,
+          "unit": "days"
+        },
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "Condition/ischemic-stroke-7f36"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "111297002",
+                  "display": "Ischemic Stroke"
+                }
+              ]
+            },
+            "rank": 1
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "5c954112b8484612c37f27b2",
+      "resource": {
+        "id": "5c954112b8484612c37f27b2",
+        "resourceType": "MedicationRequest",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "discharge",
+                "display": "Discharge",
+                "userSelected": true
+              }
+            ]
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1037045"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/NUMERPassAntithromboticTMeqIPAdmTm"
+        },
+        "authoredOn": "2022-06-15T09:30:00.001+00:00"
+      }
+    },
+    {
+      "fullUrl": "ischemic-stroke-7f36",
+      "resource": {
+        "id": "ischemic-stroke-7f36",
+        "resourceType": "Condition",
+	    "meta": {
+		   "profile": [
+		     "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+		   ]
+	    },        
+		"subject": {
+			"reference": "Patient/NUMERPassAntithromboticTMeqIPAdmTm"
+        },
+    	  "verificationStatus": {
+    		"coding": [
+    		  {
+    			"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+    			"code": "confirmed",
+    			"display": "Confirmed"
+    		  }
+    		]
+    	  },
+		  "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2020-09",
+              "code": "111297002",
+              "display": "Nonparalytic stroke (disorder)",
+              "userSelected": true
+            }
+          ]
+        },
+        "recordedDate": "2022-07-15T08:00:00.000+00:00"
+      }
+    }
+  ]
+}
