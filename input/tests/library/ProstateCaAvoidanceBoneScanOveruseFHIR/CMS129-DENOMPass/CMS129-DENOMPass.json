@@ -1,0 +1,341 @@
+{
+  "id": "6298e96c5c5f0f80c3806878",
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "6298e96c5c5f0f80c3806878",
+      "resource": {
+        "id": "CMS129-DENOMPass",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "resourceType": "Patient",
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "1002-5",
+                  "display": "American Indian or Alaska Native",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "6298e96c5c5f0f80c3806878"
+          }
+        ],
+        "name": [
+          {
+            "family": "DENOMPass",
+            "given": [
+              "TxAndStagingAndPSALowGleasonLow"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1979-12-31"
+      }
+    },
+    {
+      "fullUrl": "prostate-cancer-a8d8",
+      "resource": {
+        "id": "prostate-cancer-a8d8",
+        "resourceType": "Condition",
+        "meta": {
+"profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition"
+]
+},
+"category": [
+    {
+     "coding": [
+        {
+          "system":"http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display":"Encounter Diagnosis"
+        },
+         {
+          "system": "http://snomed.info/sct",
+          "code": "439401001",
+          "display": "Diagnosis"
+        }
+      ]
+    }
+  ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "active",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/CMS129-DENOMPass"
+         },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2022-03",
+              "code": "254900004",
+              "display": "Carcinoma of prostate (disorder)",
+              "userSelected": true
+            }
+          ]
+        },
+        "onsetPeriod": {
+          "start": "2007-06-14T08:00:00.000+00:00"
+        }
+      }
+    },
+    {
+      "fullUrl": "prostate-cancer-treatment-a8d9",
+      "resource": {
+        "id": "prostate-cancer-treatment-a8d9",
+        "resourceType": "Procedure",
+         "meta": {
+       "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
+          ]
+        },
+"extension": [
+          {
+            "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded",
+            "valueDateTime": "2023-02-01T09:00:00.000+00:00"
+                      }
+        ], 
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2022-03",
+              "code": "10492003",
+              "display": "Radionuclide therapy for glandular suppression (procedure)",
+              "userSelected": true
+            }
+          ]
+        },
+         "subject": {
+          "reference": "Patient/CMS129-DENOMPass"
+         },
+         "status": "completed",
+        "performedDateTime": "2023-04-28T08:00:00.000+00:00"
+      }
+    },
+    {
+      "fullUrl": "prostate-specific-antigen-test-a8db",
+      "resource": {
+        "id": "prostate-specific-antigen-test-a8db",
+        "resourceType": "Observation",
+         "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
+          ]
+        },
+"category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "version": "2.72",
+              "code": "10508-0",
+              "display": "Prostate specific Ag [Presence] in Tissue by Immune stain",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/CMS129-DENOMPass"
+         },
+        "status": "final",
+        "effectiveDateTime": "2023-04-24T08:00:00.000+00:00",
+        "valueQuantity": {
+          "value": 8.0,
+          "unit": "ng/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ng/mL"
+        }
+      }
+    },
+    {
+      "fullUrl": "gleason-score-in-specimen-qualitative-a8dc",
+      "resource": {
+        "id": "gleason-score-in-specimen-qualitative-a8dc",
+        "resourceType": "Observation",
+         "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
+          ]
+        },
+"category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "35266-6",
+              "display": "Gleason score in Specimen Qualitative",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/CMS129-DENOMPass"
+         },
+         "status": "final",
+        "effectiveDateTime": "2023-01-02T08:00:00.000+00:00",
+        "valueInteger": 5
+      }
+    },
+    {
+      "fullUrl": "tumor-staging-tumor-staging-a8dd",
+      "resource": {
+        "id": "tumor-staging-tumor-staging-a8dd",
+        "resourceType": "Observation",
+         "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
+          ]
+        },
+"category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "254292007",
+              "display": "Tumor staging (tumor staging)",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/CMS129-DENOMPass"
+         },
+         "status": "final",
+        "effectiveDateTime": "2023-04-26T08:00:00.000+00:00",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "433361000124104",
+              "display": "Neoplasm of prostate primary tumor staging category T2a: Involves one-half of one lobe or less (finding)",
+              "userSelected": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "bone-scan-5337",
+      "resource": {
+        "id": "bone-scan-5337",
+        "resourceType": "Observation",
+         "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation"
+          ]
+        },
+"category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "version": "2.72",
+              "code": "25031-6",
+              "display": "NM Bone Views",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/CMS129-DENOMPass"
+         },
+         "status": "final",
+        "effectiveDateTime": "2023-08-17T08:00:00.000+00:00",
+        "issued": "2023-08-17T08:00:00.000+00:00"
+      }
+    }
+  ]
+}

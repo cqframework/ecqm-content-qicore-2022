@@ -1,0 +1,271 @@
+{
+	"id": "641d8b2a1383e512b24c4fa5",
+	"resourceType": "Bundle",
+	"type": "collection",
+	"entry": [
+		{
+			"fullUrl": "641d8b2a1383e512b24c4fa5",
+			"resource": {
+				"id": "CMS177_NUMPass",
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+					]
+				},
+				"resourceType": "Patient",
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">SRA1MinBeforeEncEnds <b>NUMERPASS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Date of birth</td><td><span>02 April 2001</span></td></tr></tbody></table></div>"
+				},
+				"extension": [
+					{
+						"extension": [
+							{
+								"url": "ombCategory",
+								"valueCoding": {
+									"system": "urn:oid:2.16.840.1.113883.6.238",
+									"code": "2054-5",
+									"display": "Black or African American",
+									"userSelected": true
+								}
+							},
+							{
+								"url": "text",
+								"valueString": "Black or African American"
+							}
+						],
+						"url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+					},
+					{
+						"extension": [
+							{
+								"url": "ombCategory",
+								"valueCoding": {
+									"system": "urn:oid:2.16.840.1.113883.6.238",
+									"code": "2135-2",
+									"display": "Hispanic or Latino",
+									"userSelected": true
+								}
+							},
+							{
+								"url": "text",
+								"valueString": "Hispanic or Latino"
+							}
+						],
+						"url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+					}
+				],
+				"identifier": [
+					{
+						"type": {
+							"coding": [
+								{
+									"system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+									"code": "MR"
+								}
+							]
+						},
+						"system": "https://bonnie-fhir.healthit.gov/",
+						"value": "641d8b2a1383e512b24c4fa5"
+					}
+				],
+				"active": true,
+				"name": [
+					{
+						"use": "usual",
+						"family": "3NUMPass",
+						"given": [
+							"SRA1MinBeforeEncEnds"
+						]
+					}
+				],
+				"gender": "male",
+				"birthDate": "2015-12-13"
+			}
+		},
+		{
+			"fullUrl": "5e4af1fbbd36f900007c8628",
+			"resource": {
+				"id": "5e4af1fbbd36f900007c8628",
+				"resourceType": "Encounter",
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+					]
+				},
+				"status": "finished",
+				"class": {
+					"system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+					"code": "AMB",
+					"display": "ambulatory",
+					"userSelected": true
+				},
+				"type": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"code": "3391000175108",
+								"userSelected": true
+							}
+						]
+					}
+				],
+				"subject": {
+					"reference": "Patient/CMS177_NUMPass"
+				},
+				"period": {
+					"start": "2023-01-17T08:00:00.000+00:00",
+					"end": "2023-01-17T08:15:00.000+00:00"
+				},
+				"reasonCode": [
+					{
+						"coding": [
+							{
+								"system": "http://hl7.org/fhir/sid/icd-10-cm",
+								"version": "2023",
+								"code": "F33.41",
+								"display": "Major depressive disorder, recurrent, in partial remission",
+								"userSelected": true
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "5e4af21bbd36f900007c8690",
+			"resource": {
+				"id": "5e4af21bbd36f900007c8690",
+				"resourceType": "Procedure",
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
+					]
+				},
+				"extension": [
+					{
+						"url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded",
+						"valueDateTime": "2023-01-17T08:14:00.000Z"
+					}
+				],
+				"status": "completed",
+				"category": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "24642003",
+							"display": "Psychiatry procedure or service",
+							"userSelected": true
+						}
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "225337009"
+						}
+					]
+				},
+				"subject": {
+					"reference": "Patient/CMS177_NUMPass"
+				},
+				"performedDateTime": "2023-01-17T08:14:00.000+00:00"
+			}
+		},
+		{
+			"fullUrl": "http://coverage/1",
+			"resource": {
+				"resourceType": "Coverage",
+				"beneficiary": {
+					"reference": "Patient/CMS177_NUMPass"
+				},
+				"id": "1",
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"
+					]
+				},
+				"payor": [
+					{
+						"reference": "Organization/123456"
+					}
+				],
+				"status": "active"
+			}
+		},
+		{
+			"fullUrl": "http://Organization/123456",
+			"resource": {
+				"resourceType": "Organization",
+				"active": true,
+				"address": [
+					{
+						"use": "billing",
+						"type": "postal",
+						"line": [
+							"P.O. Box 660044"
+						],
+						"city": "Dallas",
+						"state": "TX",
+						"postalCode": "75266-0044",
+						"country": "USA"
+					}
+				],
+				"id": "123456",
+				"identifier": [
+					{
+						"use": "temp",
+						"system": "urn:oid:2.16.840.1.113883.4.4",
+						"value": "21-3259825"
+					}
+				],
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization"
+					]
+				},
+				"name": "Blue Cross Blue Shield of Texas",
+				"telecom": [
+					{
+						"system": "phone",
+						"value": "(+1) 972-766-6900"
+					}
+				],
+				"type": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/organization-type",
+								"code": "pay",
+								"display": "Payer"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"fullUrl": "http://Practitioner/123456",
+			"resource": {
+				"resourceType": "Practitioner",
+				"id": "practitioner-123456",
+				"name": [
+					{
+						"family": "Evil",
+						"prefix": [
+							"Dr"
+						]
+					}
+				],
+				"identifier": [
+					{
+						"system": "http://hl7.org/fhir/sid/us-npi",
+						"value": "123456"
+					}
+				]
+			}
+		}
+	]
+}
