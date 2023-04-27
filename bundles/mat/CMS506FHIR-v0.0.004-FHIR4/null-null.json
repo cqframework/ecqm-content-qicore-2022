@@ -1,0 +1,594 @@
+{
+  "resourceType": "Measure",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm" ]
+  },
+  "contained": [ {
+    "resourceType": "Library",
+    "id": "effective-data-requirements",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode",
+      "valueCoding": {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+        "code": "discharge",
+        "display": "Discharge"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "CQMCommon"
+      }, {
+        "url": "name",
+        "valueString": "Inpatient Encounter"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Inpatient Encounter\":\n  [Encounter: \"Encounter Inpatient\"] EncounterInpatient\n\t\twhere EncounterInpatient.status = 'finished'\n\t    and \"LengthInDays\"(EncounterInpatient.period) <= 120\n\t\t\tand EncounterInpatient.period ends during day of \"Measurement Period\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 0
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Inpatient Encounter with Age Greater than or Equal to 18"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Inpatient Encounter with Age Greater than or Equal to 18\":\n  CQMCommon.\"Inpatient Encounter\" InpatientHospitalEncounter\n    where AgeInYearsAt(date from start of InpatientHospitalEncounter.period) >= 18"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 1
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Opioid at Discharge"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Opioid at Discharge\":\n  ( [MedicationRequest: \"Schedule II & III Opioid Medications\"] OpioidMedications\n    where exists OpioidMedications.category OpioidCategory\n      where OpioidCategory ~ QICoreCommon.\"Discharge\" ) OpioidDischargeMedication\n    where OpioidDischargeMedication.status = 'active'\n      and OpioidDischargeMedication.intent = 'plan'"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 2
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Benzodiazepine at Discharge"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Benzodiazepine at Discharge\":\n  ( [MedicationRequest: \"Schedule IV Benzodiazepines\"] BenzoMedications\n    where exists BenzoMedications.category BenzoCategory\n      where BenzoCategory ~ QICoreCommon.\"Discharge\" ) BenzodiazepineDischargeMedication\n    where BenzodiazepineDischargeMedication.status = 'active'\n      and BenzodiazepineDischargeMedication.intent = 'plan'"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 3
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Numerator"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Numerator\":\n  /*Encounters of patients prescribed two or more opioids or an opioid and benzodiazepine at discharge.\n                */\n  \n  ( \"Inpatient Encounter with Age Greater than or Equal to 18\" InpatientEncounter\n      where ( Count(\"Opioid at Discharge\" Opioids\n            return distinct Opioids.medication\n        ) >= 2\n      )\n  )\n    union ( \"Inpatient Encounter with Age Greater than or Equal to 18\" InpatientEncounter\n        with \"Opioid at Discharge\" OpioidsDischarge\n          such that OpioidsDischarge.authoredOn during InpatientEncounter.period\n        with \"Benzodiazepine at Discharge\" BenzodiazepinesDischarge\n          such that BenzodiazepinesDischarge.authoredOn during InpatientEncounter.period\n    )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 4
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Inpatient Encounters with an Opioid or Benzodiazepine at Discharge"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Inpatient Encounters with an Opioid or Benzodiazepine at Discharge\":\n  \"Inpatient Encounter with Age Greater than or Equal to 18\" InpatientEncounter\n    with ( \"Opioid at Discharge\"\n      union \"Benzodiazepine at Discharge\" ) OpioidOrBenzodiazepineAtDischarge\n      such that OpioidOrBenzodiazepineAtDischarge.authoredOn during InpatientEncounter.period"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 5
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Initial Population"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Initial Population\":\n  \"Inpatient Encounters with an Opioid or Benzodiazepine at Discharge\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 6
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Denominator"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator\":\n  \"Initial Population\""
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 7
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Intervention Palliative or Hospice Care"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Intervention Palliative or Hospice Care\":\n  [ServiceRequest: code in \"Palliative or Hospice Care\"]\n    union [Procedure: \"Palliative or Hospice Care\"]"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 8
+      } ]
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+      "extension": [ {
+        "url": "libraryName",
+        "valueString": "SafeUseofOpioidsConcurrentPrescribingFHIR"
+      }, {
+        "url": "name",
+        "valueString": "Denominator Exclusion"
+      }, {
+        "url": "statement",
+        "valueString": "define \"Denominator Exclusion\":\n  /*Excludes encounters of patients with cancer or who are receiving palliative or hospice care at the time of the encounter*/\n  \n  \"Inpatient Encounters with an Opioid or Benzodiazepine at Discharge\" InpatientEncounter\n    where exists ( [Condition: \"All Primary and Secondary Cancer\"] Cancer\n        where QICoreCommon.\"ToPrevalenceInterval\" ( Cancer ) overlaps InpatientEncounter.period\n    )\n      or exists ( \"Intervention Palliative or Hospice Care\" PalliativeOrHospiceCare\n          where Coalesce(start of QICoreCommon.\"ToInterval\"(PalliativeOrHospiceCare.performed), PalliativeOrHospiceCare.authoredOn) during CQMCommon.\"HospitalizationWithObservation\" ( InpatientEncounter )\n      )\n      or exists ( \"Inpatient Encounters with an Opioid or Benzodiazepine at Discharge\" InpatientEncounter\n          where InpatientEncounter.hospitalization.dischargeDisposition in \"Discharge To Acute Care Facility\"\n            or InpatientEncounter.hospitalization.dischargeDisposition in \"Hospice Care Referral or Admission\"\n            or InpatientEncounter.hospitalization.dischargeDisposition in \"Patient Expired\"\n      )"
+      }, {
+        "url": "displaySequence",
+        "valueInteger": 9
+      } ]
+    } ],
+    "status": "active",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/library-type",
+        "code": "module-definition"
+      } ]
+    },
+    "relatedArtifact": [ {
+      "type": "depends-on",
+      "display": "Library CQMCommon",
+      "resource": "Library/CQMCommon|1.0.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library FHIRHelpers",
+      "resource": "Library/FHIRHelpers|4.1.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library FHIRHelpers",
+      "resource": "Library/FHIRHelpers|4.1.000"
+    }, {
+      "type": "depends-on",
+      "display": "Library QICoreCommon",
+      "resource": "Library/QICoreCommon|1.2.000"
+    }, {
+      "type": "depends-on",
+      "display": "Code system MedicationRequestCategory",
+      "resource": "http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Encounter Inpatient",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Schedule II & III Opioid Medications",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.165"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Schedule IV Benzodiazepines",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1125.1"
+    }, {
+      "type": "depends-on",
+      "display": "Value set All Primary and Secondary Cancer",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.161"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Palliative or Hospice Care",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1579"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Observation Services",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Emergency Department Visit",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Discharge To Acute Care Facility",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Hospice Care Referral or Admission",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.365"
+    }, {
+      "type": "depends-on",
+      "display": "Value set Patient Expired",
+      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.309"
+    } ],
+    "parameter": [ {
+      "name": "Measurement Period",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "type": "Period"
+    }, {
+      "name": "Numerator",
+      "use": "out",
+      "min": 0,
+      "max": "*",
+      "type": "Resource"
+    }, {
+      "name": "Denominator",
+      "use": "out",
+      "min": 0,
+      "max": "*",
+      "type": "Resource"
+    }, {
+      "name": "Initial Population",
+      "use": "out",
+      "min": 0,
+      "max": "*",
+      "type": "Resource"
+    }, {
+      "name": "Denominator Exclusion",
+      "use": "out",
+      "min": 0,
+      "max": "*",
+      "type": "Resource"
+    } ],
+    "dataRequirement": [ {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+      } ]
+    }, {
+      "type": "Patient",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.165"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.165"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1125.1"
+      } ]
+    }, {
+      "type": "MedicationRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest" ],
+      "mustSupport": [ "medication" ],
+      "codeFilter": [ {
+        "path": "medication",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1125.1"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+      } ]
+    }, {
+      "type": "ServiceRequest",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1579"
+      } ]
+    }, {
+      "type": "Procedure",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1579"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"
+      } ]
+    }, {
+      "type": "Encounter",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
+      "mustSupport": [ "type", "status", "status.value", "period" ],
+      "codeFilter": [ {
+        "path": "type",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+      } ]
+    }, {
+      "type": "Condition",
+      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition" ],
+      "mustSupport": [ "code" ],
+      "codeFilter": [ {
+        "path": "code",
+        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.161"
+      } ]
+    } ]
+  } ],
+  "extension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements",
+    "valueReference": {
+      "reference": "#effective-data-requirements"
+    }
+  } ],
+  "url": "http://ecqi.healthit.gov/ecqms/Measure/SafeUseofOpioidsConcurrentPrescribingFHIR",
+  "identifier": [ {
+    "use": "usual",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "short-name"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/shortName",
+    "value": "CMS506FHIR"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "version-independent"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:95d529af-66b4-4cfd-bc1f-f43704dc47ad"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "version-specific"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:6385019e4ba3d47c885c02af"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "endorser"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/nqfId",
+    "value": "3316e",
+    "assigner": {
+      "display": "NQF"
+    }
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type",
+        "code": "publisher"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/cmsId",
+    "value": "506FHIR",
+    "assigner": {
+      "display": "CMS"
+    }
+  } ],
+  "version": "0.0.004",
+  "name": "SafeUseofOpioidsConcurrentPrescribingFHIR",
+  "title": "Safe Use of Opioids - Concurrent PrescribingFHIR",
+  "status": "draft",
+  "experimental": true,
+  "date": "2023-04-04T17:18:09+00:00",
+  "publisher": "Centers for Medicare & Medicaid Services (CMS)",
+  "contact": [ {
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.cms.gov/"
+    } ]
+  } ],
+  "description": "Proportion of inpatient hospitalizations for patients 18 years of age and older prescribed, or continued on, two or more opioids or an opioid and benzodiazepine concurrently at discharge",
+  "purpose": "UNKNOWN",
+  "usage": "Clinician judgement, clinical appropriateness, or both may indicate concurrent prescribing of two unique opioids or an opioid and benzodiazepine is medically necessary, thus the measure is not expected to have a zero rate. \n\nInpatient hospitalizations with discharge medications of a new or continuing opioid or a new or continuing benzodiazepine prescription should be included in the initial population. \n\nInpatient hospitalizations with discharge medications of two or more new or continuing opioids or new or continuing opioid and benzodiazepine resulting in concurrent therapy at discharge should be included in the numerator. Each benzodiazepine and opioid included on the medication discharge list is considered a unique prescription.\n\nThe denominator population includes patients with inpatient hospitalizations and patients from Acute Hospital Care at Home programs, who are treated and billed as inpatients but receive care in their home.\n\nThis eCQM is an episode-based measure. An episode is defined as each inpatient hospitalization or encounter that ends during the measurement period.\n\nThis FHIR-based measure has been derived from the QDM-based measure: CMS506v5. \nPlease refer to the HL7 QI-Core Implementation Guide (http://hl7.org/fhir/us/qicore/index.html) for more information on QI-Core and mapping recommendations from QDM to QI-Core 4.1.1 (http://hl7.org/fhir/us/qicore/qdm-to-qicore.html).",
+  "copyright": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. Mathematica disclaims all liability for use or accuracy of any third party codes contained in the specifications.\n\nCPT(R) contained in the measure specifications is copyright 2004-2021 American Medical Association. LOINC(R) copyright 2004-2021 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2021 International Health Terminology Standards Development Organisation. ICD-10 copyright 2021 World Health Organization. All Rights Reserved.",
+  "approvalDate": "2023-04-04",
+  "lastReviewDate": "2023-04-04",
+  "effectivePeriod": {
+    "start": "2023-01-01",
+    "end": "2023-12-31"
+  },
+  "author": [ {
+    "name": "Mathematica",
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.mathematica.org/"
+    } ]
+  } ],
+  "library": [ "http://ecqi.healthit.gov/ecqms/Library/SafeUseofOpioidsConcurrentPrescribingFHIR" ],
+  "disclaimer": "These performance measures are not clinical guidelines, do not establish a standard of medical care, and have not been tested for all potential applications.\n\nTHE MEASURES AND SPECIFICATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND.\n\nDue to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+  "rationale": "Unintentional opioid overdose fatalities have become a major public health concern in the United States (Rudd et al., 2016). Reducing the number of unintentional overdoses has become a priority for numerous federal organizations including, but not limited to, the Centers for Disease Control and Prevention (CDC), the Federal Interagency Workgroup for Opioid Adverse Drug Events, and the Substance Abuse and Mental Health Services Administration. \n\nConcurrent prescriptions of opioids or opioids and benzodiazepines places patients at a greater risk of unintentional overdose due to the increased risk of respiratory depression (Dowell, Haegerich, & Chou, 2016). An analysis of national prescribing patterns shows that more than half of patients who received an opioid prescription in 2009 had filled another opioid prescription within the previous 30 days (National Institute on Drug Abuse, 2011). Studies of multiple claims and prescription databases have shown that between 5%-15% of patients receive concurrent opioid prescriptions and 5%-20% of patients receive concurrent opioid and benzodiazepine prescriptions across various settings (Liu et al., 2013; Mack et al., 2015, Park et al., 2015). Patients who have multiple opioid prescriptions have an increased risk for overdose (Jena et al., 2014). Rates of fatal overdose are ten times higher in patients who are co-dispensed opioid analgesics and benzodiazepines than opioids alone (Dasgupta et al., 2015). The number of opioid overdose deaths involving benzodiazepines increased 14% on average each year from 2006 to 2011, while the number of opioid analgesic overdose deaths not involving benzodiazepines did not change significantly (Jones & McAninch, 2015). Furthermore, concurrent use of benzodiazepines with opioids was prevalent in 31%-51% of fatal overdoses (Dowell, Haegerich, & Chou, 2016). One study found that eliminating concurrent use of opioids and benzodiazepines could reduce the risk of opioid overdose-related emergency department (ED) and inpatient visits by 15% and potentially could have prevented an estimated 2,630 deaths related to opioid painkiller overdoses in 2015 (Sun et al., 2017). \n\nA study on The Opioid Safety Initiative in the Veterans Health Administration (VHA), which includes an opioid and benzodiazepine concurrent prescribing measure that this measure is based on, was associated with a decrease of 20.67% overall and 0.86% patients per month (781 patients per month) receiving concurrent benzodiazepine with an opioid among all adult VHA patients who filled outpatient opioid prescriptions from October 2012 to September 2014 (Lin et al., 2017).\n\nAdopting a measure that calculates the proportion of patients with two or more opioids or opioids and benzodiazepines concurrently has the potential to reduce preventable mortality and reduce the costs associated with adverse events related to opioid use by (1) encouraging providers to identify patients with concurrent prescriptions of opioids or opioids and benzodiazepines and (2) discouraging providers from prescribing two or more opioids or opioids and benzodiazepines concurrently.",
+  "clinicalRecommendationStatement": "The 2016 CDC Guideline for Prescribing Opioids for Chronic Pain also recommends that:\n- \"Clinicians should avoid prescribing opioids and benzodiazepines concurrently whenever possible. Clinicians should communicate with others managing the patient to discuss the patient's needs, prioritize patient goals, weigh risks of concurrent benzodiazepine and opioid exposure, and coordinate care.\"\n- \"Clinicians should check the PDMP for concurrent controlled medications prescribed by other clinicians and should consider involving pharmacists and pain specialists as part of the management team when opioids are co-prescribed with other central nervous system depressants.\"\n- \"Experts emphasized that clinicians should communicate with mental health professionals managing the patient to discuss the patient's needs, prioritize patient goals, weigh risks of concurrent benzodiazepine and opioid exposure, and coordinate care.\"\n\nIn addition to the 2016 CDC Guideline for Prescribing Opioids for Chronic Pain, opioid prescribing guidelines issued by various state agencies and professional societies for various settings agree with the recommendation to avoid concurrently prescribing opioids (AAEM, WAMDG) and opioids and benzodiazepines (WAMDG, ASIPP, NYC DOHMH) whenever possible as the combination of these medications may potentiate opioid-induced respiratory depression.\n\nThe CDC Guideline for Prescribing Opioids for Chronic Pain (Dowell, 2016) also recommends that for patients found to have multiple opioid prescriptions clinicians should:\n- \"Discuss information from the PDMP with their patient and confirm that the patient is aware of the additional prescriptions.\"\n- \"Discuss safety concerns, including increased risk for respiratory depression and overdose, with patients found to be receiving opioids from more than one prescriber or receiving medications that increase risk when combined with opioids and consider offering naloxone.\"\n- \"Discuss safety concerns with other clinicians who are prescribing controlled substances for their patient. Ideally clinicians should first discuss concerns with their patient and inform him or her that they plan to coordinate care with the patient's other prescribers to improve the patient's safety.\"",
+  "group": [ {
+    "id": "6385019e4ba3d47c885c02ae",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
+          "code": "proportion",
+          "display": "Proportion"
+        } ]
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis",
+      "valueCode": "Encounter"
+    } ],
+    "population": [ {
+      "id": "345E1255-3623-402A-9016-2B5C9E096C26",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "description": "Inpatient hospitalizations (inpatient stay less than or equal to 120 days) that end during the measurement period, where the patient is 18 years of age and older at the start of the encounter and prescribed one or more new or continuing opioid or benzodiazepine at discharge",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Initial Population"
+      }
+    }, {
+      "id": "9ED4F80C-B465-4CDB-BFDD-CE376A165DD0",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "description": "Initial Population",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator"
+      }
+    }, {
+      "id": "25C57870-241A-428F-BDA8-63C5B4685EE4",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "description": "Inpatient hospitalizations where patients have cancer that begins prior to or during the encounter or are receiving palliative or hospice care (including comfort measures, terminal care, and dying care) during the encounter, patients discharged to another inpatient care facility, and patients who expire during the inpatient stay",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Denominator Exclusion"
+      }
+    }, {
+      "id": "64afdf85-7565-4485-980c-51672c8f759d",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exception",
+          "display": "Denominator Exception"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier"
+      }
+    }, {
+      "id": "C36B952C-8CCF-436F-A9E2-423A00C56A1A",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "description": "Inpatient hospitalizations where the patient is prescribed or continuing to take two or more opioids or an opioid and benzodiazepine at discharge",
+      "criteria": {
+        "language": "text/cql.identifier",
+        "expression": "Numerator"
+      }
+    }, {
+      "id": "b5a6188c-71a1-44d9-8fe5-3baec041d757",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator-exclusion",
+          "display": "Numerator Exclusion"
+        } ]
+      },
+      "criteria": {
+        "language": "text/cql.identifier"
+      }
+    } ]
+  } ]
+}

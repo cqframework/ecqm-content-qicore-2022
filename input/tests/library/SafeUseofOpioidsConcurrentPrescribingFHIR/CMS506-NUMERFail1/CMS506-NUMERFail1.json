@@ -1,0 +1,278 @@
+{
+	"id": "63236a248d26c655c5601f03",
+	"resourceType": "Bundle",
+	"type": "collection",
+	"entry": [
+		{
+			"fullUrl": "63236a248d26c655c5601f03",
+			"resource": {
+				"id": "CMS506-NUMERFail1",
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+					]
+				},
+				"resourceType": "Patient",
+				"extension": [
+					{
+						"extension": [
+							{
+								"url": "ombCategory",
+								"valueCoding": {
+									"system": "urn:oid:2.16.840.1.113883.6.238",
+									"code": "2054-5",
+									"display": "Black or African American",
+									"userSelected": true
+								}
+							},
+							{
+								"url": "text",
+								"valueString": "Black or African American"
+							}
+						],
+						"url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+					},
+					{
+						"extension": [
+							{
+								"url": "ombCategory",
+								"valueCoding": {
+									"system": "urn:oid:2.16.840.1.113883.6.238",
+									"code": "2186-5",
+									"display": "Not Hispanic or Latino",
+									"userSelected": true
+								}
+							},
+							{
+								"url": "text",
+								"valueString": "Not Hispanic or Latino"
+							}
+						],
+						"url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+					}
+				],
+				"identifier": [
+					{
+						"type": {
+							"coding": [
+								{
+									"system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+									"code": "MR"
+								}
+							]
+						},
+						"system": "https://bonnie-fhir.healthit.gov/",
+						"value": "63236a248d26c655c5601f03"
+					}
+				],
+				"name": [
+					{
+						"family": "NUMERFail",
+						"given": [
+							"2Benzodiazepines  "
+						]
+					}
+				],
+				"gender": "female",
+				"birthDate": "2005-09-15"
+			}
+		},
+		{
+			"fullUrl": "encounter-inpatient-53ef",
+			"resource": {
+				"id": "encounter-inpatient-53ef",
+				"resourceType": "Encounter",
+		 "meta": {
+		"profile": ["http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+		]
+		},
+				"status": "finished",
+		"class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+				"type": [
+					{
+						"coding": [
+							{
+								"system": "http://snomed.info/sct",
+								"version": "2022-03",
+								"code": "183452005",
+								"display": "Emergency hospital admission (procedure)",
+								"userSelected": true
+							}
+						]
+					}
+				],
+				"period": {
+					"start": "2023-09-15T08:00:00.000+00:00",
+					"end": "2023-09-18T10:00:00.000+00:00"
+				},
+				"subject": {
+					"reference": "Patient/CMS506-NUMERFail1"
+				}
+			}
+		},
+		{
+			"fullUrl": "schedule-iv-benzodiazepines-1f02",
+			"resource": {
+				"id": "schedule-iv-benzodiazepines-1f02",
+				"resourceType": "MedicationRequest",
+				"meta": {
+	"profile": [
+	"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
+	]
+	},
+				"status": "active",
+				"intent": "plan",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+								"code": "discharge",
+								"display": "Discharge",
+								"userSelected": true
+							}
+						]
+					}
+				],
+				"medicationCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+							"code": "1298088",
+							"display": "flurazepam hydrochloride 15 MG Oral Capsule",
+							"userSelected": true
+						}
+					]
+				},
+				"authoredOn": "2023-09-18T09:00:00.000+00:00",
+				 "requester": {
+    "reference": "Practitioner/f007",
+    "display": "Patrick Pump"
+  },
+				"subject": {
+					"reference": "Patient/CMS506-NUMERFail1"
+				}
+			}
+		},
+		{
+			"fullUrl": "schedule-iv-benzodiazepines-1f04",
+			"resource": {
+				"id": "schedule-iv-benzodiazepines-1f04",
+				"resourceType": "MedicationRequest",
+				"meta": {
+	"profile": [
+	"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
+	]
+	},
+				"status": "active",
+				"intent": "plan",
+				"category": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+								"code": "discharge",
+								"display": "Discharge",
+								"userSelected": true
+							}
+						]
+					}
+				],
+				"medicationCodeableConcept": {
+					"coding": [
+						{
+							"system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+							"code": "1298088",
+							"display": "flurazepam hydrochloride 15 MG Oral Capsule",
+							"userSelected": true
+						}
+					]
+				},
+				"authoredOn": "2023-09-18T09:00:00.000+00:00",
+				 "requester": {
+    "reference": "Practitioner/f007",
+    "display": "Patrick Pump"
+  },
+				"subject": {
+					"reference": "Patient/CMS506-NUMERFail1"
+				}
+			}
+		},
+		{
+			"fullUrl": "http://coverage/1",
+			"resource": {
+				"resourceType": "Coverage",
+				"beneficiary": {
+					"reference": "Patient/CMS506-NUMERFail1"
+				},
+				"id": "1",
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"
+					]
+				},
+				"payor": [
+					{
+						"reference": "Organization/123456"
+					}
+				],
+				"status": "active"
+			}
+		},
+		{
+			"fullUrl": "http://Organization/123456",
+			"resource": {
+				"resourceType": "Organization",
+				"active": true,
+				"address": [
+					{
+						"use": "billing",
+						"type": "postal",
+						"line": [
+							"P.O. Box 660044"
+						],
+						"city": "Dallas",
+						"state": "TX",
+						"postalCode": "75266-0044",
+						"country": "USA"
+					}
+				],
+				"id": "123456",
+				"identifier": [
+					{
+						"use": "temp",
+						"system": "urn:oid:2.16.840.1.113883.4.4",
+						"value": "21-3259825"
+					}
+				],
+				"meta": {
+					"profile": [
+						"http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization"
+					]
+				},
+				"name": "Blue Cross Blue Shield of Texas",
+				"telecom": [
+					{
+						"system": "phone",
+						"value": "(+1) 972-766-6900"
+					}
+				],
+				"type": [
+					{
+						"coding": [
+							{
+								"system": "http://terminology.hl7.org/CodeSystem/organization-type",
+								"code": "pay",
+								"display": "Payer"
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}
