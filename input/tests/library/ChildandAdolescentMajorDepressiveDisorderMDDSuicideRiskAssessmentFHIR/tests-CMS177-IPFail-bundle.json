@@ -1,0 +1,181 @@
+{
+  "resourceType": "Bundle",
+  "id": "tests-CMS177-IPFail-bundle",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Bundle",
+      "id": "641d85ece79ed5094e9c4613",
+      "type": "collection",
+      "entry": [ {
+        "fullUrl": "641d85ece79ed5094e9c4613",
+        "resource": {
+          "resourceType": "Patient",
+          "id": "CMS177_IPFail",
+          "meta": {
+            "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
+          },
+          "text": {
+            "status": "generated",
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">PsychoanalysisEncB4MP <b>IPPFAIL </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>588ba77e42a7e60343a4ab3297f14a40</td></tr><tr><td>Date of birth</td><td><span>13 December 2003</span></td></tr></tbody></table></div>"
+          },
+          "extension": [ {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [ {
+              "url": "ombCategory",
+              "valueCoding": {
+                "system": "urn:oid:2.16.840.1.113883.6.238",
+                "code": "2106-3",
+                "display": "White",
+                "userSelected": true
+              }
+            }, {
+              "url": "text",
+              "valueString": "White"
+            } ]
+          }, {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [ {
+              "url": "ombCategory",
+              "valueCoding": {
+                "system": "urn:oid:2.16.840.1.113883.6.238",
+                "code": "2135-2",
+                "display": "Hispanic or Latino",
+                "userSelected": true
+              }
+            }, {
+              "url": "text",
+              "valueString": "Hispanic or Latino"
+            } ]
+          } ],
+          "identifier": [ {
+            "type": {
+              "coding": [ {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code": "MR"
+              } ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "641d85ece79ed5094e9c4613"
+          } ],
+          "active": true,
+          "name": [ {
+            "use": "usual",
+            "family": "2IPFail",
+            "given": [ "EncB4MP" ]
+          } ],
+          "gender": "female",
+          "birthDate": "2014-12-13"
+        }
+      }, {
+        "fullUrl": "5c98fd1ab848464ed33e9e99",
+        "resource": {
+          "resourceType": "Encounter",
+          "id": "5c98fd1ab848464ed33e9e99",
+          "meta": {
+            "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ]
+          },
+          "status": "finished",
+          "class": {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+            "code": "AMB",
+            "display": "ambulatory",
+            "userSelected": true
+          },
+          "type": [ {
+            "coding": [ {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "90845"
+            } ]
+          } ],
+          "subject": {
+            "reference": "Patient/CMS177_IPFail"
+          },
+          "period": {
+            "start": "2022-12-31T08:00:00+00:00",
+            "end": "2022-12-31T08:15:00+00:00"
+          },
+          "reasonCode": [ {
+            "coding": [ {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "version": "2022",
+              "code": "F32.89",
+              "display": "Other specified depressive episodes",
+              "userSelected": true
+            } ]
+          } ]
+        }
+      }, {
+        "fullUrl": "http://coverage/1",
+        "resource": {
+          "resourceType": "Coverage",
+          "id": "1",
+          "meta": {
+            "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage" ]
+          },
+          "status": "active",
+          "beneficiary": {
+            "reference": "Patient/CMS177_IPFail"
+          },
+          "payor": [ {
+            "reference": "Organization/123456"
+          } ]
+        }
+      }, {
+        "fullUrl": "http://Organization/123456",
+        "resource": {
+          "resourceType": "Organization",
+          "id": "123456",
+          "meta": {
+            "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization" ]
+          },
+          "identifier": [ {
+            "use": "temp",
+            "system": "urn:oid:2.16.840.1.113883.4.4",
+            "value": "21-3259825"
+          } ],
+          "active": true,
+          "type": [ {
+            "coding": [ {
+              "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+              "code": "pay",
+              "display": "Payer"
+            } ]
+          } ],
+          "name": "Blue Cross Blue Shield of Texas",
+          "telecom": [ {
+            "system": "phone",
+            "value": "(+1) 972-766-6900"
+          } ],
+          "address": [ {
+            "use": "billing",
+            "type": "postal",
+            "line": [ "P.O. Box 660044" ],
+            "city": "Dallas",
+            "state": "TX",
+            "postalCode": "75266-0044",
+            "country": "USA"
+          } ]
+        }
+      }, {
+        "fullUrl": "http://Practitioner/123456",
+        "resource": {
+          "resourceType": "Practitioner",
+          "id": "practitioner-123456",
+          "identifier": [ {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "123456"
+          } ],
+          "name": [ {
+            "family": "Evil",
+            "prefix": [ "Dr" ]
+          } ]
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Bundle/641d85ece79ed5094e9c4613"
+    }
+  } ]
+}

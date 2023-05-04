@@ -1,4 +1,4 @@
-# ecqm-content-qicore-2020
+# ecqm-content-qicore-2022
 eCQM Measure Content (Using QICore 4.1.1, based on FHIR R4 v4.0.1)
 
 These draft FHIR-based measures and shared libraries are translated from the QDM-based versions of eCQMs to be published in May 2022 for the 2023 reporting year, and have specific versions, especially for the shared libraries, appropriate to the content for that publication update.
