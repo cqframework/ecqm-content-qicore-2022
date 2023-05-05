@@ -1,5 +1,6 @@
 {
   "resourceType": "Measure",
+  "id": "DocumentationofCurrentMedicationsFHIR",
   "meta": {
     "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm" ]
   },
@@ -83,7 +84,7 @@
         "valueString": "Denominator Exceptions"
       }, {
         "url": "statement",
-        "valueString": "define \"Denominator Exceptions\":\n  \"Qualifying Encounter during Measurement Period\" QualifyingEncounter\n    with [Task: \"Documentation of current medications (procedure)\"] MedicationsNotDocumented\n      such that QICoreCommon.\"ToInterval\" ( MedicationsNotDocumented.authoredOn ) during QualifyingEncounter.period\n        and MedicationsNotDocumented.status = 'rejected'\n        and MedicationsNotDocumented.reasonCode in \"Medical Reason\""
+        "valueString": "define \"Denominator Exceptions\":\n  \"Qualifying Encounter during Measurement Period\" QualifyingEncounter\n    with [Task: \"Documentation of current medications (procedure)\"] MedicationsNotDocumented\n      such that MedicationsNotDocumented.status = 'rejected'"
       }, {
         "url": "displaySequence",
         "valueInteger": 4
@@ -99,11 +100,11 @@
     "relatedArtifact": [ {
       "type": "depends-on",
       "display": "Library FHIRHelpers",
-      "resource": "Library/FHIRHelpers|4.1.000"
+      "resource": "http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.1.000"
     }, {
       "type": "depends-on",
       "display": "Library QICoreCommon",
-      "resource": "Library/QICoreCommon|1.2.000"
+      "resource": "http://ecqi.healthit.gov/ecqms/Library/QICoreCommon|1.2.000"
     }, {
       "type": "depends-on",
       "display": "Code system SNOMEDCT",
@@ -112,10 +113,6 @@
       "type": "depends-on",
       "display": "Value set Encounter to Document Medications",
       "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1834"
-    }, {
-      "type": "depends-on",
-      "display": "Value set Medical Reason",
-      "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1007"
     } ],
     "parameter": [ {
       "name": "Measurement Period",
@@ -128,25 +125,25 @@
       "use": "out",
       "min": 0,
       "max": "*",
-      "type": "Resource"
+      "type": "Any"
     }, {
       "name": "Denominator",
       "use": "out",
       "min": 0,
       "max": "*",
-      "type": "Resource"
+      "type": "Any"
     }, {
       "name": "Initial Population",
       "use": "out",
       "min": 0,
       "max": "*",
-      "type": "Resource"
+      "type": "Any"
     }, {
       "name": "Denominator Exceptions",
       "use": "out",
       "min": 0,
       "max": "*",
-      "type": "Resource"
+      "type": "Any"
     } ],
     "dataRequirement": [ {
       "type": "Encounter",
@@ -155,14 +152,15 @@
       "codeFilter": [ {
         "path": "type",
         "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1834"
+      }, {
+        "path": "status.value",
+        "code": [ {
+          "code": "finished"
+        } ]
       } ]
     }, {
       "type": "Patient",
       "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
-    }, {
-      "type": "Patient",
-      "profile": [ "http://hl7.org/fhir/Patient" ],
-      "mustSupport": [ "birthDate", "birthDate.value" ]
     }, {
       "type": "Task",
       "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task" ],
@@ -176,28 +174,9 @@
         } ]
       } ]
     }, {
-      "type": "Encounter",
-      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
-      "mustSupport": [ "type", "status", "status.value", "period" ],
-      "codeFilter": [ {
-        "path": "type",
-        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1834"
-      } ]
-    }, {
-      "type": "Patient",
-      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" ]
-    }, {
-      "type": "Encounter",
-      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
-      "mustSupport": [ "type", "status", "status.value", "period" ],
-      "codeFilter": [ {
-        "path": "type",
-        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1834"
-      } ]
-    }, {
       "type": "Task",
       "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task" ],
-      "mustSupport": [ "code", "authoredOn", "authoredOn.value", "status", "status.value", "reasonCode" ],
+      "mustSupport": [ "code", "status", "status.value" ],
       "codeFilter": [ {
         "path": "code",
         "code": [ {
@@ -205,26 +184,21 @@
           "code": "428191000124101",
           "display": "Documentation of current medications (procedure)"
         } ]
-      } ]
-    }, {
-      "type": "Encounter",
-      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
-      "mustSupport": [ "type", "status", "status.value", "period" ],
-      "codeFilter": [ {
-        "path": "type",
-        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1834"
-      } ]
-    }, {
-      "type": "Encounter",
-      "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter" ],
-      "mustSupport": [ "type", "status", "status.value", "period" ],
-      "codeFilter": [ {
-        "path": "type",
-        "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.600.1.1834"
+      }, {
+        "path": "status.value",
+        "code": [ {
+          "code": "rejected"
+        } ]
       } ]
     } ]
   } ],
   "extension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
+    "valueReference": {
+      "reference": "Device/cqf-tooling"
+    }
+  }, {
+    "id": "effective-data-requirements",
     "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements",
     "valueReference": {
       "reference": "#effective-data-requirements"
@@ -292,7 +266,7 @@
   "title": "Documentation of Current Medications in the Medical RecordFHIR",
   "status": "draft",
   "experimental": true,
-  "date": "2023-04-04T17:25:19+00:00",
+  "date": "2023-05-05T16:19:28+00:00",
   "publisher": "Centers for Medicare & Medicaid Services (CMS)",
   "contact": [ {
     "telecom": [ {

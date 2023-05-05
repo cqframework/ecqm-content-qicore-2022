@@ -1,5 +1,6 @@
 {
   "resourceType": "Measure",
+  "id": "ProstateCaAvoidanceBoneScanOveruseFHIR",
   "meta": {
     "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm" ]
   },
@@ -512,7 +513,7 @@
   "title": "Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer PatientsFHIR",
   "status": "draft",
   "experimental": true,
-  "date": "2023-04-27T19:54:22+00:00",
+  "date": "2023-05-05T16:19:28+00:00",
   "publisher": "Centers for Medicare & Medicaid Services (CMS)",
   "contact": [ {
     "telecom": [ {
