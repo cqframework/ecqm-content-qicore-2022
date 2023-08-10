@@ -7,7 +7,6 @@ Commits to this repository will automatically trigger a build of the continuous 
 
 https://build.fhir.org/ig/cqframework/ecqm-content-qicore-2022
 
-
 ## Authoring
 
 To author content in this implementation guide, you can use either the Atom CQL Plugin, or the VS Code CQL Plugin. Both plugins will enable you to author, validate, and execute FHIR-based eCQM content.
