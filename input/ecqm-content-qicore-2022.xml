@@ -5,8 +5,8 @@
     <version value="2022"/>
     <name value="eCQMContentQICore"/>
     <title value="eCQM QICore Content Implementation Guide"/>
-    <status value="draft"/>
-    <experimental value="false"/>
+    <status value="retired"/>
+    <experimental value="true"/>
     <date value="2022-04-12"/>
     <publisher value="cqframework"/>
     <contact>
